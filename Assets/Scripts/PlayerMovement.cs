@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
     // Debug Text Variable
     [Header("Debugging")]
     public Text GroundDebug;
-    public Text SlopeDebug;
+    public Text DashDebug;
 
     // In-Script Variable
     float horz;
@@ -78,7 +78,11 @@ public class PlayerMovement : MonoBehaviour
             _jump = false;
         }
 
+        // Ground Check
         GroundCheck();
+
+        // Dash Debug
+        DashDebug.text = "Dash Ready: " + isDashCooledDown;
     }
     void GetInput()
     {
