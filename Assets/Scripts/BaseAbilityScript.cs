@@ -6,9 +6,10 @@ using UnityEngine;
 //this is 
 public  class BaseAbilityScript : MonoBehaviour
 {
-    GameObject baseClass;
     
-    // Start is called before the first frame update
+    public GameObject myParent;
+    
+    // signal functions for each of the child classes
     public virtual void OnEquip()
     {
         Debug.Log("equipped");
