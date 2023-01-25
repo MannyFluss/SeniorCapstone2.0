@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
+//using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -12,9 +12,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Variable")]
     public float moveSpeed = 4f;
     public float jumpForce = 4f;
+    public float dashForce = 4f;
     public float distToGround = 1f;
 
-    private Vector2 moveInput;
+    // Variable for Dash
+    [Header("Dash Variable")]
+    public float dashCoolDownSeconds = 1f;
+    private bool isDashCooledDown = true;
 
     // Variable for Jumping
     [Header("Jump Variable")]
@@ -31,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     float horz;
     float vert;
     bool _jump;
+    bool _dash;
     float _slopeAngle;
     Vector3 deltaPosition;
 
@@ -56,18 +61,34 @@ public class PlayerMovement : MonoBehaviour
 
         rb.MovePosition(rb.position + deltaPosition);
 
+        // Dash
+        if (_dash)
+        {
+            rb.velocity = new Vector3(x: rb.velocity.x + horz * dashForce,
+                                      y: rb.velocity.y,
+                                      z: rb.velocity.z + vert * dashForce);
+            StartCoroutine(CoolDownWaiter());
+            _dash = false;
+        }
+
+        // Jump
         if (_jump)
         {
             rb.velocity += (Vector3.up * jumpForce);
             _jump = false;
         }
+
         GroundCheck();
     }
     void GetInput()
     {
+        // Get axis
         horz = Input.GetAxis("Horizontal");
         vert = Input.GetAxis("Vertical");
+
+        // Get key down  
         if (isGrounded && Input.GetKeyDown(KeyCode.Space)) _jump = true;
+        if (isGrounded && isDashCooledDown && Input.GetKeyDown(KeyCode.RightShift)) _dash = true;
     }
 
     void GroundCheck()
@@ -85,5 +106,14 @@ public class PlayerMovement : MonoBehaviour
         }
         // GroundDebug.text = "Grounded: " + isGrounded;
         GroundDebug.text = "Grounded: " + isGrounded;
+    }
+
+
+
+    IEnumerator CoolDownWaiter()
+    {
+        isDashCooledDown = false;
+        yield return new WaitForSeconds(dashCoolDownSeconds);
+        isDashCooledDown = true;
     }
 }
