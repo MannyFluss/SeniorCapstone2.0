@@ -2,6 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+//this script will be added to the main character and will manage the characters abilities;
+//likely will need to link to other scripts that access hp, stats, and other things later on
 public class CharacterAbilityScript : MonoBehaviour
 {
     //contains references to the currently chosen abilities

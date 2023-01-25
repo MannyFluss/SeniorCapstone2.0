@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-//this is 
+//this is the base class, it should not be used
 public  class BaseAbilityScript : MonoBehaviour
 {
     
@@ -34,7 +34,7 @@ public  class BaseAbilityScript : MonoBehaviour
     }
 
 }
-
+//this is an example of a testAbility that just has a different print statement
 public class testAbility : BaseAbilityScript
 {
     
