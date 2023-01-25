@@ -13,6 +13,15 @@ public class CharacterAbilityScript : MonoBehaviour
         equipAbility("testAbility",0);
         removeAbility(0);
     }
+    void Update()
+    {
+        getInput();
+    }
+
+    void getInput()
+    {
+        
+    }
 
 
     void equipAbility(string _toInsert, int _index)
@@ -56,6 +65,8 @@ public class CharacterAbilityScript : MonoBehaviour
             playerAbilities[_index] = null;
         }
     }
+    
+
 
 
 }
