@@ -5,6 +5,8 @@ using UnityEditor.ShaderKeywordFilter;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -40,11 +42,57 @@ public class PlayerMovement : MonoBehaviour
     Vector3 deltaPosition;
 
 
+    //Player Controls
+    private PlayerInput playerInput;
 
-    // Start is called before the first frame update
+    //main virtual cam
+    [Header("Camera")]
+    [SerializeField]
+    private CinemachineVirtualCamera vcam;
+
+    private void Awake()
+    {
+        playerInput = new PlayerInput();
+    }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        //Player input listeners for vectors
+        playerInput.Input.Move.started += movementInput;
+        playerInput.Input.Move.performed += movementInput;
+        playerInput.Input.Move.canceled += movementInput;
+
+        //Player input listeners for buttons
+        playerInput.Input.Jump.performed += jumpInput; //Jump Input
+        playerInput.Input.Dash.performed += dashInput; //Dash Input
+    }
+
+    /*  
+     *  code ran when inputs are performed:
+     *  Buttons only need to be checked when they are down while 
+     *  vector inputs like movement need to be checked when pushed and released
+     */
+    public void movementInput(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void jumpInput(InputAction.CallbackContext context)
+    {
+        if(isGrounded)
+        {
+            _jump = true;
+        }
+    }
+
+    public void dashInput(InputAction.CallbackContext context)
+    {
+        if(isGrounded && isDashCooledDown)
+        {
+            _dash = true;
+        }
     }
 
     private void Update()
@@ -54,13 +102,37 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //Movement handlers
+        handleMovement();
+        handleRotation();
+        handleDash();
+        handleJump();
+        
+
+        // Ground Check
+        GroundCheck();
+
+        // Dash Debug
+        DashDebug.text = "Dash Ready: " + isDashCooledDown;
+    }
+
+    void handleMovement()
+    {
         deltaPosition = ((transform.forward * vert) + (transform.right * horz)) * moveSpeed * Time.fixedDeltaTime;
 
         float normalisedSlope = (_slopeAngle / 90f) * -1f;
         deltaPosition += (deltaPosition * normalisedSlope);
 
         rb.MovePosition(rb.position + deltaPosition);
+    }
 
+    void handleRotation()
+    {
+
+    }
+
+    void handleDash()
+    {
         // Dash
         if (_dash)
         {
@@ -70,29 +142,24 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(CoolDownWaiter());
             _dash = false;
         }
+    }
 
+    void handleJump()
+    {
         // Jump
         if (_jump)
         {
-            rb.velocity += (Vector3.up * jumpForce);
             _jump = false;
+            rb.velocity += (Vector3.up * jumpForce);
         }
-
-        // Ground Check
-        GroundCheck();
-
-        // Dash Debug
-        DashDebug.text = "Dash Ready: " + isDashCooledDown;
     }
+
+
     void GetInput()
     {
         // Get axis
         horz = Input.GetAxis("Horizontal");
         vert = Input.GetAxis("Vertical");
-
-        // Get key down  
-        if (isGrounded && Input.GetKeyDown(KeyCode.Space)) _jump = true;
-        if (isGrounded && isDashCooledDown && Input.GetKeyDown(KeyCode.RightShift)) _dash = true;
     }
 
     void GroundCheck()
@@ -112,12 +179,19 @@ public class PlayerMovement : MonoBehaviour
         GroundDebug.text = "Grounded: " + isGrounded;
     }
 
-
-
     IEnumerator CoolDownWaiter()
     {
         isDashCooledDown = false;
         yield return new WaitForSeconds(dashCoolDownSeconds);
         isDashCooledDown = true;
+    }
+
+    private void OnEnable()
+    {
+        playerInput.Enable();
+    }
+    private void OnDisable()
+    {
+        playerInput.Disable();
     }
 }
