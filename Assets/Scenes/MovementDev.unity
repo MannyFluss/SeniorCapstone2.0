@@ -1442,7 +1442,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh37794
+  m_Name: pb_Mesh24706
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1990,7 +1990,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh37814
+  m_Name: pb_Mesh24740
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -2357,8 +2357,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753bd31c1cc4da644887902b73b9b15b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockback: 0.12
-  moveSpeed: 0.015
+  knockback: 0.1
+  moveSpeed: 0.01
 --- !u!1 &1637772421
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,5 @@
 using System.Collections;
-//using System.Collections.Generic;
+using System.Collections.Generic;
 //using System.Diagnostics;
 using UnityEditor.ShaderKeywordFilter;
 using UnityEditor.UIElements;
@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Variable for Dash
     [Header("Dash Variable")]
     public float dashCoolDownSeconds = 1f;
+    private Sprite sprite;
     private bool isDashCooledDown = true;
 
     // Variable for Jumping
@@ -48,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
     float gravity = -9.8f;
     float groundedGravity = -0.5f;
 
+    private List<GameObject> clones = new List<GameObject>();
 
     //Player Controls
     private PlayerInput playerInput;
@@ -61,6 +63,8 @@ public class PlayerMovement : MonoBehaviour
     {
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
+
+        sprite = GetComponent<SpriteRenderer>().sprite;
 
         setupJump();
     }
@@ -155,9 +159,36 @@ public class PlayerMovement : MonoBehaviour
         // Dash
         if (_dash)
         {
-            characterController.Move(currentMovement * Time.deltaTime * moveSpeed * dashForce * 5);
+            var storedPos = new Vector3[3]; 
+            for(int i = 0; i < 3; i++)
+            {
+                characterController.Move(currentMovement * Time.deltaTime * moveSpeed * dashForce * 4);
+                storedPos[i] = transform.position;
+            }
+            foreach (Vector3 pos in storedPos)
+            {
+                var clone = new GameObject();
+                clone.transform.position = pos;
+                var spriterender = clone.AddComponent<SpriteRenderer>();
+                spriterender.sprite = sprite;
+                spriterender.color = new Color(spriterender.color.r, spriterender.color.g, spriterender.color.b, 0.5f);
+                clones.Add(clone);
+            }
             StartCoroutine(CoolDownWaiter());
             _dash = false;
+        }
+
+        //clones for after effect
+        foreach (var clone in clones)
+        {
+            var spriteRenderer = clone.GetComponent<SpriteRenderer>();
+            var newAlpha = spriteRenderer.color.a - 0.001f;
+            spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, newAlpha);
+            if (spriteRenderer.color.a <= 0)
+            {
+                clones.Remove(clone);
+                Destroy(clone);
+            }
         }
     }
 
@@ -187,6 +218,12 @@ public class PlayerMovement : MonoBehaviour
         isDashCooledDown = false;
         yield return new WaitForSeconds(dashCoolDownSeconds);
         isDashCooledDown = true;
+    }
+
+    IEnumerator killClone(GameObject killObj)
+    {
+        yield return new WaitForSeconds(0.8f);
+        Destroy(killObj);
     }
 
     private void OnEnable()
