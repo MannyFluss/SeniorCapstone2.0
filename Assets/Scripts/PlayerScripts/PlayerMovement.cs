@@ -10,7 +10,6 @@ using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public Rigidbody rb;
     [Header("Movement Variable")]
     public float moveSpeed = 4f;
     public float jumpForce = 4f;
@@ -24,9 +23,11 @@ public class PlayerMovement : MonoBehaviour
 
     // Variable for Jumping
     [Header("Jump Variable")]
-    public LayerMask WhatIsGround;
-    public Transform groundPoint;
-    private bool isGrounded = false;
+    bool isJumpPressed = false;
+    float initialJumpVelocity;
+    float maxJumpHeight = 0.25f;
+    float maxJumpTime = 0.5f;
+
 
     // Debug Text Variable
     [Header("Debugging")]
@@ -34,12 +35,18 @@ public class PlayerMovement : MonoBehaviour
     public Text DashDebug;
 
     // In-Script Variable
-    float horz;
-    float vert;
+    CharacterController characterController;
+    Vector3 currentMovement;
+    Vector2 currentMovementInput;
+    bool movementPressed;
+
     bool _jump;
     bool _dash;
     float _slopeAngle;
     Vector3 deltaPosition;
+
+    float gravity = -9.8f;
+    float groundedGravity = -0.5f;
 
 
     //Player Controls
@@ -53,11 +60,13 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput();
+        characterController = GetComponent<CharacterController>();
+
+        setupJump();
     }
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
 
         //Player input listeners for vectors
         playerInput.Input.Move.started += movementInput;
@@ -65,7 +74,8 @@ public class PlayerMovement : MonoBehaviour
         playerInput.Input.Move.canceled += movementInput;
 
         //Player input listeners for buttons
-        playerInput.Input.Jump.performed += jumpInput; //Jump Input
+        playerInput.Input.Jump.started += jumpInput; //Jump Input
+        playerInput.Input.Jump.canceled += jumpInput; //Jump Input
         playerInput.Input.Dash.performed += dashInput; //Dash Input
     }
 
@@ -76,41 +86,46 @@ public class PlayerMovement : MonoBehaviour
      */
     public void movementInput(InputAction.CallbackContext context)
     {
-
+        currentMovementInput = context.ReadValue<Vector2>();
+        currentMovement.x = currentMovementInput.x;
+        currentMovement.z = currentMovementInput.y;
+        movementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
     }
 
     public void jumpInput(InputAction.CallbackContext context)
     {
-        if(isGrounded)
-        {
-            _jump = true;
-        }
+        isJumpPressed = context.ReadValueAsButton();
     }
 
     public void dashInput(InputAction.CallbackContext context)
     {
-        if(isGrounded && isDashCooledDown)
+        if(characterController.isGrounded && isDashCooledDown)
         {
             _dash = true;
         }
     }
 
+    void setupJump()
+    {
+        float timeToApex = maxJumpTime / 2;
+        gravity = (-2 * maxJumpHeight) / Mathf.Pow(timeToApex, 2);
+        initialJumpVelocity = (2 * maxJumpHeight) / timeToApex;
+    }
+
     private void Update()
     {
-        GetInput();
+
+        //Movement handlers
+        handleJump();
+        handleRotation();
+        handleDash();
+        handleMovement();
+
+        handleGravity();
     }
 
     private void FixedUpdate()
     {
-        //Movement handlers
-        handleMovement();
-        handleRotation();
-        handleDash();
-        handleJump();
-        
-
-        // Ground Check
-        GroundCheck();
 
         // Dash Debug
         DashDebug.text = "Dash Ready: " + isDashCooledDown;
@@ -118,12 +133,16 @@ public class PlayerMovement : MonoBehaviour
 
     void handleMovement()
     {
-        deltaPosition = ((transform.forward * vert) + (transform.right * horz)) * moveSpeed * Time.fixedDeltaTime;
+        characterController.Move(currentMovement * Time.deltaTime * moveSpeed);
+
+
+
+        /*deltaPosition = ((transform.forward * vert) + (transform.right * horz)) * moveSpeed * Time.fixedDeltaTime;
 
         float normalisedSlope = (_slopeAngle / 90f) * -1f;
         deltaPosition += (deltaPosition * normalisedSlope);
 
-        rb.MovePosition(rb.position + deltaPosition);
+        rb.MovePosition(rb.position + deltaPosition);*/
     }
 
     void handleRotation()
@@ -136,9 +155,7 @@ public class PlayerMovement : MonoBehaviour
         // Dash
         if (_dash)
         {
-            rb.velocity = new Vector3(x: rb.velocity.x + horz * dashForce,
-                                      y: rb.velocity.y,
-                                      z: rb.velocity.z + vert * dashForce);
+            characterController.Move(currentMovement * Time.deltaTime * moveSpeed * dashForce * 5);
             StartCoroutine(CoolDownWaiter());
             _dash = false;
         }
@@ -146,37 +163,23 @@ public class PlayerMovement : MonoBehaviour
 
     void handleJump()
     {
-        // Jump
-        if (_jump)
+        if (characterController.isGrounded && isJumpPressed)
         {
-            _jump = false;
-            rb.velocity += (Vector3.up * jumpForce);
+            _jump = true;
+            currentMovement.y = initialJumpVelocity;
         }
     }
 
-
-    void GetInput()
+    void handleGravity()
     {
-        // Get axis
-        horz = Input.GetAxis("Horizontal");
-        vert = Input.GetAxis("Vertical");
-    }
-
-    void GroundCheck()
-    {
-        // Check if we are on the ground
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, distToGround))
+        if(characterController.isGrounded)
         {
-            _slopeAngle = (Vector3.Angle(hit.normal, transform.forward) - 90);
-            isGrounded = true;
+            currentMovement.y = groundedGravity;
         }
         else
         {
-            isGrounded = false;
+            currentMovement.y += gravity * Time.deltaTime;
         }
-        // GroundDebug.text = "Grounded: " + isGrounded;
-        GroundDebug.text = "Grounded: " + isGrounded;
     }
 
     IEnumerator CoolDownWaiter()
