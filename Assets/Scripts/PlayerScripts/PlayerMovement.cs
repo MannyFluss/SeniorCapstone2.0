@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     // Variable for Dash
     [Header("Dash Variable")]
     public float dashCoolDownSeconds = 1f;
+    public float cloneDeathTime = 0.08f;
     private Sprite sprite;
     private bool isDashCooledDown = true;
 
@@ -160,11 +161,14 @@ public class PlayerMovement : MonoBehaviour
         if (_dash)
         {
             var storedPos = new Vector3[3]; 
+
+            //Handle dash movement
             for(int i = 0; i < 3; i++)
             {
                 characterController.Move(currentMovement * Time.deltaTime * moveSpeed * dashForce * 4);
                 storedPos[i] = transform.position;
             }
+            //Handle dash clones
             foreach (Vector3 pos in storedPos)
             {
                 var clone = new GameObject();
@@ -182,7 +186,7 @@ public class PlayerMovement : MonoBehaviour
         foreach (var clone in clones)
         {
             var spriteRenderer = clone.GetComponent<SpriteRenderer>();
-            var newAlpha = spriteRenderer.color.a - 0.001f;
+            var newAlpha = spriteRenderer.color.a - cloneDeathTime * Time.fixedDeltaTime;
             spriteRenderer.color = new Color(spriteRenderer.color.r, spriteRenderer.color.g, spriteRenderer.color.b, newAlpha);
             if (spriteRenderer.color.a <= 0)
             {
@@ -220,11 +224,6 @@ public class PlayerMovement : MonoBehaviour
         isDashCooledDown = true;
     }
 
-    IEnumerator killClone(GameObject killObj)
-    {
-        yield return new WaitForSeconds(0.8f);
-        Destroy(killObj);
-    }
 
     private void OnEnable()
     {
