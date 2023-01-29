@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DungeonManager : MonoBehaviour
+public class MinionSpawn : MonoBehaviour
 {
-    List<Dungeon> dungeons = new List<Dungeon> { null };
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameObject.GetComponentInParent<Dungeon>().minionSpawns.Add(gameObject);
     }
 
     // Update is called once per frame
