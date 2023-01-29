@@ -11,15 +11,26 @@ public class CharacterAbilityScript : MonoBehaviour
     List<BaseAbilityScript> playerAbilities = new List<BaseAbilityScript> {null,null,null};
 
 
+
+
     void Start()
     {
         equipAbility("testAbility",1);
+        equipAbility("anotherAbility",0);
     }
     void Update()
     {
         getInput();
     }
 
+    public BaseAbilityScript getPlayerAbility(int _index)
+    {
+        if (_index >= playerAbilities.Count || _index < 0)
+        {
+            return null;
+        }
+        return playerAbilities[_index];
+    }
     //hard coded inputs
     void getInput()
     {
@@ -95,6 +106,18 @@ public class CharacterAbilityScript : MonoBehaviour
     }
 
 
+    public void swapAbility(int _index1, int _index2)
+    {
+        //invalid indx
+        if (_index1 >= playerAbilities.Count || _index2 >= playerAbilities.Count )
+        {
+            return;
+        }
+        BaseAbilityScript temp = playerAbilities[_index1];
+        playerAbilities[_index1] = playerAbilities[_index2];
+        playerAbilities[_index2] = temp;
+    }
+
     void equipAbility(string _toInsert, int _index)
     {
         if (_index >= playerAbilities.Count)
@@ -110,6 +133,9 @@ public class CharacterAbilityScript : MonoBehaviour
         {
             case "testAbility":
                 playerAbilities[_index] = gameObject.AddComponent<testAbility>();
+                break;
+            case "anotherAbility":
+                playerAbilities[_index] = gameObject.AddComponent<anotherAbility>();
                 break;
             default:
                 break;

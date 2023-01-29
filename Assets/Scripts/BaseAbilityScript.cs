@@ -12,25 +12,25 @@ public  class BaseAbilityScript : MonoBehaviour
     // signal functions for each of the child classes
     public virtual void OnEquip()
     {
-        Debug.Log("equipped");
+        //Debug.Log("equipped");
     }
     public virtual void OnDrop()
     {
-        Debug.Log("dropped");
+        //Debug.Log("dropped");
     }
     public virtual void OnButtonClick()
     {
-        Debug.Log("button clicked");
+        //Debug.Log("button clicked");
 
     }
     public virtual void OnButtonHeldDown()
     {
-        Debug.Log("button held down");
+        //Debug.Log("button held down");
 
     }
     public virtual void OnButtonReleased()
     {
-        Debug.Log("button released");
+        //Debug.Log("button released");
     }
 
 }
@@ -38,11 +38,29 @@ public  class BaseAbilityScript : MonoBehaviour
 public class testAbility : BaseAbilityScript
 {
     
-    public override void OnEquip()
+    public override void OnButtonReleased()
     {
-        base.OnEquip();
         Debug.Log("I am mr test fear me");
         
     }
 }
+public class anotherAbility : BaseAbilityScript
+{
+    
+    public override void OnButtonReleased()
+    {
+        Debug.Log("ABCDEFG");
+        
+    }
+}
+public class lastTestAbility : BaseAbilityScript
+{
+    
+    public override void OnButtonReleased()
+    {
+        Debug.Log("replace me with something useful");
+        
+    }
+}
+
 
