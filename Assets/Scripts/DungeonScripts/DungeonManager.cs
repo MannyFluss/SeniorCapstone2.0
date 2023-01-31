@@ -48,7 +48,9 @@ public class DungeonManager : MonoBehaviour
         if (FindNextDungeon(dungeon: dungeon) != null)
         {
             Dungeon nextDungeon = FindNextDungeon(dungeon: dungeon).GetComponent<Dungeon>();
+            player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = nextDungeon.GetSpawnPosition();
+            player.GetComponent<CharacterController>().enabled = true;
             nextDungeon.SimpleSpawn();
             currentDungeon.isActive = false;
         }
