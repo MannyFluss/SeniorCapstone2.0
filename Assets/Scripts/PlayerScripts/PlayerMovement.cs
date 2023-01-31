@@ -44,8 +44,12 @@ public class PlayerMovement : MonoBehaviour
 
     bool _jump;
     bool _dash;
+    bool _hit;
     float _slopeAngle;
     Vector3 deltaPosition;
+
+    Transform moveFrom;
+    float knockback = 0.01f;
 
     float gravity = -9.8f;
     float groundedGravity = -0.5f;
@@ -138,9 +142,14 @@ public class PlayerMovement : MonoBehaviour
 
     void handleMovement()
     {
-        characterController.Move(currentMovement * Time.deltaTime * moveSpeed);
-
-
+        if (_hit)
+        {
+            transform.position = new Vector3(Vector3.MoveTowards(transform.position, moveFrom.position, -knockback).x, transform.position.y, Vector3.MoveTowards(transform.position, moveFrom.position, -knockback).z);
+        }
+        else
+        {
+            characterController.Move(currentMovement * Time.deltaTime * moveSpeed);
+        }
 
         /*deltaPosition = ((transform.forward * vert) + (transform.right * horz)) * moveSpeed * Time.fixedDeltaTime;
 
@@ -215,6 +224,19 @@ public class PlayerMovement : MonoBehaviour
         {
             currentMovement.y += gravity * Time.deltaTime;
         }
+    }
+
+    public void playerHit(Transform enemyPos)
+    {
+        moveFrom = enemyPos;
+        StartCoroutine(knockbackState());
+    }
+
+    IEnumerator knockbackState()
+    {
+        _hit = true;
+        yield return new WaitForSeconds(1f);
+        _hit = false;
     }
 
     IEnumerator CoolDownWaiter()
