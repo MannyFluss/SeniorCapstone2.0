@@ -17,11 +17,23 @@ public class PlayerManager : MonoBehaviour
     {
         movement = GetComponent<PlayerMovement>();
     }
-
     // Update is called once per frame
     void Update()
     {
-       
+       if(!canBeHit)
+       {
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(gameObject.GetComponent<SpriteRenderer>().color.r,
+                                                                        0.3f,
+                                                                        0.3f,
+                                                                        0.4f);
+       }
+       else
+       {
+            gameObject.GetComponent<SpriteRenderer>().color = new Color(gameObject.GetComponent<SpriteRenderer>().color.r,
+                                                                        1,
+                                                                        1,
+                                                                        1f);
+        }
     }
 
     IEnumerator HitCooldown()
