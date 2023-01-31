@@ -17,8 +17,7 @@ public class pauseMenu : MonoBehaviour
         
     }
 
-
-    void FixedUpdate()
+    private void Update()
     {
         textRow1.text = "none";
         if (AbilityReference.getPlayerAbility(0) != null)

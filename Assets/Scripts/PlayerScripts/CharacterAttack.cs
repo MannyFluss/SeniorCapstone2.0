@@ -18,6 +18,8 @@ public class CharacterAttack : MonoBehaviour
     private bool _hit = false;
     private bool canHit = true;
     private float hitCoolDown = 0.1f;
+
+    private PlayerUI ui;
     
 
     //Player Controls
@@ -27,10 +29,13 @@ public class CharacterAttack : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput();
+        
     }
 
     void Start()
     {
+        ui = GetComponentInChildren<PlayerUI>();
+
         playerInput.Input.Hit.performed += hitInput;
     }
 
@@ -42,8 +47,12 @@ public class CharacterAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        handleAim();
-        handleHit();
+        if(!ui._abilityMenuActive)
+        {
+            handleAim();
+            handleHit();
+        }
+        
     }
 
     void handleHit()

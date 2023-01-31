@@ -89,6 +89,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AbilityMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""bb2c2ffa-b1ea-4b35-97c5-794579dc2888"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -212,6 +221,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6d5f38dd-e40f-4861-aa4d-100b2a199238"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AbilityMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Input_Skill1 = m_Input.FindAction("Skill1", throwIfNotFound: true);
         m_Input_Skill2 = m_Input.FindAction("Skill2", throwIfNotFound: true);
         m_Input_Skill3 = m_Input.FindAction("Skill3", throwIfNotFound: true);
+        m_Input_AbilityMenu = m_Input.FindAction("AbilityMenu", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -293,6 +314,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Input_Skill1;
     private readonly InputAction m_Input_Skill2;
     private readonly InputAction m_Input_Skill3;
+    private readonly InputAction m_Input_AbilityMenu;
     public struct InputActions
     {
         private @PlayerInput m_Wrapper;
@@ -304,6 +326,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Skill1 => m_Wrapper.m_Input_Skill1;
         public InputAction @Skill2 => m_Wrapper.m_Input_Skill2;
         public InputAction @Skill3 => m_Wrapper.m_Input_Skill3;
+        public InputAction @AbilityMenu => m_Wrapper.m_Input_AbilityMenu;
         public InputActionMap Get() { return m_Wrapper.m_Input; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -334,6 +357,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Skill3.started -= m_Wrapper.m_InputActionsCallbackInterface.OnSkill3;
                 @Skill3.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnSkill3;
                 @Skill3.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnSkill3;
+                @AbilityMenu.started -= m_Wrapper.m_InputActionsCallbackInterface.OnAbilityMenu;
+                @AbilityMenu.performed -= m_Wrapper.m_InputActionsCallbackInterface.OnAbilityMenu;
+                @AbilityMenu.canceled -= m_Wrapper.m_InputActionsCallbackInterface.OnAbilityMenu;
             }
             m_Wrapper.m_InputActionsCallbackInterface = instance;
             if (instance != null)
@@ -359,6 +385,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Skill3.started += instance.OnSkill3;
                 @Skill3.performed += instance.OnSkill3;
                 @Skill3.canceled += instance.OnSkill3;
+                @AbilityMenu.started += instance.OnAbilityMenu;
+                @AbilityMenu.performed += instance.OnAbilityMenu;
+                @AbilityMenu.canceled += instance.OnAbilityMenu;
             }
         }
     }
@@ -372,5 +401,6 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnSkill1(InputAction.CallbackContext context);
         void OnSkill2(InputAction.CallbackContext context);
         void OnSkill3(InputAction.CallbackContext context);
+        void OnAbilityMenu(InputAction.CallbackContext context);
     }
 }
