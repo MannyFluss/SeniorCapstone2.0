@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,6 +130,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.20427994
+      objectReference: {fileID: 0}
+    - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000015308771
+      objectReference: {fileID: 0}
+    - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000003194642
+      objectReference: {fileID: 0}
     - target: {fileID: 2626668998523703812, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -637,7 +649,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157680519}
-  m_LocalRotation: {x: 0.20427996, y: -1e-45, z: 0, w: 0.97891253}
+  m_LocalRotation: {x: 0.20427994, y: 0.000000015308771, z: -0.000000003194642, w: 0.97891253}
   m_LocalPosition: {x: 0, y: 4.7, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2099,7 +2111,7 @@ MonoBehaviour:
   - {fileID: 1412799114}
   - {fileID: 1945401664}
   player: {fileID: 281661406}
-  minionPrefab: {fileID: 7365938130701945433, guid: 0da77e052507d4ae4a6de7d05bd8eb83, type: 3}
+  minionPrefab: {fileID: 816912127062425511, guid: 0da77e052507d4ae4a6de7d05bd8eb83, type: 3}
 --- !u!4 &1132148091
 Transform:
   m_ObjectHideFlags: 0
