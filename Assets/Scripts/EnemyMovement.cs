@@ -72,6 +72,12 @@ public class EnemyMovement : MonoBehaviour
             moveFrom = other.transform.parent.parent;
             StartCoroutine(hit());
         }
+        if(other.gameObject.GetComponent<ExplosionScript>()!=null)
+        {
+            ExplosionScript exScript = other.gameObject.GetComponent<ExplosionScript>();
+            Debug.Log("kaboom");
+            
+        }
 
 
     }
