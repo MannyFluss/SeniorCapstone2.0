@@ -9,6 +9,8 @@ using UnityEngine.InputSystem.Interactions;
 //likely will need to link to other scripts that access hp, stats, and other things later on
 public class CharacterAbilityScript : MonoBehaviour
 {
+    
+    // if you need prefabs for the abilities they go here
     [SerializeField]
     public GameObject _AbilityExplosionPrefab;
 
