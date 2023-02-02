@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 295620354173640433}
   - component: {fileID: 2299739168598164201}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: GenericExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7105922310121204203}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_LocalScale: {x: 0.1, y: 1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,3 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04aa1cc4e6851934592ba322beb4d354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionTime: 0.3
+  xScale: 5
+  zScale: 5
+  damageValue: 1

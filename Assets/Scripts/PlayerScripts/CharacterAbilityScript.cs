@@ -9,6 +9,12 @@ using UnityEngine.InputSystem.Interactions;
 //likely will need to link to other scripts that access hp, stats, and other things later on
 public class CharacterAbilityScript : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject _AbilityExplosionPrefab;
+
+
+
+
     //contains references to the currently chosen abilities
     List<BaseAbilityScript> playerAbilities = new List<BaseAbilityScript> {null,null,null};
 
@@ -24,9 +30,8 @@ public class CharacterAbilityScript : MonoBehaviour
 
     void Start()
     {
-        equipAbility("testAbility",1);
-        equipAbility("anotherAbility",0);
-
+        equipAbility("ClawsOff",0);
+ 
         //Player input listeners for skills
         playerInput.Input.Skill1.performed += skillOnePressOrHold;
         playerInput.Input.Skill1.canceled += skillOneReleased; 
@@ -237,12 +242,17 @@ public class CharacterAbilityScript : MonoBehaviour
             case "anotherAbility":
                 playerAbilities[_index] = gameObject.AddComponent<anotherAbility>();
                 break;
+            case "ClawsOff":
+                playerAbilities[_index] = gameObject.AddComponent<ClawsOff>();
+                break;
             default:
                 break;
         }
         
-        playerAbilities[_index].OnEquip();
+       
         playerAbilities[_index].myParent = this.gameObject;
+        playerAbilities[_index].OnEquip();
+       // Debug.Log("this is my parent " + playerAbilities[_index].myParent );
 
 
     }

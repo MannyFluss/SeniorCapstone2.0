@@ -8,10 +8,16 @@ public  class BaseAbilityScript : MonoBehaviour
 {
     
     public GameObject myParent;
+
+    public CharacterAbilityScript parentScriptRef;
+
+    
     
     // signal functions for each of the child classes
     public virtual void OnEquip()
     {
+        
+        parentScriptRef = myParent.GetComponent<CharacterAbilityScript>();
         //Debug.Log("equipped");
     }
     public virtual void OnDrop()

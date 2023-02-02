@@ -76,7 +76,8 @@ public class EnemyMovement : MonoBehaviour
         {
             ExplosionScript exScript = other.gameObject.GetComponent<ExplosionScript>();
             Debug.Log("kaboom");
-            
+            //insert dealing damage here
+
         }
 
 

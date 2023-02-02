@@ -7,10 +7,18 @@ public class ExplosionScript : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField]
     float explosionTime = 1.0f;
-    float xScale,yScale = 1.0f;
+    [SerializeField]
+    float xScale = 3.0f;
+    [SerializeField]
+    float zScale = 3.0f;
+    [SerializeField]
+    float damageValue = 1.0f;
     void Start()
     {
-        Destroy(this,explosionTime);
+        
+        LeanTween.scaleX(this.gameObject,xScale,explosionTime);
+        LeanTween.scaleZ(this.gameObject,zScale,explosionTime);
+        Destroy(this.gameObject,explosionTime);
     }
 
     // Update is called once per frame
