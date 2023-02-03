@@ -13,3 +13,12 @@ public class ClawsOff : BaseAbilityScript
         Instantiate( parentScriptRef._AbilityExplosionPrefab, myParent.transform.position, Quaternion.identity);
     }
 }
+
+public class SchrodingerBox : BaseAbilityScript
+{
+    public override void OnButtonClick()
+    {
+        Instantiate( parentScriptRef._AbilityBoxPrefab, myParent.transform.position, Quaternion.identity);
+    }
+}
+

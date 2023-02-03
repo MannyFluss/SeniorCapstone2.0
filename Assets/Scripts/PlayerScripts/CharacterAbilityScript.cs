@@ -14,6 +14,8 @@ public class CharacterAbilityScript : MonoBehaviour
     [SerializeField]
     public GameObject _AbilityExplosionPrefab;
 
+    [SerializeField]
+    public GameObject _AbilityBoxPrefab;
 
 
 
@@ -32,7 +34,8 @@ public class CharacterAbilityScript : MonoBehaviour
 
     void Start()
     {
-        equipAbility("ClawsOff",0);
+        equipAbility("SchrodingerBox",0);
+        equipAbility("ClawsOff",1);
  
         //Player input listeners for skills
         playerInput.Input.Skill1.performed += skillOnePressOrHold;
@@ -246,6 +249,9 @@ public class CharacterAbilityScript : MonoBehaviour
                 break;
             case "ClawsOff":
                 playerAbilities[_index] = gameObject.AddComponent<ClawsOff>();
+                break;
+            case "SchrodingerBox":
+                playerAbilities[_index] = gameObject.AddComponent<SchrodingerBox>();
                 break;
             default:
                 break;
