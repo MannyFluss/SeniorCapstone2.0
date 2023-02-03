@@ -132,16 +132,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20427997
+      value: 0.20427994
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000004097581
+      value: 0.000000015308771
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 8.550849e-10
+      value: -0.000000003194642
       objectReference: {fileID: 0}
+    - target: {fileID: 2626668998523703809, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: _AbilityBoxPrefab
+      value: 
+      objectReference: {fileID: 1140920428930705714, guid: 93899ca568c398d47970268692102a47, type: 3}
+    - target: {fileID: 2626668998523703809, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: _AbilityExplosionPrefab
+      value: 
+      objectReference: {fileID: 7105922310121204203, guid: 18b4a1fe5d53d064a868637ee2d97892, type: 3}
     - target: {fileID: 2626668998523703812, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -644,7 +652,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157680519}
-  m_LocalRotation: {x: 0.20427997, y: -0.000000004097581, z: 8.550849e-10, w: 0.97891253}
+  m_LocalRotation: {x: 0.20427994, y: 0.000000015308771, z: -0.000000003194642, w: 0.97891253}
   m_LocalPosition: {x: 0, y: 4.7, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
