@@ -6,7 +6,7 @@ public class DungeonManager : MonoBehaviour
 {
     public GameObject[] dungeons = new GameObject[0];
     public GameObject player;
-    public GameObject minionPrefab;
+    public List<GameObject> minionPrefabs = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -19,16 +19,36 @@ public class DungeonManager : MonoBehaviour
         // Activate 1st Dungeon
         if (dungeons.Length >= 1)
         {
-            dungeons[0].GetComponent<Dungeon>().SimpleSpawn();
+            dungeons[0].GetComponent<Dungeon>().RandomSpawn();
         }
+    }
+
+    private void Update()
+    {
+        if (player.transform.position.y <= -10f) {
+            ResetDungeon();
+        }
+    }
+    public void ResetDungeon()
+    {
+        foreach (var dungeon in dungeons) {
+            Dungeon dungeonScript = dungeon.GetComponent<Dungeon>();
+            dungeonScript.isActive = false;
+            dungeonScript.ClearMinions();
+        }
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = dungeons[0].GetComponent<Dungeon>().GetSpawnPosition();
+        player.GetComponent<CharacterController>().enabled = true;
+        dungeons[0].GetComponent<Dungeon>().RandomSpawn();
     }
 
     public void InitiateDungeon(GameObject dungeon)
     {
         Dungeon dungeonScript = dungeon.GetComponent<Dungeon>();
         dungeonScript.dungeonManager = gameObject.GetComponent<DungeonManager>();
-        dungeonScript.minonPrefab = minionPrefab;
+        dungeonScript.minonPrefabs = minionPrefabs;
     }
+
     /// <summary>
     /// Run when player exit any dungeon
     /// Will auto trigger by Child Exit object's OnTriggerEnter function
@@ -44,15 +64,23 @@ public class DungeonManager : MonoBehaviour
         Debug.Log(other.name + " triggered " + dungeon.name + " exit");
 
         Dungeon currentDungeon = dungeon.GetComponent<Dungeon>();
-        
-        if (FindNextDungeon(dungeon: dungeon) != null)
+        Debug.Log(currentDungeon.RemainMinions());
+        if (currentDungeon.RemainMinions() == 0)
         {
-            Dungeon nextDungeon = FindNextDungeon(dungeon: dungeon).GetComponent<Dungeon>();
-            player.GetComponent<CharacterController>().enabled = false;
-            player.transform.position = nextDungeon.GetSpawnPosition();
-            player.GetComponent<CharacterController>().enabled = true;
-            nextDungeon.SimpleSpawn();
-            currentDungeon.isActive = false;
+            
+            if (FindNextDungeon(dungeon: dungeon) != null)
+            {
+                Dungeon nextDungeon = FindNextDungeon(dungeon: dungeon).GetComponent<Dungeon>();
+                player.GetComponent<CharacterController>().enabled = false;
+                player.transform.position = nextDungeon.GetSpawnPosition();
+                player.GetComponent<CharacterController>().enabled = true;
+                nextDungeon.RandomSpawn();
+                currentDungeon.isActive = false;
+            }
+            else
+            {
+                ResetDungeon();
+            }
         }
     }
 
