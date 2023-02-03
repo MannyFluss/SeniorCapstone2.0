@@ -45,7 +45,7 @@ public class PlayerManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy" && canBeHit)
+        if(collision.gameObject.tag == "EnemyAttack" && canBeHit)
         {
             
             health--;
@@ -55,7 +55,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy" && canBeHit)
+        if (other.gameObject.tag == "EnemyAttack" && canBeHit)
         {
             health--;
             StartCoroutine(HitCooldown());

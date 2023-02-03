@@ -1,97 +1,139 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.EventSystems;
+
 
 public class EnemyMovement : MonoBehaviour
 {
-    //for Hit
-    private bool _hit = false;
-    private Transform moveFrom;
+    public bool _invincible = false;
 
-    //for movement
+    public float invincibleCooldown = 1f;
+
+    public int health = 1;
+
+    public float attackDis = 1f;
+
+    public string type = "Pufferfish";
+
     private Transform player;
 
-    // for movement optimization
-    private bool _isInContact;
+    private NavMeshAgent navMeshAgent;
 
-    // for groudcheck
     private Rigidbody rb;
 
-    //changeable vars
-    [Header("Changeable Values")]
-    [SerializeField]
-    private float knockback = 0.15f;
-    [SerializeField]
-    private float moveSpeed = 0.01f;
+    [HideInInspector]
+    public SpriteRenderer sprite;
 
+    public EnemyAttack attack;
 
+    public bool _pursuePlayer = true;
+
+    public bool _avoidPlayer = false;
+    
 
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        rb = GetComponent<Rigidbody>();
     }
     private void Update()
     {
-        if (_hit)
+        if (!_invincible)
         {
-            KnockBack(moveFrom: moveFrom.position);
-        }
-
-        if (IsGrounded())
-        {
-            if (!_isInContact)
+            if (_pursuePlayer)
             {
                 MoveToPlayer();
-                _isInContact = false;
             }
+            else if (_avoidPlayer)
+            {
+                AvoidPlayer();
+            }
+            
+        }
+        if (health <= 0)
+        {
+            gameObject.transform.rotation = new Quaternion(x: 0, y: 0, z: 90, w: 1);
+            Destroy(gameObject, invincibleCooldown);
+        }
+
+        float disToPlayer = Vector3.Distance(player.position, gameObject.transform.position);
+
+        if(disToPlayer <= attackDis)
+        {
+            if(type == "Pufferfish")
+            {
+                attack.PufferAttack();
+            }
+
+            if(type == "Piranha")
+            {
+                attack.PiranhaAttack();
+            }
+        }
+        
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Attack")
+        {
+            Damage(attackObject: other.gameObject, _knockBack: true);
+        }
+
+        if(other.tag == "Player")
+        {
+            KnockBack(from: other.transform.position, force: 200f);
         }
     }
 
-    private bool IsGrounded() {
-        float _distanceToTheGround = GetComponent<Collider>().bounds.extents.y;
-        return Physics.Raycast(transform.position, Vector3.down, _distanceToTheGround + 0.1f);
+    private void KnockBack(Vector3 from, float force)
+    {
+        Vector3 moveDirection = from - gameObject.transform.position;
+
+        if (!_invincible)
+        {
+            rb.AddForce(moveDirection.normalized * -force);
+        }
+
+    }
+
+    public void Charge()
+    {
+        Vector3 moveDirection = (player.position - gameObject.transform.position).normalized;
+        rb.AddForce(moveDirection * 500f);
     }
 
     private void MoveToPlayer()
     {
-        Vector3 moveTo = new Vector3(player.position.x, transform.position.y, player.position.z);
-        transform.position = Vector3.MoveTowards(transform.position, moveTo, moveSpeed);
+        navMeshAgent.destination = player.position;
     }
 
-    private void KnockBack(Vector3 moveFrom)
+    private void AvoidPlayer()
     {
-        transform.position = new Vector3(Vector3.MoveTowards(transform.position, moveFrom, -knockback).x, transform.position.y, Vector3.MoveTowards(transform.position, moveFrom, -knockback).z);
+        Vector3 moveDirection = transform.position - player.position;
+        navMeshAgent.destination = moveDirection;
     }
-  
-    private void OnTriggerEnter(Collider other)
-    {
-        
 
-        if(other.gameObject.tag == "Attack")
+    private void Damage(GameObject attackObject, bool _knockBack)
+    {
+
+        if (!_invincible)
         {
-            moveFrom = other.transform.parent.parent;
-            StartCoroutine(hit());
+            KnockBack(from: attackObject.transform.position, force: 500f);
+            health -= 1;
         }
-
-
+        StartCoroutine(DamageCoolDown());
     }
 
-    private void OnTriggerStay(Collider other)
+    IEnumerator DamageCoolDown()
     {
-        if (other.tag == "Player") {
-            _isInContact = true;
-        }
-
-        if(other.tag == "Enemy")
-        {
-            _isInContact = true;
-        }
-    }
-
-    IEnumerator hit()
-    {
-        _hit = true;
-        yield return new WaitForSeconds(0.15f);
-        _hit = false;
+        sprite.color = new Color(sprite.color.r,0.3f,0.3f,0.4f);
+        _invincible = true;
+        yield return new WaitForSeconds(invincibleCooldown);
+        _invincible = false;
+        sprite.color = new Color(sprite.color.r,1f,1f,1f);
     }
 }

@@ -6,7 +6,7 @@ public class DungeonManager : MonoBehaviour
 {
     public GameObject[] dungeons = new GameObject[0];
     public GameObject player;
-    public GameObject minionPrefab;
+    public List<GameObject> minionPrefabs = new List<GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,7 @@ public class DungeonManager : MonoBehaviour
         // Activate 1st Dungeon
         if (dungeons.Length >= 1)
         {
-            dungeons[0].GetComponent<Dungeon>().SimpleSpawn();
+            dungeons[0].GetComponent<Dungeon>().RandomSpawn();
         }
     }
 
@@ -27,7 +27,7 @@ public class DungeonManager : MonoBehaviour
     {
         Dungeon dungeonScript = dungeon.GetComponent<Dungeon>();
         dungeonScript.dungeonManager = gameObject.GetComponent<DungeonManager>();
-        dungeonScript.minonPrefab = minionPrefab;
+        dungeonScript.minonPrefabs = minionPrefabs;
     }
     /// <summary>
     /// Run when player exit any dungeon
@@ -51,7 +51,7 @@ public class DungeonManager : MonoBehaviour
             player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = nextDungeon.GetSpawnPosition();
             player.GetComponent<CharacterController>().enabled = true;
-            nextDungeon.SimpleSpawn();
+            nextDungeon.RandomSpawn();
             currentDungeon.isActive = false;
         }
     }

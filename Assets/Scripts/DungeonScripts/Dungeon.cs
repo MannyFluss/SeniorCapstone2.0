@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dungeon : MonoBehaviour
 {
     [HideInInspector]
-    public GameObject minonPrefab;
+    public List<GameObject> minonPrefabs = new List<GameObject>();
     [HideInInspector]
     public GameObject entrance;
     [HideInInspector]
@@ -31,11 +31,25 @@ public class Dungeon : MonoBehaviour
     public void SimpleSpawn()
     {
         isActive = true;
+        Debug.Log(minionSpawns.Count);
         foreach (var mimionSpawn in minionSpawns)
         {
             Vector3 spawnPosition = mimionSpawn.transform.position;
-            GameObject spawnedMinion = Instantiate(minonPrefab, new Vector3(spawnPosition.x, spawnPosition.y + 0.5f, spawnPosition.z), Quaternion.identity);
+            GameObject spawnedMinion = Instantiate(minonPrefabs[0], new Vector3(spawnPosition.x, spawnPosition.y + 0.5f, spawnPosition.z), Quaternion.identity);
             spawnedMinions.Add(spawnedMinion);
+        }
+    }
+
+    public void RandomSpawn()
+    {
+        isActive = true;
+        foreach (var minionSpawn in minionSpawns)
+        {
+            Vector3 spawnPosition = minionSpawn.transform.position;
+
+            GameObject spawnedMinion = Instantiate(minonPrefabs[Random.Range(0, minonPrefabs.Count)],
+                new Vector3(spawnPosition.x, spawnPosition.y + 0.5f, spawnPosition.z),
+                Quaternion.identity);
         }
     }
 
@@ -70,6 +84,9 @@ public class Dungeon : MonoBehaviour
     /// </param>
     public void OnExitTrigger(Collider other)
     {
-        dungeonManager.OnDungeonExitTrigger(dungeon: gameObject, other: other);
+        if (other.tag == "Player")
+        {
+            dungeonManager.OnDungeonExitTrigger(dungeon: gameObject, other: other);
+        }
     }
 }

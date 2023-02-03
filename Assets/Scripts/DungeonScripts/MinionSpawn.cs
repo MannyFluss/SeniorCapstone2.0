@@ -7,7 +7,12 @@ public class MinionSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponentInParent<Dungeon>().minionSpawns.Add(gameObject);
+        Dungeon dungeon = gameObject.GetComponentInParent<Dungeon>();
+        if (!(dungeon.minionSpawns.Contains(gameObject)))
+        {
+            dungeon.minionSpawns.Add(gameObject);
+        }
+        
     }
 
     // Update is called once per frame
