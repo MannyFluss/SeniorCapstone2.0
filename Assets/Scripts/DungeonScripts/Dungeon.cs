@@ -50,7 +50,28 @@ public class Dungeon : MonoBehaviour
             GameObject spawnedMinion = Instantiate(minonPrefabs[Random.Range(0, minonPrefabs.Count)],
                 new Vector3(spawnPosition.x, spawnPosition.y + 0.5f, spawnPosition.z),
                 Quaternion.identity);
+            spawnedMinions.Add(spawnedMinion);
         }
+    }
+
+    public int RemainMinions()
+    {
+        int remaindMinions = 0;
+        foreach (var minion in spawnedMinions)
+        {
+            try
+            {
+                if (minion.activeSelf)
+                {
+                    remaindMinions++;
+                }
+            } catch
+            {
+
+            }
+            
+        }
+        return remaindMinions;
     }
 
     /// <summary>
