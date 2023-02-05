@@ -16,6 +16,8 @@ public class CharacterAbilityScript : MonoBehaviour
 
     [SerializeField]
     public GameObject _AbilityBoxPrefab;
+    [SerializeField]
+    public GameObject _AbilityExplosiveFish;
 
 
 
