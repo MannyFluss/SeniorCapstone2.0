@@ -887,6 +887,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8da74a99ec55b4d4b868d9782f2d9449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _AbilityExplosionPrefab: {fileID: 7105922310121204203, guid: 18b4a1fe5d53d064a868637ee2d97892, type: 3}
+  _AbilityBoxPrefab: {fileID: 1140920428930705714, guid: 93899ca568c398d47970268692102a47, type: 3}
+  _AbilityExplosiveFish: {fileID: 1140920428930705714, guid: 92e3ebc818a42a44581cf36777554b33, type: 3}
 --- !u!114 &2626668998523703839
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1145,6 +1148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1749c7713df96404cabab6c05e052157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hp: {fileID: 0}
   dodgeIcon: {fileID: 2626668999119730271}
   _abilityMenuActive: 0
 --- !u!1 &2626668998757003743

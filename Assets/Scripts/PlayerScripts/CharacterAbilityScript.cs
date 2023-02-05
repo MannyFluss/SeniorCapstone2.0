@@ -36,8 +36,8 @@ public class CharacterAbilityScript : MonoBehaviour
 
     void Start()
     {
-        equipAbility("SchrodingerBox",0);
-        equipAbility("ClawsOff",1);
+
+        
  
         //Player input listeners for skills
         playerInput.Input.Skill1.performed += skillOnePressOrHold;
@@ -50,6 +50,22 @@ public class CharacterAbilityScript : MonoBehaviour
         playerInput.Input.Skill3.canceled += skillThreeReleased;
     }
 
+    //automatically safely adds the new ability to the list, for interactables
+    public bool AbilityPickUpInteract(string abilityName)
+    {
+        bool abilityAdded = false;
+        for (int i=0; i<playerAbilities.Count;i++ )
+        {
+            if (playerAbilities[i]!=null)
+            {
+                continue;
+            }
+            abilityAdded = true;
+            equipAbility(abilityName,i);
+            break;
+        }
+        return abilityAdded;
+    }
     public void skillOnePressOrHold(InputAction.CallbackContext context)
     {
         
@@ -218,6 +234,7 @@ public class CharacterAbilityScript : MonoBehaviour
     }
 
 
+
     public void swapAbility(int _index1, int _index2)
     {
         //invalid indx
@@ -254,6 +271,9 @@ public class CharacterAbilityScript : MonoBehaviour
                 break;
             case "SchrodingerBox":
                 playerAbilities[_index] = gameObject.AddComponent<SchrodingerBox>();
+                break;
+            case "ExplosiveFishAbility":
+                playerAbilities[_index] = gameObject.AddComponent<ExplosiveFishAbility>();
                 break;
             default:
                 break;
