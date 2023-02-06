@@ -22,3 +22,11 @@ public class SchrodingerBox : BaseAbilityScript
     }
 }
 
+public class ExplosiveFishAbility : BaseAbilityScript
+{
+    public override void OnButtonClick()
+    {
+        Instantiate( parentScriptRef._AbilityExplosiveFish, myParent.transform.position, Quaternion.identity);
+    }
+}
+
