@@ -7,9 +7,13 @@ using UnityEngine.InputSystem.Interactions;
 
 //this script will be added to the main character and will manage the characters abilities;
 //likely will need to link to other scripts that access hp, stats, and other things later on
+//this script will now manage player money as well
 public class CharacterAbilityScript : MonoBehaviour
 {
-    
+
+    public int playerMoney = 100;
+
+
     // if you need prefabs for the abilities they go here
     [SerializeField]
     public GameObject _AbilityExplosionPrefab;
