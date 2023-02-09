@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 public class CharacterAttack : MonoBehaviour
 {
@@ -20,7 +21,8 @@ public class CharacterAttack : MonoBehaviour
     private float hitCoolDown = 0.1f;
 
     private PlayerUI ui;
-    
+
+    CinemachineVirtualCamera vcam;
 
     //Player Controls
     private PlayerInput playerInput;
@@ -28,6 +30,7 @@ public class CharacterAttack : MonoBehaviour
 
     private void Awake()
     {
+        vcam = GetComponentInChildren<CinemachineVirtualCamera>();
         playerInput = new PlayerInput();
         
     }
@@ -69,10 +72,23 @@ public class CharacterAttack : MonoBehaviour
     /// </summary>
     void handleAim()
     {
-        //Gets mouse position in relation to center of screen
-        mousePos = Input.mousePosition;
-        mousePos.x -= Screen.width / 2;
-        mousePos.y -= Screen.height / 2;
+        //If there is not a target group do usual calculations
+        if(vcam.m_LookAt.gameObject.GetComponent<CinemachineTargetGroup>() == null)
+        {
+            //Gets mouse position in relation to center of screen
+            mousePos = Input.mousePosition;
+            mousePos.x -= Screen.width / 2;
+            mousePos.y -= Screen.height / 2;
+        }
+        //If there is target group do special calculations for new camera view
+        else
+        {
+            mousePos = Input.mousePosition;
+            mousePos.x -= Screen.width / 2;
+            mousePos.y -= Screen.height / 5f;
+        }
+        
+        
 
         //using the x and y positions of the mouse calculate the angle that the arrow will rotate
         var rot = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
