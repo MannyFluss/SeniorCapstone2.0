@@ -29,7 +29,6 @@ public class ShopKeeperScript : MonoBehaviour
         playMoneyText.text = "Player Money: " + playerAbilityManager.playerMoney;
         
         var di = Vector3.Distance(transform.position,player.transform.position);
-        Debug.Log(di);
         if (di <= interactRange)
         {
             shopUI.enabled = true;

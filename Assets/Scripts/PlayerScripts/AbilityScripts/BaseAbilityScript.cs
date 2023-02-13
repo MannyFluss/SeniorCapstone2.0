@@ -8,10 +8,10 @@ public  class BaseAbilityScript : MonoBehaviour
 {
     
     public GameObject myParent;
-
     public CharacterAbilityScript parentScriptRef;
 
-    
+    //public float abilityCoolDown = 0.0f;
+    private bool onCoolDown = false;
     
     // signal functions for each of the child classes
     public virtual void OnEquip()
@@ -37,6 +37,24 @@ public  class BaseAbilityScript : MonoBehaviour
     public virtual void OnButtonReleased()
     {
         //Debug.Log("button released");
+    }
+    public void startCoolDown(float _abilityCoolDown)
+    {
+        //Debug.Log(this.abilityCoolDown);
+        if (_abilityCoolDown <= 0)
+        {
+            return;
+        }
+        onCoolDown = true;
+        Invoke("endCoolDown",_abilityCoolDown);
+    }
+    private void endCoolDown()
+    {
+        onCoolDown = false;
+    }
+    public bool getCoolDownStatus()
+    {
+        return this.onCoolDown;
     }
 
 }

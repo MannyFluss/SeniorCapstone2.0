@@ -54,7 +54,10 @@ public class CharacterAttack : MonoBehaviour
         }
         
     }
-
+    public Transform getAimArrow()
+    {
+        return aimArrow;
+    }
     void handleHit()
     {
         if(canHit && _hit)
