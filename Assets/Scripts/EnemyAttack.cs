@@ -7,10 +7,14 @@ public class EnemyAttack : MonoBehaviour
 {
     public float attackLast = 1f;
     public float cooldown = 5f;
-
+    public GameObject projectile;
+    public GameObject bettaShort;
+    public GameObject bettaMedium;
+    public GameObject bettaLong;
     private bool _attackAvailable = true;
     private MeshRenderer meshRenderer;
-    public Collider collider;
+    private Transform player;
+    //public Collider collider;
     public EnemyMovement enemyMovement;
 
     // Start is called before the first frame update
@@ -18,16 +22,15 @@ public class EnemyAttack : MonoBehaviour
     {
         gameObject.GetComponentInParent<EnemyMovement>().attack = gameObject.GetComponent<EnemyAttack>();
         enemyMovement = enemyMovement.GetComponentInParent<EnemyMovement>();
-
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;
-        collider.enabled = false;
+        GetComponent<Collider>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void PiranhaAttack()
@@ -42,10 +45,10 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator PiranhaAttactTimer()
     {
-        collider.enabled = true;
+        GetComponent<Collider>().enabled = true;
         meshRenderer.enabled = true;
         yield return new WaitForSeconds(attackLast);
-        collider.enabled = false;
+        GetComponent<Collider>().enabled = false;
         meshRenderer.enabled = false;
     }
 
@@ -66,14 +69,36 @@ public class EnemyAttack : MonoBehaviour
         
     }
 
+    public void ArcherAttack()
+    {
+        if (_attackAvailable)
+        {
+            GameObject arrow = Instantiate(projectile);
+            arrow.transform.position = transform.position;
+            StartCoroutine(ArcherCooldown());
+        }
+
+    }
+
+    IEnumerator ArcherCooldown()
+    {
+        enemyMovement._pursuePlayer = false;
+        enemyMovement._avoidPlayer = true;
+        _attackAvailable = false;
+        yield return new WaitForSeconds(cooldown);
+        _attackAvailable = true;
+        enemyMovement._pursuePlayer = true;
+        enemyMovement._avoidPlayer = false;
+    }
+
     IEnumerator PufferAttackTimer()
     {
-        collider.enabled = true;
+        GetComponent<Collider>().enabled = true;
         meshRenderer.enabled = true;
         enemyMovement._invincible = true;
         yield return new WaitForSeconds(attackLast);
         enemyMovement._invincible = false;
-        collider.enabled = false;
+        GetComponent<Collider>().enabled = false;
         meshRenderer.enabled = false;
     }
 
@@ -87,6 +112,48 @@ public class EnemyAttack : MonoBehaviour
         _attackAvailable = true;
         enemyMovement._pursuePlayer = true;
         enemyMovement._avoidPlayer = false;
+    }
+
+    public void BettaAttack()
+    {
+        if (_attackAvailable)
+        {
+            StartCoroutine(BettaShortAttackTimer());
+            StartCoroutine(BettaCooldown());
+        }
+
+    }
+
+    IEnumerator BettaShortAttackTimer()
+    {
+        bettaShort.SetActive(true);
+        yield return new WaitForSeconds(attackLast);
+        bettaShort.SetActive(false);
+        StartCoroutine(BettaMediumAttackTimer());
+    }
+
+    IEnumerator BettaMediumAttackTimer()
+    {
+        bettaMedium.SetActive(true);
+        yield return new WaitForSeconds(attackLast);
+        bettaMedium.SetActive(false);
+        StartCoroutine(BettaLongAttackTimer());
+    }
+
+    IEnumerator BettaLongAttackTimer()
+    {
+        bettaLong.SetActive(true);
+        yield return new WaitForSeconds(attackLast);
+        bettaLong.SetActive(false);
+    }
+
+    IEnumerator BettaCooldown()
+    {
+        enemyMovement._pursuePlayer = false;
+        _attackAvailable = false;
+        yield return new WaitForSeconds(cooldown);
+        _attackAvailable = true;
+        enemyMovement._pursuePlayer = true;
     }
 
 

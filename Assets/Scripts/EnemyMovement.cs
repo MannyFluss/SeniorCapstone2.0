@@ -41,23 +41,28 @@ public class EnemyMovement : MonoBehaviour
     }
     private void Update()
     {
+        //AvoidPlayer();
+        
         if (!_invincible)
         {
             if (_pursuePlayer)
             {
                 MoveToPlayer();
-            }
-            else if (_avoidPlayer)
-            {
-                AvoidPlayer();
-            }
-            
+            }            
         }
+
+        if (_avoidPlayer)
+        {
+            AvoidPlayer();
+        }
+        
         if (health <= 0)
         {
             gameObject.transform.rotation = new Quaternion(x: 0, y: 0, z: 90, w: 1);
             Destroy(gameObject, invincibleCooldown);
         }
+
+       
 
         float disToPlayer = Vector3.Distance(player.position, gameObject.transform.position);
 
@@ -72,7 +77,18 @@ public class EnemyMovement : MonoBehaviour
             {
                 attack.PiranhaAttack();
             }
+
+            if(type == "ArcherFish")
+            {
+                attack.ArcherAttack();
+            }
+
+            if(type == "Betta")
+            {
+                attack.BettaAttack();
+            }
         }
+        
         
     }
     
@@ -114,7 +130,8 @@ public class EnemyMovement : MonoBehaviour
     private void AvoidPlayer()
     {
         Vector3 moveDirection = transform.position - player.position;
-        navMeshAgent.destination = moveDirection;
+        navMeshAgent.destination = moveDirection.normalized * 10f;
+
     }
 
     private void Damage(GameObject attackObject, bool _knockBack)
