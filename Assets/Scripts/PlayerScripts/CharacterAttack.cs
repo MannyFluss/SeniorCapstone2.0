@@ -23,6 +23,7 @@ public class CharacterAttack : MonoBehaviour
     private PlayerUI ui;
 
     CinemachineVirtualCamera vcam;
+    Camera mainCam;
 
     //Player Controls
     private PlayerInput playerInput;
@@ -31,6 +32,7 @@ public class CharacterAttack : MonoBehaviour
     private void Awake()
     {
         vcam = GetComponentInChildren<CinemachineVirtualCamera>();
+        mainCam = Camera.main;
         playerInput = new PlayerInput();
         
     }
@@ -40,6 +42,7 @@ public class CharacterAttack : MonoBehaviour
         ui = GetComponentInChildren<PlayerUI>();
 
         playerInput.Input.Hit.performed += hitInput;
+
     }
 
     public void hitInput(InputAction.CallbackContext context)
@@ -72,6 +75,20 @@ public class CharacterAttack : MonoBehaviour
     /// </summary>
     void handleAim()
     {
+        var ray = mainCam.ScreenPointToRay(Input.mousePosition);
+
+        if(Physics.Raycast(ray, out var hitInfo, Mathf.Infinity))
+        {
+            //Debug.DrawRay(transform.position, hitInfo.point);
+            Vector3 direction = hitInfo.point;
+            direction.y = 0;
+            aimArrow.forward = Quaternion.Euler(0, 90, 0) * (direction - transform.position);
+            aimArrow.eulerAngles = new Vector3(0, aimArrow.eulerAngles.y, 0);
+            
+        }
+
+        
+        /*
         //If there is not a target group do usual calculations
         if(vcam.m_LookAt.gameObject.GetComponent<CinemachineTargetGroup>() == null)
         {
@@ -87,14 +104,14 @@ public class CharacterAttack : MonoBehaviour
             mousePos.x -= Screen.width / 2;
             mousePos.y -= Screen.height / 5f;
         }
-        
+        */
         
 
         //using the x and y positions of the mouse calculate the angle that the arrow will rotate
-        var rot = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        //var rot = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
 
         //apply angle to arrow
-        aimArrow.rotation = Quaternion.Euler(0, -rot + 180, 0);
+        //aimArrow.rotation = Quaternion.Euler(0, -rot + 180, 0);
     }
 
     IEnumerator hit()

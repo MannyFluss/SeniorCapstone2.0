@@ -8,6 +8,7 @@ TagManager:
   - Attack
   - EnemyAttack
   - Boss
+  - Crane
   layers:
   - Default
   - TransparentFX
