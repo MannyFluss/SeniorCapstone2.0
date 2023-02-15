@@ -24,6 +24,7 @@ public class DockBehavior : MonoBehaviour
         {
             vcam.Priority = 10;
             vcam.m_Follow = other.transform;
+            
         }
         
         

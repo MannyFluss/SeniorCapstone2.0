@@ -75,16 +75,14 @@ public class CharacterAttack : MonoBehaviour
     /// </summary>
     void handleAim()
     {
+        //added more accurate aiming
         var ray = mainCam.ScreenPointToRay(Input.mousePosition);
 
         if(Physics.Raycast(ray, out var hitInfo, Mathf.Infinity))
         {
-            //Debug.DrawRay(transform.position, hitInfo.point);
             Vector3 direction = hitInfo.point;
             direction.y = 0;
             aimArrow.forward = Quaternion.Euler(0, 90, 0) * (direction - transform.position);
-            aimArrow.eulerAngles = new Vector3(0, aimArrow.eulerAngles.y, 0);
-            
         }
 
         
