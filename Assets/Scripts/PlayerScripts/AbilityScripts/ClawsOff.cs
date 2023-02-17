@@ -7,7 +7,7 @@ public class ClawsOff : BaseAbilityScript
 {
     // Start is called before the first frame update
 
-    public float abilityCoolDown = 2.5f;
+    new float abilityCoolDown = 2.5f;
     public override void OnButtonClick()
     {
         if (getCoolDownStatus())
@@ -22,7 +22,7 @@ public class ClawsOff : BaseAbilityScript
 
 public class SchrodingerBox : BaseAbilityScript
 {
-    public float abilityCoolDown = 1f;
+    new float abilityCoolDown = 1f;
     public override void OnButtonClick()
     {
         if (getCoolDownStatus())
@@ -38,7 +38,7 @@ public class SchrodingerBox : BaseAbilityScript
 
 public class ExplosiveFishAbility : BaseAbilityScript
 {
-    public float abilityCoolDown = 0f;
+    new float abilityCoolDown = 1f;
     public override void OnButtonClick()
     {
         if (getCoolDownStatus())

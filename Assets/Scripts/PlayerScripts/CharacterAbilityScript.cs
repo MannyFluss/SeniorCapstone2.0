@@ -23,8 +23,8 @@ public class CharacterAbilityScript : MonoBehaviour
     [SerializeField]
     public GameObject _AbilityExplosiveFish;
 
-
-
+    [SerializeField]
+    public PlayerUIScriptManager UIScript;
     //contains references to the currently chosen abilities
     List<BaseAbilityScript> playerAbilities = new List<BaseAbilityScript> {null,null,null};
 
@@ -308,6 +308,13 @@ public class CharacterAbilityScript : MonoBehaviour
         }
     }
 
+    public void AbilitySetCoolDown(BaseAbilityScript _ability, float _coolDown)
+    {
+
+       
+        int index = playerAbilities.FindIndex(a => a == _ability);
+        UIScript.setAbilityCoolDown(index,_coolDown);
+    }
     private void OnEnable()
     {
         playerInput.Enable();

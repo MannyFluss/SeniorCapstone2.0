@@ -23,19 +23,19 @@ public class ShopKeeperScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         //shopUI.enabled = false;
         playerAbilityManager = player.GetComponent<CharacterAbilityScript>();
-        ConversationManager.Instance.StartConversation(myConversation);
     }
 
     // Update is called once per frame
     void Update()
     {
         playMoneyText.text = "Player Money: " + playerAbilityManager.playerMoney;
-        
         var di = Vector3.Distance(transform.position,player.transform.position);
-        if (di <= interactRange && inRange == false)
+        if (di <= interactRange && inRange == false) // just entered range
         {
             inRange = true;
-            Debug.Log(myConversation);
+            
+            initiateShop();
+
 
             
         }else if (di <= interactRange)
@@ -49,6 +49,9 @@ public class ShopKeeperScript : MonoBehaviour
 
     public void initiateShop()
     {
-        Debug.Log("this is where the shop will start doing shop things");
+        if(!ConversationManager.Instance.IsConversationActive)
+        {
+            ConversationManager.Instance.StartConversation(myConversation);
+        }
     }
 }

@@ -10,7 +10,7 @@ public  class BaseAbilityScript : MonoBehaviour
     public GameObject myParent;
     public CharacterAbilityScript parentScriptRef;
 
-    //public float abilityCoolDown = 0.0f;
+    protected float abilityCoolDown;
     private bool onCoolDown = false;
     
     // signal functions for each of the child classes
@@ -45,6 +45,9 @@ public  class BaseAbilityScript : MonoBehaviour
         {
             return;
         }
+        //sends a signal to the characterAbilityScript
+        parentScriptRef.AbilitySetCoolDown(this,_abilityCoolDown);
+        
         onCoolDown = true;
         Invoke("endCoolDown",_abilityCoolDown);
     }
