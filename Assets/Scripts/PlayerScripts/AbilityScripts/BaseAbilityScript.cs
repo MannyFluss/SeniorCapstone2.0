@@ -6,13 +6,32 @@ using UnityEngine;
 //this is the base class, it should not be used
 public  class BaseAbilityScript : MonoBehaviour
 {
-    
+    public static string[] AbilitiesList = new string[]
+    {"ClawsOff","SchrodingerBox","ExplosiveFishAbility"};
+    static Dictionary<string,string> AbilityDescriptions = new Dictionary<string, string>
+    {
+        {"ClawsOff" , "Attack Enemies in a Radius around you"},
+        { "SchrodingerBox", "Upon Dashing, an explosive box will fall from the sky"},
+        { "ExplosiveFishAbility", "Summon an explosive fish in front of you, hit it to lo launch"},
+
+
+
+    };
+
+
+
     public GameObject myParent;
     public CharacterAbilityScript parentScriptRef;
 
     protected float abilityCoolDown;
+    protected string abilityName;
     private bool onCoolDown = false;
     
+    public string getAbilityName()
+    {
+        return abilityName;
+    }
+
     // signal functions for each of the child classes
     public virtual void OnEquip()
     {

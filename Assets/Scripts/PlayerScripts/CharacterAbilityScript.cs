@@ -36,7 +36,18 @@ public class CharacterAbilityScript : MonoBehaviour
         playerInput = new PlayerInput();
     }
 
-
+    public string getAbilityName(int index)
+    {
+        if (index > 2)
+        {
+            return "empty";
+        }
+        if (playerAbilities[index]==null)
+        {
+            return "empty";
+        }
+        return playerAbilities[index].getAbilityName();
+    }
 
     void Start()
     {
