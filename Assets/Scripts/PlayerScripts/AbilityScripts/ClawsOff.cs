@@ -19,6 +19,11 @@ public class ClawsOff : BaseAbilityScript
         Instantiate( parentScriptRef._AbilityExplosionPrefab, myParent.transform.position, Quaternion.identity);
         startCoolDown(abilityCoolDown);
     }
+    public override string getAbilityName()
+    {
+        return abilityName;
+    }
+
 }
 
 public class SchrodingerBox : BaseAbilityScript
@@ -37,6 +42,10 @@ public class SchrodingerBox : BaseAbilityScript
         Instantiate( parentScriptRef._AbilityBoxPrefab, myParent.transform.position , Quaternion.identity);
         startCoolDown(abilityCoolDown);
     }
+    public override string getAbilityName()
+    {
+        return abilityName;
+    }
 }
 
 public class ExplosiveFishAbility : BaseAbilityScript
@@ -54,6 +63,10 @@ public class ExplosiveFishAbility : BaseAbilityScript
         Vector3 direction = Vector3.Normalize(aimArrow * myParent.transform.position) * 3;
         Instantiate( parentScriptRef._AbilityExplosiveFish, myParent.transform.position + direction, Quaternion.identity);
         startCoolDown(abilityCoolDown);
+    }
+    public override string getAbilityName()
+    {
+        return abilityName;
     }
 }
 

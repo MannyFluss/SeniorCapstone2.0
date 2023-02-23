@@ -17,8 +17,14 @@ public class PlayerUIScriptManager : MonoBehaviour
     [SerializeField]
     GameObject ShopUIPurchase;
     string[] AbilitiesCurrentlyEquipped = new string[]{null,null,null};
+
+    [SerializeField] 
+    string[] abilitiesAvailableForPurchase = new string[]{"ClawsOff","SchrodingerBox"}; 
+
     [SerializeField]
     TextMeshProUGUI PurchaseTextRef;
+    [SerializeField]
+    GameObject abilityBox;
 
 
 ///// this section will be the upgradeUI
@@ -40,18 +46,28 @@ public class PlayerUIScriptManager : MonoBehaviour
 
     void Update()
     {
-        ShopPurchaseInitialize();
+        ShopPurchaseUpdate();
     }
-    public void ShopPurchaseInitialize()
+    public void ShopPurchaseUpdate()
     {
         AbilitiesCurrentlyEquipped[0] = characterAbilities.getAbilityName(0);
         AbilitiesCurrentlyEquipped[1] = characterAbilities.getAbilityName(1);
         AbilitiesCurrentlyEquipped[2] = characterAbilities.getAbilityName(3);
+    }
+    public void ShopPurchaseAbility(string _ability)
+    {
+        //onclick get ability
+        Instantiate(abilityBox,transform.position,Quaternion.identity);
+        abilityBox.GetComponent<AbilityPickupScript>().abilityName = _ability;
+
     }
 
     public void ShopPreviewText(int index)
     {
         PurchaseTextRef.text = AbilitiesCurrentlyEquipped[index];
     }
+    
+
+
 
 }

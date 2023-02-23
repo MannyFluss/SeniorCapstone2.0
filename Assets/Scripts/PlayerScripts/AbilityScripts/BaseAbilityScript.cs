@@ -27,7 +27,7 @@ public  class BaseAbilityScript : MonoBehaviour
     protected string abilityName;
     private bool onCoolDown = false;
     
-    public string getAbilityName()
+    public virtual string getAbilityName()
     {
         return abilityName;
     }
