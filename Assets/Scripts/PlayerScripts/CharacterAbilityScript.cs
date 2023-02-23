@@ -65,6 +65,14 @@ public class CharacterAbilityScript : MonoBehaviour
         playerInput.Input.Skill3.canceled += skillThreeReleased;
     }
 
+    public bool AbilitiesFull()
+    {
+        if (playerAbilities[0] == null){return false;}
+        if (playerAbilities[1] == null){return false;}
+        if (playerAbilities[2] == null){return false;}
+
+        return true;
+    }
     //automatically safely adds the new ability to the list, for interactables
     public bool AbilityPickUpInteract(string abilityName)
     {
@@ -262,7 +270,7 @@ public class CharacterAbilityScript : MonoBehaviour
         playerAbilities[_index2] = temp;
     }
 
-    void equipAbility(string _toInsert, int _index)
+    public void equipAbility(string _toInsert, int _index)
     {
         if (_index >= playerAbilities.Count)
         {

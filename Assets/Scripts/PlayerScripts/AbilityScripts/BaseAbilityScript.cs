@@ -8,7 +8,7 @@ public  class BaseAbilityScript : MonoBehaviour
 {
     public static string[] AbilitiesList = new string[]
     {"ClawsOff","SchrodingerBox","ExplosiveFishAbility"};
-    static Dictionary<string,string> AbilityDescriptions = new Dictionary<string, string>
+    public static Dictionary<string,string> AbilityDescriptions = new Dictionary<string, string>
     {
         {"ClawsOff" , "Attack Enemies in a Radius around you"},
         { "SchrodingerBox", "Upon Dashing, an explosive box will fall from the sky"},

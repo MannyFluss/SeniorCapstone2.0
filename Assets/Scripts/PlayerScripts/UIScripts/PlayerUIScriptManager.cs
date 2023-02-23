@@ -50,9 +50,9 @@ public class PlayerUIScriptManager : MonoBehaviour
     }
     public void ShopPurchaseUpdate()
     {
-        AbilitiesCurrentlyEquipped[0] = characterAbilities.getAbilityName(0);
-        AbilitiesCurrentlyEquipped[1] = characterAbilities.getAbilityName(1);
-        AbilitiesCurrentlyEquipped[2] = characterAbilities.getAbilityName(3);
+        // AbilitiesCurrentlyEquipped[0] = characterAbilities.getAbilityName(0);
+        // AbilitiesCurrentlyEquipped[1] = characterAbilities.getAbilityName(1);
+        // AbilitiesCurrentlyEquipped[2] = characterAbilities.getAbilityName(3);
     }
     public void ShopPurchaseAbility(string _ability)
     {
