@@ -81,7 +81,7 @@ public class PlayerUI : MonoBehaviour
 
     void handleStats()
     {
-        _hp.text = "HP: " + playerManager.health;
+        //_hp.text = "HP: " + playerManager.health;
     }
 
     void handleDodgeIcon()
