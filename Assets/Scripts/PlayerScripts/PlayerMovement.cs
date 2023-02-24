@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump Variable")]
     bool isJumpPressed = false;
     float initialJumpVelocity;
-    float maxJumpHeight = 0.4f;
+    float maxJumpHeight = 0.25f;
     float maxJumpTime = 0.5f;
 
 
