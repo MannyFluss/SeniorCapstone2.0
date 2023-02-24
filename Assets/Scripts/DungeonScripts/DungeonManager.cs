@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DungeonManager : MonoBehaviour
 {
@@ -79,7 +80,8 @@ public class DungeonManager : MonoBehaviour
             }
             else
             {
-                ResetDungeon();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                //ResetDungeon();
             }
         }
     }
