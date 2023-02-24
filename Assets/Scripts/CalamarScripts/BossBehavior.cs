@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.Playables;
 
 public class Tentacle
 {
@@ -26,21 +28,26 @@ public class Tentacle
 public class BossBehavior : MonoBehaviour
 {
     //Boss properties
-    private int stage = 2;
-    private int health = 100;
+    private int stage = 1;
+    public int health = 100;
     bool tentacleFrenzyInProgress = false;
     bool wipeOutInProgress = false;
-    bool returnToSenderInProgress = true;
-
+    bool returnToSenderInProgress = false;
+    bool moveBackInProgress = false;
+    public bool canBeHit = false;
 
     //attack randomization
     string[] attackList = new string[5];
-    string[] possibleAttacks = { "return to sender", "tentacle frenzy", "wipe out" };
+    string[] possibleAttacks = { "wipe out", "tentacle frenzy", "return to sender"};
 
     //tentacle frenzy vars
     GameObject[] indicators =   new GameObject[4];
     GameObject[] roundIndicators = new GameObject[16];
     Tentacle[] tentacles  =   new Tentacle[4];
+
+    //return to sender vars
+    GameObject[] trash = new GameObject[64];
+    private int trashNum = 0;
 
     [SerializeField]
     GameObject tentacle1, tentacle2, tentacle3, tentacle4;
@@ -51,6 +58,13 @@ public class BossBehavior : MonoBehaviour
     private GameObject roundIndicator;
     [SerializeField]
     private GameObject[] trashList;
+    [SerializeField]
+    private TMP_Text healthText;
+
+    [SerializeField]
+    PlayableDirector rightCrane;
+    [SerializeField]
+    PlayableDirector leftCrane;
 
 
     void Start()
@@ -73,16 +87,12 @@ public class BossBehavior : MonoBehaviour
         tentacles[2].slam = false;
         tentacles[3].slam = false;
 
-        //Testing center
-        getAttackPattern();
-        attack();
-        attackReturnToSender();
-
-        
+        runAttacks();
     }
 
     void Update()
     {
+        healthText.text = health.ToString();
         healthCheckHandler();
     }
 
@@ -91,21 +101,28 @@ public class BossBehavior : MonoBehaviour
         tentacleFrenzyHandler();
         wipeOutHandler();
         returnToSenderHandler();
+        moveBackHandler();
     }
-
     /// <summary>
     /// Code to watch the health of the boss
     /// </summary>
     private void healthCheckHandler()
     {
-        if(health < 60 && health >= 30)
+        if(health < 60 && health >= 30 && stage != 2)
         {
-            stage = 2;
+            changeStage(2);
         }
-        else if(health < 30)
+        else if(health < 30 && stage != 3)
         {
-            stage = 3;
+            changeStage(3);
         }
+
+    }
+
+    private void changeStage(int stageNum)
+    {
+        Debug.Log("Stage Changed:" + stageNum);
+        stage = stageNum;
     }
 
     /// <summary>
@@ -212,6 +229,57 @@ public class BossBehavior : MonoBehaviour
             }
         }
     }
+
+    private void moveBackHandler()
+    {
+        if(!moveBackInProgress)
+        {
+            return;
+        }
+        tentacleFrenzyInProgress = false;
+        wipeOutInProgress = false;
+        returnToSenderInProgress = false;
+
+        for(int i = 0; i < 4; i++)
+        {
+            tentacles[i].slam = false;
+            tentacles[i].moveBack = false;
+            tentacles[i].sweep = false;
+            tentacles[i].wipe = false;
+            tentacles[i].tentacleObject.transform.position = Vector3.Lerp(tentacles[i].tentacleObject.transform.position, tentacles[i].originalPosition, 0.01f);
+            tentacles[i].tentacleObject.transform.localRotation = Quaternion.Lerp(tentacles[i].tentacleObject.transform.localRotation, Quaternion.Euler(0, 0, 0), 0.05f);
+        }
+        
+    }
+
+    public void runAttacks()
+    {
+        //Testing center
+        getAttackPattern();
+        StartCoroutine(attack());
+    }
+
+    public void destroyTrash()
+    {
+        for(int i = 0; i < trashNum; i++)
+        {
+            Destroy(trash[i]);
+        }
+        trashNum = 0;
+    }
+    public void canBeHitToggleOn()
+    {
+        moveBackInProgress = true;
+        canBeHit = true;
+        StopAllCoroutines();
+    }
+
+    public void canBeHitToggleOff()
+    {
+        moveBackInProgress = false;
+        canBeHit = false;
+    }
+
     /// <summary>
     /// Randomizes the attacks for this phase
     /// </summary>
@@ -224,6 +292,9 @@ public class BossBehavior : MonoBehaviour
             {
                 attackList[i] = possibleAttacks[Random.Range(0, possibleAttacks.Length)];
             }
+            //Testing with hard coded
+            attackList[0] = "tentacle frenzy";
+            attackList[1] = "wipe out";
             attackList[2] = "return to sender";
         }
         else if (stage == 2)
@@ -248,58 +319,75 @@ public class BossBehavior : MonoBehaviour
     }
 
     /// <summary>
-    /// Runs the current set of attacks
+    /// Running attacks based on array
     /// </summary>
-    private void attack()
+    /// <returns></returns>
+    IEnumerator attack()
     {
         for (int i = 0; i < attackList.Length; i++)
         {
-            if(attackList[i] != null)
+            if (attackList[i] != null)
             {
                 Debug.Log(attackList[i]);
             }
             if (attackList[i] == "tentacle frenzy")
             {
-                
+                StartCoroutine(createIndicatorsTentacleFrenzy(0.75f));
+                if (stage == 1)
+                {
+                    tentacleFrenzyInProgress = true;
+                    yield return new WaitForSeconds(9f);
+                    tentacleFrenzyInProgress = false;
+                }
+                else if (stage == 2)
+                {
+                    tentacleFrenzyInProgress = true;
+                    yield return new WaitForSeconds(11f);
+                    tentacleFrenzyInProgress = false;
+                    Debug.Log("finished");
+                }
+                else
+                {
+                    tentacleFrenzyInProgress = true;
+                    yield return new WaitForSeconds(11f);
+                    tentacleFrenzyInProgress = false;
+                }
+
+            }
+            else if (attackList[i] == "wipe out")
+            {
+                StartCoroutine(wipeOutTiming());
+                if (health < 50)
+                {
+                    wipeOutInProgress = true;
+                    yield return new WaitForSeconds(28f);
+                    wipeOutInProgress = false;
+                }
+                else
+                {
+                    wipeOutInProgress = true;
+                    yield return new WaitForSeconds(20f);
+                    wipeOutInProgress = false;
+                }
+
+            }
+            else if (attackList[i] == "return to sender")
+            {
+                StartCoroutine(returnToSenderTiming());
+                if (health < 60)
+                {
+                    returnToSenderInProgress = true;
+                    yield return new WaitForSeconds(10f);
+                    returnToSenderInProgress = false;
+                }
+                else
+                {
+                    returnToSenderInProgress = true;
+                    yield return new WaitForSeconds(11f);
+                    returnToSenderInProgress = false;
+                }
             }
         }
-    }
-
-    /// <summary>
-    /// Changes time value for attack based on which version of attack. further stages need more time for attack to perform
-    /// </summary>
-    private void attackTentacleFrenzy()
-    {
-        StartCoroutine(createIndicatorsTentacleFrenzy(0.75f));
-        //Wait for seconds based on version of the attack
-        if (stage == 1)
-        {
-            StartCoroutine(attackInProgress(5f));
-        }
-        else if(stage == 2)
-        {
-
-        }
-        else
-        {
-
-        }
-        
-    }
-
-    private void attackWipeOut()
-    {
-        StartCoroutine(wipeOutTiming());
-    }
-
-    private void attackReturnToSender()
-    {
-        StartCoroutine(returnToSenderTiming());
-    }
-
-    IEnumerator attackInProgress(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
     }
 
     /// <summary>
@@ -311,16 +399,19 @@ public class BossBehavior : MonoBehaviour
     {
         for (int i = 0; i < stage + 2; i++)
         {
+            tentacles[i].moveBack = false;
+            
             int rotationInt = Random.Range(65, 115);
             indicators[i] = Instantiate(indicator, new Vector3(Random.Range(-13, 13), 0.01f, 32.5f), Quaternion.Euler(0, rotationInt, 0));
             tentacles[i].tentacleObject.transform.localRotation = Quaternion.Euler(0, 0, 90 - rotationInt);
+            tentacles[i].rotateFrom = tentacles[i].tentacleObject.transform.localRotation;
             StartCoroutine(waitForSlam(i));
             yield return new WaitForSeconds(seconds);
         }  
     }
 
     /// <summary>
-    /// Code for 
+    /// Running the slam for the indicated tentacle
     /// </summary>
     /// <param name="index"></param>
     /// <returns></returns>
@@ -328,13 +419,13 @@ public class BossBehavior : MonoBehaviour
     {
         yield return new WaitForSeconds(2.5f);
         //Get initial and ending rotation for the lerp movement
-        tentacles[index].rotateFrom = tentacles[index].tentacleObject.transform.localRotation;
         tentacles[index].rotateTo = tentacles[index].tentacleObject.transform.localRotation * Quaternion.Euler(new Vector3(90, 0, 0));
 
         //Destroy indicatiors and timing for slam movement
         tentacles[index].slam = true;
         yield return new WaitForSeconds(1f);
         Destroy(indicators[index]);
+        indicators[index] = null;
         yield return new WaitForSeconds(1f);
         tentacles[index].slam = false;
         yield return new WaitForSeconds(1f);
@@ -342,6 +433,10 @@ public class BossBehavior : MonoBehaviour
         tentacles[index].moveBack = true;
     }
 
+    /// <summary>
+    /// Running the whole Wipe out attack
+    /// </summary>
+    /// <returns></returns>
     IEnumerator wipeOutTiming()
     {
         //If hp is less than half make sweeps 3
@@ -392,6 +487,10 @@ public class BossBehavior : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Running the main functionality for return to sender
+    /// </summary>
+    /// <returns></returns>
     IEnumerator returnToSenderTiming()
     {
         //If hp is less than half make sweeps 3
@@ -409,12 +508,21 @@ public class BossBehavior : MonoBehaviour
         
     }
 
+    /// <summary>
+    /// Dropping the trash for return to sender
+    /// </summary>
+    /// <param name="index"></param>
+    /// <returns></returns>
     IEnumerator dropTrash(int index)
     {
-        yield return new WaitForSeconds(1f);
-        Instantiate(trashList[Random.Range(0, trashList.Length)], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
         
+        yield return new WaitForSeconds(1f);
+        trash[trashNum] = Instantiate(trashList[Random.Range(0, trashList.Length)], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
+        trashNum++;
+        yield return new WaitForSeconds(2.5f);
+        Destroy(roundIndicators[index]);
     }
+
 }
 
 
