@@ -137,7 +137,11 @@ public class PlayerMovement : MonoBehaviour
     {
 
         // Dash Debug
-        DashDebug.text = "Dash Ready: " + isDashCooledDown;
+        if (DashDebug!=null)
+        {
+            DashDebug.text = "Dash Ready: " + isDashCooledDown;
+        }
+
     }
 
     void handleMovement()

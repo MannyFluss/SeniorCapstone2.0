@@ -7,9 +7,13 @@ using UnityEngine.InputSystem.Interactions;
 
 //this script will be added to the main character and will manage the characters abilities;
 //likely will need to link to other scripts that access hp, stats, and other things later on
+//this script will now manage player money as well
 public class CharacterAbilityScript : MonoBehaviour
 {
-    
+
+    public int playerMoney = 100;
+
+
     // if you need prefabs for the abilities they go here
     [SerializeField]
     public GameObject _AbilityExplosionPrefab;
@@ -19,8 +23,8 @@ public class CharacterAbilityScript : MonoBehaviour
     [SerializeField]
     public GameObject _AbilityExplosiveFish;
 
-
-
+    [SerializeField]
+    public PlayerUIScriptManager UIScript;
     //contains references to the currently chosen abilities
     List<BaseAbilityScript> playerAbilities = new List<BaseAbilityScript> {null,null,null};
 
@@ -32,7 +36,18 @@ public class CharacterAbilityScript : MonoBehaviour
         playerInput = new PlayerInput();
     }
 
-
+    public string getAbilityName(int index)
+    {
+        if (index > 2)
+        {
+            return "empty";
+        }
+        if (playerAbilities[index]==null)
+        {
+            return "empty";
+        }
+        return playerAbilities[index].getAbilityName();
+    }
 
     void Start()
     {
@@ -50,6 +65,14 @@ public class CharacterAbilityScript : MonoBehaviour
         playerInput.Input.Skill3.canceled += skillThreeReleased;
     }
 
+    public bool AbilitiesFull()
+    {
+        if (playerAbilities[0] == null){return false;}
+        if (playerAbilities[1] == null){return false;}
+        if (playerAbilities[2] == null){return false;}
+
+        return true;
+    }
     //automatically safely adds the new ability to the list, for interactables
     public bool AbilityPickUpInteract(string abilityName)
     {
@@ -247,7 +270,7 @@ public class CharacterAbilityScript : MonoBehaviour
         playerAbilities[_index2] = temp;
     }
 
-    void equipAbility(string _toInsert, int _index)
+    public void equipAbility(string _toInsert, int _index)
     {
         if (_index >= playerAbilities.Count)
         {
@@ -304,6 +327,13 @@ public class CharacterAbilityScript : MonoBehaviour
         }
     }
 
+    public void AbilitySetCoolDown(BaseAbilityScript _ability, float _coolDown)
+    {
+
+       
+        int index = playerAbilities.FindIndex(a => a == _ability);
+        UIScript.setAbilityCoolDown(index,_coolDown);
+    }
     private void OnEnable()
     {
         playerInput.Enable();

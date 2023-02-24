@@ -6,13 +6,32 @@ using UnityEngine;
 //this is the base class, it should not be used
 public  class BaseAbilityScript : MonoBehaviour
 {
-    
-    public GameObject myParent;
+    public static string[] AbilitiesList = new string[]
+    {"ClawsOff","SchrodingerBox","ExplosiveFishAbility"};
+    public static Dictionary<string,string> AbilityDescriptions = new Dictionary<string, string>
+    {
+        {"ClawsOff" , "Attack Enemies in a Radius around you"},
+        { "SchrodingerBox", "Upon Dashing, an explosive box will fall from the sky"},
+        { "ExplosiveFishAbility", "Summon an explosive fish in front of you, hit it to lo launch"},
 
+
+
+    };
+
+
+
+    public GameObject myParent;
     public CharacterAbilityScript parentScriptRef;
 
+    protected float abilityCoolDown;
+    protected string abilityName;
+    private bool onCoolDown = false;
     
-    
+    public virtual string getAbilityName()
+    {
+        return abilityName;
+    }
+
     // signal functions for each of the child classes
     public virtual void OnEquip()
     {
@@ -37,6 +56,27 @@ public  class BaseAbilityScript : MonoBehaviour
     public virtual void OnButtonReleased()
     {
         //Debug.Log("button released");
+    }
+    public void startCoolDown(float _abilityCoolDown)
+    {
+        //Debug.Log(this.abilityCoolDown);
+        if (_abilityCoolDown <= 0)
+        {
+            return;
+        }
+        //sends a signal to the characterAbilityScript
+        parentScriptRef.AbilitySetCoolDown(this,_abilityCoolDown);
+        
+        onCoolDown = true;
+        Invoke("endCoolDown",_abilityCoolDown);
+    }
+    private void endCoolDown()
+    {
+        onCoolDown = false;
+    }
+    public bool getCoolDownStatus()
+    {
+        return this.onCoolDown;
     }
 
 }
