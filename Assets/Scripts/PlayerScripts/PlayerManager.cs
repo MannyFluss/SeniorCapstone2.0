@@ -57,7 +57,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.gameObject.tag == "EnemyAttack" && canBeHit)
         {
-            health--;
+            health-= 3;
             StartCoroutine(HitCooldown());
             //movement.playerHit(other.transform);
         }
