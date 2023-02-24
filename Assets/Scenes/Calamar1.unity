@@ -3221,8 +3221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 6e-45
-  m_FrequencyGain: 6e-45
+  m_AmplitudeGain: 2.882428e-34
+  m_FrequencyGain: 2.882428e-34
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &1325237943
 GameObject:
@@ -3835,7 +3835,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 63a926bf990cfe146898d11c137a337c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.467
+  m_Volume: 0.126
   m_Pitch: 1
   Loop: 1
   Mute: 0
