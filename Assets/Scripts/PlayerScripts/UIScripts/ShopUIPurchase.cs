@@ -19,7 +19,7 @@ public class ShopUIPurchase : MonoBehaviour
             }
             else
             {
-                description = "N/A.";
+                description = "No ability currently equipped in selected slot";
             }
         }
         public string ability;
@@ -55,6 +55,7 @@ public class ShopUIPurchase : MonoBehaviour
     {
         initialSet();
         deselectMarkers();
+        setTextAndIcons();
     }
 
     public void deselectMarkers()
@@ -76,14 +77,18 @@ public class ShopUIPurchase : MonoBehaviour
             //we swap
             // triplet[shopMarkerPosition]. 
             playerAbilities.equipAbility(shopTriplets[shopMarkerPosition].ability,playerMarkerPosition);
+            descriptionText.text = shopTriplets[shopMarkerPosition].description;
             shopTriplets[shopMarkerPosition].ability = "purchased";
             shopTriplets[shopMarkerPosition].description = "purchased";
-             setTextAndIcons();
+            deselectMarkers();
+            setTextAndIcons();
             return;
         }
         playerAbilities.AbilityPickUpInteract(shopTriplets[shopMarkerPosition].ability);
+        descriptionText.text = shopTriplets[shopMarkerPosition].description;
         shopTriplets[shopMarkerPosition].ability = "purchased";
         shopTriplets[shopMarkerPosition].description = "purchased";
+        deselectMarkers();
         setTextAndIcons();
 
     }
