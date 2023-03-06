@@ -13,10 +13,11 @@ public class Global : MonoBehaviour
         {
             Instance = this;
             //AbilityIcons = new Dictionary<string, Sprite>();
-            AbilityIcons.Add("ClawsOff","Assets/Resources/HUD/HUD_empty heart.png");
-            AbilityIcons.Add("SchrodingerBox","Assets/Resources/HUD/HUD schrodinger box.png");
-            AbilityIcons.Add("ExplosiveFishAbility","Assets/Resources/HUD/HUD fish barrel.png");
-            AbilityIcons.Add("empty", "Assets/Resources/HUD/HUD_empty heart.png");
+            //THIS TOOK WAY TOO LONG TO DO naming convention is beyond human comprehension
+            AbilityIcons.Add("ClawsOff","HUD_empty_heart");
+            AbilityIcons.Add("SchrodingerBox","HUD_schrodinger_box");
+            AbilityIcons.Add("ExplosiveFishAbility","HUD_fish_barrel");
+            AbilityIcons.Add("empty", "HUD_empty_heart");
 
             DontDestroyOnLoad(gameObject);
         }

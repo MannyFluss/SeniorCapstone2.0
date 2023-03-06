@@ -59,7 +59,8 @@ public class TabUI : MonoBehaviour
             // }
             
         }
-        Ability1.sprite = Global.Instance.getIconTexture("SchrodingerBox");
+        Ability1.sprite = Global.Instance.getIconTexture(currAbilities[0]);
+        Ability2.sprite = Global.Instance.getIconTexture(currAbilities[1]);
         LeftAbilityName.text = currAbilities[0];
         RightAbilityName.text = currAbilities[1];
         LeftAbilityDescription.text = BaseAbilityScript.AbilityDescriptions[currAbilities[0]];
