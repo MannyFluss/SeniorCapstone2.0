@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class ShopUIPurchase : MonoBehaviour
 {
@@ -47,6 +48,10 @@ public class ShopUIPurchase : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI shopAbility2Text;
+    
+    [SerializeField]
+    Image Ability1Preview, Ability2Preview, ShopPreviewIcon1, ShopPreviewIcon2; 
+    
 
     // Start is called before the first frame update
 
@@ -99,6 +104,12 @@ public class ShopUIPurchase : MonoBehaviour
         //
         shopAbility1Text.text = shopTriplets[3].description;
         shopAbility2Text.text = shopTriplets[4].description;
+        
+        Ability1Preview.sprite = Global.Instance.getIconTexture(shopTriplets[0].ability);
+        Ability2Preview.sprite = Global.Instance.getIconTexture(shopTriplets[1].ability);
+
+        ShopPreviewIcon1.sprite = Global.Instance.getIconTexture(shopTriplets[3].ability);
+        ShopPreviewIcon2.sprite = Global.Instance.getIconTexture(shopTriplets[4].ability);
 
     }
     void initialSet()

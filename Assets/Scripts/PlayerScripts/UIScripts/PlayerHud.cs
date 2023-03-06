@@ -48,37 +48,40 @@ public class PlayerHud : MonoBehaviour
     public void setAbilityIcons()
     {
         string[] currAbilities = new string[] {AbilityScriptRef.getAbilityName(0),AbilityScriptRef.getAbilityName(1)};
-        Debug.Log(currAbilities);
-        for(var i=0;i<2;i++)
-        {
-            Image curr;
-            if (i==0)
-            {
-                curr=Ability1;
-            }else
-            {
-                curr=Ability2;
-            }
-            switch(currAbilities[i])
-            {
-                case ("ClawsOff"):
-                    curr.sprite = ClawsOffSprite;
-                    break;
-                case ("SchrodingerBox"):
-                    curr.sprite = SchrodingerBoxSprite;
-                    break;
-                case ("ExplosiveFishAbility"):
-                    curr.sprite = ExplosiveFishBarrellSprite;
-                    break;
-                case ("empty"):
-                    curr.sprite = NoAbilitySprite;
-                    break;
-                case null:
-                    break;
+        Ability1.sprite = Global.Instance.getIconTexture(currAbilities[0]);
+        Ability2.sprite = Global.Instance.getIconTexture(currAbilities[1]);
+        
+        // Debug.Log(currAbilities);
+        // for(var i=0;i<2;i++)
+        // {
+        //     Image curr;
+        //     if (i==0)
+        //     {
+        //         curr=Ability1;
+        //     }else
+        //     {
+        //         curr=Ability2;
+        //     }
+        //     switch(currAbilities[i])
+        //     {
+        //         case ("ClawsOff"):
+        //             curr.sprite = ClawsOffSprite;
+        //             break;
+        //         case ("SchrodingerBox"):
+        //             curr.sprite = SchrodingerBoxSprite;
+        //             break;
+        //         case ("ExplosiveFishAbility"):
+        //             curr.sprite = ExplosiveFishBarrellSprite;
+        //             break;
+        //         case ("empty"):
+        //             curr.sprite = NoAbilitySprite;
+        //             break;
+        //         case null:
+        //             break;
                 
-            }
+        //     }
             
-        }
+        // }
     }
     public void setAbilityIconCoolDown(int index, float time)
     {
