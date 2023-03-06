@@ -5,7 +5,6 @@ using TMPro;
 using UnityEngine.Events;
 
 public class ShopUIPurchase : MonoBehaviour
-
 {
 
     struct triplet

@@ -24,7 +24,7 @@ public class CharacterAbilityScript : MonoBehaviour
     public GameObject _AbilityExplosiveFish;
 
     [SerializeField]
-    public PlayerUIScriptManager UIScript;
+    public PlayerHud HUDScript;
     //contains references to the currently chosen abilities
     List<BaseAbilityScript> playerAbilities = new List<BaseAbilityScript> {null,null,null};
 
@@ -77,7 +77,7 @@ public class CharacterAbilityScript : MonoBehaviour
     public bool AbilityPickUpInteract(string abilityName)
     {
         bool abilityAdded = false;
-        for (int i=0; i<playerAbilities.Count;i++ )
+        for (int i=0; i<playerAbilities.Count-1;i++ )
         {
             if (playerAbilities[i]!=null)
             {
@@ -268,6 +268,11 @@ public class CharacterAbilityScript : MonoBehaviour
         BaseAbilityScript temp = playerAbilities[_index1];
         playerAbilities[_index1] = playerAbilities[_index2];
         playerAbilities[_index2] = temp;
+        HUDScript.setAbilityIcons();
+    }
+    public void EventSwap()
+    {
+        swapAbility(0,1);
     }
 
     public void equipAbility(string _toInsert, int _index)
@@ -306,6 +311,7 @@ public class CharacterAbilityScript : MonoBehaviour
         playerAbilities[_index].myParent = this.gameObject;
         playerAbilities[_index].OnEquip();
        // Debug.Log("this is my parent " + playerAbilities[_index].myParent );
+       HUDScript.setAbilityIcons();
 
 
     }
@@ -325,6 +331,7 @@ public class CharacterAbilityScript : MonoBehaviour
             Destroy(playerAbilities[_index]);  
             playerAbilities[_index] = null;
         }
+        HUDScript.setAbilityIcons();
     }
 
     public void AbilitySetCoolDown(BaseAbilityScript _ability, float _coolDown)
@@ -332,7 +339,8 @@ public class CharacterAbilityScript : MonoBehaviour
 
        
         int index = playerAbilities.FindIndex(a => a == _ability);
-        UIScript.setAbilityCoolDown(index,_coolDown);
+        //UIScript.setAbilityCoolDown(index,_coolDown);
+        HUDScript.setAbilityIconCoolDown(index,_coolDown);
     }
     private void OnEnable()
     {
