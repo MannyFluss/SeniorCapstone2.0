@@ -16,6 +16,11 @@ public class TabUI : MonoBehaviour
     TextMeshProUGUI LeftAbilityName, LeftAbilityDescription, RightAbilityName,RightAbilityDescription;
 
 
+    void Start()
+    {
+        Debug.Log("result of load");
+
+    }
     void OnEnable()
     {
         updateTextAndIcons();
@@ -33,26 +38,28 @@ public class TabUI : MonoBehaviour
             {
                 curr=Ability2;
             }
-            switch(currAbilities[i])
-            {
-                case ("ClawsOff"):
-                    curr.sprite = ClawsOffSprite;
-                    break;
-                case ("SchrodingerBox"):
-                    curr.sprite = SchrodingerBoxSprite;
-                    break;
-                case ("ExplosiveFishAbility"):
-                    curr.sprite = ExplosiveFishBarrellSprite;
-                    break;
-                case ("empty"):
-                    curr.sprite = NoAbilitySprite;
-                    break;
-                case null:
-                    break;
+            // switch(currAbilities[i])
+            // {
+            //     case ("ClawsOff"):
+            //         curr.sprite = ClawsOffSprite;
+            //         break;
+            //     case ("SchrodingerBox"):
+                   
+            //         //curr.sprite = Global.GetAbilityIcons()["SchrodingerBox"];
+            //         break;
+            //     case ("ExplosiveFishAbility"):
+            //         curr.sprite = ExplosiveFishBarrellSprite;
+            //         break;
+            //     case ("empty"):
+            //         curr.sprite = NoAbilitySprite;
+            //         break;
+            //     case null:
+            //         break;
                 
-            }
+            // }
             
         }
+        Ability1.sprite = Global.Instance.getIconTexture("SchrodingerBox");
         LeftAbilityName.text = currAbilities[0];
         RightAbilityName.text = currAbilities[1];
         LeftAbilityDescription.text = BaseAbilityScript.AbilityDescriptions[currAbilities[0]];

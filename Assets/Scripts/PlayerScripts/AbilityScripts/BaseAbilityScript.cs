@@ -15,16 +15,18 @@ public  class BaseAbilityScript : MonoBehaviour
         { "ExplosiveFishAbility", "Summon an explosive fish in front of you, hit it to lo launch"},
         {"empty","No Ability"},
     };
-
-    public static Dictionary<string,Sprite> AbilityIcons = new Dictionary<string, Sprite>();
-    static BaseAbilityScript()
-    {
-        AbilityIcons.Add(AbilitiesList[0],Resources.Load<Sprite>("Assets/Sprites/HUDUI/HUD_empty heart.png"));
-        AbilityIcons.Add(AbilitiesList[1],Resources.Load<Sprite>("Assets/Sprites/HUDUI/HUD schrodinger box.png"));
-        AbilityIcons.Add(AbilitiesList[2],Resources.Load<Sprite>("Assets/Sprites/HUDUI/HUD fish barrel.png"));
-
-        
-    }
+    private static bool initFlag = false;
+    //public static Dictionary<string,Sprite> AbilityIcons = new Dictionary<string, Sprite>();
+    // void Awake()
+    // {
+    //     if (initFlag!)
+    //     {
+    //         AbilityIcons.Add(AbilitiesList[0],Resources.Load<Sprite>("Assets/Sprites/HUDUI/HUD_empty heart.png"));
+    //         AbilityIcons.Add(AbilitiesList[1],Resources.Load<Sprite>("Assets/Sprites/HUDUI/HUD schrodinger box.png"));
+    //         AbilityIcons.Add(AbilitiesList[2],Resources.Load<Sprite>("Assets/Sprites/HUDUI/HUD fish barrel.png"));   
+    //         initFlag = true;
+    //     }
+    // }
 
 
 

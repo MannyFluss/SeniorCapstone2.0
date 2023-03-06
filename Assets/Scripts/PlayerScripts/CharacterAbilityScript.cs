@@ -11,6 +11,12 @@ using UnityEngine.InputSystem.Interactions;
 public class CharacterAbilityScript : MonoBehaviour
 {
 
+
+
+
+
+
+
     public int playerMoney = 100;
 
 
@@ -34,6 +40,11 @@ public class CharacterAbilityScript : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput();
+        gameObject.GetComponent<SpriteRenderer>().sprite = Global.Instance.test();
+        Debug.Log(Global.Instance.AbilityIcons["SchrodingerBox"]);
+
+        // Use the sprite here
+
     }
 
     public string getAbilityName(int index)
