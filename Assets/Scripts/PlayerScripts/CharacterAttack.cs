@@ -27,6 +27,8 @@ public class CharacterAttack : MonoBehaviour
 
     //Player Controls
     private PlayerInput playerInput;
+    [SerializeField]
+    public GameObject AimPositionReference;
 
 
     private void Awake()

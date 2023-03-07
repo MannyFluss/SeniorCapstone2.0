@@ -14,10 +14,11 @@ public class Global : MonoBehaviour
             Instance = this;
             //AbilityIcons = new Dictionary<string, Sprite>();
             //THIS TOOK WAY TOO LONG TO DO naming convention is beyond human comprehension
-            AbilityIcons.Add("ClawsOff","HUD_empty_heart");
+
+            AbilityIcons.Add("ClawsOff","clawsOffTemp");
             AbilityIcons.Add("SchrodingerBox","HUD_schrodinger_box");
             AbilityIcons.Add("ExplosiveFishAbility","HUD_fish_barrel");
-            AbilityIcons.Add("empty", "HUD_empty_heart");
+            AbilityIcons.Add("empty", "HUD_no_ability");
 
             DontDestroyOnLoad(gameObject);
         }
@@ -25,9 +26,7 @@ public class Global : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
     }
-
     public Sprite getIconTexture(string _input)
     {
         if (AbilityIcons.ContainsKey(_input)==false)
@@ -35,11 +34,6 @@ public class Global : MonoBehaviour
             return Resources.Load<Sprite>(AbilityIcons["empty"]);
         }
         return Resources.Load<Sprite>(AbilityIcons[_input]);
-
-    }
-    public Sprite test()
-    {
-        return Resources.Load<Sprite>("Assets/Resources/ability_1.png");
     }
 
 }

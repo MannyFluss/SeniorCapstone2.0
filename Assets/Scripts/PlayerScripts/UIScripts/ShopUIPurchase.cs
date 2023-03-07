@@ -54,7 +54,10 @@ public class ShopUIPurchase : MonoBehaviour
     
 
     // Start is called before the first frame update
-
+    void Start()
+    {
+        OnEnable();
+    }
     void OnEnable()
     {
         initialSet();
@@ -112,14 +115,16 @@ public class ShopUIPurchase : MonoBehaviour
         ShopPreviewIcon2.sprite = Global.Instance.getIconTexture(shopTriplets[4].ability);
 
     }
+    [SerializeField]
+    string AbilityOffer1, AbilityOffer2;
     void initialSet()
     {
         shopTriplets[0] = new triplet(playerAbilities.getAbilityName(0));
         shopTriplets[1] = new triplet(playerAbilities.getAbilityName(1));
         shopTriplets[2] = new triplet(playerAbilities.getAbilityName(2));
 
-        shopTriplets[3] = new triplet(BaseAbilityScript.AbilitiesList[0]);
-        shopTriplets[4] = new triplet(BaseAbilityScript.AbilitiesList[1]);
+        shopTriplets[3] = new triplet(AbilityOffer1);
+        shopTriplets[4] = new triplet(AbilityOffer2);
         setTextAndIcons();
     }
     //for event trigger system

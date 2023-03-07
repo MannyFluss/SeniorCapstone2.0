@@ -791,6 +791,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3786209190032520567, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -109
+      objectReference: {fileID: 0}
     - target: {fileID: 4285696802999844859, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1080,6 +1084,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6502673056062744683, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: AbilityOffer1
+      value: SchrodingerBox
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502673056062744683, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: AbilityOffer2
+      value: ClawsOff
+      objectReference: {fileID: 0}
+    - target: {fileID: 6502673056062744683, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: playerAbilities
       value: 
       objectReference: {fileID: 675508386}
@@ -1170,6 +1182,10 @@ PrefabInstance:
     - target: {fileID: 7587396167298760179, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7705959196842790518, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7978506285386442967, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_Sprite

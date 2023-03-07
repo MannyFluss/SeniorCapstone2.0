@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9113961294218681294}
   - component: {fileID: 1251562925266497051}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: ExplosiveFishBarrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

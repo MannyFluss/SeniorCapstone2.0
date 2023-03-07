@@ -59,10 +59,11 @@ public class ExplosiveFishAbility : BaseAbilityScript
         {
             return;
         }
-        Quaternion aimArrow = parentScriptRef.GetComponent<CharacterAttack>().getAimArrow().rotation;
-        Vector3 direction = Vector3.Normalize(aimArrow * myParent.transform.position) * 3;
-        Instantiate( parentScriptRef._AbilityExplosiveFish, myParent.transform.position + direction, Quaternion.identity);
+
+        Vector3 aimArrow = parentScriptRef.GetComponent<CharacterAttack>().AimPositionReference.transform.position;
+        Instantiate( parentScriptRef._AbilityExplosiveFish, aimArrow, Quaternion.identity);
         startCoolDown(abilityCoolDown);
+
     }
     public override string getAbilityName()
     {

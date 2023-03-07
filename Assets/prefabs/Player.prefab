@@ -2675,6 +2675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimArrow: {fileID: 2626668999290129638}
   hitObj: {fileID: 2626668998526110819}
+  AimPositionReference: {fileID: 4351266626030115514}
 --- !u!114 &2626668998523703809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2690,7 +2691,7 @@ MonoBehaviour:
   playerMoney: 100
   _AbilityExplosionPrefab: {fileID: 7105922310121204203, guid: 18b4a1fe5d53d064a868637ee2d97892, type: 3}
   _AbilityBoxPrefab: {fileID: 1140920428930705714, guid: 93899ca568c398d47970268692102a47, type: 3}
-  _AbilityExplosiveFish: {fileID: 1140920428930705714, guid: 92e3ebc818a42a44581cf36777554b33, type: 3}
+  _AbilityExplosiveFish: {fileID: 6578889837700902900, guid: fd371eb3fec972844ac8eeef3089b48c, type: 3}
   HUDScript: {fileID: 5796684668787035884}
 --- !u!114 &2626668998523703839
 MonoBehaviour:
@@ -3088,6 +3089,7 @@ Transform:
   m_Children:
   - {fileID: 2626668998248113442}
   - {fileID: 2626668998526110816}
+  - {fileID: 1857384869197218637}
   m_Father: {fileID: 2626668998523703812}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -4933,6 +4935,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &4351266626030115514
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1857384869197218637}
+  m_Layer: 0
+  m_Name: AimPositionReference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1857384869197218637
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4351266626030115514}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2626668999290129638}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4388339087899596451
 GameObject:
   m_ObjectHideFlags: 0
@@ -7087,6 +7120,8 @@ MonoBehaviour:
   Ability2Preview: {fileID: 1269715714052586921}
   ShopPreviewIcon1: {fileID: 7245416035532287246}
   ShopPreviewIcon2: {fileID: 783270361426888533}
+  AbilityOffer1: 
+  AbilityOffer2: 
 --- !u!1 &6752518355494964895
 GameObject:
   m_ObjectHideFlags: 0
