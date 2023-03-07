@@ -6,6 +6,10 @@ using Cinemachine;
 
 public class CharacterAttack : MonoBehaviour
 {
+
+    //adding slash sound effect
+    [SerializeField] private AudioSource SlashSoundEffect;
+
     //For aim
     [Header("Aim")]
     [SerializeField]
@@ -48,6 +52,7 @@ public class CharacterAttack : MonoBehaviour
     public void hitInput(InputAction.CallbackContext context)
     {
         _hit = true;
+        SlashSoundEffect.Play();
     }
 
     // Update is called once per frame
