@@ -54,10 +54,7 @@ public class ShopUIPurchase : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
-    {
-        OnEnable();
-    }
+
     void OnEnable()
     {
         initialSet();
@@ -123,8 +120,8 @@ public class ShopUIPurchase : MonoBehaviour
         shopTriplets[1] = new triplet(playerAbilities.getAbilityName(1));
         shopTriplets[2] = new triplet(playerAbilities.getAbilityName(2));
 
-        shopTriplets[3] = new triplet(AbilityOffer1);
-        shopTriplets[4] = new triplet(AbilityOffer2);
+        shopTriplets[3] = new triplet("ExplosiveFishAbility");
+        shopTriplets[4] = new triplet("SchrodingerBox");
         setTextAndIcons();
     }
     //for event trigger system
