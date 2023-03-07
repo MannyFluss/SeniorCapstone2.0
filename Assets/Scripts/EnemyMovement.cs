@@ -76,6 +76,7 @@ public class EnemyMovement : MonoBehaviour
             if(type == "Piranha")
             {
                 attack.PiranhaAttack();
+                
             }
 
             if(type == "ArcherFish")
@@ -85,7 +86,7 @@ public class EnemyMovement : MonoBehaviour
 
             if(type == "Betta")
             {
-                attack.BettaAttack();
+                attack.BettaFishAttack();
             }
         }
         

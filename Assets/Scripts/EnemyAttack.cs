@@ -26,6 +26,11 @@ public class EnemyAttack : MonoBehaviour
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;
         GetComponent<Collider>().enabled = false;
+
+        //StartCoroutine(PiranhaCooldown());
+        //StartCoroutine(PufferCooldown());
+        StartCoroutine(ArcherCooldown());
+        //StartCoroutine(BettaCooldown());
     }
 
     // Update is called once per frame
@@ -33,17 +38,17 @@ public class EnemyAttack : MonoBehaviour
     {
     }
 
-    public void PiranhaAttack()
+    public void BettaFishAttack()
     {
         if(_attackAvailable)
         {
             enemyMovement.Charge();
-            StartCoroutine(PiranhaAttactTimer());
-            StartCoroutine(PiranhaCooldown());
+            StartCoroutine(BettaFishAttactTimer());
+            StartCoroutine(BettaFishCooldown());
         }
     }
 
-    IEnumerator PiranhaAttactTimer()
+    IEnumerator BettaFishAttactTimer()
     {
         GetComponent<Collider>().enabled = true;
         meshRenderer.enabled = true;
@@ -52,7 +57,7 @@ public class EnemyAttack : MonoBehaviour
         meshRenderer.enabled = false;
     }
 
-    IEnumerator PiranhaCooldown()
+    IEnumerator BettaFishCooldown()
     {
         _attackAvailable = false;
         yield return new WaitForSeconds(cooldown);
@@ -114,22 +119,23 @@ public class EnemyAttack : MonoBehaviour
         enemyMovement._avoidPlayer = false;
     }
 
-    public void BettaAttack()
+    public void PiranhaAttack()
     {
         if (_attackAvailable)
         {
-            StartCoroutine(BettaShortAttackTimer());
-            StartCoroutine(BettaCooldown());
+            StartCoroutine(PiranhaAttackTimer());
+            StartCoroutine(PiranhaCooldown());
         }
 
     }
 
-    IEnumerator BettaShortAttackTimer()
+    IEnumerator PiranhaAttackTimer()
     {
-        bettaShort.SetActive(true);
+        GetComponent<Collider>().enabled = true;
+        meshRenderer.enabled = true;
         yield return new WaitForSeconds(attackLast);
-        bettaShort.SetActive(false);
-        StartCoroutine(BettaMediumAttackTimer());
+        GetComponent<Collider>().enabled = false;
+        meshRenderer.enabled = false;
     }
 
     IEnumerator BettaMediumAttackTimer()
@@ -147,7 +153,7 @@ public class EnemyAttack : MonoBehaviour
         bettaLong.SetActive(false);
     }
 
-    IEnumerator BettaCooldown()
+    IEnumerator PiranhaCooldown()
     {
         enemyMovement._pursuePlayer = false;
         _attackAvailable = false;
