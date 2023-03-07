@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class Tentacle
 {
@@ -29,7 +30,7 @@ public class BossBehavior : MonoBehaviour
 {
     //Boss properties
     private int stage = 1;
-    public int health = 100;
+    public float health = 100f;
     bool tentacleFrenzyInProgress = false;
     bool wipeOutInProgress = false;
     bool returnToSenderInProgress = false;
@@ -66,6 +67,9 @@ public class BossBehavior : MonoBehaviour
     [SerializeField]
     PlayableDirector leftCrane;
 
+    [SerializeField]
+    private Image healthBar;
+
 
     void Start()
     { 
@@ -92,7 +96,6 @@ public class BossBehavior : MonoBehaviour
 
     void Update()
     {
-        healthText.text = health.ToString();
         healthCheckHandler();
     }
 
@@ -116,6 +119,8 @@ public class BossBehavior : MonoBehaviour
         {
             changeStage(3);
         }
+
+        healthBar.rectTransform.localScale = new Vector3(health / 100f, 0.25f, 1f);
 
     }
 
