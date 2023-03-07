@@ -10,6 +10,9 @@ using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //added Player dash sound effect
+    [SerializeField] private AudioSource DashSoundEffect;
+
     [Header("Movement Variable")]
     public float moveSpeed = 4f;
     public float jumpForce = 4f;
@@ -111,6 +114,8 @@ public class PlayerMovement : MonoBehaviour
         if(characterController.isGrounded && isDashCooledDown)
         {
             _dash = true;
+            //dash sound effect
+            DashSoundEffect.Play();
         }
     }
 

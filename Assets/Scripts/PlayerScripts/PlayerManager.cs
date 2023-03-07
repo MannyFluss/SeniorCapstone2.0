@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    //added DamageTaken sound effect
+    [SerializeField] private AudioSource DamageTakenSoundEffect;
+
     [Header("Player Stats")]
     public float health = 9;
 
@@ -51,6 +54,10 @@ public class PlayerManager : MonoBehaviour
             health--;
             StartCoroutine(HitCooldown());
             //movement.playerHit(collision.transform);
+
+            //added damagetaken sound effect
+            DamageTakenSoundEffect.Play();
+
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -60,6 +67,10 @@ public class PlayerManager : MonoBehaviour
             health-= 3;
             StartCoroutine(HitCooldown());
             //movement.playerHit(other.transform);
+
+            //added damagetaken sound effect
+            DamageTakenSoundEffect.Play();
+
         }
     }
 }
