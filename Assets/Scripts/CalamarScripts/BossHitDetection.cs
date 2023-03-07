@@ -16,7 +16,7 @@ public class BossHitDetection : MonoBehaviour
     {
         if(other.gameObject.tag == "Attack" && bb.canBeHit)
         {
-            bb.health-= 3;
+            bb.health-= 0.8f;
         }
     }
 }
