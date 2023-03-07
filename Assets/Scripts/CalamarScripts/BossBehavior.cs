@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class Tentacle
 {
@@ -29,7 +30,7 @@ public class BossBehavior : MonoBehaviour
 {
     //Boss properties
     private int stage = 1;
-    public int health = 100;
+    public float health = 100f;
     bool tentacleFrenzyInProgress = false;
     bool wipeOutInProgress = false;
     bool returnToSenderInProgress = false;
@@ -66,6 +67,9 @@ public class BossBehavior : MonoBehaviour
     [SerializeField]
     PlayableDirector leftCrane;
 
+    [SerializeField]
+    private Image healthBar;
+
 
     void Start()
     { 
@@ -92,7 +96,6 @@ public class BossBehavior : MonoBehaviour
 
     void Update()
     {
-        healthText.text = health.ToString();
         healthCheckHandler();
     }
 
@@ -116,6 +119,8 @@ public class BossBehavior : MonoBehaviour
         {
             changeStage(3);
         }
+
+        healthBar.rectTransform.localScale = new Vector3(health / 100f, 0.25f, 1f);
 
     }
 
@@ -146,12 +151,12 @@ public class BossBehavior : MonoBehaviour
         {
             if (tentacles[i].slam)
             {
-                tentacles[i].tentacleObject.transform.localRotation = Quaternion.Lerp(tentacles[i].tentacleObject.transform.localRotation, tentacles[i].rotateTo, 0.2f);
+                tentacles[i].tentacleObject.transform.localRotation = Quaternion.Lerp(tentacles[i].tentacleObject.transform.localRotation, tentacles[i].rotateTo, 0.3f);
             }
             if (tentacles[i].moveBack)
             {
                 tentacles[i].tentacleObject.transform.position = Vector3.Lerp(tentacles[i].tentacleObject.transform.position, tentacles[i].originalPosition, 0.01f);
-                tentacles[i].tentacleObject.transform.localRotation = Quaternion.Lerp(tentacles[i].tentacleObject.transform.localRotation, Quaternion.Euler(0,0,0), 0.05f);
+                tentacles[i].tentacleObject.transform.localRotation = Quaternion.Lerp(tentacles[i].tentacleObject.transform.localRotation, Quaternion.Euler(0,0,0), 0.1f);
             }
             else if (!tentacles[i].slam && tentacles[i].tentacleObject.transform.localRotation != tentacles[i].rotateFrom)
             {
@@ -178,7 +183,7 @@ public class BossBehavior : MonoBehaviour
             }
             if (tentacles[0].sweep)
             {
-                tentacles[0].tentacleObject.transform.localPosition = Vector3.Lerp(tentacles[0].tentacleObject.transform.localPosition, new Vector3(-8, 3, -6f), 0.03f);
+                tentacles[0].tentacleObject.transform.localPosition = Vector3.Lerp(tentacles[0].tentacleObject.transform.localPosition, new Vector3(-8, 3, -6f), 0.033f);
             }
             else
             {
@@ -203,12 +208,12 @@ public class BossBehavior : MonoBehaviour
         if(tentacles[0].moveBack)
         {
             tentacles[0].tentacleObject.transform.position = Vector3.Lerp(tentacles[0].tentacleObject.transform.position, tentacles[0].originalPosition, 0.01f);
-            tentacles[0].tentacleObject.transform.localRotation = Quaternion.Lerp(tentacles[0].tentacleObject.transform.localRotation, Quaternion.Euler(0, 0, 0), 0.05f);
+            tentacles[0].tentacleObject.transform.localRotation = Quaternion.Lerp(tentacles[0].tentacleObject.transform.localRotation, Quaternion.Euler(0, 0, 0), 0.075f);
         }
         if (tentacles[3].moveBack)
         {
             tentacles[3].tentacleObject.transform.position = Vector3.Lerp(tentacles[3].tentacleObject.transform.position, tentacles[3].originalPosition, 0.01f);
-            tentacles[3].tentacleObject.transform.localRotation = Quaternion.Lerp(tentacles[3].tentacleObject.transform.localRotation, Quaternion.Euler(0, 0, 0), 0.05f);
+            tentacles[3].tentacleObject.transform.localRotation = Quaternion.Lerp(tentacles[3].tentacleObject.transform.localRotation, Quaternion.Euler(0, 0, 0), 0.075f);
         }
     }
 
@@ -269,9 +274,9 @@ public class BossBehavior : MonoBehaviour
     }
     public void canBeHitToggleOn()
     {
+        StopAllCoroutines();
         moveBackInProgress = true;
         canBeHit = true;
-        StopAllCoroutines();
     }
 
     public void canBeHitToggleOff()
@@ -457,7 +462,7 @@ public class BossBehavior : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 tentacles[0].rotateTo = tentacles[0].tentacleObject.transform.localRotation * Quaternion.Euler(new Vector3(90, 0, 0));
                 tentacles[0].slam = true;
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(1f);
                 tentacles[0].sweep = true;
                 yield return new WaitForSeconds(3f);
                 tentacles[0].moveBack = true;
@@ -473,7 +478,7 @@ public class BossBehavior : MonoBehaviour
                 yield return new WaitForSeconds(1f);
                 tentacles[3].rotateTo = tentacles[3].tentacleObject.transform.localRotation * Quaternion.Euler(new Vector3(90, 0, 0));
                 tentacles[3].slam = true;
-                yield return new WaitForSeconds(1.5f);
+                yield return new WaitForSeconds(1f);
                 tentacles[3].sweep = true;
                 yield return new WaitForSeconds(3f);
                 tentacles[3].moveBack = true;
@@ -515,12 +520,29 @@ public class BossBehavior : MonoBehaviour
     /// <returns></returns>
     IEnumerator dropTrash(int index)
     {
-        
+        int throws = 10;
+        if (health < 60)
+        {
+            throws = 16;
+        }
         yield return new WaitForSeconds(1f);
-        trash[trashNum] = Instantiate(trashList[Random.Range(0, trashList.Length)], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
-        trashNum++;
-        yield return new WaitForSeconds(2.5f);
-        Destroy(roundIndicators[index]);
+        if (index == throws)
+        {
+            trash[trashNum] = Instantiate(trashList[0], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
+            trashNum++;
+            yield return new WaitForSeconds(2.5f);
+            Destroy(roundIndicators[index]);
+        }
+        else
+        {
+            trash[trashNum] = Instantiate(trashList[Random.Range(1, trashList.Length)], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
+            trashNum++;
+            yield return new WaitForSeconds(2.5f);
+            Destroy(roundIndicators[index]);
+            yield return new WaitForSeconds(0.25f);
+            Destroy(trash[index]);
+        }
+        
     }
 
 }
