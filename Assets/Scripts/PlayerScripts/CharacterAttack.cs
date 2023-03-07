@@ -29,6 +29,8 @@ public class CharacterAttack : MonoBehaviour
     private PlayerInput playerInput;
     [SerializeField]
     public GameObject AimPositionReference;
+    [SerializeField]
+    public GameObject TabHud,ShopHud;
 
 
     private void Awake()
@@ -60,15 +62,15 @@ public class CharacterAttack : MonoBehaviour
             handleAim();
             handleHit();
         }
-        
     }
+    
     public Transform getAimArrow()
     {
         return aimArrow;
     }
     void handleHit()
     {
-        if(canHit && _hit)
+        if(canHit && _hit && ShopHud.activeSelf == false && TabHud.activeSelf==false)
         {
             _hit = false;
             StartCoroutine(hit());

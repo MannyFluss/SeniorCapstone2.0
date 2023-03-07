@@ -28,7 +28,8 @@ public class CharacterAbilityScript : MonoBehaviour
     public GameObject _AbilityBoxPrefab;
     [SerializeField]
     public GameObject _AbilityExplosiveFish;
-
+    [SerializeField]
+    public GameObject _AbilityNavalMine;
     [SerializeField]
     public PlayerHud HUDScript;
     //contains references to the currently chosen abilities
@@ -308,6 +309,9 @@ public class CharacterAbilityScript : MonoBehaviour
                 break;
             case "ExplosiveFishAbility":
                 playerAbilities[_index] = gameObject.AddComponent<ExplosiveFishAbility>();
+                break;
+            case "NavalMine":
+                playerAbilities[_index] = gameObject.AddComponent<NavalMine>();
                 break;
             default:
                 break;

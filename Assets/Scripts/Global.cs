@@ -18,6 +18,7 @@ public class Global : MonoBehaviour
             AbilityIcons.Add("ClawsOff","clawsOffTemp");
             AbilityIcons.Add("SchrodingerBox","HUD_schrodinger_box");
             AbilityIcons.Add("ExplosiveFishAbility","HUD_fish_barrel");
+            AbilityIcons.Add("NavalMine","HUD_naval_mine");
             AbilityIcons.Add("empty", "HUD_no_ability");
 
             DontDestroyOnLoad(gameObject);

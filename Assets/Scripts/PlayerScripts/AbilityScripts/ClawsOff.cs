@@ -25,6 +25,24 @@ public class ClawsOff : BaseAbilityScript
     }
 
 }
+public class NavalMine : BaseAbilityScript
+{
+    new float abilityCoolDown = 1f;
+    new public string abilityName = BaseAbilityScript.AbilitiesList[3];
+    public override void OnButtonClick()
+    {
+        if (getCoolDownStatus())
+        {
+            return;
+        }
+        Instantiate(parentScriptRef._AbilityNavalMine,myParent.transform.position,Quaternion.identity);
+        startCoolDown(abilityCoolDown);
+    }
+    public override string getAbilityName()
+    {
+        return abilityName;
+    }
+}
 
 public class SchrodingerBox : BaseAbilityScript
 {
