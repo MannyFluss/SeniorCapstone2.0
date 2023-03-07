@@ -2747,6 +2747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamageTakenSoundEffect: {fileID: 7356431224315037562}
   health: 9
+  PlayerHUDReference: {fileID: 5796684668787035884}
 --- !u!54 &2626668998523703838
 Rigidbody:
   m_ObjectHideFlags: 0

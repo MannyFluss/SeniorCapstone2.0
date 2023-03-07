@@ -13,6 +13,8 @@ public class PlayerManager : MonoBehaviour
     private bool canBeHit = true;
 
     PlayerMovement movement;
+    [SerializeField]
+    PlayerHud PlayerHUDReference;
 
 
     // Start is called before the first frame update
@@ -52,9 +54,10 @@ public class PlayerManager : MonoBehaviour
         {
             
             health--;
+
+
             StartCoroutine(HitCooldown());
             //movement.playerHit(collision.transform);
-
             //added damagetaken sound effect
             DamageTakenSoundEffect.Play();
 
@@ -65,6 +68,8 @@ public class PlayerManager : MonoBehaviour
         if (other.gameObject.tag == "EnemyAttack" && canBeHit)
         {
             health-= 3;
+            PlayerHUDReference.setUIHearts(((int)health) );
+
             StartCoroutine(HitCooldown());
             //movement.playerHit(other.transform);
 
