@@ -6,6 +6,9 @@ public class TrashBoxBehavior : MonoBehaviour
 {
     Rigidbody rb;
 
+    [SerializeField]
+    bool breaks;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -515,12 +515,29 @@ public class BossBehavior : MonoBehaviour
     /// <returns></returns>
     IEnumerator dropTrash(int index)
     {
-        
+        int throws = 10;
+        if (health < 60)
+        {
+            throws = 16;
+        }
         yield return new WaitForSeconds(1f);
-        trash[trashNum] = Instantiate(trashList[Random.Range(0, trashList.Length)], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
-        trashNum++;
-        yield return new WaitForSeconds(2.5f);
-        Destroy(roundIndicators[index]);
+        if (index == throws)
+        {
+            trash[trashNum] = Instantiate(trashList[0], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
+            trashNum++;
+            yield return new WaitForSeconds(2.5f);
+            Destroy(roundIndicators[index]);
+        }
+        else
+        {
+            trash[trashNum] = Instantiate(trashList[Random.Range(1, trashList.Length)], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
+            trashNum++;
+            yield return new WaitForSeconds(2.5f);
+            Destroy(roundIndicators[index]);
+            yield return new WaitForSeconds(0.25f);
+            Destroy(trash[index]);
+        }
+        
     }
 
 }
