@@ -12,9 +12,6 @@ public class Global : MonoBehaviour
         if (Instance==null)
         {
             Instance = this;
-            //AbilityIcons = new Dictionary<string, Sprite>();
-            //THIS TOOK WAY TOO LONG TO DO naming convention is beyond human comprehension
-
             AbilityIcons.Add("ClawsOff","clawsOffTemp");
             AbilityIcons.Add("SchrodingerBox","HUD_schrodinger_box");
             AbilityIcons.Add("ExplosiveFishAbility","HUD_fish_barrel");

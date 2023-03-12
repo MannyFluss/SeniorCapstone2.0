@@ -10,7 +10,7 @@ public class ExplosiveFish : MonoBehaviour
     float timeUntilExplode = 3.0f;
     Vector3 directionMoving = Vector3.zero;
     float moveSpeed = 50f;
-
+    private bool flag = true;
     void Start()
     {
         Destroy(gameObject,timeUntilExplode);
@@ -18,7 +18,10 @@ public class ExplosiveFish : MonoBehaviour
 
     void OnDestroy()
     {
-        Instantiate(explosionReference,this.transform.position,Quaternion.identity);
+        if (flag==false)
+        {
+            Instantiate(explosionReference,this.transform.position,Quaternion.identity);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -41,6 +44,7 @@ public class ExplosiveFish : MonoBehaviour
         }
         if (other.tag == "Enemy")
         {
+            flag = false;
             Destroy(gameObject);
         }
     }
