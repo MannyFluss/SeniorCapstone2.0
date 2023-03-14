@@ -70,7 +70,7 @@ public class ExplosiveFishAbility : BaseAbilityScript
 {
     new float abilityCoolDown = 3.4f;
     new public string abilityName = BaseAbilityScript.AbilitiesList[2];
-    private Vector3 spawnOffset = new Vector3(0,-1,0);
+    private Vector3 spawnOffset = new Vector3(0,0.5f,0);
 
 
     public override void OnButtonClick()
