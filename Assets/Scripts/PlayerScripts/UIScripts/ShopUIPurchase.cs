@@ -45,16 +45,20 @@ public class ShopUIPurchase : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI shopAbility1Text;
-
     [SerializeField]
     TextMeshProUGUI shopAbility2Text;
-    
     [SerializeField]
     Image Ability1Preview, Ability2Preview, ShopPreviewIcon1, ShopPreviewIcon2; 
+
+    [SerializeField]
+    TextMeshProUGUI PlayerAbility1Description, PlayerAbility2Description; 
+    [SerializeField]
+    Sprite PlayerUnselectedSprite, PlayerSelectedSprite;
+    [SerializeField]
+    Image PlayerAbility1Inventory,PlayerAbility2Inventory;
     
 
     // Start is called before the first frame update
-
     void OnEnable()
     {
         initialSet();
@@ -68,9 +72,14 @@ public class ShopUIPurchase : MonoBehaviour
         shopMarker.transform.position = new Vector3(99999,99999,99999);
         playerMarkerPosition = -1;
         shopMarkerPosition = -1;
+
+        PlayerAbility1Inventory.sprite = PlayerUnselectedSprite;
+        PlayerAbility2Inventory.sprite = PlayerUnselectedSprite;
+
     }
     void purchase()
     {
+        shopMarkerPosition = 4;
         if (shopMarkerPosition == -1 || playerMarkerPosition == -1 || shopTriplets[shopMarkerPosition].ability == "purchased")
         {
             return;
@@ -94,6 +103,7 @@ public class ShopUIPurchase : MonoBehaviour
         shopTriplets[shopMarkerPosition].description = "purchased";
         deselectMarkers();
         setTextAndIcons();
+        gameObject.SetActive(false);
 
     }
     void setTextAndIcons()
@@ -110,6 +120,16 @@ public class ShopUIPurchase : MonoBehaviour
 
         ShopPreviewIcon1.sprite = Global.Instance.getIconTexture(shopTriplets[3].ability);
         ShopPreviewIcon2.sprite = Global.Instance.getIconTexture(shopTriplets[4].ability);
+
+        // new shop text set
+        Ability1Preview.sprite = Global.Instance.getIconTexture(playerAbilities.getAbilityName(0));
+        Ability2Preview.sprite = Global.Instance.getIconTexture(playerAbilities.getAbilityName(1));
+
+        PlayerAbility1Description.text = BaseAbilityScript.AbilityDescriptions[playerAbilities.getAbilityName(0)];
+        PlayerAbility2Description.text = BaseAbilityScript.AbilityDescriptions[playerAbilities.getAbilityName(1)];
+
+
+
 
     }
     [SerializeField]
@@ -163,6 +183,22 @@ public class ShopUIPurchase : MonoBehaviour
             shopMarker.transform.position = _clickedObject.transform.position;
             shopMarkerPosition = 4;
             return;
+        }
+
+        if (_clickedObject.name == "ImageBackground1")
+        {
+            //set image
+            PlayerAbility1Inventory.sprite = PlayerSelectedSprite;
+            PlayerAbility2Inventory.sprite = PlayerUnselectedSprite;
+            playerMarkerPosition = 0;
+        }
+        if (_clickedObject.name == "ImageBackground2")
+        {
+            //set image
+            PlayerAbility2Inventory.sprite = PlayerSelectedSprite;
+            PlayerAbility1Inventory.sprite = PlayerUnselectedSprite;
+
+            playerMarkerPosition = 1;
         }
         //not player
 
