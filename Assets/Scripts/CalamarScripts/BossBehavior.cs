@@ -38,7 +38,7 @@ public class BossBehavior : MonoBehaviour
     public bool canBeHit = false;
 
     //attack randomization
-    string[] attackList = new string[5];
+    string[] attackList = new string[20];
     string[] possibleAttacks = { "wipe out", "tentacle frenzy", "return to sender"};
 
     //tentacle frenzy vars
@@ -288,36 +288,31 @@ public class BossBehavior : MonoBehaviour
     /// </summary>
     private void getAttackPattern()
     {
-        
-        if (stage == 1)
+        for (int i = 0; i < 20; i++)
         {
-            for(int i = 0; i < 2; i++)
+            if (health < 50)
             {
-                attackList[i] = possibleAttacks[Random.Range(0, possibleAttacks.Length)];
+
+                if (i % 3 == 0)
+                {
+                    attackList[i] = "tentacle frenzy";
+                }
+                else
+                {
+                    attackList[i] = possibleAttacks[Random.Range(0, 3)];
+                }
             }
-            //Testing with hard coded
-            attackList[0] = "tentacle frenzy";
-            attackList[1] = "wipe out";
-            attackList[2] = "return to sender";
-        }
-        else if (stage == 2)
-        {
-            for (int i = 0; i < 3; i++)
+            else
             {
-                attackList[i] = possibleAttacks[Random.Range(0, possibleAttacks.Length)];
+                if (i % 4 == 0)
+                {
+                    attackList[i] = "tentacle frenzy";
+                }
+                else
+                {
+                    attackList[i] = possibleAttacks[Random.Range(0, 3)];
+                }
             }
-            attackList[1] = "tentacle frenzy";
-            attackList[3] = "return to sender";
-        }
-        else
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                attackList[i] = possibleAttacks[Random.Range(0, possibleAttacks.Length)];
-            }
-            attackList[0] = "tentacle frenzy";
-            attackList[3] = "tentacle frenzy";
-            attackList[4] = "return to sender";
         }
     }
 
@@ -496,7 +491,6 @@ public class BossBehavior : MonoBehaviour
     /// <returns></returns>
     IEnumerator returnToSenderTiming()
     {
-        //If hp is less than half make sweeps 3
         int throws = 10;
         if (health < 60)
         {
@@ -524,21 +518,21 @@ public class BossBehavior : MonoBehaviour
             throws = 16;
         }
         yield return new WaitForSeconds(1f);
-        if (index == throws)
+        if (index == throws - 1)
         {
-            trash[trashNum] = Instantiate(trashList[0], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
-            trashNum++;
+            GameObject trashBox = Instantiate(trashList[0], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
             yield return new WaitForSeconds(2.5f);
             Destroy(roundIndicators[index]);
+            yield return new WaitForSeconds(10f);
+            Destroy(trashBox);
         }
         else
         {
-            trash[trashNum] = Instantiate(trashList[Random.Range(1, trashList.Length)], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
-            trashNum++;
+            GameObject trashBox = Instantiate(trashList[Random.Range(1, trashList.Length)], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
             yield return new WaitForSeconds(2.5f);
             Destroy(roundIndicators[index]);
             yield return new WaitForSeconds(0.25f);
-            Destroy(trash[index]);
+            Destroy(trashBox);
         }
         
     }

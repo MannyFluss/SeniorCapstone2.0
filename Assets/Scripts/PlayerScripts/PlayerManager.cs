@@ -67,7 +67,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.gameObject.tag == "EnemyAttack" && canBeHit)
         {
-            health-= 3;
+            health-= 1;
             PlayerHUDReference.setUIHearts(((int)health) );
 
             StartCoroutine(HitCooldown());
