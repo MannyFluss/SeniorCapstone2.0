@@ -1155,11 +1155,15 @@ PrefabInstance:
     - target: {fileID: 3900108755196472086, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: OptionImage
       value: 
-      objectReference: {fileID: 21300000, guid: b66f87faa52e4af44bb8c00f013b8939, type: 3}
+      objectReference: {fileID: 21300000, guid: b6229828833f43f42a361af1a609bfc2, type: 3}
     - target: {fileID: 3900108755196472086, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: BackgroundImage
       value: 
-      objectReference: {fileID: 21300000, guid: 7452a46aa8c7e6b43b45633a87ac3612, type: 3}
+      objectReference: {fileID: 21300000, guid: 3a822932de9fe7249b48df8640436a0b, type: 3}
+    - target: {fileID: 3900108755196472086, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
+      propertyPath: BackgroundImageSliced
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3900108755196472087, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
