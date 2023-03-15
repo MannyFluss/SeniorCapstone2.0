@@ -94,7 +94,7 @@ public class CharacterAttack : MonoBehaviour
         {
             Vector3 direction = hitInfo.point;
             direction.y = 0;
-            aimArrow.forward = Quaternion.Euler(0, 90, 0) * (direction - transform.position);
+            aimArrow.forward = Quaternion.Euler(0, 90, 0) * (direction - new Vector3(transform.position.x, 0, transform.position.z));
         }
 
         
