@@ -97,6 +97,7 @@ public class ShopUIPurchase : MonoBehaviour
             setTextAndIcons();
             return;
         }
+        playerAbilities.removeAbility(playerMarkerPosition);
         playerAbilities.AbilityPickUpInteract(shopTriplets[shopMarkerPosition].ability);
         descriptionText.text = shopTriplets[shopMarkerPosition].description;
         shopTriplets[shopMarkerPosition].ability = "purchased";

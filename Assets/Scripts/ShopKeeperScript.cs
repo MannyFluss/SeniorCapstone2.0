@@ -25,7 +25,6 @@ public class ShopKeeperScript : MonoBehaviour
         playerAbilityManager = player.GetComponent<CharacterAbilityScript>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         playMoneyText.text = "Player Money: " + playerAbilityManager.playerMoney;
@@ -34,7 +33,6 @@ public class ShopKeeperScript : MonoBehaviour
         {
             inRange = true;
             
-            initiateShop();
 
 
             
@@ -44,6 +42,10 @@ public class ShopKeeperScript : MonoBehaviour
         }else if (di > interactRange)
         {
             inRange = false;
+        }
+        if (inRange == true && Input.GetKeyDown(KeyCode.F))
+        {
+            initiateShop();
         }
     }
 

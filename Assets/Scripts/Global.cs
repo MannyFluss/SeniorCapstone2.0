@@ -6,6 +6,7 @@ public class Global : MonoBehaviour
     public static Global Instance {get; private set;}
     public int Value;
     public Dictionary<string,string> AbilityIcons = new Dictionary<string, string>();
+    public List<string> playerAbilitiesCopy = new List<string> {"SchrodingerBox","ClawsOff",null};
     
     private void Awake()
     {

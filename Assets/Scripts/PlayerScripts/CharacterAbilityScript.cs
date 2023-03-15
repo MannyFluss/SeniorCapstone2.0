@@ -33,15 +33,25 @@ public class CharacterAbilityScript : MonoBehaviour
     [SerializeField]
     public PlayerHud HUDScript;
     //contains references to the currently chosen abilities
+    
     List<BaseAbilityScript> playerAbilities = new List<BaseAbilityScript> {null,null,null};
 
     //Player Controls
     private PlayerInput playerInput;
 
+    void OnDestroy()
+    {
+        
+        Global.Instance.playerAbilitiesCopy[0] = getAbilityName(0);
+        Global.Instance.playerAbilitiesCopy[1] = getAbilityName(1);
+    }
+
     private void Awake()
     {
         playerInput = new PlayerInput();
+
     }
+    
 
     public string getAbilityName(int index)
     {
@@ -55,6 +65,7 @@ public class CharacterAbilityScript : MonoBehaviour
         }
         return playerAbilities[index].getAbilityName();
     }
+
 
     void Start()
     {
@@ -70,6 +81,9 @@ public class CharacterAbilityScript : MonoBehaviour
         
         playerInput.Input.Skill3.performed += skillThreePressOrHold;
         playerInput.Input.Skill3.canceled += skillThreeReleased;
+
+        AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[0]);
+        AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[1]);
     }
 
     public bool AbilitiesFull()
@@ -325,7 +339,7 @@ public class CharacterAbilityScript : MonoBehaviour
 
 
     }
-    void removeAbility(int _index)
+    public void removeAbility(int _index)
     {
 
         if (_index >= playerAbilities.Count)
