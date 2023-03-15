@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7403180099004859606}
   - component: {fileID: 7403180099004859607}
   - component: {fileID: 7403180099004859604}
+  - component: {fileID: 1771751409254110016}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -97,6 +98,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29ab91a2146442a0b1043158a897767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1771751409254110016
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7403180099004859593}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 37dfcc914e13e405299b474e07789187, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &7403180100158630738
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +181,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 6c79abf57b6fc43b3bbc6c1f256a5871, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -214,6 +235,7 @@ MonoBehaviour:
   bettaShort: {fileID: 0}
   bettaMedium: {fileID: 0}
   bettaLong: {fileID: 0}
+  animator: {fileID: 1771751409254110016}
   enemyMovement: {fileID: 7920459912988967274}
 --- !u!1 &7920459912988967278
 GameObject:

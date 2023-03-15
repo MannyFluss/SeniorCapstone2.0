@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8357177281758525226}
   - component: {fileID: 8357177281758525227}
   - component: {fileID: 8357177281758525224}
+  - component: {fileID: 8686077779111215436}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -97,6 +98,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29ab91a2146442a0b1043158a897767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &8686077779111215436
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8357177281758525237}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b96baf9fb4bae4653bdeac3f02665fde, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &8357177282819872942
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,6 +235,7 @@ MonoBehaviour:
   bettaShort: {fileID: 0}
   bettaMedium: {fileID: 0}
   bettaLong: {fileID: 0}
+  animator: {fileID: 0}
   enemyMovement: {fileID: 8695581397578855062}
 --- !u!1 &8695581397578855058
 GameObject:
