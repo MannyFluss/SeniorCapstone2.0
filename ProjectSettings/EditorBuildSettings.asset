@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 397adbbb15c464f57a5cbdbead4f5be3
   - enabled: 1
-    path: Assets/Scenes/ArtTest.unity
+    path: Assets/Scenes/HackNSlash.unity
     guid: 4eaa48116e9e24265939dc118a50b214
   - enabled: 1
     path: Assets/Scenes/Calamar1.unity
