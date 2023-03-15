@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
 {
     //added Player dash sound effect
     [SerializeField] private AudioSource DashSoundEffect;
+    //added Player Jump sound Effect
+    [SerializeField] private AudioSource JumpSoundEffect;
 
     [Header("Movement Variable")]
     public float moveSpeed = 4f;
@@ -220,6 +222,8 @@ public class PlayerMovement : MonoBehaviour
         {
             _jump = true;
             currentMovement.y = initialJumpVelocity;
+            //jump sound effect
+            JumpSoundEffect.Play();
         }
     }
 
