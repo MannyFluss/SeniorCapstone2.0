@@ -51,7 +51,7 @@ public class ShopUIPurchase : MonoBehaviour
     Image Ability1Preview, Ability2Preview, ShopPreviewIcon1, ShopPreviewIcon2; 
 
     [SerializeField]
-    TextMeshProUGUI PlayerAbility1Description, PlayerAbility2Description; 
+    TextMeshProUGUI PlayerAbility1Description, PlayerAbility2Description, PlayerAbility1Name, PlayerAbility2Name, ShopAbilityName; 
     [SerializeField]
     Sprite PlayerUnselectedSprite, PlayerSelectedSprite;
     [SerializeField]
@@ -129,12 +129,21 @@ public class ShopUIPurchase : MonoBehaviour
         PlayerAbility1Description.text = BaseAbilityScript.AbilityDescriptions[playerAbilities.getAbilityName(0)];
         PlayerAbility2Description.text = BaseAbilityScript.AbilityDescriptions[playerAbilities.getAbilityName(1)];
 
+        ShopAbilityName.text = shopTriplets[4].ability;
+        PlayerAbility1Name.text = playerAbilities.getAbilityName(0);
+        PlayerAbility2Name.text = playerAbilities.getAbilityName(1);
+    
+
 
 
 
     }
+    public void setAbilityOffer(string _set)
+    {
+        AbilityOffer = _set;
+    }
     [SerializeField]
-    string AbilityOffer1, AbilityOffer2;
+    string AbilityOffer;
     void initialSet()
     {
         shopTriplets[0] = new triplet(playerAbilities.getAbilityName(0));
@@ -142,7 +151,7 @@ public class ShopUIPurchase : MonoBehaviour
         shopTriplets[2] = new triplet(playerAbilities.getAbilityName(2));
 
         shopTriplets[3] = new triplet("NavalMine");
-        shopTriplets[4] = new triplet("NavalMine");
+        shopTriplets[4] = new triplet(AbilityOffer);
         setTextAndIcons();
     }
     //for event trigger system
