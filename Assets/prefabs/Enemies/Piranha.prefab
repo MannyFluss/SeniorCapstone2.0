@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _invincible: 0
   invincibleCooldown: 1
-  health: 2
+  health: 1
   attackDis: 5
   type: Piranha
   sprite: {fileID: 0}

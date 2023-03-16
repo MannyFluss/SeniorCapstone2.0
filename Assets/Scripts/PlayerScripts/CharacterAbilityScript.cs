@@ -207,14 +207,14 @@ public class CharacterAbilityScript : MonoBehaviour
     void getInput()
     {
         //input 1
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             if (playerAbilities[0]!=null)
             {
                 playerAbilities[0].OnButtonClick();
             }
         }
-        if(Input.GetMouseButton(0))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             if (playerAbilities[0]!=null)
             {
@@ -222,7 +222,7 @@ public class CharacterAbilityScript : MonoBehaviour
             }
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             if (playerAbilities[0]!=null)
             {
@@ -230,21 +230,21 @@ public class CharacterAbilityScript : MonoBehaviour
             }
         }
         // input 2
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetKeyDown(KeyCode.V))
         {
             if (playerAbilities[1]!=null)
             {
                 playerAbilities[1].OnButtonClick();
             }
         }
-        if(Input.GetMouseButton(1))
+        if(Input.GetKeyDown(KeyCode.V))
         {
             if (playerAbilities[1]!=null)
             {
                 playerAbilities[1].OnButtonHeldDown();
             }
         }
-        if(Input.GetMouseButtonUp(1))
+        if(Input.GetKeyDown(KeyCode.V))
         {
             if (playerAbilities[1]!=null)
             {
@@ -253,14 +253,14 @@ public class CharacterAbilityScript : MonoBehaviour
         }
         //input 3
         
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.Q))
         {
             if (playerAbilities[2]!=null)
             {
                 playerAbilities[2].OnButtonClick();
             }
         }
-        if(Input.GetKey(KeyCode.E))
+        if(Input.GetKey(KeyCode.Q))
         {
             if (playerAbilities[2]!=null)
             {
@@ -268,7 +268,7 @@ public class CharacterAbilityScript : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyUp(KeyCode.E))
+        if(Input.GetKeyUp(KeyCode.Q))
         {
             if (playerAbilities[2]!=null)
             {
