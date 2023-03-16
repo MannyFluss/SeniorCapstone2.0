@@ -11,6 +11,7 @@ public class EnemyAttack : MonoBehaviour
     public GameObject bettaShort;
     public GameObject bettaMedium;
     public GameObject bettaLong;
+    public Animator animator;
     private bool _attackAvailable = true;
     private MeshRenderer meshRenderer;
     private Transform player;
@@ -26,7 +27,6 @@ public class EnemyAttack : MonoBehaviour
         meshRenderer = gameObject.GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;
         GetComponent<Collider>().enabled = false;
-
         //StartCoroutine(PiranhaCooldown());
         //StartCoroutine(PufferCooldown());
         StartCoroutine(ArcherCooldown());
@@ -50,9 +50,11 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator BettaFishAttactTimer()
     {
+        animator.SetBool("Charge", true);
         GetComponent<Collider>().enabled = true;
         meshRenderer.enabled = true;
         yield return new WaitForSeconds(attackLast);
+        animator.SetBool("Charge", false);
         GetComponent<Collider>().enabled = false;
         meshRenderer.enabled = false;
     }
@@ -78,6 +80,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (_attackAvailable)
         {
+            animator.SetBool("isAttack", true);
             GameObject arrow = Instantiate(projectile);
             arrow.transform.position = transform.position;
             StartCoroutine(ArcherCooldown());
@@ -94,14 +97,17 @@ public class EnemyAttack : MonoBehaviour
         _attackAvailable = true;
         enemyMovement._pursuePlayer = true;
         enemyMovement._avoidPlayer = false;
+        animator.SetBool("isAttack", false);
     }
 
     IEnumerator PufferAttackTimer()
     {
+        animator.SetBool("isPuffedUp", true);
         GetComponent<Collider>().enabled = true;
         meshRenderer.enabled = true;
         enemyMovement._invincible = true;
         yield return new WaitForSeconds(attackLast);
+        animator.SetBool("isPuffedUp", false);
         enemyMovement._invincible = false;
         GetComponent<Collider>().enabled = false;
         meshRenderer.enabled = false;
