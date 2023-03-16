@@ -146,8 +146,8 @@ public class EnemyMovement : MonoBehaviour
         {
             KnockBack(from: attackObject.transform.position, force: 500f);
             health -= 1;
+            StartCoroutine(DamageCoolDown());
         }
-        StartCoroutine(DamageCoolDown());
     }
 
     IEnumerator DamageCoolDown()
