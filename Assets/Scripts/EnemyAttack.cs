@@ -112,13 +112,14 @@ public class EnemyAttack : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         meshRenderer.enabled = false;
         enemyMovement._invincible = false;
+        enemyMovement._avoidPlayer = true;
     }
 
 
     IEnumerator PufferCooldown()
     {
         enemyMovement._pursuePlayer = false;
-        enemyMovement._avoidPlayer = true;
+        //enemyMovement._avoidPlayer = true;
         _attackAvailable = false;
         yield return new WaitForSeconds(cooldown);
         _attackAvailable = true;
