@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private AudioSource JumpSoundEffect;
 
     [Header("Movement Variable")]
-    public float moveSpeed = 4f;
+    public float moveSpeed = 6f;
     public float jumpForce = 4f;
     public float dashForce = 4f;
     public float distToGround = 1f;
