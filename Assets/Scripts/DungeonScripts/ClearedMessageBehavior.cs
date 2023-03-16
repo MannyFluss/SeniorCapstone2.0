@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class ClearedMessageBehavior : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public GameObject DungeonManager;
+    public bool Cleared = false;
 
     // Update is called once per frame
     void Update()
