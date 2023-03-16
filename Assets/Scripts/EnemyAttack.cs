@@ -161,11 +161,11 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator PiranhaCooldown()
     {
-        enemyMovement._pursuePlayer = false;
+        //enemyMovement._pursuePlayer = false;
         _attackAvailable = false;
         yield return new WaitForSeconds(cooldown);
         _attackAvailable = true;
-        enemyMovement._pursuePlayer = true;
+        //enemyMovement._pursuePlayer = true;
     }
 
 
