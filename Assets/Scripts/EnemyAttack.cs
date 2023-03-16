@@ -29,7 +29,6 @@ public class EnemyAttack : MonoBehaviour
         GetComponent<Collider>().enabled = false;
         //StartCoroutine(PiranhaCooldown());
         //StartCoroutine(PufferCooldown());
-        StartCoroutine(ArcherCooldown());
         //StartCoroutine(BettaCooldown());
     }
 
@@ -37,6 +36,8 @@ public class EnemyAttack : MonoBehaviour
     void Update()
     {
     }
+
+
 
     public void BettaFishAttack()
     {
@@ -88,7 +89,7 @@ public class EnemyAttack : MonoBehaviour
 
     }
 
-    IEnumerator ArcherCooldown()
+    public IEnumerator ArcherCooldown()
     {
         enemyMovement._pursuePlayer = false;
         enemyMovement._avoidPlayer = true;

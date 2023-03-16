@@ -38,6 +38,10 @@ public class EnemyMovement : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+        if(type == "ArcherFish")
+        {
+            StartCoroutine(attack.ArcherCooldown()); ;
+        }
     }
     private void Update()
     {
