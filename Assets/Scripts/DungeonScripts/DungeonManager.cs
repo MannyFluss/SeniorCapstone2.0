@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class DungeonManager : MonoBehaviour
@@ -8,6 +9,12 @@ public class DungeonManager : MonoBehaviour
     public GameObject[] dungeons = new GameObject[0];
     public GameObject player;
     public List<GameObject> minionPrefabs = new List<GameObject>();
+
+    [Header("Cleared Message Assets")]
+    public Canvas ClearedCanvas;
+    public float AppearTimer;
+    public bool complete = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,7 +75,10 @@ public class DungeonManager : MonoBehaviour
         Debug.Log(currentDungeon.RemainMinions());
         if (currentDungeon.RemainMinions() == 0)
         {
-            
+            complete = true;
+            StartCoroutine(ClearBannerAppear(AppearTimer));
+            complete = false;
+
             if (FindNextDungeon(dungeon: dungeon) != null)
             {
                 Dungeon nextDungeon = FindNextDungeon(dungeon: dungeon).GetComponent<Dungeon>();
@@ -100,5 +110,12 @@ public class DungeonManager : MonoBehaviour
             return dungeons[dungeonIndex + 1];
         }
         return null;
+    }
+
+    IEnumerator ClearBannerAppear(float waitTime)
+    {
+        ClearedCanvas.GetComponent<Canvas>().enabled = true;
+        yield return new WaitForSeconds(waitTime);
+        ClearedCanvas.GetComponent<Canvas>().enabled = false;
     }
 }
