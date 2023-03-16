@@ -306,6 +306,89 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!1 &432065081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 432065083}
+  - component: {fileID: 432065084}
+  - component: {fileID: 432065082}
+  m_Layer: 0
+  m_Name: ConversationEventInfo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &432065082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432065081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1021712463}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  NodeID: 1
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!4 &432065083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432065081}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.71, y: -1.06, z: 1.21}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1529700544}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &432065084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432065081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 0
+  TMPFont: {fileID: 0}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
 --- !u!1 &704762909
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,38 +774,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
---- !u!1 &1558518723
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8283307058266513987, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
-  m_PrefabInstance: {fileID: 1648329070}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1529700544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8283307058266513990, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
   m_PrefabInstance: {fileID: 1648329070}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1529700545
+--- !u!1 &1558518723 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8283307058266513987, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+  m_PrefabInstance: {fileID: 1648329070}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1558518728
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1529700538}
+  m_GameObject: {fileID: 1558518723}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 2
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":638,"yPos":288},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"shop","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":521.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Conversation
-    Here","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":810,"yPos":403},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"sss","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":654,"yPos":123},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"aaaa","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"aaa","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}
   DefaultFont: {fileID: 0}
   NodeSerializedDataList:
-  - {fileID: 507375070}
-  - {fileID: 507375072}
+  - {fileID: 432065084}
+  - {fileID: 432065082}
   ContinueFont: {fileID: 0}
   EndConversationFont: {fileID: 0}
   Event:
@@ -750,7 +832,7 @@ PrefabInstance:
     - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: myConversation
       value: 
-      objectReference: {fileID: 1529700545}
+      objectReference: {fileID: 1558518728}
     - target: {fileID: 8283307058266513987, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_Name
       value: ShopKeeper
@@ -813,7 +895,6 @@ GameObject:
   - component: {fileID: 1674390021}
   - component: {fileID: 1674390020}
   - component: {fileID: 1674390019}
-  - component: {fileID: 1674390022}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera

@@ -84,6 +84,8 @@ public class CharacterAbilityScript : MonoBehaviour
 
         AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[0]);
         AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[1]);
+        
+        
     }
 
     public bool AbilitiesFull()
