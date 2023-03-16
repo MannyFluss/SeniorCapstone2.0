@@ -50,6 +50,8 @@ public class PlayerHud : MonoBehaviour
         string[] currAbilities = new string[] {AbilityScriptRef.getAbilityName(0),AbilityScriptRef.getAbilityName(1)};
         Ability1.sprite = Global.Instance.getIconTexture(currAbilities[0]);
         Ability2.sprite = Global.Instance.getIconTexture(currAbilities[1]);
+
+
         
         // Debug.Log(currAbilities);
         // for(var i=0;i<2;i++)
