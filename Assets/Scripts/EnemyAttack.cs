@@ -109,9 +109,9 @@ public class EnemyAttack : MonoBehaviour
         enemyMovement._invincible = true;
         yield return new WaitForSeconds(attackLast);
         animator.SetBool("isPuffedUp", false);
-        enemyMovement._invincible = false;
         GetComponent<Collider>().enabled = false;
         meshRenderer.enabled = false;
+        enemyMovement._invincible = false;
     }
 
 
