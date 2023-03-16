@@ -12,7 +12,7 @@ public class Global : MonoBehaviour
         if (Instance==null)
         {
             Instance = this;
-            AbilityIcons.Add("ClawsOff","clawsOffTemp");
+            AbilityIcons.Add("ClawsOff","HUD shockwave");
             AbilityIcons.Add("SchrodingerBox","HUD_schrodinger_box");
             AbilityIcons.Add("ExplosiveFishAbility","HUD_fish_barrel");
             AbilityIcons.Add("NavalMine","HUD_naval_mine");
