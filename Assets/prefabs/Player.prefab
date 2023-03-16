@@ -2771,9 +2771,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DashSoundEffect: {fileID: 2386449497121173200}
   JumpSoundEffect: {fileID: 1654990448}
-  moveSpeed: 10
+  moveSpeed: 6.6
   jumpForce: 4
-  dashForce: 10
+  dashForce: 2
   distToGround: 1
   dashCoolDownSeconds: 1
   cloneDeathTime: 0.08
