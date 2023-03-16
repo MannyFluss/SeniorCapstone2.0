@@ -13,7 +13,8 @@ public  class BaseAbilityScript : MonoBehaviour
         {"ClawsOff" , "Attack Enemies in a Radius around you"},
         { "SchrodingerBox", "Upon Dashing, an explosive box will fall from the sky"},
         { "ExplosiveFishAbility", "Summon an explosive fish in front of you, hit it to lo launch"},
-        {"NavalMine","Create a mine that blows up when enemies get close"},
+        {"NavalMine","create a mine on your position that explodes when enemies get close"},
+
         {"empty","No Ability"},
     };
     private static bool initFlag = false;
