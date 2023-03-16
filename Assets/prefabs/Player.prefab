@@ -7576,7 +7576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c84f5e2bbe437040adacd476a01b79d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAbilities: {fileID: 0}
+  playerAbilities: {fileID: 2626668998523703809}
   descriptionText: {fileID: 7997545281468464481}
   playerMarker: {fileID: 1487410181752007419}
   shopMarker: {fileID: 7788093503277209249}
