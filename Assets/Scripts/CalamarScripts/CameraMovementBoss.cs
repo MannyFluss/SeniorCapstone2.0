@@ -21,6 +21,6 @@ public class CameraMovementBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        vcam.transform.position = Vector3.Lerp(vcam.transform.position, new Vector3(player.transform.position.x / moveValue, vcam.transform.position.y, vcam.transform.position.z), 0.1f);
+        vcam.transform.position = Vector3.Lerp(vcam.transform.position, new Vector3(player.transform.position.x / moveValue, vcam.transform.position.y, player.transform.position.z - 7f), 0.1f);
     }
 }
