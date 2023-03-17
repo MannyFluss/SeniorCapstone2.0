@@ -145,7 +145,7 @@ public class ShopUIPurchase : MonoBehaviour
     }
     public void setAbilityOffer(string _set)
     {
-        AbilityOffer = _set;
+        //AbilityOffer = _set;
     }
     [SerializeField]
     string AbilityOffer1, AbilityOffer2;
