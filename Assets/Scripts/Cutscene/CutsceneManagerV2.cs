@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Runtime.ConstrainedExecution;
+using UnityEngine.SceneManagement;
 
 public class CutsceneManagerV2 : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class CutsceneManagerV2 : MonoBehaviour
 
     [Header("Set-Up")]
     public List<cutsceneNarrativePair> cutsceneList = new List<cutsceneNarrativePair>();
+    public string nextSceneName;
 
     [Header("Operating GameObject")]
     public Image GRAPHICS;
@@ -41,7 +43,6 @@ public class CutsceneManagerV2 : MonoBehaviour
 
             StartCoroutine(FadeInAndOut());
         }
-
     }
 
     IEnumerator FadeInAndOut()
@@ -92,6 +93,7 @@ public class CutsceneManagerV2 : MonoBehaviour
             // Pause with black screen
             yield return new WaitForSeconds(transitionTimer);
         }
+        SceneManager.LoadScene(nextSceneName);
         yield return null;
     }
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -277,7 +277,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 258, y: 39}
-  m_SizeDelta: {x: 739, y: 50}
+  m_SizeDelta: {x: 720, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &277022560
 MonoBehaviour:
@@ -326,8 +326,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -362,7 +362,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -981.17596, y: 0, z: 302.85184, w: 0}
+  m_margin: {x: -959.74817, y: 0, z: 302.85184, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -438,6 +438,7 @@ MonoBehaviour:
       darkest moment. And then, an outstretched hand appeared. \u2018You can take
       revenge. You can have power. Follow me.\u2019 And so, Miyo\u2019s journey begins\u2026"
     cutsceneTimer: 7
+  nextSceneName: HackNSlash
   GRAPHICS: {fileID: 1809689302}
   SUBTITLE: {fileID: 277022560}
 --- !u!1 &1172401254
