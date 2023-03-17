@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4898388455773337711}
   - component: {fileID: 124905209728222307}
   - component: {fileID: 8873651734774622366}
+  - component: {fileID: 5210244424417766844}
   m_Layer: 0
   m_Name: portal
   m_TagString: Untagged
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1933075797179821272}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6406198529294312014}
@@ -102,6 +103,26 @@ MonoBehaviour:
   newX: 0
   newY: 1
   newZ: 0
+--- !u!95 &5210244424417766844
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933075797179821272}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 52ba93838f471469abd2e0eb29230c20, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &1979950813291721621
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,6 +253,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6181a636f0cef43d092f8c874e0339bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  am: {fileID: 5210244424417766844}
+  sr: {fileID: 124905209728222307}
 --- !u!65 &228366197354865242
 BoxCollider:
   m_ObjectHideFlags: 0
