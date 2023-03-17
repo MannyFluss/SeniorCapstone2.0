@@ -290,6 +290,7 @@ AnimatorController:
   m_Name: Player
   serializedVersion: 5
   m_AnimatorParameters:
+<<<<<<< Updated upstream
   - m_Name: isRunning
     m_Type: 4
     m_DefaultFloat: 0
@@ -303,6 +304,9 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: isForward
+=======
+  - m_Name: isWalking
+>>>>>>> Stashed changes
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -422,7 +426,11 @@ AnimatorStateMachine:
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
+<<<<<<< Updated upstream
   m_EntryPosition: {x: 200, y: 720, z: 0}
+=======
+  m_EntryPosition: {x: 100, y: 420, z: 0}
+>>>>>>> Stashed changes
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 4401834037498337779}

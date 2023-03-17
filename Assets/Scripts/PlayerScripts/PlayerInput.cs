@@ -104,7 +104,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a6aaf502-335e-40c6-bd02-a1ee39d2a4e8"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": ""Tap,Hold"",
                     ""processors"": """",
                     ""groups"": """",
@@ -115,22 +115,11 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4f4dc4cc-5e89-41ec-84e7-ecb541bf0ee2"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""path"": ""<Keyboard>/v"",
                     ""interactions"": ""Tap,Hold"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Skill2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9f3b5ca2-d724-4947-a1ea-dc246ae2f62d"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": ""Tap,Hold"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Skill3"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
