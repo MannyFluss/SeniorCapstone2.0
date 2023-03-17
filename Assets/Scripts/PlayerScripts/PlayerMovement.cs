@@ -69,12 +69,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private CinemachineVirtualCamera vcam;
 
+    private Animator animator;
+
     private void Awake()
     {
         playerInput = new PlayerInput();
         characterController = GetComponent<CharacterController>();
 
         sprite = GetComponent<SpriteRenderer>().sprite;
+
+        animator = GetComponent<Animator>();
 
         setupJump();
     }
@@ -104,6 +108,42 @@ public class PlayerMovement : MonoBehaviour
         currentMovement.x = currentMovementInput.x;
         currentMovement.z = currentMovementInput.y;
         movementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
+
+        if(currentMovement.x > 0)
+        {
+            animator.SetBool("isRight", true);
+        }
+        else if(currentMovement.x < 0)
+        {
+            animator.SetBool("isRight", false);
+        }
+        else
+        {
+            animator.SetBool("isRight", true);
+        }
+
+        if (currentMovement.z > 0)
+        {
+            animator.SetBool("isForward", true);
+        }
+        else if(currentMovement.z < 0)
+        {
+            animator.SetBool("isForward", false);
+        }
+        else
+        {
+            animator.SetBool("isForward", false);
+        }
+
+        if (movementPressed)
+        {
+            animator.SetBool("isRunning", true);
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
+
     }
 
     public void jumpInput(InputAction.CallbackContext context)
