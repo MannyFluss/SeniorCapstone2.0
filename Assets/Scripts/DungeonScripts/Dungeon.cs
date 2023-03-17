@@ -9,6 +9,8 @@ public class Dungeon : MonoBehaviour
     [HideInInspector]
     public GameObject entrance;
     [HideInInspector]
+    public GameObject exit;
+    [HideInInspector]
     public List<GameObject> spawnedMinions = new List<GameObject>();
     [HideInInspector]
     public List<GameObject> minionSpawns = new List<GameObject>();
@@ -16,12 +18,22 @@ public class Dungeon : MonoBehaviour
     public bool isActive = false;
     [HideInInspector]
     public DungeonManager dungeonManager;
+    private bool hasShowExit = false;
 
     private void Update()
     {
+        if (RemainMinions() <= 0 && isActive)
+        {
+            dungeonManager.DungeonComplete();
+            ShowExit();
+        }
+
         if (!isActive) {
             ClearMinions();
         }
+        KillAllShit();
+
+        
     }
 
 
@@ -85,6 +97,18 @@ public class Dungeon : MonoBehaviour
         }
     }
 
+    public void KillAllShit()
+    {
+        if (Input.GetKey(KeyCode.K))
+        {
+            Debug.Log("sure");
+            if (Input.GetKey(KeyCode.A))
+            {
+                Debug.Log("yeah");
+                ClearMinions();
+            }
+        }
+    }
     /// <summary>
     /// Return dungeon spawn coordinate 
     /// </summary>
@@ -94,6 +118,25 @@ public class Dungeon : MonoBehaviour
     public Vector3 GetSpawnPosition()
     {
         return entrance.transform.position;
+    }
+
+    public void ShowExit()
+    {
+        if (!hasShowExit)
+        {
+            Debug.Log("should exit");
+            Animator am = exit.GetComponent<Exit>().am;
+            SpriteRenderer sr = exit.GetComponent<Exit>().sr;
+            sr.enabled = true;
+            am.SetBool("showExit", true);
+            hasShowExit = true;
+        }
+    }
+    public void HideEntrance()
+    {
+        Debug.Log("shit");
+        Animator am = entrance.GetComponent<Entrance>().am;
+        am.SetBool("disablePortal", true);
     }
 
     /// <summary>

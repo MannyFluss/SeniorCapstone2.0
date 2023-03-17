@@ -14,6 +14,7 @@ public class DungeonManager : MonoBehaviour
     public Canvas ClearedCanvas;
     public float AppearTimer;
     public bool complete = false;
+    public bool msgDelivered = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class DungeonManager : MonoBehaviour
         if (dungeons.Length >= 1)
         {
             dungeons[0].GetComponent<Dungeon>().RandomSpawn();
+            dungeons[0].GetComponent<Dungeon>().HideEntrance();
         }
     }
 
@@ -75,16 +77,16 @@ public class DungeonManager : MonoBehaviour
         Debug.Log(currentDungeon.RemainMinions());
         if (currentDungeon.RemainMinions() == 0)
         {
-            complete = true;
-            StartCoroutine(ClearBannerAppear(AppearTimer));
-            complete = false;
 
             if (FindNextDungeon(dungeon: dungeon) != null)
             {
                 Dungeon nextDungeon = FindNextDungeon(dungeon: dungeon).GetComponent<Dungeon>();
                 player.GetComponent<CharacterController>().enabled = false;
                 player.transform.position = nextDungeon.GetSpawnPosition();
+                nextDungeon.HideEntrance();
                 player.GetComponent<CharacterController>().enabled = true;
+                complete = false;
+                msgDelivered = false;
                 nextDungeon.RandomSpawn();
                 currentDungeon.isActive = false;
             }
@@ -96,6 +98,16 @@ public class DungeonManager : MonoBehaviour
         }
     }
 
+    public void DungeonComplete()
+    {
+        if (!msgDelivered)
+        {
+            StartCoroutine(ClearBannerAppear(AppearTimer));
+            msgDelivered = true;
+        }
+    }
+
+    
 
     /// <summary>
     /// Return next dungeon in dungeons array
