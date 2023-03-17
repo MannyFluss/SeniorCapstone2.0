@@ -77,6 +77,11 @@ public class ShopUIPurchase : MonoBehaviour
         PlayerAbility2Inventory.sprite = PlayerUnselectedSprite;
 
     }
+    public void setShopOptions(string _input)
+    {
+        AbilityOffer1 = _input;
+        AbilityOffer2 = _input;
+    }
     void purchase()
     {
         shopMarkerPosition = 4;
@@ -143,7 +148,7 @@ public class ShopUIPurchase : MonoBehaviour
         AbilityOffer = _set;
     }
     [SerializeField]
-    string AbilityOffer;
+    string AbilityOffer1, AbilityOffer2;
     void initialSet()
     {
         shopTriplets[0] = new triplet(playerAbilities.getAbilityName(0));
@@ -151,7 +156,7 @@ public class ShopUIPurchase : MonoBehaviour
         shopTriplets[2] = new triplet(playerAbilities.getAbilityName(2));
 
         shopTriplets[3] = new triplet("NavalMine");
-        shopTriplets[4] = new triplet(AbilityOffer);
+        shopTriplets[4] = new triplet("NavalMine");
         setTextAndIcons();
     }
     //for event trigger system
