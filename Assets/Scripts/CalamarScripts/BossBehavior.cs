@@ -70,6 +70,8 @@ public class BossBehavior : MonoBehaviour
     [SerializeField]
     private Image healthBar;
 
+    Animator animator;
+
 
     void Start()
     { 
@@ -92,6 +94,8 @@ public class BossBehavior : MonoBehaviour
         tentacles[3].slam = false;
 
         runAttacks();
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -273,6 +277,10 @@ public class BossBehavior : MonoBehaviour
     public void canBeHitToggleOn()
     {
         StopAllCoroutines();
+        for(int i = 0; i < indicators.Length; i++)
+        {
+            Destroy(indicators[i]);
+        }
         moveBackInProgress = true;
         canBeHit = true;
     }
@@ -281,6 +289,10 @@ public class BossBehavior : MonoBehaviour
     {
         moveBackInProgress = false;
         canBeHit = false;
+        tentacles[0].originalPosition = tentacle1.transform.position;
+        tentacles[1].originalPosition = tentacle2.transform.position;
+        tentacles[2].originalPosition = tentacle3.transform.position;
+        tentacles[3].originalPosition = tentacle4.transform.position;
     }
 
     /// <summary>
@@ -290,12 +302,12 @@ public class BossBehavior : MonoBehaviour
     {
         for (int i = 0; i < 20; i++)
         {
-            if (health < 50)
+            if (health > 50)
             {
 
-                if (i % 3 == 0)
+                if (i % 3 == 0 && i != 0)
                 {
-                    attackList[i] = "tentacle frenzy";
+                    attackList[i] = "return to sender";
                 }
                 else
                 {
@@ -304,9 +316,9 @@ public class BossBehavior : MonoBehaviour
             }
             else
             {
-                if (i % 4 == 0)
+                if (i % 4 == 0 && i != 0)
                 {
-                    attackList[i] = "tentacle frenzy";
+                    attackList[i] = "return to sender";
                 }
                 else
                 {
@@ -437,6 +449,7 @@ public class BossBehavior : MonoBehaviour
     /// <returns></returns>
     IEnumerator wipeOutTiming()
     {
+
         //If hp is less than half make sweeps 3
         int sweeps = 2;
         if (health < 50)
@@ -491,6 +504,7 @@ public class BossBehavior : MonoBehaviour
     /// <returns></returns>
     IEnumerator returnToSenderTiming()
     {
+        animator.SetBool("throw", true);
         int throws = 10;
         if (health < 60)
         {
@@ -502,7 +516,8 @@ public class BossBehavior : MonoBehaviour
             StartCoroutine(dropTrash(i));
             yield return new WaitForSeconds(Random.Range(0.2f, 0.7f));
         }
-        
+        animator.SetBool("throw", false);
+
     }
 
     /// <summary>
