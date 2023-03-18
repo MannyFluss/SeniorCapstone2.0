@@ -18,6 +18,8 @@ public class CutsceneManagerV2 : MonoBehaviour
         public float cutsceneTimer;
     }
 
+    public AudioClip CutsceneMusic;
+
     [Header("Set-Up")]
     public List<cutsceneNarrativePair> cutsceneList = new List<cutsceneNarrativePair>();
     public string nextSceneName;
@@ -38,8 +40,10 @@ public class CutsceneManagerV2 : MonoBehaviour
         SUBTITLE.color = new Color(1, 1, 1, 0);
         if (cutsceneList.Count > 0)
         {
-            GRAPHICS.sprite = cutsceneList[0].cutsceneImage;
-            SUBTITLE.text = cutsceneList[0].cutsceneNarrative;
+            // Play the Audio Source when the cutscene starts
+            AudioSource audio = this.GetComponent<AudioSource>();
+            audio.clip = CutsceneMusic;
+            audio.Play();
 
             StartCoroutine(FadeInAndOut());
         }

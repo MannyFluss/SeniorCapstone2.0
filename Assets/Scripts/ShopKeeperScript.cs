@@ -17,6 +17,8 @@ public class ShopKeeperScript : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI  playMoneyText;
     private bool used = false;
+
+    public GameObject Sign;
     
     void Start()
     {
@@ -27,6 +29,7 @@ public class ShopKeeperScript : MonoBehaviour
 
     void Update()
     {
+        if (used) Sign.GetComponent<SpriteRenderer>().enabled = false;
         playMoneyText.text = "Player Money: " + playerAbilityManager.playerMoney;
         var di = Vector3.Distance(transform.position,player.transform.position);
         if (di <= interactRange && inRange == false) // just entered range

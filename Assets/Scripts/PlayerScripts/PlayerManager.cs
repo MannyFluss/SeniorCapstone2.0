@@ -40,10 +40,10 @@ public class PlayerManager : MonoBehaviour
                                                                         1,
                                                                         1f);
         }
-       //if(health == 0)
-       // {
-       //     SceneManager.LoadScene("Menu");
-       // }
+        if (health == 0)
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 
     IEnumerator HitCooldown()

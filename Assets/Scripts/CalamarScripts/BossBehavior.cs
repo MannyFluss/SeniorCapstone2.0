@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Tentacle
 {
@@ -123,7 +124,9 @@ public class BossBehavior : MonoBehaviour
         {
             changeStage(3);
         }
-        healthBar.rectTransform.localScale = new Vector3(health / 100f, 1f, 1f); 
+        healthBar.rectTransform.localScale = new Vector3(health / 100f, 1f, 1f);
+        if (health <= 0) SceneManager.LoadScene("DefeatCalamarCutscene");
+
     }
 
     private void changeStage(int stageNum)
