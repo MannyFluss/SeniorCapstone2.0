@@ -15,9 +15,9 @@ EditorBuildSettings:
     path: Assets/Scenes/HackNSlash.unity
     guid: 571ef98d94bf2f7419b203589b5e86cb
   - enabled: 1
-    path: Assets/Scenes/Lab.unity
+    path: Assets/Scenes/ArchiveScene/Lab.unity
     guid: 4eaa48116e9e24265939dc118a50b214
   - enabled: 1
-    path: Assets/Scenes/SingleArm.unity
+    path: Assets/Scenes/ArchiveScene/SingleArm.unity
     guid: 536e5ffd0ced7404dac33e6ad848436a
   m_configObjects: {}
