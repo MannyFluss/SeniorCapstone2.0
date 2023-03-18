@@ -51,7 +51,7 @@ public class ShopUIPurchase : MonoBehaviour
     Image Ability1Preview, Ability2Preview, ShopPreviewIcon1, ShopPreviewIcon2; 
 
     [SerializeField]
-    TextMeshProUGUI PlayerAbility1Description, PlayerAbility2Description; 
+    TextMeshProUGUI PlayerAbility1Description, PlayerAbility2Description, PlayerAbility1Name, PlayerAbility2Name, ShopAbilityName; 
     [SerializeField]
     Sprite PlayerUnselectedSprite, PlayerSelectedSprite;
     [SerializeField]
@@ -79,8 +79,8 @@ public class ShopUIPurchase : MonoBehaviour
     }
     public void setShopOptions(string _input)
     {
-        AbilityOffer1 = _input;
-        AbilityOffer2 = _input;
+        
+        AbilityOffer = _input;
     }
     void purchase()
     {
@@ -102,6 +102,7 @@ public class ShopUIPurchase : MonoBehaviour
             setTextAndIcons();
             return;
         }
+        playerAbilities.removeAbility(playerMarkerPosition);
         playerAbilities.AbilityPickUpInteract(shopTriplets[shopMarkerPosition].ability);
         descriptionText.text = shopTriplets[shopMarkerPosition].description;
         shopTriplets[shopMarkerPosition].ability = "purchased";
@@ -133,20 +134,30 @@ public class ShopUIPurchase : MonoBehaviour
         PlayerAbility1Description.text = BaseAbilityScript.AbilityDescriptions[playerAbilities.getAbilityName(0)];
         PlayerAbility2Description.text = BaseAbilityScript.AbilityDescriptions[playerAbilities.getAbilityName(1)];
 
+        ShopAbilityName.text = shopTriplets[4].ability;
+        PlayerAbility1Name.text = playerAbilities.getAbilityName(0);
+        PlayerAbility2Name.text = playerAbilities.getAbilityName(1);
+    
+
 
 
 
     }
+    public void setAbilityOffer(string _set)
+    {
+        AbilityOffer = _set;
+    }
+
     [SerializeField]
-    string AbilityOffer1 = "NavalMine", AbilityOffer2 = "NavalMine";
+    string AbilityOffer;
     void initialSet()
     {
         shopTriplets[0] = new triplet(playerAbilities.getAbilityName(0));
         shopTriplets[1] = new triplet(playerAbilities.getAbilityName(1));
         shopTriplets[2] = new triplet(playerAbilities.getAbilityName(2));
 
-        shopTriplets[3] = new triplet(AbilityOffer1);
-        shopTriplets[4] = new triplet(AbilityOffer2);
+        shopTriplets[3] = new triplet("NavalMine");
+        shopTriplets[4] = new triplet(AbilityOffer);
         setTextAndIcons();
     }
     //for event trigger system
