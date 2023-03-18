@@ -1417,8 +1417,8 @@ MonoBehaviour:
   indicator: {fileID: 1129943185486292044, guid: 48dc982c710a52d408148ba117e5067a, type: 3}
   roundIndicator: {fileID: 7268188091378370832, guid: f2ec481205cfa0f4aa8f2b6c58128b46, type: 3}
   trashList:
-  - {fileID: 3533409242408572322, guid: 52f42241d232e3b4f820e2396d4a990d, type: 3}
-  - {fileID: 2570772378836513166, guid: 4983facf6c5ef8745b48a8191dcf4511, type: 3}
+  - {fileID: 8616120396476221970, guid: a5d08aa81d9fd414496ef29be0fbe73b, type: 3}
+  - {fileID: 2893550429805475843, guid: ff230efce12faef48be2f5777902c7d3, type: 3}
   healthText: {fileID: 0}
   rightCrane: {fileID: 1325237947}
   leftCrane: {fileID: 1924658106}
@@ -9931,6 +9931,7 @@ GameObject:
   - component: {fileID: 1870299222}
   - component: {fileID: 1870299221}
   - component: {fileID: 1870299220}
+  - component: {fileID: 1870299224}
   m_Layer: 5
   m_Name: BossUi
   m_TagString: Untagged
@@ -10022,6 +10023,36 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1870299224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870299219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: dbd5d681cbbf7d04c9339dc5b2fa7896, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1870299219}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
 --- !u!1 &1882452391
 GameObject:
   m_ObjectHideFlags: 0
@@ -11269,6 +11300,10 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -4462279809063540523, guid: bce6a80bf9589774ca9ba3d95da0e1b1, type: 2}
     value: {fileID: 1755027441}
+  - key: {fileID: -6082701381050433670, guid: bce6a80bf9589774ca9ba3d95da0e1b1, type: 2}
+    value: {fileID: 1870299219}
+  - key: {fileID: 6181537204462252323, guid: bce6a80bf9589774ca9ba3d95da0e1b1, type: 2}
+    value: {fileID: 1870299224}
   m_ExposedReferences:
     m_References:
     - ea30ec3e48bb5814aa21d80a54aece74: {fileID: 2035698155}
