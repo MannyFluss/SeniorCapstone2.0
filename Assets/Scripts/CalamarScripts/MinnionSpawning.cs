@@ -13,6 +13,8 @@ public class MinnionSpawning : MonoBehaviour
 
     bool spawn;
 
+    bool started = false;
+
     bool firstSpawn = true;
 
     // Start is called before the first frame update
@@ -28,15 +30,24 @@ public class MinnionSpawning : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(firstSpawn)
+        if (firstSpawn)
         {
             dm.ClearMinions();
             firstSpawn = false;
+        }
+        if (!started)
+        {
+            return;
         }
         if(!spawn && dm.RemainMinions() < 8)
         {
             StartCoroutine(spawnEnemy());
         }
+    }
+
+    public void start()
+    {
+        started = true;
     }
 
     IEnumerator spawnEnemy()
