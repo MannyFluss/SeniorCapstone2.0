@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
     {
         //Play sound effect
         PlaySoundEffect.Play();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene("IntroCutscene");
         
     }
 

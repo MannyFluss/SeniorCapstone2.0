@@ -40,10 +40,13 @@ public class CutsceneManagerV2 : MonoBehaviour
         SUBTITLE.color = new Color(1, 1, 1, 0);
         if (cutsceneList.Count > 0)
         {
-            // Play the Audio Source when the cutscene starts
-            AudioSource audio = this.GetComponent<AudioSource>();
-            audio.clip = CutsceneMusic;
-            audio.Play();
+            // Play the Audio Source when the cutscene starts, if there is a file attached
+            if (CutsceneMusic != null)
+            {
+                AudioSource audio = this.GetComponent<AudioSource>();
+                audio.clip = CutsceneMusic;
+                audio.Play();
+            }
 
             StartCoroutine(FadeInAndOut());
         }
