@@ -16,7 +16,7 @@ public class ShopKeeperScript : MonoBehaviour
     Canvas shopUI;
     [SerializeField]
     TextMeshProUGUI  playMoneyText;
-    
+    private bool used = false;
     
     void Start()
     {
@@ -45,7 +45,12 @@ public class ShopKeeperScript : MonoBehaviour
         }
         if (inRange == true && Input.GetKeyDown(KeyCode.F))
         {
+            if (used == true)
+            {
+                return;
+            }
             initiateShop();
+            used = false;
         }
     }
 
