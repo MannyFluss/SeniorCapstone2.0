@@ -50,7 +50,7 @@ public class ShopKeeperScript : MonoBehaviour
                 return;
             }
             initiateShop();
-            used = false;
+            used = true;
         }
     }
 
