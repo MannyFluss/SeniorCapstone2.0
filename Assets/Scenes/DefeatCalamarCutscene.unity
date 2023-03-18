@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75bdbf650e4d6e94f93147ef59ae9533, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CutsceneMusic: {fileID: 8300000, guid: d77fc01d99efee94c85b1772d3a100fa, type: 3}
+  CutsceneMusic: {fileID: 8300000, guid: a2bc572a6a269bd4091583cf461d44e6, type: 3}
   cutsceneList:
   - cutsceneImage: {fileID: 21300000, guid: 87481590ad1af384cbaa2ad70c0c59db, type: 3}
     cutsceneNarrative: "Miyo\u2019s blade sliced through one of King Calamar\u2019s
@@ -457,7 +457,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: a2bc572a6a269bd4091583cf461d44e6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
