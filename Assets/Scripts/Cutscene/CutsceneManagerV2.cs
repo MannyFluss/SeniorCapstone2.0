@@ -33,7 +33,7 @@ public class CutsceneManagerV2 : MonoBehaviour
     private float textFadeRate = 1.5f;
     private float pauseTimer = 0.1f;
     private float transitionTimer = 1.8f;
-
+ 
     void Start()
     {
         GRAPHICS.color = new Color(1, 1, 1, 0);

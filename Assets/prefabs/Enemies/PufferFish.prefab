@@ -250,6 +250,7 @@ GameObject:
   - component: {fileID: 7833944956059155212}
   - component: {fileID: 7833944956059155213}
   - component: {fileID: 7833944956059155214}
+  - component: {fileID: -2063694337556936973}
   m_Layer: 0
   m_Name: PufferFish
   m_TagString: Enemy
@@ -347,3 +348,17 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &-2063694337556936973
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7833944956059155208}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

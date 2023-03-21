@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2554204022756465456}
   - component: {fileID: 2554204022756465457}
   - component: {fileID: 2554204022756465458}
+  - component: {fileID: 9059593227753785266}
   m_Layer: 0
   m_Name: Betta
   m_TagString: Enemy
@@ -111,6 +112,20 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &9059593227753785266
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2554204022756465460}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2892465751820934803
 GameObject:
   m_ObjectHideFlags: 0

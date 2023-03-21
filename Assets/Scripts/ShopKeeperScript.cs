@@ -29,23 +29,24 @@ public class ShopKeeperScript : MonoBehaviour
 
     void Update()
     {
-        if (used) Sign.GetComponent<SpriteRenderer>().enabled = false;
+        if (used) this.gameObject.SetActive(false);
         playMoneyText.text = "Player Money: " + playerAbilityManager.playerMoney;
         var di = Vector3.Distance(transform.position,player.transform.position);
+
+        // Check the player is in Range
         if (di <= interactRange && inRange == false) // just entered range
         {
             inRange = true;
-            
-
-
-            
-        }else if (di <= interactRange)
+        }
+        else if (di <= interactRange)
         {
             inRange = true;
-        }else if (di > interactRange)
+        }
+        else if (di > interactRange)
         {
             inRange = false;
         }
+
         if (inRange == true && Input.GetKeyDown(KeyCode.F))
         {
             if (used == true)
