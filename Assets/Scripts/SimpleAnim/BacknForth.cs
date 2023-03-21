@@ -18,12 +18,13 @@ public class BacknForth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Vector3 pos = this.transform.position;
-
+        //Vector3 pos = this.transform.position;
         float newVar = Mathf.Sin(Time.time * speed) * range;
 
         if (newX) transform.position = new Vector3(pos.x + newVar, pos.y, pos.z);
         if (newY) transform.position = new Vector3(pos.x, pos.y + newVar, pos.z);
         if (newZ) transform.position = new Vector3(pos.x, pos.y, pos.z - newVar);
+
+
     }
 }
