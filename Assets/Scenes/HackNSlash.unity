@@ -2766,7 +2766,7 @@ Animator:
   m_GameObject: {fileID: 281661406}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d1acc89ab9d53124db0f7cf74e9a4d36, type: 2}
+  m_Controller: {fileID: 9100000, guid: 78d0a952f04c8df44bd24f7e5a75cbd5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3027,7 +3027,7 @@ GameObject:
   m_Component:
   - component: {fileID: 299495052}
   - component: {fileID: 299495053}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CONTROL_Dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4310,7 +4310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 415091517}
   - component: {fileID: 415091518}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CONTROL_1st ability E
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4681,7 +4681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 471430708}
   - component: {fileID: 471430709}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CONTROL_2nd ability V
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5061,7 +5061,7 @@ GameObject:
   m_Component:
   - component: {fileID: 515235613}
   - component: {fileID: 515235614}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CONTROL_AbilityInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10039,7 +10039,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1187955479}
   - component: {fileID: 1187955480}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CONTROL_basic attack M1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12558,7 +12558,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1639428157}
   - component: {fileID: 1639428158}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CONTROL_movement WASD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
