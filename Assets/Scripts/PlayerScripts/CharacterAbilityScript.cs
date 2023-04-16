@@ -31,6 +31,9 @@ public class CharacterAbilityScript : MonoBehaviour
     [SerializeField]
     public GameObject _AbilityNavalMine;
     [SerializeField]
+    public GameObject _AbilityKnivesOut;
+
+    [SerializeField]
     public PlayerHud HUDScript;
     //contains references to the currently chosen abilities
     
@@ -39,6 +42,8 @@ public class CharacterAbilityScript : MonoBehaviour
     //Player Controls
     private PlayerInput playerInput;
 
+
+    
     void OnDestroy()
     {
         
@@ -84,6 +89,7 @@ public class CharacterAbilityScript : MonoBehaviour
 
         AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[0]);
         AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[1]);
+        removeAbility(0);
         
         
     }
@@ -328,6 +334,9 @@ public class CharacterAbilityScript : MonoBehaviour
                 break;
             case "NavalMine":
                 playerAbilities[_index] = gameObject.AddComponent<NavalMine>();
+                break;
+            case "KnivesOut":
+                playerAbilities[_index] = gameObject.AddComponent<KnivesOut>();
                 break;
             default:
                 break;

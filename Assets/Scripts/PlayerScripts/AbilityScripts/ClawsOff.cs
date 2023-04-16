@@ -90,4 +90,26 @@ public class ExplosiveFishAbility : BaseAbilityScript
         return abilityName;
     }
 }
+public class KnivesOut : BaseAbilityScript
+{
+    new float abilityCoolDown = 3.0f;
+    new public string abilityName = BaseAbilityScript.AbilitiesList[4];
+
+    public override void OnButtonClick()
+    {
+        if (getCoolDownStatus())
+        {
+            return;
+        }
+        print("test");
+        Vector3 aimArrow = parentScriptRef.GetComponent<CharacterAttack>().AimPositionReference.transform.position;
+        GameObject instance = Instantiate( parentScriptRef._AbilityKnivesOut, myParent.transform.position, Quaternion.identity);
+        
+        Vector3 direction = aimArrow - myParent.transform.position;
+        direction.y = 0;
+        instance.GetComponent<SplitKnives>().initialize(direction,true);
+        startCoolDown(abilityCoolDown);
+    }    
+
+}
 
