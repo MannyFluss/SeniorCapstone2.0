@@ -101,7 +101,6 @@ public class KnivesOut : BaseAbilityScript
         {
             return;
         }
-        print("test");
         Vector3 aimArrow = parentScriptRef.GetComponent<CharacterAttack>().AimPositionReference.transform.position;
         GameObject instance = Instantiate( parentScriptRef._AbilityKnivesOut, myParent.transform.position, Quaternion.identity);
         
@@ -112,4 +111,23 @@ public class KnivesOut : BaseAbilityScript
     }    
 
 }
+public class HeartyFix : BaseAbilityScript
+{
+    new float abilityCoolDown = 30.0f;
+    new public string abilityName = BaseAbilityScript.AbilitiesList[5];
+
+    public override void OnButtonClick()
+    {
+        
+        if (getCoolDownStatus())
+        {
+            return;
+        }
+        myParent.GetComponent<PlayerManager>().heal();
+        
+        startCoolDown(abilityCoolDown);
+    
+    }
+}
+
 

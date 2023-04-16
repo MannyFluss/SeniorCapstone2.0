@@ -338,6 +338,10 @@ public class CharacterAbilityScript : MonoBehaviour
             case "KnivesOut":
                 playerAbilities[_index] = gameObject.AddComponent<KnivesOut>();
                 break;
+            case "HeartyFix":
+                playerAbilities[_index] = gameObject.AddComponent<HeartyFix>();
+                break;
+                
             default:
                 break;
         }

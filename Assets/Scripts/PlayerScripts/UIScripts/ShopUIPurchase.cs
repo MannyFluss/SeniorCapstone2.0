@@ -150,6 +150,22 @@ public class ShopUIPurchase : MonoBehaviour
         AbilityOffer = _set;
     }
 
+    public void setRandomAbilityOffer()
+    {
+        var currAbility1 = playerAbilities.getAbilityName(0);
+        var currAbility2 = playerAbilities.getAbilityName(1);
+        var temp = "";
+        while(true)
+        {
+            temp = BaseAbilityScript.AbilitiesList[Random.Range(0, BaseAbilityScript.AbilitiesList.GetLength(0))];
+            if(temp != currAbility1 && temp != currAbility2)
+            {
+                break;
+            }
+        }
+        AbilityOffer = temp;
+    }
+
     [SerializeField]
     string AbilityOffer;
     void initialSet()

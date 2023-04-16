@@ -7,7 +7,7 @@ using UnityEngine;
 public  class BaseAbilityScript : MonoBehaviour
 {
     public static string[] AbilitiesList = new string[]
-    {"ClawsOff","SchrodingerBox","ExplosiveFishAbility","NavalMine","KnivesOut"};
+    {"ClawsOff","SchrodingerBox","ExplosiveFishAbility","NavalMine","KnivesOut","HeartyFix"};
     public static Dictionary<string,string> AbilityDescriptions = new Dictionary<string, string>
     {
         {"ClawsOff" , "Attack Enemies in a Radius around you"},
@@ -15,6 +15,7 @@ public  class BaseAbilityScript : MonoBehaviour
         { "ExplosiveFishAbility", "Summon an explosive fish in front of you, hit it to lo launch"},
         {"NavalMine","create a mine on your position that explodes when enemies get close"},
         {"KnivesOut","throw knives at enemies, the initial knife splits into three if it hits an enemy"},
+        {"HeartyFix","Heal yourself for a small amount"},
         {"empty","No Ability"},
     };
     private static bool initFlag = false;
