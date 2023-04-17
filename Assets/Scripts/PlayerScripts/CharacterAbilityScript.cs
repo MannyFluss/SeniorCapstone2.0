@@ -22,6 +22,8 @@ public class CharacterAbilityScript : MonoBehaviour
 
     // if you need prefabs for the abilities they go here
     [SerializeField]
+    public GameObject _AbilityKittyFortress;
+    [SerializeField]
     public GameObject _AbilityExplosionPrefab;
 
     [SerializeField]
@@ -340,6 +342,9 @@ public class CharacterAbilityScript : MonoBehaviour
                 break;
             case "HeartyFix":
                 playerAbilities[_index] = gameObject.AddComponent<HeartyFix>();
+                break;
+            case "KittyFortress":
+                playerAbilities[_index] = gameObject.AddComponent<KittyFortress>();
                 break;
                 
             default:

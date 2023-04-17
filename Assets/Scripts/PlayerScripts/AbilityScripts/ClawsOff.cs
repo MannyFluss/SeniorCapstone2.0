@@ -124,10 +124,27 @@ public class HeartyFix : BaseAbilityScript
             return;
         }
         myParent.GetComponent<PlayerManager>().heal();
-        
+
         startCoolDown(abilityCoolDown);
     
     }
 }
+public class KittyFortress : BaseAbilityScript
+{
+    new float abilityCoolDown = 12.0f;
+    new public string abilityName = BaseAbilityScript.AbilitiesList[6];
+    public override void OnButtonClick()
+    {
+        if (getCoolDownStatus())
+        {
+            return;
+        }
+        GameObject instance = Instantiate( parentScriptRef._AbilityKittyFortress, myParent.transform.position, Quaternion.identity);
+        instance.GetComponent<CatWall>().setPlayer(myParent);
+        startCoolDown(abilityCoolDown);
+    }
+
+}
+
 
 

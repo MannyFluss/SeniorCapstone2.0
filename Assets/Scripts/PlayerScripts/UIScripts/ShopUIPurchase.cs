@@ -75,7 +75,6 @@ public class ShopUIPurchase : MonoBehaviour
 
         PlayerAbility1Inventory.sprite = PlayerUnselectedSprite;
         PlayerAbility2Inventory.sprite = PlayerUnselectedSprite;
-
     }
     public void setShopOptions(string _input)
     {
