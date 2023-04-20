@@ -124,15 +124,15 @@ public class PlayerMovement : MonoBehaviour
 
         if (currentMovement.z > 0)
         {
-            animator.SetBool("isForward", true);
+            animator.SetBool("isBackward", true);
         }
         else if(currentMovement.z < 0)
         {
-            animator.SetBool("isForward", false);
+            animator.SetBool("isBackward", false);
         }
         else
         {
-            animator.SetBool("isForward", false);
+            animator.SetBool("isBackward", false);
         }
 
         if (movementPressed)

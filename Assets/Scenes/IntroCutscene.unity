@@ -440,7 +440,7 @@ MonoBehaviour:
       darkest moment. And then, an outstretched hand appeared. \u2018You can take
       revenge. You can have power. Follow me.\u2019 And so, Miyo\u2019s journey begins\u2026"
     cutsceneTimer: 7
-  nextSceneName: HackNSlash
+  nextSceneName: TheLab
   GRAPHICS: {fileID: 1809689302}
   SUBTITLE: {fileID: 277022560}
 --- !u!114 &476039831
@@ -456,7 +456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetButton: {fileID: 2013996472}
-  sceneName: HackNSlash
+  sceneName: TheLab
   firstClick: 0
 --- !u!1001 &935204253
 PrefabInstance:
