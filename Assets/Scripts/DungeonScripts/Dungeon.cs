@@ -134,7 +134,7 @@ public class Dungeon : MonoBehaviour
     }
     public void HideEntrance()
     {
-        Debug.Log("shit");
+     
         Animator am = entrance.GetComponent<Entrance>().am;
         am.SetBool("disablePortal", true);
     }

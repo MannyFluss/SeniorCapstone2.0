@@ -7,9 +7,10 @@ public class PlayerManager : MonoBehaviour
 {
     //added DamageTaken sound effect
     [SerializeField] private AudioSource DamageTakenSoundEffect;
+    [SerializeField] ParticleParentScript particleParentScript;
 
     [Header("Player Stats")]
-    public float health = 9;
+    public float health = 9; 
 
     private bool canBeHit = true;
 
@@ -46,6 +47,13 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+    void takeDamage()
+    {
+        health--;
+        PlayerHUDReference.setUIHearts(((int)health));
+
+        particleParentScript.play();
+    }
     IEnumerator HitCooldown()
     {
         canBeHit = false;
@@ -58,7 +66,7 @@ public class PlayerManager : MonoBehaviour
         if(collision.gameObject.tag == "EnemyAttack" && canBeHit)
         {
             
-            health--;
+            takeDamage();
 
 
             StartCoroutine(HitCooldown());
@@ -68,11 +76,13 @@ public class PlayerManager : MonoBehaviour
 
         }
     }
+
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "EnemyAttack" && canBeHit)
         {
-            health-= 1;
+            takeDamage();
             PlayerHUDReference.setUIHearts(((int)health) );
 
             StartCoroutine(HitCooldown());
