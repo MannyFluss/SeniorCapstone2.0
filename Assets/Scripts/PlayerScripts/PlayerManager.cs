@@ -83,4 +83,20 @@ public class PlayerManager : MonoBehaviour
 
         }
     }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.gameObject.tag == "EnemyAttack" && canBeHit)
+        {
+            health -= 1;
+            PlayerHUDReference.setUIHearts(((int)health));
+
+            StartCoroutine(HitCooldown());
+            //movement.playerHit(other.transform);
+
+            //added damagetaken sound effect
+            DamageTakenSoundEffect.Play();
+
+        }
+    }
 }

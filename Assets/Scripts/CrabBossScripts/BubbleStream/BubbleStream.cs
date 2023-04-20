@@ -16,7 +16,6 @@ public class BubbleStream : MonoBehaviour
         {
             cannons[i] = transform.GetChild(i).GetComponent<BubbleStreamCannon>();
         }
-        bubbleStream(100);
     }
 
     
