@@ -28,8 +28,9 @@ public class ShopKeeperScript : MonoBehaviour
     }
 
     void Update()
-    {
-        if (used) this.gameObject.SetActive(false);
+    {   
+        //removes shopkeeper if finished talking to
+        if (used && !ConversationManager.Instance.IsConversationActive) this.gameObject.SetActive(false);
         playMoneyText.text = "Player Money: " + playerAbilityManager.playerMoney;
         var di = Vector3.Distance(transform.position,player.transform.position);
 
