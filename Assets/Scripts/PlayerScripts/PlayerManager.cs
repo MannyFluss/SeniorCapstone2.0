@@ -76,8 +76,11 @@ public class PlayerManager : MonoBehaviour
 
         }
     }
-
-    
+    public void heal()
+    {
+        health +=1;
+        PlayerHUDReference.setUIHearts(((int)health) );
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "EnemyAttack" && canBeHit)
