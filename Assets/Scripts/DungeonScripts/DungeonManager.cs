@@ -9,6 +9,9 @@ public class DungeonManager : MonoBehaviour
     public GameObject[] dungeons = new GameObject[0];
     public GameObject player;
     public List<GameObject> minionPrefabs = new List<GameObject>();
+    public List<GameObject> levelOneMinionPrefabs = new List<GameObject>();
+    public List<GameObject> levelTwoMinionPrefabs = new List<GameObject>();
+    public List<GameObject> levelThreeMinionPrefabs = new List<GameObject>();
 
     [Header("Cleared Message Assets")]
     public Canvas ClearedCanvas;
@@ -19,10 +22,42 @@ public class DungeonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Expose DungeonManager to dungeons
+        // Expose DungeonManager to
+        foreach (var minionPrefab in minionPrefabs)
+        {
+            print("aaaaa");
+            var level = minionPrefab.GetComponent<MinionComponent>().level;
+            if (level == 1) {
+                levelOneMinionPrefabs.Add(minionPrefab);
+            } else if (level == 2)
+            {
+                levelTwoMinionPrefabs.Add(minionPrefab);
+            } else if (level == 3)
+            {
+                levelThreeMinionPrefabs.Add(minionPrefab);
+            }
+            print("llll");
+            print(levelOneMinionPrefabs.Count);
+        }
+
+        var i = 0;
         foreach (var dungeon in dungeons)
         {
-            InitiateDungeon(dungeon: dungeon);
+
+            if (i < 2)
+            {
+                InitiateDungeon(dungeon: dungeon, 1);
+            }
+            else if (i < 4)
+            {
+                InitiateDungeon(dungeon: dungeon, 2);
+            }
+            else
+            {
+                InitiateDungeon(dungeon: dungeon, 3);
+            }
+
+            i++;
         }
 
         // Activate 1st Dungeon
@@ -52,11 +87,24 @@ public class DungeonManager : MonoBehaviour
         dungeons[0].GetComponent<Dungeon>().RandomSpawn();
     }
 
-    public void InitiateDungeon(GameObject dungeon)
+    public void InitiateDungeon(GameObject dungeon, int difficulty)
     {
         Dungeon dungeonScript = dungeon.GetComponent<Dungeon>();
         dungeonScript.dungeonManager = gameObject.GetComponent<DungeonManager>();
-        dungeonScript.minonPrefabs = minionPrefabs;
+        var newPrefabs = new List<GameObject>();
+        if (difficulty >= 1)
+        {
+            newPrefabs.AddRange(levelOneMinionPrefabs);
+        }
+        if (difficulty >= 2)
+        {
+            newPrefabs.AddRange(levelTwoMinionPrefabs);
+        }
+        if (difficulty >= 3)
+        {
+            newPrefabs.AddRange(levelThreeMinionPrefabs);
+        }
+        dungeonScript.minonPrefabs = newPrefabs;
     }
 
     /// <summary>
