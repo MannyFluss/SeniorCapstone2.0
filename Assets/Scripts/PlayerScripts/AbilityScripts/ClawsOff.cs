@@ -90,4 +90,61 @@ public class ExplosiveFishAbility : BaseAbilityScript
         return abilityName;
     }
 }
+public class KnivesOut : BaseAbilityScript
+{
+    new float abilityCoolDown = 3.0f;
+    new public string abilityName = BaseAbilityScript.AbilitiesList[4];
+
+    public override void OnButtonClick()
+    {
+        if (getCoolDownStatus())
+        {
+            return;
+        }
+        Vector3 aimArrow = parentScriptRef.GetComponent<CharacterAttack>().AimPositionReference.transform.position;
+        GameObject instance = Instantiate( parentScriptRef._AbilityKnivesOut, myParent.transform.position, Quaternion.identity);
+        
+        Vector3 direction = aimArrow - myParent.transform.position;
+        direction.y = 0;
+        instance.GetComponent<SplitKnives>().initialize(direction,true);
+        startCoolDown(abilityCoolDown);
+    }    
+
+}
+public class HeartyFix : BaseAbilityScript
+{
+    new float abilityCoolDown = 30.0f;
+    new public string abilityName = BaseAbilityScript.AbilitiesList[5];
+
+    public override void OnButtonClick()
+    {
+        
+        if (getCoolDownStatus())
+        {
+            return;
+        }
+        myParent.GetComponent<PlayerManager>().heal();
+
+        startCoolDown(abilityCoolDown);
+    
+    }
+}
+public class KittyFortress : BaseAbilityScript
+{
+    new float abilityCoolDown = 12.0f;
+    new public string abilityName = BaseAbilityScript.AbilitiesList[6];
+    public override void OnButtonClick()
+    {
+        if (getCoolDownStatus())
+        {
+            return;
+        }
+        GameObject instance = Instantiate( parentScriptRef._AbilityKittyFortress, myParent.transform.position, Quaternion.identity);
+        instance.GetComponent<CatWall>().setPlayer(myParent);
+        startCoolDown(abilityCoolDown);
+    }
+
+}
+
+
 
