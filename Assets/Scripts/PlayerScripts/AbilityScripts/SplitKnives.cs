@@ -31,11 +31,14 @@ public class SplitKnives : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Player")
         {
-            onHit(other);    
+               return;
         }
+        onHit(other);
+         
     }
+
 
     void onHit(Collider other)
     {
@@ -43,7 +46,6 @@ public class SplitKnives : MonoBehaviour
         {
             return;
         }
-
 
         if (moreKnives == true)
         {
@@ -57,8 +59,9 @@ public class SplitKnives : MonoBehaviour
             knife2.GetComponent<SplitKnives>().initialize(rightRotate, false, other.gameObject);
             knife3.GetComponent<SplitKnives>().initialize(direction, false, other.gameObject); 
         }
-
         Destroy(gameObject);
+
+        
         
         
     }

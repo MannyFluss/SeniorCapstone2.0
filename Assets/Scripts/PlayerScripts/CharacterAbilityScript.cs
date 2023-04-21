@@ -202,7 +202,12 @@ public class CharacterAbilityScript : MonoBehaviour
     }
     void Update()
     {
-        //getInput();
+        //for debug purposes
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            removeAbility(0);
+            removeAbility(1);
+        }
     }
 
     public BaseAbilityScript getPlayerAbility(int _index)

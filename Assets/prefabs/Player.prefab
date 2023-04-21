@@ -2780,10 +2780,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMoney: 100
+  _AbilityKittyFortress: {fileID: 2836237974644948198, guid: b9433a54b102d2040987bcbd6b294ab4, type: 3}
   _AbilityExplosionPrefab: {fileID: 7105922310121204203, guid: 18b4a1fe5d53d064a868637ee2d97892, type: 3}
   _AbilityBoxPrefab: {fileID: 1140920428930705714, guid: 93899ca568c398d47970268692102a47, type: 3}
   _AbilityExplosiveFish: {fileID: 6578889837700902900, guid: fd371eb3fec972844ac8eeef3089b48c, type: 3}
   _AbilityNavalMine: {fileID: 2240678397259559731, guid: 8fb8710752b2d6b4ca1af503dda82c46, type: 3}
+  _AbilityKnivesOut: {fileID: 7707665916570771008, guid: 0fc894526c6634543a75dc2a66bd8137, type: 3}
   HUDScript: {fileID: 5796684668787035884}
 --- !u!114 &2626668998523703839
 MonoBehaviour:
