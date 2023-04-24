@@ -611,6 +611,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2626668998523703817, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2626668998703896160, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: _hp
       value: 
@@ -683,6 +687,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4351262563839548479, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4415733894386483374, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -743,6 +751,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4932403694306684629, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932403694306684629, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_Navigation.m_WrapAround
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4932403694306684629, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 6914e9ba8ce662b4e9a090f8da3b770e, type: 3}
     - target: {fileID: 4979856811827172646, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -759,6 +779,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5064550575352136280, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_Navigation.m_Mode
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5064550575352136280, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_SpriteState.m_SelectedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e4b32dfbcaf16514b86e085acf411d6d, type: 3}
     - target: {fileID: 5508324507801620858, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -797,6 +825,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5556451374132609447, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5577964608849044628, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_Navigation.m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5679108711731230582, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
@@ -899,6 +931,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6300153679592683015, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6480240678120334099, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -977,6 +1013,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7087883768600924138, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7434281824410080435, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_Navigation.m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7587396167298760179, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
@@ -1889,6 +1929,34 @@ PrefabInstance:
       propertyPath: myConversation
       value: 
       objectReference: {fileID: 131584732}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: test.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: test.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: test.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 131584733}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: test.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: test.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: crabCake
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: test.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ShopKeeperScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: test.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513987, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_Name
       value: ShopKeeper
@@ -1966,7 +2034,7 @@ MonoBehaviour:
     cool!","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":765.5,"yPos":291},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"I
     think it needs some workshopping...","parentUIDs":[4],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":749.5,"yPos":691},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Leave","parentUIDs":[10],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":320.5,"yPos":696},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"open
     shop","parentUIDs":[10],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":509.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Man,
-    am I glad to see you!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":361.5,"yPos":120},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"While
+    am I glad to see you!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":358.5,"yPos":135},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"While
     I was setting up shop here I was attacked by some piranhas.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":585.5,"yPos":181},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"I
     call this little shop of mine... EM''s EMINENT EMPORIUM... Whaddaya think?","parentUIDs":[1],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":767.5,"yPos":414},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":":(","parentUIDs":[6],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":321.5,"yPos":406},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"...","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":12},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":545.5,"yPos":573},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":null,"parentUIDs":[7,8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":null,"OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
@@ -1988,19 +2056,7 @@ MonoBehaviour:
   EndConversationFont: {fileID: 0}
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 131584733}
-        m_TargetAssemblyTypeName: ShopKeeperScript, Assembly-CSharp
-        m_MethodName: pause
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &131584733 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
@@ -2681,12 +2737,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 10
-  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":237,\"yPos\":110},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Next
-    time... Save yourself...\",\"parentUIDs\":[1],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":645,\"yPos\":121},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"No
-    need to thank me... Its what heroes do\",\"parentUIDs\":[1],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":651,\"yPos\":462},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Open
-    Shop\",\"parentUIDs\":[7],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":249,\"yPos\":473},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Exit\",\"parentUIDs\":[7],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":428,\"yPos\":-196},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Huff*...
-    *Huff*... Oh my gosh I need to stop getting captured!\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Em\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":441,\"yPos\":-57},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Em
-    thanks for helping me again, Miyo. Let me give you something to help you!\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Em\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":227,\"yPos\":214},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"(\u0CA5\uFE4F\u0CA5)\",\"parentUIDs\":[3],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Em\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":646,\"yPos\":222},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D\",\"parentUIDs\":[4],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Em\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":431,\"yPos\":346},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Well,
+  json: "{\"Options\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":318.5,\"yPos\":328},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Next
+    time... Save yourself...\",\"parentUIDs\":[1],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":726.5,\"yPos\":339},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"No
+    need to thank me... Its what heroes do\",\"parentUIDs\":[1],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":732.5,\"yPos\":680},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Open
+    Shop\",\"parentUIDs\":[7],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":330.5,\"yPos\":691},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Exit\",\"parentUIDs\":[7],\"SpeechUID\":-1}],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":509.5,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"\\\"Huff*...
+    *Huff*... Oh my gosh I need to stop getting captured!\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Em\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":522.5,\"yPos\":161},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Em
+    thanks for helping me again, Miyo. Let me give you something to help you!\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Em\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":308.5,\"yPos\":432},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"(\u0CA5\uFE4F\u0CA5)\",\"parentUIDs\":[3],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Em\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":727.5,\"yPos\":440},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\":D\",\"parentUIDs\":[4],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Em\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":512.5,\"yPos\":564},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Well,
     this is it, Miyo, King Calamar is right past here. Heres one last abilility\",\"parentUIDs\":[5,6],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Em\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
   saveVersion: 110
   DefaultName: 
@@ -2706,31 +2762,7 @@ MonoBehaviour:
   EndConversationFont: {fileID: 0}
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 13688562}
-        m_TargetAssemblyTypeName: ShopUIPurchase, Assembly-CSharp
-        m_MethodName: setAbilityOffer
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: NavalMine
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 13688561}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &261687756
 GameObject:
   m_ObjectHideFlags: 0
@@ -15036,7 +15068,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1923842448}
   - component: {fileID: 1923842447}
-  - component: {fileID: 1923842446}
+  - component: {fileID: 1923842449}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -15044,26 +15076,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1923842446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1923842445}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
 --- !u!114 &1923842447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15094,6 +15106,36 @@ Transform:
   m_Father: {fileID: 1212911457}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1923842449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1923842445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01614664b831546d2ae94a42149d80ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
+  m_MoveRepeatDelay: 0.5
+  m_MoveRepeatRate: 0.1
+  m_XRTrackingOrigin: {fileID: 0}
+  m_ActionsAsset: {fileID: -944628639613478452, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_PointAction: {fileID: -1654692200621890270, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MoveAction: {fileID: -8784545083839296357, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_SubmitAction: {fileID: 392368643174621059, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_CancelAction: {fileID: 7727032971491509709, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_LeftClickAction: {fileID: 3001919216989983466, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_MiddleClickAction: {fileID: -2185481485913320682, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_RightClickAction: {fileID: -4090225696740746782, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_ScrollWheelAction: {fileID: 6240969308177333660, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDevicePositionAction: {fileID: 6564999863303420839, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_TrackedDeviceOrientationAction: {fileID: 7970375526676320489, guid: ca9f5fa95ffab41fb9a615ab714db018, type: 3}
+  m_DeselectOnBackgroundClick: 0
+  m_PointerBehavior: 0
+  m_CursorLockBehavior: 0
 --- !u!1 &1924025674
 GameObject:
   m_ObjectHideFlags: 0
