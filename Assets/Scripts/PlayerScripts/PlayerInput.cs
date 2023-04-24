@@ -104,7 +104,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a6aaf502-335e-40c6-bd02-a1ee39d2a4e8"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Keyboard>/o"",
                     ""interactions"": ""Tap,Hold"",
                     ""processors"": """",
                     ""groups"": """",
@@ -115,7 +115,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4f4dc4cc-5e89-41ec-84e7-ecb541bf0ee2"",
-                    ""path"": ""<Keyboard>/v"",
+                    ""path"": ""<Keyboard>/p"",
                     ""interactions"": ""Tap,Hold"",
                     ""processors"": """",
                     ""groups"": """",
@@ -126,7 +126,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""3bbe8b10-2fbe-4672-b25e-52051f9b69f6"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/i"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

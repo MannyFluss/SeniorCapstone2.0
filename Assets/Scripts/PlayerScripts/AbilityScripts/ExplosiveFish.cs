@@ -37,7 +37,7 @@ public class ExplosiveFish : MonoBehaviour
             }
             else
             {
-                directionMoving = (this.transform.position - other.transform.position).normalized * moveSpeed;
+                directionMoving = (this.transform.position - other.transform.position).normalized * moveSpeed ;
                 directionMoving.y = 0;
             }
 
@@ -51,6 +51,6 @@ public class ExplosiveFish : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(directionMoving * Time.deltaTime);
+        this.transform.Translate(directionMoving * Time.deltaTime );
     }
 }

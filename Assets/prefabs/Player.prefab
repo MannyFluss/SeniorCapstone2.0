@@ -1325,7 +1325,7 @@ MonoBehaviour:
   m_SpriteState:
     m_HighlightedSprite: {fileID: 21300000, guid: 6914e9ba8ce662b4e9a090f8da3b770e, type: 3}
     m_PressedSprite: {fileID: 21300000, guid: 567ef435e3fa8384eb3c651ab73cddeb, type: 3}
-    m_SelectedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 21300000, guid: 6914e9ba8ce662b4e9a090f8da3b770e, type: 3}
     m_DisabledSprite: {fileID: 0}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
@@ -2041,7 +2041,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &2136375148236934717
@@ -2744,6 +2744,7 @@ MonoBehaviour:
   jumpForce: 4
   dashForce: 2
   distToGround: 1
+  currentFacingDirection: {x: 0, y: 0, z: 0}
   dashCoolDownSeconds: 1
   cloneDeathTime: 0.08
   GroundDebug: {fileID: 0}
@@ -2767,6 +2768,7 @@ MonoBehaviour:
   AimPositionReference: {fileID: 4351266626030115514}
   TabHud: {fileID: 2856802930199831010}
   ShopHud: {fileID: 6738814891632441210}
+  myPlayerMovement: {fileID: 0}
 --- !u!114 &2626668998523703809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5437,7 +5439,7 @@ GameObject:
   - component: {fileID: 159829446359015948}
   - component: {fileID: 9096156666368920401}
   m_Layer: 0
-  m_Name: AbilityIcons
+  m_Name: currentAbilities
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5845,7 +5847,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -6022,7 +6024,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &4647722847298068259
@@ -7342,7 +7344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7594028934824920596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7593,7 +7595,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6307362300393983305
@@ -8148,6 +8150,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c84f5e2bbe437040adacd476a01b79d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 4932403694306684629}
+  - {fileID: 5064550575352136280}
+  - {fileID: 4351262563839548479}
   playerAbilities: {fileID: 2626668998523703809}
   descriptionText: {fileID: 7997545281468464481}
   playerMarker: {fileID: 1487410181752007419}
@@ -8530,7 +8536,7 @@ GameObject:
   - component: {fileID: 3500805521138971738}
   - component: {fileID: 6476365929620670116}
   - component: {fileID: 8364348571016531017}
-  - component: {fileID: 8437222931583620611}
+  - component: {fileID: 4351262563839548479}
   m_Layer: 0
   m_Name: ImageBackground2
   m_TagString: Untagged
@@ -8596,7 +8602,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8437222931583620611
+--- !u!114 &4351262563839548479
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8605,26 +8611,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 7200751431891246570}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6502673056062744683}
-          m_TargetAssemblyTypeName: ShopUIPurchase, Assembly-CSharp
-          m_MethodName: doThisOnClick
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 7200751431891246570}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 21300000, guid: e4b32dfbcaf16514b86e085acf411d6d, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: e4b32dfbcaf16514b86e085acf411d6d, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: e4b32dfbcaf16514b86e085acf411d6d, type: 3}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 8364348571016531017}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6502673056062744683}
+        m_TargetAssemblyTypeName: ShopUIPurchase, Assembly-CSharp
+        m_MethodName: doThisOnClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7200751431891246570}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7229812012568346981
 GameObject:
   m_ObjectHideFlags: 0
@@ -9458,7 +9491,7 @@ GameObject:
   - component: {fileID: 2396928889186950848}
   - component: {fileID: 1997520129653970282}
   m_Layer: 0
-  m_Name: Ability and Health UI
+  m_Name: Ability and Health UI (and shop)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9560,7 +9593,7 @@ GameObject:
   - component: {fileID: 953297428545449903}
   - component: {fileID: 1795544555299380216}
   - component: {fileID: 6789040991281122161}
-  - component: {fileID: 8093534162026906522}
+  - component: {fileID: 5064550575352136280}
   m_Layer: 0
   m_Name: ImageBackground1
   m_TagString: Untagged
@@ -9626,7 +9659,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &8093534162026906522
+--- !u!114 &5064550575352136280
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9635,26 +9668,53 @@ MonoBehaviour:
   m_GameObject: {fileID: 7773857044968100166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Delegates:
-  - eventID: 2
-    callback:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 6502673056062744683}
-          m_TargetAssemblyTypeName: ShopUIPurchase, Assembly-CSharp
-          m_MethodName: doThisOnClick
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 7773857044968100166}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 2
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 21300000, guid: e4b32dfbcaf16514b86e085acf411d6d, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: e4b32dfbcaf16514b86e085acf411d6d, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: e4b32dfbcaf16514b86e085acf411d6d, type: 3}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 6789040991281122161}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6502673056062744683}
+        m_TargetAssemblyTypeName: ShopUIPurchase, Assembly-CSharp
+        m_MethodName: doThisOnClick
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7773857044968100166}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7788093503277209249
 GameObject:
   m_ObjectHideFlags: 0

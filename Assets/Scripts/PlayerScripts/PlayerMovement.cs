@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public float dashForce = 4f;
     public float distToGround = 1f;
 
+
+    public Vector3 currentFacingDirection = new Vector3(0f,0f,0f);
     // Variable for Dash
     [Header("Dash Variable")]
     public float dashCoolDownSeconds = 1f;
@@ -85,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-
+        
         //Player input listeners for vectors
         playerInput.Input.Move.started += movementInput;
         playerInput.Input.Move.performed += movementInput;
@@ -101,6 +103,8 @@ public class PlayerMovement : MonoBehaviour
      *  code ran when inputs are performed:
      *  Buttons only need to be checked when they are down while 
      *  vector inputs like movement need to be checked when pushed and released
+     *  
+     *  -note when adding new aim params - not sure how to make it so that two button inputs stay
      */
     public void movementInput(InputAction.CallbackContext context)
     {
@@ -108,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
         currentMovement.x = currentMovementInput.x;
         currentMovement.z = currentMovementInput.y;
         movementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
+
 
         if(currentMovement.x > 0)
         {
@@ -138,6 +143,11 @@ public class PlayerMovement : MonoBehaviour
         if (movementPressed)
         {
             animator.SetBool("isRunning", true);
+            
+            currentFacingDirection.x = currentMovementInput.x;
+            currentFacingDirection.z = currentMovementInput.y;
+            currentFacingDirection.y = 0;
+            Vector3.Normalize(currentFacingDirection);
         }
         else
         {
@@ -168,6 +178,7 @@ public class PlayerMovement : MonoBehaviour
         initialJumpVelocity = (2 * maxJumpHeight) / timeToApex;
     }
 
+
     private void Update()
     {
 
@@ -176,7 +187,6 @@ public class PlayerMovement : MonoBehaviour
         handleRotation();
         handleDash();
         handleMovement();
-
         handleGravity();
     }
 
@@ -191,6 +201,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+    // void OnDrawGizmos()
+    // {
+    //     Debug.DrawRay(this.gameObject.transform.position,currentFacingDirection * 50,Color.red);
+
+    // }
     void handleMovement()
     {
         if (_hit)
@@ -200,6 +215,10 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             characterController.Move(currentMovement * Time.deltaTime * moveSpeed);
+            // if (currentMovement != Vector3.zero)
+            // {
+            //     currentFacingDirection = Vector3.Normalize(currentMovement);
+            // }
         }
 
         /*deltaPosition = ((transform.forward * vert) + (transform.right * horz)) * moveSpeed * Time.fixedDeltaTime;

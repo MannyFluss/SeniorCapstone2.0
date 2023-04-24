@@ -35,6 +35,8 @@ public class CharacterAttack : MonoBehaviour
     public GameObject AimPositionReference;
     [SerializeField]
     public GameObject TabHud,ShopHud;
+    [SerializeField]
+    private PlayerMovement myPlayerMovement; 
 
 
     private void Awake()
@@ -42,6 +44,8 @@ public class CharacterAttack : MonoBehaviour
         vcam = GetComponentInChildren<CinemachineVirtualCamera>();
         mainCam = Camera.main;
         playerInput = new PlayerInput();
+        myPlayerMovement = gameObject.GetComponent<PlayerMovement>();
+        
         
     }
 
@@ -88,7 +92,8 @@ public class CharacterAttack : MonoBehaviour
     void handleAim()
     {
         //added more accurate aiming
-        var ray = mainCam.ScreenPointToRay(Input.mousePosition);
+        var worldToScreen = mainCam.WorldToScreenPoint(myPlayerMovement.currentFacingDirection * 5);
+        var ray = mainCam.ScreenPointToRay(worldToScreen);
 
         if(Physics.Raycast(ray, out var hitInfo, Mathf.Infinity))
         {
@@ -96,6 +101,11 @@ public class CharacterAttack : MonoBehaviour
             direction.y = 0;
             aimArrow.forward = Quaternion.Euler(0, 90, 0) * (direction - new Vector3(transform.position.x, 0, transform.position.z));
         }
+        Vector3 aimTemp = myPlayerMovement.currentFacingDirection; 
+        aimTemp.y = 0;
+
+        aimArrow.rotation = Quaternion.Euler(0, 90, 0) * Quaternion.LookRotation(aimTemp);
+        
 
         
         /*

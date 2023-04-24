@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DialogueEditor;
+using UnityEngine.Events;
 
 public class ShopKeeperScript : MonoBehaviour
 {
@@ -17,15 +18,20 @@ public class ShopKeeperScript : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI  playMoneyText;
     private bool used = false;
+    
+    public UnityEvent test;
 
-    public GameObject Sign;
+
+  
     
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         //shopUI.enabled = false;
         playerAbilityManager = player.GetComponent<CharacterAbilityScript>();
+        test.Invoke();
     }
+
 
     void Update()
     {
@@ -65,6 +71,13 @@ public class ShopKeeperScript : MonoBehaviour
             initiateShop();
             used = true;
         }
+    }
+
+
+
+    public void pause(bool pause)
+    {
+        Time.timeScale = pause ? 1 : 0;
     }
 
     public void initiateShop()

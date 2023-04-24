@@ -4,9 +4,54 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class ShopUIPurchase : MonoBehaviour
 {
+
+    private PlayerInput playerInput;
+    private void Awake()
+    {
+        playerInput = new PlayerInput();
+    }
+    //needs atleast one button in the list or else crash
+    [SerializeField]
+    private Button[] buttons;
+
+    private Button selectedButton;
+    void Start()
+    {
+        
+        //Player input listeners for vectors
+        playerInput.Input.Move.started += shopSelection;
+        playerInput.Input.Move.performed += shopSelection;
+        playerInput.Input.Move.canceled += shopSelection;
+
+        //Player input listeners for buttons
+        playerInput.Input.Jump.started += confirmPurchase;
+        playerInput.Input.AbilityMenu.started += leaveShop;
+        
+        
+
+        
+    }
+
+
+    private void shopSelection(InputAction.CallbackContext context)
+    {
+        
+    }
+    private void confirmPurchase(InputAction.CallbackContext context)
+    {
+        
+    }
+    private void leaveShop(InputAction.CallbackContext context)
+    {
+        
+    }
+
+
+
 
     struct triplet
     {
@@ -64,6 +109,12 @@ public class ShopUIPurchase : MonoBehaviour
         initialSet();
         deselectMarkers();
         setTextAndIcons();
+        selectedButton = buttons[0];
+        selectedButton.Select();
+        //find event system and set first selected
+        //GameObject eventSystem = GameObject.Find("EventSystem");
+
+        //eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(selectedButton.gameObject);
     }
 
     public void deselectMarkers()
@@ -221,17 +272,18 @@ public class ShopUIPurchase : MonoBehaviour
         if (_clickedObject.name == "ImageBackground1")
         {
             //set image
-            PlayerAbility1Inventory.sprite = PlayerSelectedSprite;
-            PlayerAbility2Inventory.sprite = PlayerUnselectedSprite;
-            playerMarkerPosition = 0;
+            shopMarker.transform.position = _clickedObject.transform.position;
+            shopMarkerPosition = 3;
+            purchase();
+            return;
         }
         if (_clickedObject.name == "ImageBackground2")
         {
             //set image
-            PlayerAbility2Inventory.sprite = PlayerSelectedSprite;
-            PlayerAbility1Inventory.sprite = PlayerUnselectedSprite;
-
-            playerMarkerPosition = 1;
+            shopMarker.transform.position = _clickedObject.transform.position;
+            shopMarkerPosition = 4;
+            purchase();
+            return;
         }
         //not player
 

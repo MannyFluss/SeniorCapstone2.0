@@ -27,7 +27,6 @@ public class ParticleParentScript : MonoBehaviour
     {
         myParticleSystem.Stop();
         myParticleSystem.Play(true);
-        print("here");
         // var children = GetComponentsInChildren<ParticleSystem>();     
         // foreach (ParticleSystem p in children)
         // {
