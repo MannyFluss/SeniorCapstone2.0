@@ -7,6 +7,8 @@ public class TicTicBoomManager : MonoBehaviour
 {
     //general fields
     private bool puzzleActive;
+    [SerializeField]
+    PlayerManager player;
 
     //valve fields
     private ValveManager vm;
@@ -16,7 +18,12 @@ public class TicTicBoomManager : MonoBehaviour
     private float timer;
 
     [SerializeField]
-    GameObject screen;
+    private GameObject screen;
+
+    //big bomb
+    [SerializeField]
+    private GameObject bombPrefab;
+    private GameObject bomb;
 
     //prototype vals
     MeshRenderer m;
@@ -41,11 +48,19 @@ public class TicTicBoomManager : MonoBehaviour
         {
             countdown.text = ((int)timer).ToString();
         }
-        if(timer < 0)
+        if(timer < 0 && puzzleActive)
         {
             TicTicBoomFailed();
         }
-        
+    }
+
+    private void FixedUpdate()
+    {
+        //bomb movement
+        if (bomb != null)
+        {
+            bomb.transform.position = Vector3.Lerp(bomb.transform.position, new Vector3(0, 0, 0), 0.01f);
+        }
     }
 
     public void TicTicBoom(int health)
@@ -76,5 +91,14 @@ public class TicTicBoomManager : MonoBehaviour
         puzzleActive = false;
         vm.isComplete = false;
         countdown.text = "BOOM";
+        StartCoroutine(bigBomb());
+    }
+
+    private IEnumerator bigBomb()
+    {
+        bomb = Instantiate(bombPrefab, new Vector3(0, 30, 0), Quaternion.Euler(0, 0, 0));
+        yield return new WaitForSeconds(3f);
+        Destroy(bomb);
+        player.takeDamage(1);
     }
 }

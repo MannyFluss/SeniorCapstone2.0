@@ -53,6 +53,18 @@ public class PlayerManager : MonoBehaviour
         canBeHit = true;
     }
 
+    public void takeDamage(int damage)
+    {
+        health -= damage;
+        PlayerHUDReference.setUIHearts(((int)health));
+
+        StartCoroutine(HitCooldown());
+        //movement.playerHit(other.transform);
+
+        //added damagetaken sound effect
+        DamageTakenSoundEffect.Play();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "EnemyAttack" && canBeHit)
@@ -72,14 +84,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.gameObject.tag == "EnemyAttack" && canBeHit)
         {
-            health-= 1;
-            PlayerHUDReference.setUIHearts(((int)health) );
-
-            StartCoroutine(HitCooldown());
-            //movement.playerHit(other.transform);
-
-            //added damagetaken sound effect
-            DamageTakenSoundEffect.Play();
+            takeDamage(1);
 
         }
     }
@@ -88,14 +93,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (other.gameObject.tag == "EnemyAttack" && canBeHit)
         {
-            health -= 1;
-            PlayerHUDReference.setUIHearts(((int)health));
-
-            StartCoroutine(HitCooldown());
-            //movement.playerHit(other.transform);
-
-            //added damagetaken sound effect
-            DamageTakenSoundEffect.Play();
+            takeDamage(1);
 
         }
     }

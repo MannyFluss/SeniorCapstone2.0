@@ -1869,7 +1869,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4808edb4201cd2f48a36387a3cd8f561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1654990466}
   screen: {fileID: 668280861}
+  bombPrefab: {fileID: 8333109333272964056, guid: 0da2bd7fc5ea5634d86530572b8f443d, type: 3}
   red: {fileID: 2100000, guid: 9f3979e5a99204f57af273ca9f0a5bb2, type: 2}
   green: {fileID: 2100000, guid: c72d27fbb5f06ee429d4e62cd88dbac9, type: 2}
 --- !u!4 &609166486
@@ -2607,6 +2609,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1654990466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2626668998523703839, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+  m_PrefabInstance: {fileID: 13688560}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1436994761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c12d89f4cb40949409ca7e9fc04614b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1699274837 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 751444512, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
