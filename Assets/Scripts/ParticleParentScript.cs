@@ -7,12 +7,13 @@ public class ParticleParentScript : MonoBehaviour
 
     [SerializeField]
     bool playOnStart = false;
-    [SerializeField]
     ParticleSystem myParticleSystem;
+    [SerializeField]
+    ParticleSystem[] additionalParticles;
     void Start()
     {
 
-//        var children = GetComponentsInChildren<ParticleSystem>(true);    
+        myParticleSystem = GetComponent<ParticleSystem>();
   
         if (playOnStart == true)
         {
@@ -27,10 +28,12 @@ public class ParticleParentScript : MonoBehaviour
     {
         myParticleSystem.Stop();
         myParticleSystem.Play(true);
-        // var children = GetComponentsInChildren<ParticleSystem>();     
-        // foreach (ParticleSystem p in children)
-        // {
-        //     p.Play();
-        // }
+        //play each particles in the additionalParticles array
+        for (int i = 0; i < additionalParticles.Length; i++)
+        {
+            print("play");
+            additionalParticles[i].Stop();
+            additionalParticles[i].Play(true);
+        }
     }
 }
