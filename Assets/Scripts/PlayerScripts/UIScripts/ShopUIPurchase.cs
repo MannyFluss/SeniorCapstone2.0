@@ -111,6 +111,7 @@ public class ShopUIPurchase : MonoBehaviour
         setTextAndIcons();
         selectedButton = buttons[0];
         selectedButton.Select();
+
         //find event system and set first selected
         //GameObject eventSystem = GameObject.Find("EventSystem");
 
@@ -237,7 +238,7 @@ public class ShopUIPurchase : MonoBehaviour
     //idk why but you can only have arg
     public void doThisOnClick(GameObject _clickedObject)
     {
-        
+
         if(_clickedObject.name == "Ability1")
         {
             playerMarker.transform.position = _clickedObject.transform.position;
@@ -272,8 +273,10 @@ public class ShopUIPurchase : MonoBehaviour
         if (_clickedObject.name == "ImageBackground1")
         {
             //set image
+            
             shopMarker.transform.position = _clickedObject.transform.position;
             shopMarkerPosition = 3;
+            playerMarkerPosition = 0;
             purchase();
             return;
         }
@@ -282,6 +285,7 @@ public class ShopUIPurchase : MonoBehaviour
             //set image
             shopMarker.transform.position = _clickedObject.transform.position;
             shopMarkerPosition = 4;
+            playerMarkerPosition = 1;
             purchase();
             return;
         }

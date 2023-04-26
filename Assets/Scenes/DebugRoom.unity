@@ -1994,6 +1994,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopOpen.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: test.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
       objectReference: {fileID: 0}
@@ -2003,18 +2007,46 @@ PrefabInstance:
       objectReference: {fileID: 131584733}
     - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: test.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopOpen.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: test.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: crabCake
       objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopOpen.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 13688561}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopOpen.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopOpen.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: test.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: ShopKeeperScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopOpen.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopOpen.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: test.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopOpen.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513987, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
@@ -2027,7 +2059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513990, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -147.23
+      value: -150.01
       objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513990, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2035,7 +2067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513990, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.19
+      value: -2.42
       objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513990, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2090,13 +2122,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 14
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":321.5,"yPos":310},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Its
-    cool!","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":765.5,"yPos":291},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    think it needs some workshopping...","parentUIDs":[4],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":749.5,"yPos":691},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Leave","parentUIDs":[10],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":320.5,"yPos":696},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"open
-    shop","parentUIDs":[10],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":509.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Man,
-    am I glad to see you!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":358.5,"yPos":135},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"While
-    I was setting up shop here I was attacked by some piranhas.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":585.5,"yPos":181},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    call this little shop of mine... EM''s EMINENT EMPORIUM... Whaddaya think?","parentUIDs":[1],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":767.5,"yPos":414},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":":(","parentUIDs":[6],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":321.5,"yPos":406},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"...","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":12},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":545.5,"yPos":573},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":null,"parentUIDs":[7,8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":null,"OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":139,"yPos":407},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Its
+    cool!","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":583,"yPos":388},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    think it needs some workshopping...","parentUIDs":[4],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":567,"yPos":788},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Leave","parentUIDs":[10],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":138,"yPos":793},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"open
+    shop","parentUIDs":[10],"SpeechUID":-1}],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":327,"yPos":119},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Man,
+    am I glad to see you!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":176,"yPos":232},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"While
+    I was setting up shop here I was attacked by some piranhas.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":403,"yPos":278},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    call this little shop of mine... EM''s EMINENT EMPORIUM... Whaddaya think?","parentUIDs":[1],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":585,"yPos":511},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":":(","parentUIDs":[6],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":139,"yPos":503},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"...","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Em","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":12},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":363,"yPos":670},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":null,"parentUIDs":[7,8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":null,"OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: 
   DefaultSprite: {fileID: 0}

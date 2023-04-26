@@ -4,11 +4,12 @@ using UnityEngine;
 using TMPro;
 using DialogueEditor;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class ShopKeeperScript : MonoBehaviour
 {
     public NPCConversation myConversation;
-    float interactRange = 5.0f;
+    float interactRange = 4.0f;
     bool inRange = false;
     GameObject player;
     CharacterAbilityScript playerAbilityManager;
@@ -18,21 +19,51 @@ public class ShopKeeperScript : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI  playMoneyText;
     private bool used = false;
-    
-    public UnityEvent test;
+    [SerializeField]
+    private UnityEvent onShopOpen;
 
-
+    private PlayerInput playerInput;
   
     
+    void Awake()
+    {
+        playerInput = new PlayerInput();
+    }
     void Start()
     {
+        
+
+        playerInput.Input.Hit.performed += hitInput;
+
         player = GameObject.FindGameObjectWithTag("Player");
         //shopUI.enabled = false;
         playerAbilityManager = player.GetComponent<CharacterAbilityScript>();
-        test.Invoke();
+        
     }
 
 
+
+    private void hitInput(InputAction.CallbackContext context)
+    {
+        print("look at me look at me");
+        var di = Vector3.Distance(transform.position,player.transform.position);
+        foreach (GameObject enemies in GameObject.FindGameObjectsWithTag("Enemy"))
+        {
+            var distanceToEnemy = Vector3.Distance(gameObject.transform.position,enemies.transform.position);
+            if (distanceToEnemy < 40)
+            {
+                return;
+            }
+        }
+        if (di <= interactRange && used == false)
+        {
+            initiateShop();
+            used = true;
+        }
+        
+    }
+    
+    
     void Update()
     {
         if (used) this.gameObject.SetActive(false);
@@ -53,7 +84,7 @@ public class ShopKeeperScript : MonoBehaviour
             inRange = false;
         }
 
-        if (inRange == true && Input.GetKeyDown(KeyCode.F))
+        if (inRange == true)
         {
             if (used == true)
             {
@@ -72,7 +103,7 @@ public class ShopKeeperScript : MonoBehaviour
             used = true;
         }
     }
-
+    
 
 
     public void pause(bool pause)
@@ -82,9 +113,11 @@ public class ShopKeeperScript : MonoBehaviour
 
     public void initiateShop()
     {
-        if(!ConversationManager.Instance.IsConversationActive)
-        {
-            ConversationManager.Instance.StartConversation(myConversation);
-        }
+        print("initiate shop");
+        onShopOpen.Invoke();
+        // if(!ConversationManager.Instance.IsConversationActive)
+        // {
+        //     ConversationManager.Instance.StartConversation(myConversation);
+        // }
     }
 }
