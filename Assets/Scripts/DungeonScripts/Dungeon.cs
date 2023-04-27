@@ -101,10 +101,10 @@ public class Dungeon : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.K))
         {
-            Debug.Log("sure");
+            //Debug.Log("sure");
             if (Input.GetKey(KeyCode.A))
             {
-                Debug.Log("yeah");
+                //Debug.Log("yeah");
                 ClearMinions();
             }
         }
