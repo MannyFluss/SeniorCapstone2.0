@@ -113,7 +113,17 @@ public class ShopKeeperScript : MonoBehaviour
 
     public void initiateShop()
     {
-        print("initiate shop");
+        //find object with the shopurchase script and set game object active
+        
+        // //FindGameObjectWithTag("ShopUI").SetActive(true);
+        // ShopUIPurchase temp = FindObjectOfType<ShopUIPurchase>();
+        // temp.gameObject.SetActive(true);
+
+        // GameObject temp2 = GameObject.FindGameObjectWithTag("ShopUI");
+        // temp2.SetActive(true);
+        // //FindObjectOfType<ShopUIPurchase>().gameObject.SetActive(true);
+
+        // print("initiate shop");
         onShopOpen.Invoke();
         // if(!ConversationManager.Instance.IsConversationActive)
         // {

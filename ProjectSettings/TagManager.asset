@@ -9,6 +9,7 @@ TagManager:
   - EnemyAttack
   - Boss
   - Crane
+  - ShopUI
   layers:
   - Default
   - TransparentFX

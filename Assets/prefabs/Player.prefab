@@ -13250,7 +13250,7 @@ GameObject:
   - component: {fileID: 6502673056062744683}
   m_Layer: 0
   m_Name: ShopUI-Purchase
-  m_TagString: Untagged
+  m_TagString: ShopUI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
