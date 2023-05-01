@@ -9,6 +9,9 @@ public class TutorialRoom2 : MonoBehaviour
     SingleArmBehavior armScript;
     DungeonManager dm;
     private bool clearR2;
+    // private Vector3 originalPosition;
+    // private Vector3 aboveGround;
+    // private Vector3 belowGround;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +19,11 @@ public class TutorialRoom2 : MonoBehaviour
         dm = GetComponentInParent<DungeonManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         clearR2 = false;
-        //armScript.Frenzy = false;
+        //originalPosition = transform.position;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Vector3 playerPos = player.transform.position;
         //checks if player is in room 2 
@@ -31,6 +34,18 @@ public class TutorialRoom2 : MonoBehaviour
                 gameObject.SetActive(false);
                 return;
             }
+            // originalPosition = transform.position;
+            // aboveGround = new Vector3(originalPosition.x, 0.1F, 12F);
+            // belowGround = new Vector3(originalPosition.x, -10F, 12F);
+
+            // if (transform.position != originalPosition) {
+            //     transform.position = Vector3.Lerp(transform.position, belowGround, 1f);
+            // } else {
+            //     transform.position = Vector3.Lerp(transform.position, aboveGround, 1f);
+            // }
+
+            // originalPosition = transform.position;
+
             //checks if room has enemies
             foreach (GameObject enemies in GameObject.FindGameObjectsWithTag("Enemy"))
             {
