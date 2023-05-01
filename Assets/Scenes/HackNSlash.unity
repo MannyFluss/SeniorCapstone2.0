@@ -12925,7 +12925,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456194566}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 6
   m_Height: 34.88
@@ -13020,6 +13020,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!65 &1456194574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456194566}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 21, y: 29.98, z: 1.75}
+  m_Center: {x: 0, y: 13.6, z: 0}
 --- !u!1001 &1470387202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16580,7 +16593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4902893614509772387, guid: f8e5054eb80c6e948a19071ecbd5b9de, type: 3}
       propertyPath: Frenzy
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4902893614509772387, guid: f8e5054eb80c6e948a19071ecbd5b9de, type: 3}
       propertyPath: player
