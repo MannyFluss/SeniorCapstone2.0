@@ -87,6 +87,7 @@ public class CutsceneManagerV2 : MonoBehaviour
             while (!Input.GetKeyDown(KeyCode.Space))
             {
                 yield return null;
+                //throw fade in here
             }
 
             // Subtitle Fade Out

@@ -6,6 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class DungeonManager : MonoBehaviour
 {
+    //added battlemusictheme
+    [SerializeField] private AudioSource BattleMusic;
+    //added nonbattlemusictheme
+    [SerializeField] private AudioSource NonBattleMusic;
+
+
     public GameObject[] dungeons = new GameObject[0];
     public GameObject player;
     public List<GameObject> minionPrefabs = new List<GameObject>();
@@ -105,6 +111,12 @@ public class DungeonManager : MonoBehaviour
             newPrefabs.AddRange(levelThreeMinionPrefabs);
         }
         dungeonScript.minonPrefabs = newPrefabs;
+
+        //start battle music
+        //NonBattleMusic.Stop();
+        NonBattleMusic.Play();
+        BattleMusic.Play();
+
     }
 
     /// <summary>
@@ -137,6 +149,12 @@ public class DungeonManager : MonoBehaviour
                 msgDelivered = false;
                 nextDungeon.RandomSpawn();
                 currentDungeon.isActive = false;
+
+                //resume battle music again
+                BattleMusic.pitch = 1f;
+                //NonBattleMusic.Play();
+                //BattleMusic.Play();
+
             }
             else
             {
@@ -152,6 +170,11 @@ public class DungeonManager : MonoBehaviour
         {
             StartCoroutine(ClearBannerAppear(AppearTimer));
             msgDelivered = true;
+
+            //stop battle music
+            BattleMusic.pitch = .0f;
+            //BattleMusic.Stop();
+            //NonBattleMusic.Play();
         }
     }
 
@@ -170,6 +193,7 @@ public class DungeonManager : MonoBehaviour
             return dungeons[dungeonIndex + 1];
         }
         return null;
+
     }
 
     IEnumerator ClearBannerAppear(float waitTime)
