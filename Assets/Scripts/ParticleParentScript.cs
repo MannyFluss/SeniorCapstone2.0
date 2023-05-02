@@ -10,6 +10,8 @@ public class ParticleParentScript : MonoBehaviour
     ParticleSystem myParticleSystem;
     [SerializeField]
     ParticleSystem[] additionalParticles;
+    [SerializeField]
+    float timeUntilDestroy = 0.0f;
     void Start()
     {
 
@@ -18,6 +20,10 @@ public class ParticleParentScript : MonoBehaviour
         if (playOnStart == true)
         {
             play();
+        }
+        if (timeUntilDestroy > 0.0f)
+        {
+            Destroy(gameObject, timeUntilDestroy);
         }
     }
     public void play()

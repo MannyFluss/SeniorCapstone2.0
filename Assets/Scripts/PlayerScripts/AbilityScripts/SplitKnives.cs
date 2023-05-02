@@ -5,6 +5,8 @@ using UnityEngine;
 public class SplitKnives : MonoBehaviour
 {
     [SerializeField]
+    GameObject onHitParticles;
+    [SerializeField]
     float speed = 7;
     Vector3 direction = new Vector3(0,0,0);
     bool moreKnives = false;
@@ -46,24 +48,31 @@ public class SplitKnives : MonoBehaviour
         {
             return;
         }
-
+        Instantiate(onHitParticles, gameObject.transform.position, Quaternion.identity);
         if (moreKnives == true)
         {
-            GameObject kniveCopy = gameObject;
-            GameObject knife1 = Instantiate(kniveCopy, gameObject.transform.position, Quaternion.identity);
-            GameObject knife2 = Instantiate(kniveCopy, gameObject.transform.position, Quaternion.identity);
-            GameObject knife3 = Instantiate(kniveCopy, gameObject.transform.position, Quaternion.identity);
-            Vector3 leftRotate = Quaternion.AngleAxis(-45, Vector3.up) * direction;
-            Vector3 rightRotate = Quaternion.AngleAxis(45, Vector3.up) * direction;
-            knife1.GetComponent<SplitKnives>().initialize(leftRotate, false, other.gameObject);
-            knife2.GetComponent<SplitKnives>().initialize(rightRotate, false, other.gameObject);
-            knife3.GetComponent<SplitKnives>().initialize(direction, false, other.gameObject); 
+            StartCoroutine(spawnKnives(other));   
         }
-        Destroy(gameObject);
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
-        
-        
-        
+    IEnumerator spawnKnives(Collider other)
+    {
+        GameObject kniveCopy = gameObject;
+        GameObject knife1 = Instantiate(kniveCopy, gameObject.transform.position, Quaternion.identity);
+        GameObject knife2 = Instantiate(kniveCopy, gameObject.transform.position, Quaternion.identity);
+        GameObject knife3 = Instantiate(kniveCopy, gameObject.transform.position, Quaternion.identity);
+        Vector3 leftRotate = Quaternion.AngleAxis(-45, Vector3.up) * direction;
+        Vector3 rightRotate = Quaternion.AngleAxis(45, Vector3.up) * direction;
+        knife1.GetComponent<SplitKnives>().initialize(leftRotate, false, other.gameObject);
+        knife2.GetComponent<SplitKnives>().initialize(rightRotate, false, other.gameObject);
+        knife3.GetComponent<SplitKnives>().initialize(direction, false, other.gameObject); 
+        Destroy(gameObject);
+        yield return new WaitForSeconds(1f);
+
     }
 }
 
