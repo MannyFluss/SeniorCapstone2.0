@@ -22,15 +22,7 @@ public class ShopUIPurchase : MonoBehaviour
     void Start()
     {
         
-        //Player input listeners for vectors
-        playerInput.Input.Move.started += shopSelection;
-        playerInput.Input.Move.performed += shopSelection;
-        playerInput.Input.Move.canceled += shopSelection;
 
-        //Player input listeners for buttons
-        playerInput.Input.Jump.started += confirmPurchase;
-        playerInput.Input.AbilityMenu.started += leaveShop;
-        
         
 
         

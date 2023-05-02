@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.Events;
 
 public class DialogueScript : MonoBehaviour
 {
@@ -16,19 +17,31 @@ public class DialogueScript : MonoBehaviour
     public float textSpeed;
     private int index;
     private PlayerInput playerInput;
+
+
+    [SerializeField]
+    private UnityEvent onShopOpen;
+
+    
+    [SerializeField]
+    private UnityEvent onShopClose;
+
+
     private void Awake()
     {
         playerInput = new PlayerInput();
+        
     }
     void Start()
     {
-        playerInput.Input.Jump.started += PLEASEWORK; 
+        playerInput.Input.Jump.started += jumpInput; 
         startDialogue();
 
     }
 
-    public void PLEASEWORK(InputAction.CallbackContext context)
+    public void jumpInput(InputAction.CallbackContext context)
     {
+        print(context);
         if (myText.text == lines[index])
         {
             NextLine();
@@ -46,6 +59,8 @@ public class DialogueScript : MonoBehaviour
 
     public void startDialogue()
     {
+
+        playerInput.Enable();
         myText = GetComponentInChildren<TextMeshProUGUI>();
         myCanvas = GetComponentInChildren<Canvas>();
 
@@ -53,6 +68,7 @@ public class DialogueScript : MonoBehaviour
         myText.text = string.Empty;
         index = 0;
         StartCoroutine(TypeLine());
+        onShopOpen.Invoke();
     }
     IEnumerator TypeLine()
     {
@@ -79,24 +95,9 @@ public class DialogueScript : MonoBehaviour
 
     void finishedDialogue()
     {
+        onShopClose.Invoke();
         myCanvas.gameObject.SetActive(false);
-    }
 
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (myText.text == lines[index])
-            {
-                NextLine();
-            }
-            else
-            {
-                StopAllCoroutines();
-                myText.text = lines[index];
-            }
-        }
     }
-    // Update is called once per frame
 
 }
