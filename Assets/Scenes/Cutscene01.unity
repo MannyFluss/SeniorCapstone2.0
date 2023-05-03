@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 39575239}
   - component: {fileID: 39575238}
   m_Layer: 5
-  m_Name: Sub Bg
+  m_Name: Dialogue Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -158,8 +158,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000014544, y: 63.2451}
-  m_SizeDelta: {x: 1571.5356, y: 172.4004}
+  m_AnchoredPosition: {x: 57.094, y: 196.59596}
+  m_SizeDelta: {x: 1685.723, y: 393.192}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &39575238
 MonoBehaviour:
@@ -181,8 +181,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1015041884, guid: b6ad6f571522a644a86200c545130704, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: 86636e00b1967a2449bc94ea47e0ef36, type: 3}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 720
 --- !u!222 &39575239
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 277022561}
   - component: {fileID: 277022560}
   m_Layer: 5
-  m_Name: Subtitle
+  m_Name: Dialogue Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -974,7 +974,7 @@ GameObject:
   - component: {fileID: 1809689302}
   - component: {fileID: 1809689303}
   m_Layer: 5
-  m_Name: Stills
+  m_Name: Cutscene Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

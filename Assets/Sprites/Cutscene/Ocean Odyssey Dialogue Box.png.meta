@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: b6ad6f571522a644a86200c545130704
+guid: 84153cbc6fc861b4fa9d8978fd1d080c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -44,7 +44,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -141,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Subtitle Background_0
+      name: Ocean Odyssey Dialogue Box_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 720
-        width: 360
-        height: 360
+        y: 480
+        width: 240
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4df5a56446a84b48aa0a6e766344846
-      internalID: 1015041884
+      spriteID: 43a25ce89c4f462478a131b8329de79d
+      internalID: -687064043
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtitle Background_1
+      name: Ocean Odyssey Dialogue Box_1
       rect:
         serializedVersion: 2
-        x: 360
-        y: 720
-        width: 360
-        height: 360
+        x: 240
+        y: 480
+        width: 240
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 390fdba79aa381240921ff30cd05adfd
-      internalID: 1201961346
+      spriteID: 6dfad1be035212d4484323c61c532f28
+      internalID: 58373035
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtitle Background_2
+      name: Ocean Odyssey Dialogue Box_2
       rect:
         serializedVersion: 2
-        x: 720
-        y: 720
-        width: 360
-        height: 360
+        x: 480
+        y: 480
+        width: 240
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5300c1be0c6d4d848b80e050d1744ced
-      internalID: -100699172
+      spriteID: 3f62bb99fc5894c498bf33447bd883b8
+      internalID: 36434122
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtitle Background_3
+      name: Ocean Odyssey Dialogue Box_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 360
-        width: 360
-        height: 360
+        y: 240
+        width: 240
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bae86445a0f19794da5d8316009eadcc
-      internalID: 1266692444
+      spriteID: 31b71f793405b35469509b501e8cbe37
+      internalID: 573106795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtitle Background_4
+      name: Ocean Odyssey Dialogue Box_4
       rect:
         serializedVersion: 2
-        x: 360
-        y: 360
-        width: 360
-        height: 360
+        x: 240
+        y: 240
+        width: 240
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,20 +239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2cbc8c562e1754b4aa3b1672ac0dd2f8
-      internalID: 493080320
+      spriteID: 4841b8e69f081cb4d81858b37a51c1b7
+      internalID: -1371489741
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtitle Background_5
+      name: Ocean Odyssey Dialogue Box_5
       rect:
         serializedVersion: 2
-        x: 720
-        y: 360
-        width: 360
-        height: 360
+        x: 480
+        y: 240
+        width: 240
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,20 +260,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53d69278e853a014b8f1644a4a547d21
-      internalID: -1153921028
+      spriteID: 0b9afd3ae676411449991f2108c1c4e7
+      internalID: 281337066
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtitle Background_6
+      name: Ocean Odyssey Dialogue Box_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 360
-        height: 360
+        width: 240
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,20 +281,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c547666f4bbbce443bcdb6a03d4e838d
-      internalID: 1541456220
+      spriteID: e7c3f652dfd420d40b5e919694b5106f
+      internalID: -1081618710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtitle Background_7
+      name: Ocean Odyssey Dialogue Box_7
       rect:
         serializedVersion: 2
-        x: 360
+        x: 240
         y: 0
-        width: 360
-        height: 360
+        width: 240
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,20 +302,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 29e4bb85f04c2dd43a0ada99469bc34c
-      internalID: -843632002
+      spriteID: bb926c315896a444687b2a89cda8218d
+      internalID: 1567299832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Subtitle Background_8
+      name: Ocean Odyssey Dialogue Box_8
       rect:
         serializedVersion: 2
-        x: 720
+        x: 480
         y: 0
-        width: 360
-        height: 360
+        width: 240
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,8 +323,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fd9c0cd6748d3447b4e5358501372bd
-      internalID: -1853955299
+      spriteID: dd03439dd915d72469192fdcb9632956
+      internalID: 208997313
       vertices: []
       indices: 
       edges: []
@@ -332,7 +332,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: d9ac25efbc3dfbc45a8a68dd5de0ee4d
+    spriteID: 138d65fca0b42ab4b9d5a39335b1afda
     internalID: 0
     vertices: []
     indices: 
@@ -340,15 +340,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Subtitle Background_0: 1015041884
-      Subtitle Background_1: 1201961346
-      Subtitle Background_8: -1853955299
-      Subtitle Background_7: -843632002
-      Subtitle Background_6: 1541456220
-      Subtitle Background_5: -1153921028
-      Subtitle Background_2: -100699172
-      Subtitle Background_3: 1266692444
-      Subtitle Background_4: 493080320
+      Ocean Odyssey Dialogue Box_8: 208997313
+      Ocean Odyssey Dialogue Box_3: 573106795
+      Ocean Odyssey Dialogue Box_1: 58373035
+      Ocean Odyssey Dialogue Box_7: 1567299832
+      Ocean Odyssey Dialogue Box_5: 281337066
+      Ocean Odyssey Dialogue Box_6: -1081618710
+      Ocean Odyssey Dialogue Box_0: -687064043
+      Ocean Odyssey Dialogue Box_2: 36434122
+      Ocean Odyssey Dialogue Box_4: -1371489741
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
