@@ -7,6 +7,10 @@ public class RippleEffectManager : MonoBehaviour
     private float interval = 0.0f;
 
     RippleEffectSingle[] ripples = new RippleEffectSingle[4];
+
+    //for DrKrabManager
+    public bool rippleEffectActive = false;
+
     void Start()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -17,6 +21,7 @@ public class RippleEffectManager : MonoBehaviour
 
     public void rippleEffect(int health)
     {
+        rippleEffectActive = true;
         StartCoroutine(rippleEffectAttack(health));
     }
 
@@ -41,5 +46,7 @@ public class RippleEffectManager : MonoBehaviour
             ripples[Random.Range(0, 4)].fireRipple();
             yield return new WaitForSeconds(interval);
         }
+
+        rippleEffectActive = false;
     }
 }

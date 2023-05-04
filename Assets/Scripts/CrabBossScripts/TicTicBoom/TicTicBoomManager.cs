@@ -32,11 +32,16 @@ public class TicTicBoomManager : MonoBehaviour
     [SerializeField]
     Material green;
 
+    //for DrKrabMaanger
+    DrKrabManager dkm;
+    public bool ticTicBoomActive = false;
+
     void Start()
     {
         vm = GetComponentInChildren<ValveManager>();
         countdown = GetComponentInChildren<TMP_Text>();
         m = screen.GetComponent<MeshRenderer>();
+        dkm = GetComponentInParent<DrKrabManager>();
     }
 
     // Update is called once per frame
@@ -65,6 +70,7 @@ public class TicTicBoomManager : MonoBehaviour
 
     public void TicTicBoom(int health)
     {
+        ticTicBoomActive = true;
         puzzleActive = true;
         m.material = red;
         vm.startValves();
@@ -80,17 +86,22 @@ public class TicTicBoomManager : MonoBehaviour
 
     public void TicTicBoomSolved()
     {
+        ticTicBoomActive = false;
         puzzleActive = false;
         vm.isComplete = false;
         countdown.text = "%^&*))#!";
+        vm.stopValves();
         m.material = green;
+        dkm.stunSequence();
     }
 
     public void TicTicBoomFailed()
     {
+        ticTicBoomActive = false;
         puzzleActive = false;
         vm.isComplete = false;
         countdown.text = "BOOM";
+        vm.stopValves();
         StartCoroutine(bigBomb());
     }
 
@@ -100,5 +111,7 @@ public class TicTicBoomManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Destroy(bomb);
         player.takeDamage(1);
+        yield return new WaitForSeconds(3f);
+        dkm.beginMoves();
     }
 }

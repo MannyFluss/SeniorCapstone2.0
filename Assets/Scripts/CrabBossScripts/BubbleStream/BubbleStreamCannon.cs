@@ -13,6 +13,8 @@ public class BubbleStreamCannon : MonoBehaviour
     [SerializeField]
     private bool isSingleCannon;
 
+    
+
     void FixedUpdate()
     {
         if (indicator != null)
@@ -23,12 +25,13 @@ public class BubbleStreamCannon : MonoBehaviour
 
     public void fireSingleCannon()
     {
+        
         StartCoroutine(fireCannon());
     }
 
     public IEnumerator fireCannon()
     {
-        indicator = Instantiate(indicatorPrefab, transform.position - new Vector3(0, 0.647f, 0), Quaternion.Euler(0, 90, 0));
+        indicator = Instantiate(indicatorPrefab, transform.position - new Vector3(0, 0.647f, 0), transform.localRotation * Quaternion.Euler(new Vector3(0, 90, 0)));
         yield return new WaitForSeconds(3f);
         GetComponentInChildren<ParticleSystem>().Play();
         yield return new WaitForSeconds(2f);
