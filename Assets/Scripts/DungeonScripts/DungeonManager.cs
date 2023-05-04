@@ -4,8 +4,31 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
+
+
 public class DungeonManager : MonoBehaviour
 {
+
+
+    //added a FadeAudioSource Function
+    private static class FadeAudioSource
+    {
+        public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+        {
+            float currentTime = 0;
+            float start = audioSource.volume;
+            while (currentTime < duration)
+            {
+                currentTime += Time.deltaTime;
+                audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+                yield return null;
+            }
+            yield break;
+        }
+    }
+
+
     //added battlemusictheme
     [SerializeField] private AudioSource BattleMusic;
     //added nonbattlemusictheme
@@ -112,8 +135,8 @@ public class DungeonManager : MonoBehaviour
         }
         dungeonScript.minonPrefabs = newPrefabs;
 
-        //start battle music
-        //NonBattleMusic.Stop();
+        //Enter Dungeon Battle music
+        
         NonBattleMusic.Play();
         BattleMusic.Play();
 
@@ -151,9 +174,7 @@ public class DungeonManager : MonoBehaviour
                 currentDungeon.isActive = false;
 
                 //resume battle music again
-                BattleMusic.pitch = 1f;
-                //NonBattleMusic.Play();
-                //BattleMusic.Play();
+                StartCoroutine(FadeAudioSource.StartFade(BattleMusic, 4f, 0.5f));
 
             }
             else
@@ -171,10 +192,9 @@ public class DungeonManager : MonoBehaviour
             StartCoroutine(ClearBannerAppear(AppearTimer));
             msgDelivered = true;
 
-            //stop battle music
-            BattleMusic.pitch = .0f;
-            //BattleMusic.Stop();
-            //NonBattleMusic.Play();
+            //fade battle music to stop
+            StartCoroutine(FadeAudioSource.StartFade(BattleMusic, 4f, 0f));
+
         }
     }
 
