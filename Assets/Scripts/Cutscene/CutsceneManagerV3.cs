@@ -13,8 +13,8 @@ public class CutsceneManagerV3 : MonoBehaviour
     [Serializable]
     public class cutscene
     {
-        private Sprite cutsceneImage;
-        private string cutsceneDialogue;
+        public Sprite cutsceneImage;
+        public string cutsceneDialogue;
     }
 
     public AudioClip CutsceneOST;
