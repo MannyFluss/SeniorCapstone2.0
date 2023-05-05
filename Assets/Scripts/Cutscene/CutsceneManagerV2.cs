@@ -19,11 +19,13 @@ public class CutsceneManagerV2 : MonoBehaviour
         public float cutsceneTimer;
     }
 
-    public AudioClip CutsceneMusic;
-
     [Header("Set-Up")]
     public List<cutsceneNarrativePair> cutsceneList = new List<cutsceneNarrativePair>();
     public string nextSceneName;
+
+    [Header("Audio")]
+    public AudioClip MainCutsceneMusic;
+    public AudioClip EndCutsceneMusic;
 
     [Header("Operating GameObject")]
     public Image GRAPHICS;
@@ -44,10 +46,10 @@ public class CutsceneManagerV2 : MonoBehaviour
         if (cutsceneList.Count > 0)
         {
             // Play the Audio Source when the cutscene starts, if there is a file attached
-            if (CutsceneMusic != null)
+            if (MainCutsceneMusic != null)
             {
                 AudioSource audio = this.GetComponent<AudioSource>();
-                audio.clip = CutsceneMusic;
+                audio.clip = MainCutsceneMusic;
                 audio.Play();
             }
 
