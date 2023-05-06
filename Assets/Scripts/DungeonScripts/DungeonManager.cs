@@ -44,11 +44,11 @@ public class DungeonManager : MonoBehaviour
         foreach (var dungeon in dungeons)
         {
 
-            if (i < 2)
+            if (i < 1)
             {
                 InitiateDungeon(dungeon: dungeon, 1);
             }
-            else if (i < 4)
+            else if (i < 3)
             {
                 InitiateDungeon(dungeon: dungeon, 2);
             }

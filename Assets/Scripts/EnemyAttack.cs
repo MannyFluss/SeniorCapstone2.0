@@ -12,7 +12,7 @@ public class EnemyAttack : MonoBehaviour
     public GameObject bettaMedium;
     public GameObject bettaLong;
     public Animator animator;
-    private bool _attackAvailable = true;
+    public bool _attackAvailable = true;
     private MeshRenderer meshRenderer;
     private Transform player;
     //public Collider collider;
@@ -37,13 +37,23 @@ public class EnemyAttack : MonoBehaviour
     {
     }
 
+    public void EelAttack()
+    {
+        GetComponent<Collider>().enabled = true;
+        meshRenderer.enabled = true;
+    }
 
+    public void EelCancelAttack()
+    {
+        GetComponent<Collider>().enabled = false;
+        meshRenderer.enabled = false;
+    }
 
     public void BettaFishAttack()
     {
         if(_attackAvailable)
         {
-            enemyMovement.Charge();
+            enemyMovement.Charge(force: 500);
             StartCoroutine(BettaFishAttactTimer());
             StartCoroutine(BettaFishCooldown());
         }
@@ -85,6 +95,39 @@ public class EnemyAttack : MonoBehaviour
             GameObject arrow = Instantiate(projectile);
             arrow.transform.position = transform.position;
             StartCoroutine(ArcherCooldown());
+        }
+
+    }
+
+    public IEnumerator SquidCooldown()
+    {
+        enemyMovement._pursuePlayer = false;
+        _attackAvailable = false;
+        yield return new WaitForSeconds(cooldown);
+        _attackAvailable = true;
+        enemyMovement._pursuePlayer = true;
+        animator.SetBool("isAttack", false);
+    }
+
+    public IEnumerator SquidAttactTimer(int numberOfAttack)
+    {
+        print("attack");
+        GameObject arrow = Instantiate(projectile);
+        arrow.transform.position = transform.position;
+        yield return new WaitForSeconds(attackLast);
+        if (numberOfAttack > 1)
+        {
+            StartCoroutine(SquidAttactTimer(numberOfAttack - 1));
+        }
+    }
+
+    public void SquidAttack()
+    {
+        if (_attackAvailable)
+        {
+            animator.SetBool("isAttack", true);
+            StartCoroutine(SquidAttactTimer(3));
+            StartCoroutine(SquidCooldown());
         }
 
     }
@@ -131,6 +174,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (_attackAvailable)
         {
+            enemyMovement.Charge(force: 100);
             StartCoroutine(PiranhaAttackTimer());
             StartCoroutine(PiranhaCooldown());
         }
