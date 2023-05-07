@@ -13274,6 +13274,12 @@ MonoBehaviour:
   lines:
   - Hello Manny
   textSpeed: 0
+  onShopOpen:
+    m_PersistentCalls:
+      m_Calls: []
+  onShopClose:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1633807545
 Transform:
   m_ObjectHideFlags: 0
