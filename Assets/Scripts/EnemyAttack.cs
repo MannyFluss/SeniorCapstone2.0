@@ -106,12 +106,21 @@ public class EnemyAttack : MonoBehaviour
     {
         if (_attackAvailable)
         {
-            animator.SetBool("isAttack", true);
-            GameObject arrow = Instantiate(projectile);
-            arrow.transform.position = transform.position;
+            StartCoroutine(ArcherAttackTimer());
             StartCoroutine(ArcherCooldown());
         }
 
+    }
+
+    public IEnumerator ArcherAttackTimer()
+    {
+        AnticipationVFXStart();
+        yield return new WaitForSeconds(anticipationTime);
+        AnticipationVFXEnd();
+
+        animator.SetBool("isAttack", true);
+        GameObject arrow = Instantiate(projectile);
+        arrow.transform.position = transform.position;
     }
 
     public IEnumerator SquidCooldown()
@@ -219,6 +228,10 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator BettaMediumAttackTimer()
     {
+        AnticipationVFXStart();
+        yield return new WaitForSeconds(anticipationTime);
+        AnticipationVFXEnd();
+
         bettaMedium.SetActive(true);
         yield return new WaitForSeconds(attackLast);
         bettaMedium.SetActive(false);
@@ -227,6 +240,10 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator BettaLongAttackTimer()
     {
+        AnticipationVFXStart();
+        yield return new WaitForSeconds(anticipationTime);
+        AnticipationVFXEnd();
+
         bettaLong.SetActive(true);
         yield return new WaitForSeconds(attackLast);
         bettaLong.SetActive(false);
