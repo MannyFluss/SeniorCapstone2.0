@@ -7,6 +7,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public float attackLast = 1f;
     public float cooldown = 5f;
+    public float anticipationTime = 1f;
     public GameObject projectile;
     public GameObject bettaShort;
     public GameObject bettaMedium;
@@ -37,6 +38,16 @@ public class EnemyAttack : MonoBehaviour
     {
     }
 
+    private void AnticipationVFXStart()
+    {
+        // Anticipation VFX
+    }
+
+    private void AnticipationVFXEnd()
+    {
+        // Anticipation VFX
+    }
+
     public void EelAttack()
     {
         GetComponent<Collider>().enabled = true;
@@ -61,6 +72,10 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator BettaFishAttactTimer()
     {
+        AnticipationVFXStart();
+        yield return new WaitForSeconds(anticipationTime);
+        AnticipationVFXEnd();
+
         animator.SetBool("Charge", true);
         GetComponent<Collider>().enabled = true;
         meshRenderer.enabled = true;
@@ -111,6 +126,10 @@ public class EnemyAttack : MonoBehaviour
 
     public IEnumerator SquidAttactTimer(int numberOfAttack)
     {
+        AnticipationVFXStart();
+        yield return new WaitForSeconds(anticipationTime);
+        AnticipationVFXEnd();
+
         print("attack");
         GameObject arrow = Instantiate(projectile);
         arrow.transform.position = transform.position;
@@ -146,6 +165,10 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator PufferAttackTimer()
     {
+        AnticipationVFXStart();
+        yield return new WaitForSeconds(anticipationTime);
+        AnticipationVFXEnd();
+
         animator.SetBool("isPuffedUp", true);
         GetComponent<Collider>().enabled = true;
         meshRenderer.enabled = true;
@@ -183,6 +206,10 @@ public class EnemyAttack : MonoBehaviour
 
     IEnumerator PiranhaAttackTimer()
     {
+        AnticipationVFXStart();
+        yield return new WaitForSeconds(anticipationTime);
+        AnticipationVFXEnd();
+
         GetComponent<Collider>().enabled = true;
         meshRenderer.enabled = true;
         yield return new WaitForSeconds(attackLast);
