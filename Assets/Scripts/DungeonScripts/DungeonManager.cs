@@ -26,6 +26,7 @@ public class DungeonManager : MonoBehaviour
                 yield return null;
             }
             audioSource.Stop();
+            yield return new WaitForSeconds(0.5f);
             nonbattle.volume = 0.25f;
             nonbattle.Play();
             yield break;
