@@ -40,6 +40,8 @@ public class EnemyMovement : MonoBehaviour
 
     private Collider cd;
 
+    private bool _isDead = false;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -84,27 +86,24 @@ public class EnemyMovement : MonoBehaviour
         
         if (health <= 0)
         {
-            if (clone != null)
+            if (!_isDead)
             {
-                GameObject clone1 = clone;
-                GameObject clone2 = clone;
+                if (clone != null)
+                {
+                    StartCoroutine(Clone());
+                }
+                else
+                {
+                    _pursuePlayer = false;
+                    _avoidPlayer = false;
+                    attack._attackAvailable = false;
+                    navMeshAgent = null;
+                    gameObject.transform.rotation = new Quaternion(x: 0, y: 0, z: 90, w: 1);
 
-                clone1.transform.position = gameObject.transform.position;
-                clone2.transform.position = gameObject.transform.position;
-
-                Instantiate(clone1);
-                Instantiate(clone2);
-
-                clone = null;
+                    Destroy(gameObject, invincibleCooldown);
+                }
             }
-
-            _pursuePlayer = false;
-            _avoidPlayer = false;
-            attack._attackAvailable = false;
-            navMeshAgent = null;
-            gameObject.transform.rotation = new Quaternion(x: 0, y: 0, z: 90, w: 1);
-
-            Destroy(gameObject, invincibleCooldown);
+            
         }
               
 
@@ -226,9 +225,10 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator ShowBillBoard()
     {
+        yield return new WaitForSeconds(2f);
         _pursuePlayer = false;
         animator.SetBool("hideBillboard", false);
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.1f);
         StartCoroutine(StartAttack());
         indicator.enabled = false;
         cd.isTrigger = false;
@@ -251,5 +251,18 @@ public class EnemyMovement : MonoBehaviour
         _invincible = true;
         yield return new WaitForSeconds(2);
         _invincible = false;
+    }
+
+    IEnumerator Clone()
+    {
+        _isDead = true;
+        yield return new WaitForSeconds(2);
+        GameObject clone1 = clone;
+        GameObject clone2 = clone;
+
+        Instantiate(clone1);
+        Instantiate(clone2);
+
+        Destroy(gameObject);
     }
 }
