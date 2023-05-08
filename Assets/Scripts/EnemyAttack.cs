@@ -12,6 +12,7 @@ public class EnemyAttack : MonoBehaviour
     public GameObject bettaShort;
     public GameObject bettaMedium;
     public GameObject bettaLong;
+    public GameObject VFXObject;
     public Animator animator;
     public bool _attackAvailable = true;
     private MeshRenderer meshRenderer;
@@ -36,11 +37,20 @@ public class EnemyAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
     }
 
     private void AnticipationVFXStart()
     {
+        var instance = Instantiate(VFXObject, transform.position, Quaternion.identity);
+        instance.transform.parent = transform.parent.gameObject.transform;
+        // Vector3 inverseParentScale = new Vector3(transform.localScale.x / 1, transform.localScale.y / 1, transform.localScale.z / 1);
+        // instance.transform.localScale = inverseParentScale;
+        instance.GetComponent<ParticleSystem>().Play();
+        print("Anticipation VFX");
+        
         // Anticipation VFX
+        
     }
 
     private void AnticipationVFXEnd()
