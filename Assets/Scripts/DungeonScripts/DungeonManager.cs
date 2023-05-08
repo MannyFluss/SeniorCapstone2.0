@@ -14,17 +14,22 @@ public class DungeonManager : MonoBehaviour
     //added a FadeAudioSource Function
     private static class FadeAudioSource
     {
-        public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+        public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume, AudioSource nonbattle)
         {
             float currentTime = 0;
             float start = audioSource.volume;
             while (currentTime < duration)
             {
                 currentTime += Time.deltaTime;
-                audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+                audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);    
+
                 yield return null;
             }
+            audioSource.Stop();
+            nonbattle.volume = 0.25f;
+            nonbattle.Play();
             yield break;
+
         }
     }
 
@@ -137,7 +142,7 @@ public class DungeonManager : MonoBehaviour
 
         //Enter Dungeon Battle music
         
-        NonBattleMusic.Play();
+        //NonBattleMusic.Play();
         BattleMusic.Play();
 
     }
@@ -174,8 +179,10 @@ public class DungeonManager : MonoBehaviour
                 currentDungeon.isActive = false;
 
                 //resume battle music again
-                StartCoroutine(FadeAudioSource.StartFade(BattleMusic, 4f, 0.5f));
-
+                StartCoroutine(FadeAudioSource.StartFade(NonBattleMusic, 1f, 0.0f, BattleMusic));
+                BattleMusic.volume = 0.35f;
+                //NonBattleMusic.volume = 0.25f;
+                //BattleMusic.Play();
             }
             else
             {
@@ -193,7 +200,10 @@ public class DungeonManager : MonoBehaviour
             msgDelivered = true;
 
             //fade battle music to stop
-            StartCoroutine(FadeAudioSource.StartFade(BattleMusic, 4f, 0f));
+            StartCoroutine(FadeAudioSource.StartFade(BattleMusic, 3f, 0f, NonBattleMusic));
+            NonBattleMusic.volume = 0.25f;
+            //BattleMusic.Stop();
+            //NonBattleMusic.Play();
 
         }
     }

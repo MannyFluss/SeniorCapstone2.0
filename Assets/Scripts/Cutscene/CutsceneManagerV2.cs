@@ -30,6 +30,8 @@ public class CutsceneManagerV2 : MonoBehaviour
         }
     }
 
+    //added IntroOutroMusic
+    [SerializeField] private AudioSource IntroOutro;
 
 
     //private Dictionary<Image, string> cutscene = new Dictionary<Image, string>();
@@ -58,6 +60,7 @@ public class CutsceneManagerV2 : MonoBehaviour
     private float textFadeRate = 1.8f;
     private float pauseTimer = 0.05f;
     private float transitionTimer = 1.8f;
+    
  
     void Start()
     {
@@ -86,13 +89,6 @@ public class CutsceneManagerV2 : MonoBehaviour
             GRAPHICS.sprite = cutsceneList[ctr].cutsceneImage;
             SUBTITLE.text = cutsceneList[ctr].cutsceneNarrative;
 
-
-            //check for cutscene 3 and then start audio fade
-            if (ctr == 2)
-            {
-                //fade intro audio
-                StartCoroutine(FadeAudioSource.StartFade(GetComponent<AudioSource>(), 15f, 0f));
-            }
 
             //Debug.Log(SUBTITLE.maxHeight);
 
@@ -129,8 +125,18 @@ public class CutsceneManagerV2 : MonoBehaviour
                 yield return null;
             }
 
+            
+
             // Pause before Image Disappear
             yield return new WaitForSeconds(pauseTimer);
+
+            //check for cutscene 3 and then start audio fade
+            if (ctr == 2)
+            {
+                //fade intro audio
+                StartCoroutine(FadeAudioSource.StartFade(GetComponent<AudioSource>(), 2f, 0f));
+                IntroOutro.Play();
+            }
 
             // Image Fade Out
             for (float alpha = 1f; alpha > 0f; alpha -= imageFadeRate * Time.deltaTime)
