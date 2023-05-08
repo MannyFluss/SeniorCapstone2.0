@@ -260,6 +260,9 @@ public class EnemyMovement : MonoBehaviour
         GameObject clone1 = clone;
         GameObject clone2 = clone;
 
+        clone1.transform.position = gameObject.transform.position;
+        clone2.transform.position = gameObject.transform.position;
+
         Instantiate(clone1);
         Instantiate(clone2);
 
