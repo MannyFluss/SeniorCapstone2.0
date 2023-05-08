@@ -75,6 +75,8 @@ MonoBehaviour:
   _pursuePlayer: 1
   _avoidPlayer: 0
   clone: {fileID: 6016074278231553504, guid: ce385068214e6472f943e26288f9684f, type: 3}
+  animator: {fileID: 0}
+  indicator: {fileID: 0}
 --- !u!54 &2513430375390504873
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -372,10 +374,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackLast: 1
   cooldown: 5
+  anticipationTime: 1
   projectile: {fileID: 0}
   bettaShort: {fileID: 0}
   bettaMedium: {fileID: 0}
   bettaLong: {fileID: 0}
+  VFXObject: {fileID: 1003177958397111015, guid: 599c64ecbf887994f97dd69a6b8a91b3, type: 3}
   animator: {fileID: 0}
   _attackAvailable: 1
   enemyMovement: {fileID: 2513430375390504872}

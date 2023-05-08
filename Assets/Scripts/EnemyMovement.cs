@@ -169,10 +169,14 @@ public class EnemyMovement : MonoBehaviour
     private void KnockBack(Vector3 from, float force)
     {
         Vector3 moveDirection = from - gameObject.transform.position;
-
         if (!_invincible)
         {
-            rb.AddForce(moveDirection.normalized * -force);
+            try {
+                rb.AddForce(moveDirection.normalized * -force);
+            } catch
+            {
+                print("Failed to knock back");
+            }
         }
 
     }
