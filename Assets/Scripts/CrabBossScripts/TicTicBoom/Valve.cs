@@ -15,6 +15,8 @@ public class Valve : MonoBehaviour
     public bool isSingle = false;
     ValveManager vm;
 
+    private ParticleSystem ps;
+
     //prototype testing purpose
     MeshRenderer m;
     [SerializeField]
@@ -26,7 +28,7 @@ public class Valve : MonoBehaviour
     private void Start()
     {
         m = GetComponent<MeshRenderer>();
-
+        ps = GetComponentInChildren<ParticleSystem>();
         if(!isSingle)
         {
             vm = GetComponentInParent<ValveManager>();
@@ -38,10 +40,12 @@ public class Valve : MonoBehaviour
         if(!valveState)
         {
             m.material = red;
+            ps.Play();
         }
         else
         {
             m.material = green;
+            ps.Stop();
         }
     }
 

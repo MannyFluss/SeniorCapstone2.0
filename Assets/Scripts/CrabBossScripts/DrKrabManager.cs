@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class DrKrabManager : MonoBehaviour
 {
@@ -15,13 +16,18 @@ public class DrKrabManager : MonoBehaviour
     private int puzzleTime;
     private int moveCtr;
 
-    private bool canBeHit;
+    public bool canBeHit;
 
     private bool isReady = false;
 
     //Animation
     [SerializeField]
     PlayableDirector pd;
+
+    //health
+    [SerializeField]
+    private Image healthBar;
+
 
     private void Start()
     {
@@ -30,6 +36,10 @@ public class DrKrabManager : MonoBehaviour
         rem = GetComponentInChildren<RippleEffectManager>();
 
         health = 100;
+
+        canBeHit = false;
+
+        beginMoves();
     }
 
     private void Update()
@@ -38,6 +48,7 @@ public class DrKrabManager : MonoBehaviour
         {
             StartCoroutine(preformMoves());
         }
+        healthBar.rectTransform.localScale = new Vector3(health / 100f, 1f, 1f);
     }
 
     public void beginMoves()
@@ -87,14 +98,6 @@ public class DrKrabManager : MonoBehaviour
         else
         {
             ttbm.TicTicBoom(health);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.CompareTag("Attack") && canBeHit)
-        {
-            health -= 1;
         }
     }
 
