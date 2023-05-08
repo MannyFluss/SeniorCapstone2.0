@@ -256,7 +256,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackLast: 0.5
   cooldown: 3
-  anticipationTime: 1
+  anticipationTime: 0
   projectile: {fileID: 6567675643379589077, guid: 5db891fad8edb47008a72fad506d7480, type: 3}
   bettaShort: {fileID: 0}
   bettaMedium: {fileID: 0}
