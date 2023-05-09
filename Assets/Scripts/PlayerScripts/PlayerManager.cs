@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     //added DamageTaken sound effect
-    [SerializeField] private AudioSource DamageTakenSoundEffect;
+    [SerializeField] 
+    private AudioSource DamageTakenSoundEffect;
+
+    [SerializeField]
+    private string SceneName;
 
     [Header("Player Stats")]
     public float health = 9;
@@ -42,7 +46,7 @@ public class PlayerManager : MonoBehaviour
         }
         if (health == 0)
         {
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene(SceneName);
         }
     }
 

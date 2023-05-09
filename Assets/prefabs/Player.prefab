@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 1.87, z: -10}
+  m_FollowOffset: {x: 0, y: 1.87, z: -9}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -146,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751444512}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.87, z: -9.999999}
+  m_LocalPosition: {x: 0, y: 1.87, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7800,6 +7800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageTakenSoundEffect: {fileID: 7356431224315037562}
+  SceneName: TheLab
   health: 9
   PlayerHUDReference: {fileID: 5796684668787035884}
 --- !u!54 &2626668998523703838
@@ -8212,7 +8213,7 @@ Animator:
   m_GameObject: {fileID: 2626668998523703817}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d1acc89ab9d53124db0f7cf74e9a4d36, type: 2}
+  m_Controller: {fileID: 9100000, guid: 78d0a952f04c8df44bd24f7e5a75cbd5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
