@@ -14,7 +14,9 @@ public class DungeonManager : MonoBehaviour
     //added a FadeAudioSource Function
     private static class FadeAudioSource
     {
-        public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume, AudioSource nonbattle)
+      
+
+        public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume, AudioSource nonbattle, float duration2, float targetVolume2)
         {
             float currentTime = 0;
             float start = audioSource.volume;
@@ -26,12 +28,28 @@ public class DungeonManager : MonoBehaviour
                 yield return null;
             }
             audioSource.Stop();
-            yield return new WaitForSeconds(0.5f);
-            nonbattle.volume = 0.25f;
-            nonbattle.Play();
-            yield break;
 
+
+            yield return new WaitForSeconds(0.10f);
+
+
+            nonbattle.volume = 0.0f;
+            nonbattle.Play();
+            currentTime = 0;
+            
+            start = nonbattle.volume;
+            while (currentTime < duration2)
+            {
+                currentTime += Time.deltaTime;
+                nonbattle.volume = Mathf.Lerp(start, targetVolume2, currentTime / duration2);
+
+                yield return null;
+            }
+            //nonbattle.Play();
+            yield break;
         }
+
+        
     }
 
 
@@ -180,7 +198,7 @@ public class DungeonManager : MonoBehaviour
                 currentDungeon.isActive = false;
 
                 //resume battle music again
-                StartCoroutine(FadeAudioSource.StartFade(NonBattleMusic, 1f, 0.0f, BattleMusic));
+                StartCoroutine(FadeAudioSource.StartFade(NonBattleMusic, 0.5f, 0.0f, BattleMusic, 2f, 0.35f));
                 BattleMusic.volume = 0.35f;
                 //NonBattleMusic.volume = 0.25f;
                 //BattleMusic.Play();
@@ -201,8 +219,9 @@ public class DungeonManager : MonoBehaviour
             msgDelivered = true;
 
             //fade battle music to stop
-            StartCoroutine(FadeAudioSource.StartFade(BattleMusic, 3f, 0f, NonBattleMusic));
-            NonBattleMusic.volume = 0.25f;
+            StartCoroutine(FadeAudioSource.StartFade(BattleMusic, 1.3f, 0f, NonBattleMusic, 2f, 0.25f));
+            //NonBattleMusic.volume = 0.0f;
+            //StartCoroutine(FadeAudioSource.StartFade(NonBattleMusic, 1.3f, 0.25f));
             //BattleMusic.Stop();
             //NonBattleMusic.Play();
 

@@ -134,7 +134,8 @@ public class CutsceneManagerV2 : MonoBehaviour
             if (ctr == 2)
             {
                 //fade intro audio
-                StartCoroutine(FadeAudioSource.StartFade(GetComponent<AudioSource>(), 2f, 0f));
+                StartCoroutine(FadeAudioSource.StartFade(GetComponent<AudioSource>(), 0.5f, 0f));
+                //GetComponent<AudioSource>().Stop();
                 IntroOutro.Play();
             }
 
