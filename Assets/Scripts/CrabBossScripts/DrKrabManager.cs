@@ -13,6 +13,7 @@ public class DrKrabManager : MonoBehaviour
 
     //boss variables
     public int health = 100;
+    public int maxHealth = 100;
     private int puzzleTime;
     private int moveCtr;
 
@@ -57,7 +58,7 @@ public class DrKrabManager : MonoBehaviour
         {
             StartCoroutine(preformMoves());
         }
-        healthBar.rectTransform.localScale = new Vector3(health / 100f, 1f, 1f);
+        healthBar.rectTransform.localScale = new Vector3(health / maxHealth, 1f, 1f);
     }
 
     public void beginMoves()
@@ -89,7 +90,8 @@ public class DrKrabManager : MonoBehaviour
     {
         isReady = false;
         yield return new WaitForSeconds(2.3f);
-        if(moveCtr != puzzleTime)
+        moveCtr++;
+        if (moveCtr != puzzleTime)
         {
             var num = Random.Range(0, 2);
             if(num == 0)
@@ -102,7 +104,6 @@ public class DrKrabManager : MonoBehaviour
                 rem.rippleEffect(health);
                 isReady = true;
             }
-            moveCtr++;
         }
         else
         {

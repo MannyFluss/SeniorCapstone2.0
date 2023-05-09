@@ -46,7 +46,7 @@ public class PlayerManager : MonoBehaviour
         }
         if (health == 0)
         {
-            SceneManager.LoadScene(SceneName);
+            SceneManager.LoadScene("TheLab");
         }
     }
 
