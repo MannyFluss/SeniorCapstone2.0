@@ -53,6 +53,15 @@ public class ShopKeeperScript : MonoBehaviour
             {
                 return;
             }
+            //no enemies allowed to be around
+            foreach (GameObject enemies in GameObject.FindGameObjectsWithTag("Enemy"))
+            {
+                var distanceToEnemy = Vector3.Distance(gameObject.transform.position,enemies.transform.position);
+                if (distanceToEnemy < 40)
+                {
+                    return;
+                }
+            }
             initiateShop();
             used = true;
         }

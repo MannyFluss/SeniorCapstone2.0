@@ -58,12 +58,25 @@ public class Dungeon : MonoBehaviour
         foreach (var minionSpawn in minionSpawns)
         {
             Vector3 spawnPosition = minionSpawn.transform.position;
-
             GameObject spawnedMinion = Instantiate(minonPrefabs[Random.Range(0, minonPrefabs.Count)],
                 new Vector3(spawnPosition.x, spawnPosition.y + 0.5f, spawnPosition.z),
                 Quaternion.identity);
             spawnedMinions.Add(spawnedMinion);
         }
+    }
+
+    public void SpawnWithDifficulty()
+    {
+        isActive = true;
+        foreach (var minionSpawn in minionSpawns)
+        {
+            Vector3 spawnPosition = minionSpawn.transform.position;
+        }
+    }
+
+    public void instantiateWithDifficulty()
+    {
+        
     }
 
     public int RemainMinions()
@@ -134,7 +147,7 @@ public class Dungeon : MonoBehaviour
     }
     public void HideEntrance()
     {
-        Debug.Log("shit");
+     
         Animator am = entrance.GetComponent<Entrance>().am;
         am.SetBool("disablePortal", true);
     }

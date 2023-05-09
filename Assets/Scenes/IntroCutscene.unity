@@ -123,6 +123,82 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &39575236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 39575237}
+  - component: {fileID: 39575239}
+  - component: {fileID: 39575238}
+  m_Layer: 5
+  m_Name: Sub Bg
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &39575237
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39575236}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1637439850}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0.000014544, y: 63.2451}
+  m_SizeDelta: {x: 1571.5356, y: 172.4004}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &39575238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39575236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1015041884, guid: b6ad6f571522a644a86200c545130704, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &39575239
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 39575236}
+  m_CullTransparentMesh: 1
 --- !u!1 &225850738
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,11 +348,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1637439850}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 258, y: 39}
+  m_AnchoredPosition: {x: 258, y: 88}
   m_SizeDelta: {x: 720, y: 50}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &277022560
@@ -334,7 +410,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 1024
+  m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -440,9 +516,10 @@ MonoBehaviour:
       darkest moment. And then, an outstretched hand appeared. \u2018You can take
       revenge. You can have power. Follow me.\u2019 And so, Miyo\u2019s journey begins\u2026"
     cutsceneTimer: 7
-  nextSceneName: HackNSlash
+  nextSceneName: TheLab
   GRAPHICS: {fileID: 1809689302}
   SUBTITLE: {fileID: 277022560}
+  SUB_BG: {fileID: 39575238}
 --- !u!114 &476039831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -456,7 +533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetButton: {fileID: 2013996472}
-  sceneName: HackNSlash
+  sceneName: TheLab
   firstClick: 0
 --- !u!1001 &935204253
 PrefabInstance:
@@ -483,7 +560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024568198913635660, guid: 399a50544b56c754995e3fbec4af7649, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2024568198913635660, guid: 399a50544b56c754995e3fbec4af7649, type: 3}
       propertyPath: m_AnchorMax.x
@@ -503,11 +580,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024568198913635660, guid: 399a50544b56c754995e3fbec4af7649, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 256.78076
+      value: 356.338
       objectReference: {fileID: 0}
     - target: {fileID: 2024568198913635660, guid: 399a50544b56c754995e3fbec4af7649, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 48.146362
+      value: 66.8133
       objectReference: {fileID: 0}
     - target: {fileID: 2024568198913635660, guid: 399a50544b56c754995e3fbec4af7649, type: 3}
       propertyPath: m_LocalScale.x
@@ -551,11 +628,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2024568198913635660, guid: 399a50544b56c754995e3fbec4af7649, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -144
+      value: -193.77863
       objectReference: {fileID: 0}
     - target: {fileID: 2024568198913635660, guid: 399a50544b56c754995e3fbec4af7649, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -40
+      value: -49.333466
       objectReference: {fileID: 0}
     - target: {fileID: 2024568198913635660, guid: 399a50544b56c754995e3fbec4af7649, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -748,6 +825,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1809689300}
+  - {fileID: 39575237}
   - {fileID: 277022559}
   - {fileID: 2013996470}
   m_Father: {fileID: 0}
