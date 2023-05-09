@@ -32,7 +32,7 @@ public class BubbleStreamCannon : MonoBehaviour
     public IEnumerator fireCannon()
     {
         indicator = Instantiate(indicatorPrefab, transform.position - new Vector3(0, 0.647f, 0), transform.localRotation * Quaternion.Euler(new Vector3(0, 90, 0)));
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         GetComponentInChildren<ParticleSystem>().Play();
         yield return new WaitForSeconds(2f);
         GetComponentInChildren<ParticleSystem>().Stop();

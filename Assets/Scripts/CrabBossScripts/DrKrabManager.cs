@@ -28,9 +28,18 @@ public class DrKrabManager : MonoBehaviour
     [SerializeField]
     private Image healthBar;
 
+    [SerializeField] 
+    private AudioClip DrKrabBattleMusic;
 
     private void Start()
     {
+        if (DrKrabBattleMusic != null)
+        {
+            AudioSource audio = this.GetComponent<AudioSource>();
+            audio.clip = DrKrabBattleMusic;
+            audio.Play();
+        }
+
         bs = GetComponentInChildren<BubbleStream>();
         ttbm = GetComponentInChildren<TicTicBoomManager>();
         rem = GetComponentInChildren<RippleEffectManager>();
