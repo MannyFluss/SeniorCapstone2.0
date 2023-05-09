@@ -17134,7 +17134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6257ad06532a6f4eaef1becfdf52a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  curHealth: 0
   maxHealth: 100
   canBeHit: 0
   pd: {fileID: 2117145791}

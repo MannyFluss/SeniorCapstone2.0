@@ -12,8 +12,8 @@ public class DrKrabManager : MonoBehaviour
     RippleEffectManager rem;
 
     //boss variables
-    public int health = 100;
-    public int maxHealth = 100;
+    public int curHealth = 0;
+    public float maxHealth = 100;
     private int puzzleTime;
     private int moveCtr;
 
@@ -45,7 +45,7 @@ public class DrKrabManager : MonoBehaviour
         ttbm = GetComponentInChildren<TicTicBoomManager>();
         rem = GetComponentInChildren<RippleEffectManager>();
 
-        health = 100;
+        curHealth = (int) maxHealth;
 
         canBeHit = false;
 
@@ -58,13 +58,13 @@ public class DrKrabManager : MonoBehaviour
         {
             StartCoroutine(preformMoves());
         }
-        healthBar.rectTransform.localScale = new Vector3(health / maxHealth, 1f, 1f);
+        healthBar.rectTransform.localScale = new Vector3(curHealth / maxHealth, 1f, 1f);
     }
 
     public void beginMoves()
     {
         moveCtr = 0;
-        if(health < 60)
+        if(curHealth < 60)
         {
             puzzleTime = 4;
         }
@@ -96,18 +96,18 @@ public class DrKrabManager : MonoBehaviour
             var num = Random.Range(0, 2);
             if(num == 0)
             {
-                bs.bubbleStream(health);
+                bs.bubbleStream(curHealth);
                 isReady = true;
             }
             else
             {
-                rem.rippleEffect(health);
+                rem.rippleEffect(curHealth);
                 isReady = true;
             }
         }
         else
         {
-            ttbm.TicTicBoom(health);
+            ttbm.TicTicBoom(curHealth);
         }
     }
 

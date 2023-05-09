@@ -12,7 +12,7 @@ public class DrKrabHitDetect : MonoBehaviour
     {
         if (other.gameObject.tag == "Attack" && dkm.canBeHit)
         {
-            dkm.health -= 1;
+            dkm.curHealth -= 1;
         }
     }
 }
