@@ -19,7 +19,6 @@ public class Dungeon : MonoBehaviour
     [HideInInspector]
     public DungeonManager dungeonManager;
     private bool hasShowExit = false;
-
     private void Update()
     {
         if (RemainMinions() <= 0 && isActive)
@@ -147,7 +146,6 @@ public class Dungeon : MonoBehaviour
     }
     public void HideEntrance()
     {
-     
         Animator am = entrance.GetComponent<Entrance>().am;
         am.SetBool("disablePortal", true);
     }

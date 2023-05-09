@@ -5,7 +5,11 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - projectile: {fileID: 6567675643379589077, guid: 5db891fad8edb47008a72fad506d7480, type: 3}
-  - collider: {instanceID: 0}
+  - bettaShort: {instanceID: 0}
+  - bettaMedium: {instanceID: 0}
+  - bettaLong: {instanceID: 0}
+  - VFXObject: {fileID: 1003177958397111015, guid: 599c64ecbf887994f97dd69a6b8a91b3, type: 3}
+  - animator: {instanceID: 0}
   - enemyMovement: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}

@@ -7,16 +7,23 @@ public class ParticleParentScript : MonoBehaviour
 
     [SerializeField]
     bool playOnStart = false;
-    [SerializeField]
     ParticleSystem myParticleSystem;
+    [SerializeField]
+    ParticleSystem[] additionalParticles;
+    [SerializeField]
+    float timeUntilDestroy = 0.0f;
     void Start()
     {
 
-//        var children = GetComponentsInChildren<ParticleSystem>(true);    
+        myParticleSystem = GetComponent<ParticleSystem>();
   
         if (playOnStart == true)
         {
             play();
+        }
+        if (timeUntilDestroy > 0.0f)
+        {
+            Destroy(gameObject, timeUntilDestroy);
         }
     }
     public void play()
@@ -27,11 +34,12 @@ public class ParticleParentScript : MonoBehaviour
     {
         myParticleSystem.Stop();
         myParticleSystem.Play(true);
-        print("here");
-        // var children = GetComponentsInChildren<ParticleSystem>();     
-        // foreach (ParticleSystem p in children)
-        // {
-        //     p.Play();
-        // }
+        //play each particles in the additionalParticles array
+        for (int i = 0; i < additionalParticles.Length; i++)
+        {
+            print("play");
+            additionalParticles[i].Stop();
+            additionalParticles[i].Play(true);
+        }
     }
 }
