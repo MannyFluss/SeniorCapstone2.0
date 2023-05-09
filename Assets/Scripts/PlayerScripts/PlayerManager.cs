@@ -65,21 +65,12 @@ public class PlayerManager : MonoBehaviour
         DamageTakenSoundEffect.Play();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void heal()
     {
-        if(collision.gameObject.tag == "EnemyAttack" && canBeHit)
-        {
-            
-            health--;
-
-
-            StartCoroutine(HitCooldown());
-            //movement.playerHit(collision.transform);
-            //added damagetaken sound effect
-            DamageTakenSoundEffect.Play();
-
-        }
+        health += 1;
+        PlayerHUDReference.setUIHearts(((int)health));
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "EnemyAttack" && canBeHit)
