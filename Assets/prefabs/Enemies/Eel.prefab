@@ -136,15 +136,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _invincible: 0
   invincibleCooldown: 1
-  health: 1
+  health: 3
   attackDis: 1
   type: Eel
+  navMeshAgent: {fileID: 0}
   sprite: {fileID: 0}
   attack: {fileID: 4345697421173957707}
+  _spawnFreeze: 0
   _pursuePlayer: 0
   _avoidPlayer: 0
   clone: {fileID: 0}
-  animator: {fileID: 4345697422294944767}
+  animator: {fileID: 3278249668892388052}
   indicator: {fileID: 4196534383899773274}
 --- !u!54 &3970280996640149119
 Rigidbody:
@@ -324,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackLast: 1
-  cooldown: 5
+  cooldown: 3
   anticipationTime: 1
   projectile: {fileID: 0}
   bettaShort: {fileID: 0}
@@ -345,7 +347,7 @@ GameObject:
   - component: {fileID: 4345697422294944706}
   - component: {fileID: 4345697422294944707}
   - component: {fileID: 4345697422294944704}
-  - component: {fileID: 4345697422294944767}
+  - component: {fileID: 3278249668892388052}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -409,7 +411,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2085186bcad0e4775877651fcad5a9f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fdbab9080e74c4624bfaa3105b014520, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -432,7 +434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29ab91a2146442a0b1043158a897767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &4345697422294944767
+--- !u!95 &3278249668892388052
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0

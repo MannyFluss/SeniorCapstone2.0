@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
 
     private Transform player;
 
-    private NavMeshAgent navMeshAgent;
+    public NavMeshAgent navMeshAgent;
 
     private Rigidbody rb;
 
@@ -28,9 +28,13 @@ public class EnemyMovement : MonoBehaviour
 
     public EnemyAttack attack;
 
+    public bool _spawnFreeze = false;
+
     public bool _pursuePlayer = true;
 
     public bool _avoidPlayer = false;
+
+    private bool _initAttackVoid = true;
 
     public GameObject clone = null;
 
@@ -41,6 +45,8 @@ public class EnemyMovement : MonoBehaviour
     private Collider cd;
 
     private bool _isDead = false;
+
+    private bool _eeldetectpause = false;
 
     private void Start()
     {
@@ -55,6 +61,7 @@ public class EnemyMovement : MonoBehaviour
 
         if (type == "Eel")
         {
+            _pursuePlayer = false;
             indicator.enabled = false;
             StartCoroutine(HideBillBorad());
         }
@@ -64,14 +71,9 @@ public class EnemyMovement : MonoBehaviour
     private void Update()
     {
         //AvoidPlayer();
-        if (type == "Crab" || type == "Squid")
+        if (type == "Crab")
         {
             sprite.color = Color.magenta;
-        }
-
-        if (type == "JellyFish")
-        {
-            sprite.color = Color.green;
         }
 
         if (_pursuePlayer)
@@ -109,46 +111,52 @@ public class EnemyMovement : MonoBehaviour
 
         float disToPlayer = Vector3.Distance(player.position, gameObject.transform.position);
 
-        if(disToPlayer <= attackDis)
+       if(!_initAttackVoid)
         {
-            if(type == "Pufferfish")
+            if (disToPlayer <= attackDis)
             {
-                attack.PufferAttack();
-            }
+                if (type == "Pufferfish")
+                {
+                    attack.PufferAttack();
+                }
 
-            if(type == "Piranha")
-            {
-                attack.PiranhaAttack();
-                
-            }
-            if(type == "Crab")
-            {
-                attack.PiranhaAttack();
-            }
+                if (type == "Piranha")
+                {
+                    attack.PiranhaAttack();
 
-            if(type == "ArcherFish")
-            {
-                attack.ArcherAttack();
-            }
+                }
+                if (type == "Crab")
+                {
+                    attack.PiranhaAttack();
+                }
 
-            if(type == "Betta")
-            {
-                attack.BettaFishAttack();
-            }
+                if (type == "ArcherFish")
+                {
+                    attack.ArcherAttack();
+                }
 
-            if(type == "Squid")
-            {
-                attack.SquidAttack();
-            }
+                if (type == "Betta")
+                {
+                    attack.BettaFishAttack();
+                }
 
-            if(type == "JellyFish")
-            {
-                attack.PiranhaAttack();
-            }
+                if (type == "Squid")
+                {
+                    Halt();
+                    attack.SquidAttack();
+                }
 
-            if(type == "Eel")
-            {
-                StartCoroutine(ShowBillBoard());
+                if (type == "JellyFish")
+                {
+                    attack.PiranhaAttack();
+                }
+
+                if (type == "Eel" && !_eeldetectpause)
+                {
+                    _pursuePlayer = false;
+                    Halt();
+                    StartCoroutine(ShowBillBoard());
+                }
             }
         }
     }
@@ -160,7 +168,7 @@ public class EnemyMovement : MonoBehaviour
             Damage(attackObject: other.gameObject, _knockBack: true);
         }
 
-        if(other.tag == "Player" && type != "Eel")
+        if(other.tag == "Player")
         {
             KnockBack(from: other.transform.position, force: 200f);
         }
@@ -169,7 +177,7 @@ public class EnemyMovement : MonoBehaviour
     private void KnockBack(Vector3 from, float force)
     {
         Vector3 moveDirection = from - gameObject.transform.position;
-        if (!_invincible)
+        if (!_invincible && type != "Eel")
         {
             try {
                 rb.AddForce(moveDirection.normalized * -force);
@@ -178,6 +186,7 @@ public class EnemyMovement : MonoBehaviour
                 print("Failed to knock back");
             }
         }
+
 
     }
 
@@ -192,6 +201,11 @@ public class EnemyMovement : MonoBehaviour
         navMeshAgent.destination = player.position;
     }
 
+    public void Halt()
+    {
+        navMeshAgent.destination = transform.position;
+    }
+
     private void AvoidPlayer()
     {
         Vector3 moveDirection = transform.position - player.position;
@@ -204,7 +218,16 @@ public class EnemyMovement : MonoBehaviour
 
         if (!_invincible)
         {
-            KnockBack(from: attackObject.transform.position, force: 500f);
+            if(type == "Eel")
+            {
+                _pursuePlayer = false;
+                Halt();
+                StartCoroutine(HideBillBorad());
+            } else
+            {
+                KnockBack(from: attackObject.transform.position, force: 500f);
+            }
+            
             health -= 1;
             StartCoroutine(DamageCoolDown());
         }
@@ -212,12 +235,14 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator HideBillBorad()
     {
+        _eeldetectpause = true;
         animator.SetBool("hideBillboard", true);
         yield return new WaitForSeconds(1.5f);
         _pursuePlayer = true;
         indicator.enabled = true;
         cd.isTrigger = true;
         _invincible = true;
+        _eeldetectpause = false;
     }
 
     IEnumerator StartAttack()
@@ -229,15 +254,26 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator ShowBillBoard()
     {
+        _eeldetectpause = true;
+        _pursuePlayer = false;
+        Halt();
         yield return new WaitForSeconds(2f);
         _pursuePlayer = false;
+        Halt();
+        _eeldetectpause = true;
         animator.SetBool("hideBillboard", false);
         yield return new WaitForSeconds(0.1f);
+        _pursuePlayer = false;
+        Halt();
+        _eeldetectpause = true;
         StartCoroutine(StartAttack());
         indicator.enabled = false;
         cd.isTrigger = false;
         _invincible = false;
         yield return new WaitForSeconds(5);
+        _pursuePlayer = false;
+        Halt();
+        _eeldetectpause = true;
         StartCoroutine(HideBillBorad());
     }
 
@@ -252,9 +288,19 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator SpawnCoolDown()
     {
+        bool pursueMemeory = _pursuePlayer;
         _invincible = true;
+        if (_spawnFreeze)
+        {
+            _pursuePlayer = false;
+        }
         yield return new WaitForSeconds(2);
+        if (_spawnFreeze)
+        {
+            _pursuePlayer = pursueMemeory;
+        }
         _invincible = false;
+        _initAttackVoid = false;
     }
 
     IEnumerator Clone()
@@ -264,8 +310,8 @@ public class EnemyMovement : MonoBehaviour
         GameObject clone1 = clone;
         GameObject clone2 = clone;
 
-        clone1.transform.position = gameObject.transform.position;
-        clone2.transform.position = gameObject.transform.position;
+        clone1.transform.position = new Vector3(x: gameObject.transform.position.x, y: gameObject.transform.position.y, z: gameObject.transform.position.z - 5f);
+        clone2.transform.position = new Vector3(x: gameObject.transform.position.x, y: gameObject.transform.position.y, z: gameObject.transform.position.z);
 
         Instantiate(clone1);
         Instantiate(clone2);

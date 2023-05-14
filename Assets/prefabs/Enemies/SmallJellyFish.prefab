@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6016074278231553504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.3763695, y: 0.5833333, z: 1.9401994}
+  m_LocalPosition: {x: -7.1032805, y: 0.5833333, z: -7.416962}
   m_LocalScale: {x: 0.78, y: 0.78, z: 0.78}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -70,8 +70,10 @@ MonoBehaviour:
   health: 1
   attackDis: 3
   type: JellyFish
+  navMeshAgent: {fileID: 0}
   sprite: {fileID: 0}
   attack: {fileID: 6353210105554853841}
+  _spawnFreeze: 1
   _pursuePlayer: 1
   _avoidPlayer: 0
   clone: {fileID: 0}
@@ -276,7 +278,6 @@ GameObject:
   - component: {fileID: 6353210106583969880}
   - component: {fileID: 6353210106583969881}
   - component: {fileID: 6353210106583969882}
-  - component: {fileID: 6006305621754971710}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -293,7 +294,7 @@ Transform:
   m_GameObject: {fileID: 6353210106583969863}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.105717726, y: 0.105717726, z: 0.105717726}
+  m_LocalScale: {x: 0.14028743, y: 0.14028743, z: 0.14028743}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6016074278231553507}
@@ -340,7 +341,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2085186bcad0e4775877651fcad5a9f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 89feb59723e004b8faa7b9b09ddc5f82, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -363,23 +364,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29ab91a2146442a0b1043158a897767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &6006305621754971710
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6353210106583969863}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b96baf9fb4bae4653bdeac3f02665fde, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0

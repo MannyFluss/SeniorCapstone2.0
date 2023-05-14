@@ -130,6 +130,7 @@ public class EnemyAttack : MonoBehaviour
 
         animator.SetBool("isAttack", true);
         GameObject arrow = Instantiate(projectile);
+        Destroy(arrow, attackLast);
         arrow.transform.position = transform.position;
     }
 
@@ -140,7 +141,6 @@ public class EnemyAttack : MonoBehaviour
         yield return new WaitForSeconds(cooldown);
         _attackAvailable = true;
         enemyMovement._pursuePlayer = true;
-        animator.SetBool("isAttack", false);
     }
 
     public IEnumerator SquidAttactTimer(int numberOfAttack)
@@ -149,9 +149,12 @@ public class EnemyAttack : MonoBehaviour
         yield return new WaitForSeconds(anticipationTime);
         AnticipationVFXEnd();
 
-        print("attack");
+
+        enemyMovement._pursuePlayer = false;
+
         GameObject arrow = Instantiate(projectile);
         arrow.transform.position = transform.position;
+        Destroy(arrow, 5);
         yield return new WaitForSeconds(attackLast);
         if (numberOfAttack > 1)
         {
@@ -163,7 +166,6 @@ public class EnemyAttack : MonoBehaviour
     {
         if (_attackAvailable)
         {
-            animator.SetBool("isAttack", true);
             StartCoroutine(SquidAttactTimer(3));
             StartCoroutine(SquidCooldown());
         }

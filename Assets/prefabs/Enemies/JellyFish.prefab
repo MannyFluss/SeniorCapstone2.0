@@ -70,8 +70,10 @@ MonoBehaviour:
   health: 1
   attackDis: 3
   type: JellyFish
+  navMeshAgent: {fileID: 0}
   sprite: {fileID: 0}
   attack: {fileID: 3005940392140737949}
+  _spawnFreeze: 0
   _pursuePlayer: 1
   _avoidPlayer: 0
   clone: {fileID: 6016074278231553504, guid: ce385068214e6472f943e26288f9684f, type: 3}
@@ -154,7 +156,6 @@ GameObject:
   - component: {fileID: 3005940391155540500}
   - component: {fileID: 3005940391155540501}
   - component: {fileID: 3005940391155540502}
-  - component: {fileID: 2505887130583815282}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -218,7 +219,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2085186bcad0e4775877651fcad5a9f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: acf6d760ad8eb4eb09e62eb14662520a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -241,26 +242,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e29ab91a2146442a0b1043158a897767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &2505887130583815282
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3005940391155540491}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b96baf9fb4bae4653bdeac3f02665fde, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &3005940392140737936
 GameObject:
   m_ObjectHideFlags: 0
