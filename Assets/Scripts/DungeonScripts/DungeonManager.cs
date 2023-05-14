@@ -4,8 +4,61 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
+
+
 public class DungeonManager : MonoBehaviour
 {
+
+
+    //added a FadeAudioSource Function
+    private static class FadeAudioSource
+    {
+      
+
+        public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume, AudioSource nonbattle, float duration2, float targetVolume2)
+        {
+            float currentTime = 0;
+            float start = audioSource.volume;
+            while (currentTime < duration)
+            {
+                currentTime += Time.deltaTime;
+                audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);    
+
+                yield return null;
+            }
+            audioSource.Stop();
+
+
+            yield return new WaitForSeconds(0.10f);
+
+
+            nonbattle.volume = 0.0f;
+            nonbattle.Play();
+            currentTime = 0;
+            
+            start = nonbattle.volume;
+            while (currentTime < duration2)
+            {
+                currentTime += Time.deltaTime;
+                nonbattle.volume = Mathf.Lerp(start, targetVolume2, currentTime / duration2);
+
+                yield return null;
+            }
+            //nonbattle.Play();
+            yield break;
+        }
+
+        
+    }
+
+
+    //added battlemusictheme
+    [SerializeField] private AudioSource BattleMusic;
+    //added nonbattlemusictheme
+    [SerializeField] private AudioSource NonBattleMusic;
+
+
     public GameObject[] dungeons = new GameObject[0];
     public GameObject player;
     public List<GameObject> minionPrefabs = new List<GameObject>();
@@ -105,6 +158,12 @@ public class DungeonManager : MonoBehaviour
             newPrefabs.AddRange(levelThreeMinionPrefabs);
         }
         dungeonScript.minonPrefabs = newPrefabs;
+
+        //Enter Dungeon Battle music
+        
+        //NonBattleMusic.Play();
+        BattleMusic.Play();
+
     }
 
     /// <summary>
@@ -137,6 +196,12 @@ public class DungeonManager : MonoBehaviour
                 msgDelivered = false;
                 nextDungeon.RandomSpawn();
                 currentDungeon.isActive = false;
+
+                //resume battle music again
+                StartCoroutine(FadeAudioSource.StartFade(NonBattleMusic, 0.5f, 0.0f, BattleMusic, 2f, 0.35f));
+                BattleMusic.volume = 0.35f;
+                //NonBattleMusic.volume = 0.25f;
+                //BattleMusic.Play();
             }
             else
             {
@@ -152,6 +217,14 @@ public class DungeonManager : MonoBehaviour
         {
             StartCoroutine(ClearBannerAppear(AppearTimer));
             msgDelivered = true;
+
+            //fade battle music to stop
+            StartCoroutine(FadeAudioSource.StartFade(BattleMusic, 1.3f, 0f, NonBattleMusic, 2f, 0.25f));
+            //NonBattleMusic.volume = 0.0f;
+            //StartCoroutine(FadeAudioSource.StartFade(NonBattleMusic, 1.3f, 0.25f));
+            //BattleMusic.Stop();
+            //NonBattleMusic.Play();
+
         }
     }
 
@@ -170,6 +243,7 @@ public class DungeonManager : MonoBehaviour
             return dungeons[dungeonIndex + 1];
         }
         return null;
+
     }
 
     IEnumerator ClearBannerAppear(float waitTime)

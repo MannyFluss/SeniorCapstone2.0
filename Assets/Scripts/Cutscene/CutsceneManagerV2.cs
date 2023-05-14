@@ -8,8 +8,32 @@ using System.Runtime.ConstrainedExecution;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
+
+
 public class CutsceneManagerV2 : MonoBehaviour
 {
+
+    //added a FadeAudioSource Function
+    private static class FadeAudioSource
+    {
+        public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+        {
+            float currentTime = 0;
+            float start = audioSource.volume;
+            while (currentTime < duration)
+            {
+                currentTime += Time.deltaTime;
+                audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+                yield return null;
+            }
+            yield break;
+        }
+    }
+
+    //added IntroOutroMusic
+    [SerializeField] private AudioSource IntroOutro;
+
+
     //private Dictionary<Image, string> cutscene = new Dictionary<Image, string>();
     [Serializable]
     public class cutsceneNarrativePair
@@ -20,6 +44,7 @@ public class CutsceneManagerV2 : MonoBehaviour
     }
 
     public AudioClip CutsceneMusic;
+    
 
     [Header("Set-Up")]
     public List<cutsceneNarrativePair> cutsceneList = new List<cutsceneNarrativePair>();
@@ -35,6 +60,7 @@ public class CutsceneManagerV2 : MonoBehaviour
     private float textFadeRate = 1.8f;
     private float pauseTimer = 0.05f;
     private float transitionTimer = 1.8f;
+    
  
     void Start()
     {
@@ -63,6 +89,7 @@ public class CutsceneManagerV2 : MonoBehaviour
             GRAPHICS.sprite = cutsceneList[ctr].cutsceneImage;
             SUBTITLE.text = cutsceneList[ctr].cutsceneNarrative;
 
+
             //Debug.Log(SUBTITLE.maxHeight);
 
             // Image Fade In
@@ -87,6 +114,7 @@ public class CutsceneManagerV2 : MonoBehaviour
             while (!Input.GetKeyDown(KeyCode.Space))
             {
                 yield return null;
+                //throw fade in here
             }
 
             // Subtitle Fade Out
@@ -97,8 +125,19 @@ public class CutsceneManagerV2 : MonoBehaviour
                 yield return null;
             }
 
+            
+
             // Pause before Image Disappear
             yield return new WaitForSeconds(pauseTimer);
+
+            //check for cutscene 3 and then start audio fade
+            if (ctr == 2)
+            {
+                //fade intro audio
+                StartCoroutine(FadeAudioSource.StartFade(GetComponent<AudioSource>(), 0.5f, 0f));
+                //GetComponent<AudioSource>().Stop();
+                IntroOutro.Play();
+            }
 
             // Image Fade Out
             for (float alpha = 1f; alpha > 0f; alpha -= imageFadeRate * Time.deltaTime)
@@ -110,7 +149,9 @@ public class CutsceneManagerV2 : MonoBehaviour
             // Pause with black screen
             yield return new WaitForSeconds(transitionTimer);
         }
+
         SceneManager.LoadScene(nextSceneName);
+
         yield return null;
     }
 

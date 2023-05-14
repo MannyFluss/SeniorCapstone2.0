@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 public class PlayerManager : MonoBehaviour
 {
     //added DamageTaken sound effect
-    [SerializeField] private AudioSource DamageTakenSoundEffect;
-    [SerializeField] ParticleParentScript particleParentScript;
+    [SerializeField] 
+    private AudioSource DamageTakenSoundEffect;
+
+    [SerializeField]
+    private string SceneName;
 
     [Header("Player Stats")]
-    public float health = 9; 
+    public float health = 9;
 
     private bool canBeHit = true;
 
@@ -47,13 +50,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    void takeDamage()
-    {
-        health--;
-        PlayerHUDReference.setUIHearts(((int)health));
-
-        particleParentScript.play();
-    }
     IEnumerator HitCooldown()
     {
         canBeHit = false;
@@ -61,38 +57,38 @@ public class PlayerManager : MonoBehaviour
         canBeHit = true;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void takeDamage(int damage)
     {
-        if(collision.gameObject.tag == "EnemyAttack" && canBeHit)
-        {
-            
-            takeDamage();
+        health -= damage;
+        PlayerHUDReference.setUIHearts(((int)health));
 
+        StartCoroutine(HitCooldown());
+        //movement.playerHit(other.transform);
 
-            StartCoroutine(HitCooldown());
-            //movement.playerHit(collision.transform);
-            //added damagetaken sound effect
-            DamageTakenSoundEffect.Play();
-
-        }
+        //added damagetaken sound effect
+        DamageTakenSoundEffect.Play();
     }
+
     public void heal()
     {
-        health +=1;
-        PlayerHUDReference.setUIHearts(((int)health) );
+        health += 1;
+        PlayerHUDReference.setUIHearts(((int)health));
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "EnemyAttack" && canBeHit)
         {
-            takeDamage();
-            PlayerHUDReference.setUIHearts(((int)health) );
+            takeDamage(1);
 
-            StartCoroutine(HitCooldown());
-            //movement.playerHit(other.transform);
+        }
+    }
 
-            //added damagetaken sound effect
-            DamageTakenSoundEffect.Play();
+    private void OnParticleCollision(GameObject other)
+    {
+        if (other.gameObject.tag == "EnemyAttack" && canBeHit)
+        {
+            takeDamage(1);
 
         }
     }

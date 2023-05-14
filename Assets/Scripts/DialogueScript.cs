@@ -10,9 +10,13 @@ using UnityEngine.Events;
 public class DialogueScript : MonoBehaviour
 {
     // Start is called before the first frame update
+    [SerializeField]
     Canvas myCanvas;
+    [SerializeField]
     TextMeshProUGUI myText;
     
+    [SerializeField]
+    private GameObject nextLineIndicator;
     public string[] lines;
     public float textSpeed;
     private int index;
@@ -21,7 +25,6 @@ public class DialogueScript : MonoBehaviour
 
     [SerializeField]
     private UnityEvent onShopOpen;
-
     
     [SerializeField]
     private UnityEvent onShopClose;
@@ -35,13 +38,19 @@ public class DialogueScript : MonoBehaviour
     void Start()
     {
         playerInput.Input.Jump.started += jumpInput; 
-        startDialogue();
+        playerInput.Enable();
+        myCanvas.gameObject.SetActive(false);
 
     }
 
     public void jumpInput(InputAction.CallbackContext context)
     {
-        print(context);
+
+
+        if (myCanvas.gameObject.activeInHierarchy == false)
+        {
+            return;
+        }
         if (myText.text == lines[index])
         {
             NextLine();
@@ -50,6 +59,7 @@ public class DialogueScript : MonoBehaviour
         {
             StopAllCoroutines();
             myText.text = lines[index];
+            nextLineIndicator.SetActive(true);
         }
     }
 
@@ -60,16 +70,16 @@ public class DialogueScript : MonoBehaviour
     public void startDialogue()
     {
 
-        playerInput.Enable();
-        myText = GetComponentInChildren<TextMeshProUGUI>();
-        myCanvas = GetComponentInChildren<Canvas>();
-
+        
         myCanvas.gameObject.SetActive(true);
+        nextLineIndicator.SetActive(false);
+
         myText.text = string.Empty;
         index = 0;
         StartCoroutine(TypeLine());
         onShopOpen.Invoke();
     }
+
     IEnumerator TypeLine()
     {
         foreach (char c in lines[index].ToCharArray())
@@ -77,6 +87,8 @@ public class DialogueScript : MonoBehaviour
             myText.text += c;
             yield return new WaitForSeconds(textSpeed);
         }
+        nextLineIndicator.SetActive(true);
+
     }
 
     void NextLine()
@@ -86,6 +98,7 @@ public class DialogueScript : MonoBehaviour
             index++;
             myText.text = string.Empty;
             StartCoroutine(TypeLine());
+            nextLineIndicator.SetActive(false);
         }
         else
         {

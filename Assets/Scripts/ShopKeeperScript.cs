@@ -32,11 +32,10 @@ public class ShopKeeperScript : MonoBehaviour
     void Start()
     {
         
-
+        playerInput.Enable();
         playerInput.Input.Hit.performed += hitInput;
 
         player = GameObject.FindGameObjectWithTag("Player");
-        //shopUI.enabled = false;
         playerAbilityManager = player.GetComponent<CharacterAbilityScript>();
         
     }
@@ -45,7 +44,8 @@ public class ShopKeeperScript : MonoBehaviour
 
     private void hitInput(InputAction.CallbackContext context)
     {
-        print("look at me look at me");
+
+        print("asdjasduhas");
         var di = Vector3.Distance(transform.position,player.transform.position);
         foreach (GameObject enemies in GameObject.FindGameObjectsWithTag("Enemy"))
         {
@@ -65,43 +65,44 @@ public class ShopKeeperScript : MonoBehaviour
     
     
     void Update()
-    {
-        if (used) this.gameObject.SetActive(false);
-        playMoneyText.text = "Player Money: " + playerAbilityManager.playerMoney;
-        var di = Vector3.Distance(transform.position,player.transform.position);
+    {   
+        //removes shopkeeper if finished talking to
+        // if (used && !ConversationManager.Instance.IsConversationActive) this.gameObject.SetActive(false);
+        // playMoneyText.text = "Player Money: " + playerAbilityManager.playerMoney;
+        // var di = Vector3.Distance(transform.position,player.transform.position);
 
-        // Check the player is in Range
-        if (di <= interactRange && inRange == false) // just entered range
-        {
-            inRange = true;
-        }
-        else if (di <= interactRange)
-        {
-            inRange = true;
-        }
-        else if (di > interactRange)
-        {
-            inRange = false;
-        }
+        // // Check the player is in Range
+        // if (di <= interactRange && inRange == false) // just entered range
+        // {
+        //     inRange = true;
+        // }
+        // else if (di <= interactRange)
+        // {
+        //     inRange = true;
+        // }
+        // else if (di > interactRange)
+        // {
+        //     inRange = false;
+        // }
 
-        if (inRange == true)
-        {
-            if (used == true)
-            {
-                return;
-            }
-            //no enemies allowed to be around
-            foreach (GameObject enemies in GameObject.FindGameObjectsWithTag("Enemy"))
-            {
-                var distanceToEnemy = Vector3.Distance(gameObject.transform.position,enemies.transform.position);
-                if (distanceToEnemy < 40)
-                {
-                    return;
-                }
-            }
-            initiateShop();
-            used = true;
-        }
+        // if (inRange == true)
+        // {
+        //     if (used == true)
+        //     {
+        //         return;
+        //     }
+        //     //no enemies allowed to be around
+        //     foreach (GameObject enemies in GameObject.FindGameObjectsWithTag("Enemy"))
+        //     {
+        //         var distanceToEnemy = Vector3.Distance(gameObject.transform.position,enemies.transform.position);
+        //         if (distanceToEnemy < 40)
+        //         {
+        //             return;
+        //         }
+        //     }
+        //     initiateShop();
+        //     used = true;
+        // }
     }
     
 
