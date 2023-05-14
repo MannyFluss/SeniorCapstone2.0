@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class ShopUIPurchase : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class ShopUIPurchase : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput();
+        playerInput.Input.Hit.performed += select;
+        
     }
     //needs atleast one button in the list or else crash
     [SerializeField]
@@ -26,6 +29,11 @@ public class ShopUIPurchase : MonoBehaviour
         
 
         
+    }
+    private void select(InputAction.CallbackContext context)
+    {
+        Button curr = EventSystem.current.GetComponent<Button>();
+        curr.onClick.Invoke();
     }
 
 
@@ -103,11 +111,15 @@ public class ShopUIPurchase : MonoBehaviour
         setTextAndIcons();
         selectedButton = buttons[0];
         selectedButton.Select();
-
+        playerInput.Enable();
         //find event system and set first selected
         //GameObject eventSystem = GameObject.Find("EventSystem");
 
         //eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(selectedButton.gameObject);
+    }
+    void OnDisable()
+    {
+        playerInput.Disable();
     }
 
     public void deselectMarkers()

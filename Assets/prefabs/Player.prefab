@@ -140,7 +140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751444512}
   m_LocalRotation: {x: 0.04771637, y: -0.23824613, z: 0.011720307, w: 0.9699611}
-  m_LocalPosition: {x: 0, y: 4, z: -11}
+  m_LocalPosition: {x: 0, y: 3.9999998, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1234,7 +1234,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6795076276221857574
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7509,6 +7509,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playOnStart: 0
   additionalParticles: []
+  timeUntilDestroy: 0
 --- !u!1 &2626668998523703817
 GameObject:
   m_ObjectHideFlags: 0
@@ -7720,7 +7721,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DamageTakenSoundEffect: {fileID: 7356431224315037562}
-  particleParentScript: {fileID: 7532138732869391403}
   health: 9
   PlayerHUDReference: {fileID: 5796684668787035884}
 --- !u!54 &2626668998523703838
@@ -13297,9 +13297,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttons:
-  - {fileID: 4932403694306684629}
   - {fileID: 5064550575352136280}
-  - {fileID: 4351262563839548479}
   playerAbilities: {fileID: 2626668998523703809}
   descriptionText: {fileID: 7997545281468464481}
   playerMarker: {fileID: 1487410181752007419}
@@ -16491,7 +16489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -750, y: -213.3}
+  m_AnchoredPosition: {x: 1426, y: -213.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1080814188962183109
@@ -16602,14 +16600,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2509970468893054682, guid: dd393b5bb8c344f4f805caa350bcc5b3, type: 3}
   m_PrefabInstance: {fileID: 7191446747538581232}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7532138732869391403 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 813655038366380763, guid: dd393b5bb8c344f4f805caa350bcc5b3, type: 3}
-  m_PrefabInstance: {fileID: 7191446747538581232}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 654b9d644f1b41d4188ea08fbfec0611, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

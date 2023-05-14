@@ -37,7 +37,7 @@ public class DialogueScript : MonoBehaviour
     }
     void Start()
     {
-        playerInput.Input.Jump.started += jumpInput; 
+        playerInput.Input.Hit.started += jumpInput; 
         playerInput.Enable();
         myCanvas.gameObject.SetActive(false);
 

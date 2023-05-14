@@ -12,8 +12,16 @@ public class SkipManager : MonoBehaviour
     public string sceneName;
     public bool firstClick;
 
+    private PlayerInput playerInput;
+    
+
     void Awake()
     {
+        playerInput = new PlayerInput();
+        playerInput.Enable();
+        playerInput.Input.Jump.performed += detectController;
+
+
         targetButton.gameObject.SetActive(false);
         firstClick = false;
     }
@@ -26,6 +34,11 @@ public class SkipManager : MonoBehaviour
         {
 
         }
+    }
+
+    private void detectController(InputAction.CallbackContext context)
+    {
+        targetButton.gameObject.SetActive(true);
     }
 
     private void DetectMouseClick()
