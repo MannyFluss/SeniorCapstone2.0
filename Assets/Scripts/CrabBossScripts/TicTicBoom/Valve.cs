@@ -11,11 +11,10 @@ public class Valve : MonoBehaviour
     [HideInInspector]
     public int valveIndex;
 
+    private Transform pipe;
 
     public bool isSingle = false;
     ValveManager vm;
-
-    private ParticleSystem ps;
 
     //prototype testing purpose
     MeshRenderer m;
@@ -27,25 +26,25 @@ public class Valve : MonoBehaviour
 
     private void Start()
     {
-        m = GetComponent<MeshRenderer>();
-        ps = GetComponentInChildren<ParticleSystem>();
+        pipe = transform.GetChild(0);
+        m = pipe.GetComponent<MeshRenderer>();
         if(!isSingle)
         {
             vm = GetComponentInParent<ValveManager>();
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if(!valveState)
         {
             m.material = red;
-            ps.Play();
+            pipe.localRotation = Quaternion.Lerp(pipe.localRotation, Quaternion.Euler(pipe.localEulerAngles.x, pipe.localEulerAngles.y, 90), 0.05f);
         }
         else
         {
             m.material = green;
-            ps.Stop();
+            pipe.localRotation = Quaternion.Lerp(pipe.localRotation, Quaternion.Euler(pipe.localEulerAngles.x, pipe.localEulerAngles.y, 0), 0.05f);
         }
     }
 

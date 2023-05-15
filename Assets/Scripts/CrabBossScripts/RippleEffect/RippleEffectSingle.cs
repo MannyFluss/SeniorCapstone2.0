@@ -20,7 +20,7 @@ public class RippleEffectSingle : MonoBehaviour
     public IEnumerator rippleEffect()
     {
         ps.Play();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         ps.Stop();
     }
 }

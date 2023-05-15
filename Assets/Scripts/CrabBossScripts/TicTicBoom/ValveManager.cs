@@ -8,6 +8,9 @@ public class ValveManager : MonoBehaviour
 
     [HideInInspector]
     public bool isComplete = false;
+    
+    [SerializeField]
+    private bool sideValveToggle = false;
 
     private TicTicBoomManager ttbm;
 
@@ -70,15 +73,22 @@ public class ValveManager : MonoBehaviour
     {
         if (pos == 0)
         {
-            valves[valves.Length - 1].toggleValveState();
+            if(sideValveToggle)
+            {
+                valves[valves.Length - 1].toggleValveState();
+            }
             valves[pos].toggleValveState();
             valves[pos + 1].toggleValveState();
         }
         else if (pos == valves.Length - 1)
         {
+
             valves[pos - 1].toggleValveState();
             valves[pos].toggleValveState();
-            valves[0].toggleValveState();
+            if (sideValveToggle)
+            {
+                valves[0].toggleValveState();
+            }
         }
         else
         {
