@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DrKrabManager : MonoBehaviour
 {
@@ -19,7 +20,11 @@ public class DrKrabManager : MonoBehaviour
 
     public bool canBeHit;
 
+    [SerializeField]
+    private float waitTime = 0f;
     private bool isReady = false;
+
+    public int moveNum;
 
     //Animation
     [SerializeField]
@@ -49,16 +54,21 @@ public class DrKrabManager : MonoBehaviour
 
         canBeHit = false;
 
-        beginMoves();
+        //beginMoves();
+        ttbm.TicTicBoom(health);
+
     }
 
     private void Update()
     {
         if(!bs.bubbleStreamActive && !rem.rippleEffectActive && isReady)
         {
+            
             StartCoroutine(preformMoves());
         }
-        healthBar.rectTransform.localScale = new Vector3(curHealth / maxHealth, 1f, 1f);
+        healthBar.rectTransform.localScale = new Vector3(health / 100f, 1f, 1f);
+
+        if (health <= 0) SceneManager.LoadScene("TheLab");
     }
 
     public void beginMoves()
@@ -66,13 +76,15 @@ public class DrKrabManager : MonoBehaviour
         moveCtr = 0;
         if(curHealth < 60)
         {
-            puzzleTime = 4;
+            puzzleTime = 3;
         }
         else
         {
-            puzzleTime = 3;
+            puzzleTime = 2;
         }
+        moveNum = Random.Range(0, 2);
         isReady = true;
+        
     }
 
     public void stunSequence()
@@ -89,20 +101,20 @@ public class DrKrabManager : MonoBehaviour
     IEnumerator preformMoves()
     {
         isReady = false;
-        yield return new WaitForSeconds(2.3f);
-        moveCtr++;
-        if (moveCtr != puzzleTime)
+        yield return new WaitForSeconds(waitTime);
+        if(moveCtr != puzzleTime)
         {
-            var num = Random.Range(0, 2);
-            if(num == 0)
+            if(moveNum == 0)
             {
                 bs.bubbleStream(curHealth);
                 isReady = true;
+                moveNum = 1;
             }
             else
             {
                 rem.rippleEffect(curHealth);
                 isReady = true;
+                moveNum = 0;
             }
         }
         else

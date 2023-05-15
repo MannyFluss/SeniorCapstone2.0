@@ -8,6 +8,10 @@ public class RippleEffectManager : MonoBehaviour
 
     RippleEffectSingle[] ripples = new RippleEffectSingle[4];
 
+    [SerializeField]
+    private float nineWaveInterval = 1.5f;
+    private float elevenWaveInterval = 1.0f;
+
     //for DrKrabManager
     public bool rippleEffectActive = false;
 
@@ -33,13 +37,13 @@ public class RippleEffectManager : MonoBehaviour
         //determine interval and number of waves
         if (health > 50)
         {
-            num = Random.Range(8, 10);
-            interval = 1.1f;
+            num = 9;
+            interval = nineWaveInterval;
         }
         else
         {
-            num = Random.Range(10, 12);
-            interval = 0.85f;
+            num = 12;
+            interval = elevenWaveInterval;
         }
         for(int i = 0; i < num; i++)
         {

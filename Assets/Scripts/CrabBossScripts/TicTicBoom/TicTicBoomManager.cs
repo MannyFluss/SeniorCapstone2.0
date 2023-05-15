@@ -24,6 +24,8 @@ public class TicTicBoomManager : MonoBehaviour
     [SerializeField]
     private GameObject bombPrefab;
     private GameObject bomb;
+    [SerializeField]
+    private float waitTime = 3f;
 
     //prototype vals
     MeshRenderer m;
@@ -70,6 +72,7 @@ public class TicTicBoomManager : MonoBehaviour
 
     public void TicTicBoom(int health)
     {
+        vm.stopValves();
         ticTicBoomActive = true;
         puzzleActive = true;
         m.material = red;
@@ -90,7 +93,6 @@ public class TicTicBoomManager : MonoBehaviour
         puzzleActive = false;
         vm.isComplete = false;
         countdown.text = "%^&*))#!";
-        vm.stopValves();
         m.material = green;
         dkm.stunSequence();
     }
@@ -101,7 +103,6 @@ public class TicTicBoomManager : MonoBehaviour
         puzzleActive = false;
         vm.isComplete = false;
         countdown.text = "BOOM";
-        vm.stopValves();
         StartCoroutine(bigBomb());
     }
 
@@ -111,7 +112,7 @@ public class TicTicBoomManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         Destroy(bomb);
         player.takeDamage(1);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(waitTime);
         dkm.beginMoves();
     }
 }

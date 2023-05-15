@@ -63,7 +63,7 @@ public class BubbleStream : MonoBehaviour
                 cannons[arr[2]].fireSingleCannon();
                 cannons[arr[3]].fireSingleCannon();
             }
-            yield return new WaitForSeconds(6f);
+            yield return new WaitForSeconds(4.5f);
         }
         bubbleStreamActive = false;
     }
