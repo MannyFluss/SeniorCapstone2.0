@@ -134,9 +134,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 231488706, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_TrackedObjectOffset.y
+      value: 3.14
+      objectReference: {fileID: 0}
+    - target: {fileID: 231488708, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: m_FollowOffset.y
+      value: 4.74
+      objectReference: {fileID: 0}
     - target: {fileID: 231488708, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_FollowOffset.z
-      value: -11.05
+      value: -14.45
       objectReference: {fileID: 0}
     - target: {fileID: 751444512, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_Layer
@@ -160,27 +168,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 4.74
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.05
+      value: -14.45
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97908175
+      value: 0.99848026
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.20346747
+      value: 0.055110786
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000008423229
+      value: -0.00000001731393
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000017504703
+      value: 9.556368e-10
       objectReference: {fileID: 0}
     - target: {fileID: 49215562719482492, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_AnchorMax.y
@@ -6070,8 +6078,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 157680519}
-  m_LocalRotation: {x: 0.20346747, y: -0.000000008423229, z: 0.0000000017504703, w: 0.97908175}
-  m_LocalPosition: {x: -0.2, y: 5.67, z: -17.35}
+  m_LocalRotation: {x: 0.055110786, y: -0.00000001731393, z: 9.556368e-10, w: 0.99848026}
+  m_LocalPosition: {x: -0.2, y: 6.41, z: -20.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -17370,6 +17378,7 @@ MonoBehaviour:
   player: {fileID: 1654990466}
   screen: {fileID: 668280861}
   bombPrefab: {fileID: 8333109333272964056, guid: 0da2bd7fc5ea5634d86530572b8f443d, type: 3}
+  waitTime: 3
   red: {fileID: 2100000, guid: 9f3979e5a99204f57af273ca9f0a5bb2, type: 2}
   green: {fileID: 2100000, guid: c72d27fbb5f06ee429d4e62cd88dbac9, type: 2}
   ticTicBoomActive: 0
@@ -18128,6 +18137,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   canBeHit: 0
+  waitTime: 0
+  moveNum: 0
   pd: {fileID: 2117145791}
   healthBar: {fileID: 326125020}
 --- !u!4 &963434082
@@ -18293,7 +18304,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh30668
+  m_Name: pb_Mesh40882
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
