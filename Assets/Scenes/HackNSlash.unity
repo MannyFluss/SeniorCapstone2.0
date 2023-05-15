@@ -916,6 +916,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6502673056062744683, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: playerMov
+      value: 
+      objectReference: {fileID: 281661441}
+    - target: {fileID: 6502673056062744683, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: playerAttack
+      value: 
+      objectReference: {fileID: 281661440}
+    - target: {fileID: 6502673056062744683, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: AbilityOffer1
       value: SchrodingerBox
       objectReference: {fileID: 0}
@@ -3041,6 +3049,28 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &281661440 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2626668998523703811, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+  m_PrefabInstance: {fileID: 13688560}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281661406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee4a6bd173690fa4cbfead9857bf33ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &281661441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2626668998523703813, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+  m_PrefabInstance: {fileID: 13688560}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 281661406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c75b952b397dc4d89b7f6bb8742502, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &283334141
 GameObject:
   m_ObjectHideFlags: 0
