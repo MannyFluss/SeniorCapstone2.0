@@ -54,8 +54,8 @@ public class DrKrabManager : MonoBehaviour
 
         canBeHit = false;
 
-        //beginMoves();
-        ttbm.TicTicBoom(health);
+        beginMoves();
+        // ttbm.TicTicBoom(curHealth);
 
     }
 
@@ -63,24 +63,23 @@ public class DrKrabManager : MonoBehaviour
     {
         if(!bs.bubbleStreamActive && !rem.rippleEffectActive && isReady)
         {
-            
             StartCoroutine(preformMoves());
         }
-        healthBar.rectTransform.localScale = new Vector3(health / 100f, 1f, 1f);
+        healthBar.rectTransform.localScale = new Vector3(curHealth / 100f, 1f, 1f);
 
-        if (health <= 0) SceneManager.LoadScene("TheLab");
+        if (curHealth <= 0) SceneManager.LoadScene("TheLab");
     }
 
     public void beginMoves()
     {
-        moveCtr = 0;
+        moveCtr = 1;
         if(curHealth < 60)
         {
-            puzzleTime = 3;
+            puzzleTime = 4;
         }
         else
         {
-            puzzleTime = 2;
+            puzzleTime = 3;
         }
         moveNum = Random.Range(0, 2);
         isReady = true;
@@ -102,7 +101,7 @@ public class DrKrabManager : MonoBehaviour
     {
         isReady = false;
         yield return new WaitForSeconds(waitTime);
-        if(moveCtr != puzzleTime)
+        if(moveCtr % puzzleTime != 0)
         {
             if(moveNum == 0)
             {
@@ -116,10 +115,13 @@ public class DrKrabManager : MonoBehaviour
                 isReady = true;
                 moveNum = 0;
             }
+            moveCtr++;
         }
         else
         {
             ttbm.TicTicBoom(curHealth);
+            moveNum = Random.Range(0, 2);
+            moveCtr = 1;
         }
     }
 

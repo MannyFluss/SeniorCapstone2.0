@@ -26,7 +26,7 @@ public class ValveManager : MonoBehaviour
             valves[0].valveState && valves[1].valveState && valves[2].valveState && valves[3].valveState && valves[4].valveState)
         {
             isComplete = true;
-            stopValves();
+            resetAllValves();
             ttbm.TicTicBoomSolved();
         }
     }
@@ -35,33 +35,27 @@ public class ValveManager : MonoBehaviour
     {
         isComplete = false;
 
-        //pick 2 random valves
-        var v1 = Random.Range(0, 4);
-        var v2 = Random.Range(0, 4);
+        //pick 2 random, but different valves
+        int v1 = Random.Range(0, 4);
+        int v2;
+        while(true)
+        {
+            v2 = Random.Range(0, 4);
+            if (v2 != v1) break;
+        }
 
 
         for (int i = 0; i < valves.Length; i++)
         {
-            //set all interactbles to true
-            valves[i].isInteractable = true;
             valves[i].valveIndex = i;
+            valves[i].isInteractable = true;
 
-            //determine 2 random valves and set them to on
+            //determine 2 random valves and set them to off
             if(i == v1 || i == v2)
             {
                 valves[i].valveState = true;
             }
-        }
-    }
-
-    public void stopValves()
-    {
-        for (int i = 0; i < valves.Length; i++)
-        {
-            //set all interactbles and states to false
-            valves[i].isInteractable = false;
-            valves[i].valveState = false;
-
+            else valves[i].valveState = false;
         }
     }
 
@@ -95,6 +89,17 @@ public class ValveManager : MonoBehaviour
             valves[pos - 1].toggleValveState();
             valves[pos].toggleValveState();
             valves[pos + 1].toggleValveState();
+        }
+    }
+
+    // Reset all the valves to true state (visually)
+    // Reset all the valves so they are not interactable.
+    public void resetAllValves()
+    {
+        for (int i = 0; i < valves.Length; i++)
+        {
+            valves[i].valveState = false;
+            valves[i].isInteractable = false;
         }
     }
 }

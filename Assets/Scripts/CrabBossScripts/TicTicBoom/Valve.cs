@@ -5,7 +5,7 @@ using UnityEngine;
 public class Valve : MonoBehaviour
 {
     [HideInInspector]
-    public bool valveState = false;
+    public bool valveState = true;
     [HideInInspector]
     public bool isInteractable = false;
     [HideInInspector]

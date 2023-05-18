@@ -27,6 +27,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TheLab.unity
     guid: 630870d8d4b3f5848a9314bcda2ac748
   - enabled: 1
-    path: Assets/Scenes/CrabBoss/DrKrab.unity
+    path: Assets/Scenes/DrKrab.unity
     guid: d7b2e2221478a94408aec1c9a2aa5e4d
   m_configObjects: {}

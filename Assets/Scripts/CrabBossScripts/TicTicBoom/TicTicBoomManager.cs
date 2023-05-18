@@ -72,7 +72,6 @@ public class TicTicBoomManager : MonoBehaviour
 
     public void TicTicBoom(int health)
     {
-        vm.stopValves();
         ticTicBoomActive = true;
         puzzleActive = true;
         m.material = red;
@@ -99,8 +98,10 @@ public class TicTicBoomManager : MonoBehaviour
 
     public void TicTicBoomFailed()
     {
-        ticTicBoomActive = false;
+        // Turn the puzzle off
         puzzleActive = false;
+
+        ticTicBoomActive = false;
         vm.isComplete = false;
         countdown.text = "BOOM";
         StartCoroutine(bigBomb());
