@@ -1,34 +1,28 @@
-Shader "Universal Render Pipeline/Unlit"
+// Based on Unlit.shader from URP v10.2
+Shader "Universal Render Pipeline/Unlit Sprite"
 {
     Properties
     {
-        [MainTexture] _BaseMap("Texture", 2D) = "white" {}
-        [MainColor] _BaseColor("Color", Color) = (1, 1, 1, 1)
-        _Cutoff("AlphaCutout", Range(0.0, 1.0)) = 0.5
+        _MainTex("Texture", 2D) = "white" {}
+        _Cutoff("Alpha Cutout", Range(0.0, 1.0)) = 0.5
 
         // BlendMode
-        _Surface("__surface", Float) = 0.0
-        _Blend("__mode", Float) = 0.0
-        _Cull("__cull", Float) = 2.0
-        [ToggleUI] _AlphaClip("__clip", Float) = 0.0
-        [HideInInspector] _BlendOp("__blendop", Float) = 0.0
-        [HideInInspector] _SrcBlend("__src", Float) = 1.0
-        [HideInInspector] _DstBlend("__dst", Float) = 0.0
-        [HideInInspector] _SrcBlendAlpha("__srcA", Float) = 1.0
-        [HideInInspector] _DstBlendAlpha("__dstA", Float) = 0.0
-        [HideInInspector] _ZWrite("__zw", Float) = 1.0
-        [HideInInspector] _AlphaToMask("__alphaToMask", Float) = 0.0
-        [HideInInspector] _AddPrecomputedVelocity("_AddPrecomputedVelocity", Float) = 0.0
+        [HideInInspector] _Surface("__surface", Float) = 0.0
+        [HideInInspector] _Blend("__blend", Float) = 0.0
+        [HideInInspector] _AlphaClip("__clip", Float) = 0.0
+        [HideInInspector] _SrcBlend("Src", Float) = 1.0
+        [HideInInspector] _DstBlend("Dst", Float) = 0.0
+        //[HideInInspector] _ZWrite("ZWrite", Float) = 1.0
+        //[HideInInspector] _Cull("__cull", Float) = 2.0
 
         // Editmode props
-        _QueueOffset("Queue offset", Float) = 0.0
+        [HideInInspector] _QueueOffset("Queue offset", Float) = 0.0
 
         // ObsoleteProperties
-        [HideInInspector] _MainTex("BaseMap", 2D) = "white" {}
-        [HideInInspector] _Color("Base Color", Color) = (0.5, 0.5, 0.5, 1)
+        // [HideInInspector] _MainTex("BaseMap", 2D) = "white" {}
+        // [HideInInspector] _Color("Base Color", Color) = (0.5, 0.5, 0.5, 1)
         [HideInInspector] _SampleGI("SampleGI", float) = 0.0 // needed from bakedlit
     }
-
     SubShader
     {
         Tags
@@ -36,58 +30,92 @@ Shader "Universal Render Pipeline/Unlit"
             "RenderType" = "Opaque"
             "IgnoreProjector" = "True"
             "RenderPipeline" = "UniversalPipeline"
+            "PreviewType" = "Plane"
+            "ShaderModel" = "4.5"
         }
         LOD 100
 
-        // -------------------------------------
-        // Render State Commands
-        Blend [_SrcBlend][_DstBlend], [_SrcBlendAlpha][_DstBlendAlpha]
-        ZWrite [_ZWrite]
-        Cull [_Cull]
+        Blend [_SrcBlend][_DstBlend]
+        ZWrite On
+        Cull Off
 
         Pass
         {
             Name "Unlit"
 
-            // -------------------------------------
-            // Render State Commands
-            AlphaToMask[_AlphaToMask]
-
             HLSLPROGRAM
-            #pragma target 2.0
+            #pragma exclude_renderers gles gles3 glcore
+            #pragma target 4.5
 
-            // -------------------------------------
-            // Shader Stages
-            #pragma vertex UnlitPassVertex
-            #pragma fragment UnlitPassFragment
-
-            // -------------------------------------
-            // Material Keywords
-            #pragma shader_feature_local_fragment _SURFACE_TYPE_TRANSPARENT
+            #pragma vertex vert
+            #pragma fragment frag
             #pragma shader_feature_local_fragment _ALPHATEST_ON
-            #pragma shader_feature_local_fragment _ALPHAMODULATE_ON
+            #pragma shader_feature_local_fragment _ALPHAPREMULTIPLY_ON
 
             // -------------------------------------
             // Unity defined keywords
             #pragma multi_compile_fog
-            #pragma multi_compile_fragment _ _SCREEN_SPACE_OCCLUSION
-            #pragma multi_compile_fragment _ _DBUFFER_MRT1 _DBUFFER_MRT2 _DBUFFER_MRT3
-            #pragma multi_compile _ DEBUG_DISPLAY
-            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
-            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RenderingLayers.hlsl"
-
-            //--------------------------------------
-            // GPU Instancing
             #pragma multi_compile_instancing
-            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+            #pragma multi_compile _ DOTS_INSTANCING_ON
 
-            // -------------------------------------
-            // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitForwardPass.hlsl"
+            #include "UnlitInput.hlsl"
+
+            struct Attributes
+            {
+                float4 positionOS : POSITION;
+                float2 uv : TEXCOORD0;
+                float4 color : COLOR;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
+            };
+
+            struct Varyings
+            {
+                float4 color : COLOR;
+                float2 uv : TEXCOORD0;
+                float fogCoord : TEXCOORD1;
+                float4 vertex : SV_POSITION;
+
+                UNITY_VERTEX_INPUT_INSTANCE_ID
+                UNITY_VERTEX_OUTPUT_STEREO
+            };
+
+            Varyings vert(Attributes input)
+            {
+                Varyings output = (Varyings)0;
+
+                UNITY_SETUP_INSTANCE_ID(input);
+                UNITY_TRANSFER_INSTANCE_ID(input, output);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
+
+                VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
+                output.color = input.color;
+                output.vertex = vertexInput.positionCS;
+                output.uv = TRANSFORM_TEX(input.uv, _MainTex);
+                output.fogCoord = ComputeFogFactor(vertexInput.positionCS.z);
+
+                return output;
+            }
+
+            half4 frag(Varyings input) : SV_Target
+            {
+                UNITY_SETUP_INSTANCE_ID(input);
+                UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
+
+                half2 uv = input.uv;
+                half4 texColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
+                half3 color = texColor.rgb * input.color.rgb;
+                half alpha = texColor.a * input.color.a;
+                clip(alpha - _Cutoff);
+
+                #ifdef _ALPHAPREMULTIPLY_ON
+                color *= alpha;
+                #endif
+
+                color = MixFog(color, input.fogCoord);
+                return half4(color, alpha);
+            }
             ENDHLSL
         }
-
         Pass
         {
             Name "DepthOnly"
@@ -96,16 +124,13 @@ Shader "Universal Render Pipeline/Unlit"
                 "LightMode" = "DepthOnly"
             }
 
-            // -------------------------------------
-            // Render State Commands
             ZWrite On
-            ColorMask R
+            ColorMask 0
 
             HLSLPROGRAM
-            #pragma target 2.0
+            #pragma exclude_renderers gles gles3 glcore
+            #pragma target 4.5
 
-            // -------------------------------------
-            // Shader Stages
             #pragma vertex DepthOnlyVertex
             #pragma fragment DepthOnlyFragment
 
@@ -113,61 +138,13 @@ Shader "Universal Render Pipeline/Unlit"
             // Material Keywords
             #pragma shader_feature_local_fragment _ALPHATEST_ON
 
-            // -------------------------------------
-            // Unity defined keywords
-            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
-
             //--------------------------------------
             // GPU Instancing
             #pragma multi_compile_instancing
-            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
+            #pragma multi_compile _ DOTS_INSTANCING_ON
 
-            // -------------------------------------
-            // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/DepthOnlyPass.hlsl"
-            ENDHLSL
-        }
-
-        Pass
-        {
-            Name "DepthNormalsOnly"
-            Tags
-            {
-                "LightMode" = "DepthNormalsOnly"
-            }
-
-            // -------------------------------------
-            // Render State Commands
-            ZWrite On
-
-            HLSLPROGRAM
-            #pragma target 2.0
-
-            // -------------------------------------
-            // Shader Stages
-            #pragma vertex DepthNormalsVertex
-            #pragma fragment DepthNormalsFragment
-
-            // -------------------------------------
-            // Material Keywords
-            #pragma shader_feature_local_fragment _ALPHATEST_ON
-
-            // -------------------------------------
-            // Universal Pipeline keywords
-            #pragma multi_compile_fragment _ _GBUFFER_NORMALS_OCT // forward-only variant
-            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
-            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/RenderingLayers.hlsl"
-
-            //--------------------------------------
-            // GPU Instancing
-            #pragma multi_compile_instancing
-            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DOTS.hlsl"
-
-            // -------------------------------------
-            // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitDepthNormalsPass.hlsl"
+            #include "UnlitInput.hlsl"
+            #include "DepthOnlyPass.hlsl"
             ENDHLSL
         }
 
@@ -180,46 +157,167 @@ Shader "Universal Render Pipeline/Unlit"
                 "LightMode" = "Meta"
             }
 
-            // -------------------------------------
-            // Render State Commands
             Cull Off
 
             HLSLPROGRAM
-            #pragma target 2.0
+            #pragma exclude_renderers gles gles3 glcore
+            #pragma target 4.5
 
-            // -------------------------------------
-            // Shader Stages
             #pragma vertex UniversalVertexMeta
             #pragma fragment UniversalFragmentMetaUnlit
 
-            // -------------------------------------
-            // Unity defined keywords
-            #pragma shader_feature EDITOR_VISUALIZATION
-
-            // -------------------------------------
-            // Includes
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitMetaPass.hlsl"
-            ENDHLSL
-        }
-
-        Pass
-        {
-            Name "MotionVectors"
-            Tags { "LightMode" = "MotionVectors" }
-            ColorMask RG
-
-            HLSLPROGRAM
-            #pragma shader_feature_local _ALPHATEST_ON
-            #pragma multi_compile_fragment _ LOD_FADE_CROSSFADE
-            #pragma shader_feature_local_vertex _ADD_PRECOMPUTED_VELOCITY
-
-            #include "Packages/com.unity.render-pipelines.universal/Shaders/UnlitInput.hlsl"
-            #include_with_pragmas "Packages/com.unity.render-pipelines.universal/ShaderLibrary/ObjectMotionVectors.hlsl"
+            #include "UnlitInput.hlsl"
+            #include "UnlitMetaPass.hlsl"
             ENDHLSL
         }
     }
 
+    SubShader
+    {
+        Tags
+        {
+            "RenderType" = "Opaque"
+            "IgnoreProjector" = "True"
+            "RenderPipeline" = "UniversalPipeline"
+            "PreviewType" = "Plane"
+            "ShaderModel" = "2.0"
+        }
+        LOD 100
+
+        Blend [_SrcBlend][_DstBlend]
+        ZWrite On
+        Cull Off
+
+        Pass
+        {
+            Name "Unlit"
+            HLSLPROGRAM
+            #pragma only_renderers gles gles3 glcore
+            #pragma target 2.0
+
+            #pragma vertex vert
+            #pragma fragment frag
+            #pragma shader_feature_local_fragment _ALPHATEST_ON
+            #pragma shader_feature_local_fragment _ALPHAPREMULTIPLY_ON
+
+            // -------------------------------------
+            // Unity defined keywords
+            #pragma multi_compile_fog
+            #pragma multi_compile_instancing
+
+            #include "UnlitInput.hlsl"
+
+            struct Attributes
+            {
+                float4 positionOS : POSITION;
+                float2 uv : TEXCOORD0;
+                float4 color : COLOR;
+                UNITY_VERTEX_INPUT_INSTANCE_ID
+            };
+
+            struct Varyings
+            {
+                float4 color : COLOR;
+                float2 uv : TEXCOORD0;
+                float fogCoord : TEXCOORD1;
+                float4 vertex : SV_POSITION;
+
+                UNITY_VERTEX_INPUT_INSTANCE_ID
+                UNITY_VERTEX_OUTPUT_STEREO
+            };
+
+            Varyings vert(Attributes input)
+            {
+                Varyings output = (Varyings)0;
+
+                UNITY_SETUP_INSTANCE_ID(input);
+                UNITY_TRANSFER_INSTANCE_ID(input, output);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(output);
+
+                VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
+                output.vertex = vertexInput.positionCS;
+                output.uv = TRANSFORM_TEX(input.uv, _MainTex);
+                output.fogCoord = ComputeFogFactor(vertexInput.positionCS.z);
+
+                return output;
+            }
+
+            half4 frag(Varyings input) : SV_Target
+            {
+                UNITY_SETUP_INSTANCE_ID(input);
+                UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(input);
+
+                half2 uv = input.uv;
+                half4 texColor = SAMPLE_TEXTURE2D(_MainTex, sampler_MainTex, uv);
+                half3 color = texColor.rgb * input.color.rgb;
+                half alpha = texColor.a * input.color.a;
+                clip(alpha - _Cutoff);
+
+                #ifdef _ALPHAPREMULTIPLY_ON
+                color *= alpha;
+                #endif
+
+                color = MixFog(color, input.fogCoord);
+                alpha = OutputAlpha(alpha, _Surface);
+
+                return half4(color, alpha);
+            }
+            ENDHLSL
+        }
+        Pass
+        {
+            Name "DepthOnly"
+            Tags
+            {
+                "LightMode" = "DepthOnly"
+            }
+
+            ZWrite On
+            ColorMask 0
+
+            HLSLPROGRAM
+            #pragma only_renderers gles gles3 glcore
+            #pragma target 2.0
+
+            #pragma vertex DepthOnlyVertex
+            #pragma fragment DepthOnlyFragment
+
+            // -------------------------------------
+            // Material Keywords
+            #pragma shader_feature_local_fragment _ALPHATEST_ON
+
+            //--------------------------------------
+            // GPU Instancing
+            #pragma multi_compile_instancing
+
+            #include "UnlitInput.hlsl"
+            #include "DepthOnlyPass.hlsl"
+            ENDHLSL
+        }
+
+        // This pass it not used during regular rendering, only for lightmap baking.
+        Pass
+        {
+            Name "Meta"
+            Tags
+            {
+                "LightMode" = "Meta"
+            }
+
+            Cull Off
+
+            HLSLPROGRAM
+            #pragma only_renderers gles gles3 glcore
+            #pragma target 2.0
+
+            #pragma vertex UniversalVertexMeta
+            #pragma fragment UniversalFragmentMetaUnlit
+
+            #include "UnlitInput.hlsl"
+            #include "UnlitMetaPass.hlsl"
+            ENDHLSL
+        }
+    }
     FallBack "Hidden/Universal Render Pipeline/FallbackError"
-    CustomEditor "UnityEditor.Rendering.Universal.ShaderGUI.UnlitShader"
+    // CustomEditor "UnityEditor.Rendering.Universal.ShaderGUI.UnlitShader"
 }

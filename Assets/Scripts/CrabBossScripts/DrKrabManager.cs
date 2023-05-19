@@ -65,7 +65,7 @@ public class DrKrabManager : MonoBehaviour
         {
             StartCoroutine(preformMoves());
         }
-        healthBar.rectTransform.localScale = new Vector3(curHealth / 100f, 1f, 1f);
+        healthBar.rectTransform.localScale = new Vector3(curHealth / maxHealth, 1f, 1f);
 
         if (curHealth <= 0) SceneManager.LoadScene("TheLab");
     }
