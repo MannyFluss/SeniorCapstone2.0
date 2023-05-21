@@ -922,6 +922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneName: DrKrab
+  SceneName: HackNSlash
 --- !u!65 &666532088
 BoxCollider:
   m_ObjectHideFlags: 0
