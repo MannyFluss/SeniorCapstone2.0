@@ -52,7 +52,8 @@ public class CutsceneManagerV3 : MonoBehaviour
     [SerializeField] private float imageFadeInRate = 0.6f;
     [SerializeField] private float textFadeInRate = 1.2f;
     [SerializeField] private float fadeOutRate = 16f;
-    [SerializeField] private float pauseSec = 0.5f;
+    [SerializeField] private float nextPanel = 0.75f;
+    [SerializeField] private float nextPage = 0.5f;
 
     [Header("Audio")]
     [SerializeField] private AudioSource CutsceneMusic;
@@ -73,9 +74,13 @@ public class CutsceneManagerV3 : MonoBehaviour
             foreach (Panel p in c.panel)
             {
                 p.panelImg.color = new Color(1, 1, 1, 0);
+
+                // If the Panel does not have a dialogue box or text
                 if (p.panelTxtBg != null)
+                {
                     p.panelTxtBg.color = new Color(1, 1, 1, 0);
-                p.panelTxt.color = new Color(1, 1, 1, 0);
+                    p.panelTxt.color = new Color(1, 1, 1, 0);
+                }
             }
 
         // Make sure the Black Screen alpha is 0
@@ -142,10 +147,13 @@ public class CutsceneManagerV3 : MonoBehaviour
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
                         togglePress = !togglePress; // true
-                        p.panelTxt.color = new Color(1, 1, 1, 1);
                         p.panelImg.color = new Color(1, 1, 1, 1);
                         if (p.panelTxtBg != null)
+                        {
                             p.panelTxtBg.color = new Color(1, 1, 1, 1);
+                            p.panelTxt.color = new Color(1, 1, 1, 1);
+                        }
+                            
                         break;
                     }
                     yield return null;
@@ -155,21 +163,22 @@ public class CutsceneManagerV3 : MonoBehaviour
                 if (!togglePress)
                 {
                     // Next Fade In the Panel's Text
-                    for (float alpha = 0f; alpha <= 1f; alpha += textFadeInRate * Time.deltaTime)
-                    {
-                        p.panelTxt.color = new Color(1, 1, 1, alpha);
-
-                        // If Space is press, Immediately Reveal Them
-                        if (Input.GetKeyDown(KeyCode.Space))
+                    if (p.panelTxt != null)
+                        for (float alpha = 0f; alpha <= 1f; alpha += textFadeInRate * Time.deltaTime)
                         {
-                            togglePress = !togglePress; // true
-                            p.panelTxt.color = new Color(1, 1, 1, 1);
-                            break;
+                            p.panelTxt.color = new Color(1, 1, 1, alpha);
+
+                            // If Space is press, Immediately Reveal Them
+                            if (Input.GetKeyDown(KeyCode.Space))
+                            {
+                                togglePress = !togglePress; // true
+                                p.panelTxt.color = new Color(1, 1, 1, 1);
+                                break;
+                            }
+                            yield return null;
                         }
-                        yield return null;
-                    }
                 }
-                yield return new WaitForSeconds(0.25f);
+                yield return new WaitForSeconds(nextPanel);
             }
 
             // Wait for player to press space
@@ -202,13 +211,16 @@ public class CutsceneManagerV3 : MonoBehaviour
                 foreach (Panel p in c.panel)
                 {
                     p.panelImg.color = new Color(1, 1, 1, alpha);
-                    if (p.panelTxtBg != null)
+                    if (p.panelTxtBg != null && p.panelTxt != null)
+                    {
                         p.panelTxtBg.color = new Color(1, 1, 1, alpha);
-                    p.panelTxt.color = new Color(1, 1, 1, alpha);
+                        p.panelTxt.color = new Color(1, 1, 1, alpha);
+                    }
+                       
                     yield return null;
                 }
             }
-            yield return new WaitForSeconds(pauseSec);
+            yield return new WaitForSeconds(nextPage);
 
             if (cutscene.IndexOf(c) == cutscene.Count - 1)
                 StartCoroutine(ExitingCutscene());
