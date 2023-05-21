@@ -15,9 +15,47 @@ public class CutsceneManagerV3 : MonoBehaviour
     public class Panel
     {
         public string panelSN;
-        public Image panelImg;
-        public Image panelTxtBg;
-        public TMP_Text panelTxt;
+        public GameObject panelObj;
+        private Image panelImg;
+        private Image panelTxtBg;
+        private TMP_Text panelTxt;
+
+        public void SetVariable()
+        {
+            Transform[] tmp = panelObj.GetComponentsInChildren<Transform>();
+            // Debug.Log(panelObj.name + " : " + tmp.Length);
+            panelImg = panelObj.transform.GetChild(0).GetComponent<Image>();
+            if (tmp.Length > 2)
+            {
+                panelTxtBg = panelObj.transform.GetChild(1).GetComponent<Image>();
+                panelTxt = panelObj.transform.GetChild(2).GetComponent<TMP_Text>();
+            }
+            
+        }
+        public Image GetImg() { return panelImg; }
+        public Image GetTxtBg() { return panelTxtBg; }
+        public TMP_Text GetTxt() { return panelTxt; }
+
+        public void SetImg(Image i) { panelImg = i; }
+        public void SetTxtBg(Image i) { panelTxtBg = i; }
+        public void SetTxt(TMP_Text t) { panelTxt = t; }
+
+        public Image ImgAlpha(float a) 
+        {
+            panelImg.color = new Color(1, 1, 1, a);
+            return panelImg;
+        }
+        public Image TxtBgAlpha(float a)
+        {
+            panelTxtBg.color = new Color(1, 1, 1, a);
+            return panelTxtBg;
+        }
+        public TMP_Text TxtAlpha(float a)
+        {
+            panelTxt.color = new Color(1, 1, 1, a);
+            return panelTxt;
+        }
+
     }
 
     [System.Serializable]
@@ -49,7 +87,7 @@ public class CutsceneManagerV3 : MonoBehaviour
     [SerializeField] private Image blackScreen;
     [SerializeField] private Image continueArrow;
     [SerializeField] private List<Page> cutscene = new List<Page>();
-    [SerializeField] private float imageFadeInRate = 0.6f;
+    [SerializeField] private float imageFadeInRate = 0.8f;
     [SerializeField] private float textFadeInRate = 1.2f;
     [SerializeField] private float fadeOutRate = 16f;
     [SerializeField] private float nextPanel = 0.75f;
@@ -65,6 +103,7 @@ public class CutsceneManagerV3 : MonoBehaviour
     // ==========[Private]========== //
     private bool togglePress = false;
 
+
     // ============================= //
 
     void Start()
@@ -73,13 +112,15 @@ public class CutsceneManagerV3 : MonoBehaviour
         foreach (Page c in cutscene)
             foreach (Panel p in c.panel)
             {
-                p.panelImg.color = new Color(1, 1, 1, 0);
+                p.SetVariable();
+                Debug.Log(p.GetImg().name);
+                p.GetImg().color = new Color(1, 1, 1, 0);
 
                 // If the Panel does not have a dialogue box or text
-                if (p.panelTxtBg != null)
+                if (p.GetTxtBg() != null)
                 {
-                    p.panelTxtBg.color = new Color(1, 1, 1, 0);
-                    p.panelTxt.color = new Color(1, 1, 1, 0);
+                    p.GetTxtBg().color = new Color(1, 1, 1, 0);
+                    p.GetTxt().color = new Color(1, 1, 1, 0);
                 }
             }
 
@@ -137,21 +178,21 @@ public class CutsceneManagerV3 : MonoBehaviour
                 // First Fade In the Panel's Img and Txt Bg
                 for (float alpha = 0f; alpha <= 1f; alpha += imageFadeInRate * Time.deltaTime)
                 {
-                    p.panelImg.color = new Color(1, 1, 1, alpha);
+                    p.GetImg().color = new Color(1, 1, 1, alpha);
 
                     // Option: if the panel doesn't have a Dialogue Box
-                    if (p.panelTxtBg != null)
-                        p.panelTxtBg.color = new Color(1, 1, 1, alpha);
+                    if (p.GetTxtBg() != null)
+                        p.GetTxtBg().color = new Color(1, 1, 1, alpha);
 
                     // If Space is press, Immediately Reveal Them
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
                         togglePress = !togglePress; // true
-                        p.panelImg.color = new Color(1, 1, 1, 1);
-                        if (p.panelTxtBg != null)
+                        p.GetImg().color = new Color(1, 1, 1, 1);
+                        if (p.GetTxtBg() != null)
                         {
-                            p.panelTxtBg.color = new Color(1, 1, 1, 1);
-                            p.panelTxt.color = new Color(1, 1, 1, 1);
+                            p.GetTxtBg().color = new Color(1, 1, 1, 1);
+                            p.GetTxt().color = new Color(1, 1, 1, 1);
                         }
                             
                         break;
@@ -163,22 +204,23 @@ public class CutsceneManagerV3 : MonoBehaviour
                 if (!togglePress)
                 {
                     // Next Fade In the Panel's Text
-                    if (p.panelTxt != null)
+                    if (p.GetTxt() != null)
                         for (float alpha = 0f; alpha <= 1f; alpha += textFadeInRate * Time.deltaTime)
                         {
-                            p.panelTxt.color = new Color(1, 1, 1, alpha);
+                            p.GetTxt().color = new Color(1, 1, 1, alpha);
 
                             // If Space is press, Immediately Reveal Them
                             if (Input.GetKeyDown(KeyCode.Space))
                             {
                                 togglePress = !togglePress; // true
-                                p.panelTxt.color = new Color(1, 1, 1, 1);
+                                p.GetTxt().color = new Color(1, 1, 1, 1);
                                 break;
                             }
                             yield return null;
                         }
+                    yield return new WaitForSeconds(nextPanel);
                 }
-                yield return new WaitForSeconds(nextPanel);
+                yield return null;
             }
 
             // Wait for player to press space
@@ -210,11 +252,11 @@ public class CutsceneManagerV3 : MonoBehaviour
             {
                 foreach (Panel p in c.panel)
                 {
-                    p.panelImg.color = new Color(1, 1, 1, alpha);
-                    if (p.panelTxtBg != null && p.panelTxt != null)
+                    p.GetImg().color = new Color(1, 1, 1, alpha);
+                    if (p.GetTxtBg() != null && p.GetTxt() != null)
                     {
-                        p.panelTxtBg.color = new Color(1, 1, 1, alpha);
-                        p.panelTxt.color = new Color(1, 1, 1, alpha);
+                        p.GetTxtBg().color = new Color(1, 1, 1, alpha);
+                        p.GetTxt().color = new Color(1, 1, 1, alpha);
                     }
                        
                     yield return null;

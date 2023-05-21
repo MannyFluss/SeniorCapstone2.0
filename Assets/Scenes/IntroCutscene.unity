@@ -2421,23 +2421,17 @@ MonoBehaviour:
   - PageName: Page 1
     panel:
     - panelSN: Panel 1
-      panelImg: {fileID: 2000891162}
-      panelTxtBg: {fileID: 1034783813}
-      panelTxt: {fileID: 956145638}
-    - panelSN: Panel 2
-      panelImg: {fileID: 1907847806}
-      panelTxtBg: {fileID: 0}
-      panelTxt: {fileID: 0}
+      panelObj: {fileID: 624673159}
+    - panelSN: Panel 1
+      panelObj: {fileID: 732901567}
   - PageName: Page 2
     panel:
     - panelSN: Panel 1
-      panelImg: {fileID: 1424301370}
-      panelTxtBg: {fileID: 944353781}
-      panelTxt: {fileID: 895781259}
+      panelObj: {fileID: 70208412}
   imageFadeInRate: 0.8
   textFadeInRate: 1.2
   fadeOutRate: 16
-  nextPanel: 0.75
+  nextPanel: 0.5
   nextPage: 0.5
   CutsceneMusic: {fileID: 2102846562}
   CutsceneOutro: {fileID: 2102846561}
