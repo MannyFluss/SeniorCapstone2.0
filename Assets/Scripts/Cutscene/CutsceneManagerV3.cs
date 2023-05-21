@@ -21,22 +21,45 @@ public class CutsceneManagerV3 : MonoBehaviour
     }
 
     [System.Serializable]
-    public class Cutscene
+    public class Page
     {
-        public string cutsceneName;
+        public string PageName;
         public List<Panel> panel = new List<Panel>();
+    }
+
+    private static class FadeAudioSource
+    {
+        public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
+        {
+            float currentTime = 0;
+            float start = audioSource.volume;
+            while (currentTime < duration)
+            {
+                currentTime += Time.deltaTime;
+                audioSource.volume = Mathf.Lerp(start, targetVolume, currentTime / duration);
+                yield return null;
+            }
+            yield break;
+        }
     }
 
     // ============================= //
 
     [Header("Set-Up")]
-    public List<Cutscene> cutscene = new List<Cutscene>();
-    public float fadeInRate = 0.6f;
-    public float fadeOutRate = 1f;
+    [SerializeField] private Image blackScreen;
+    [SerializeField] private Image continueArrow;
+    [SerializeField] private List<Page> cutscene = new List<Page>();
+    [SerializeField] private float imageFadeInRate = 0.6f;
+    [SerializeField] private float textFadeInRate = 1.2f;
+    [SerializeField] private float fadeOutRate = 16f;
+    [SerializeField] private float pauseSec = 0.5f;
 
     [Header("Audio")]
-    [SerializeField] private AudioClip CutsceneMusic;
+    [SerializeField] private AudioSource CutsceneMusic;
     [SerializeField] private AudioSource CutsceneOutro;
+
+    [Header("Scene")]
+    [SerializeField] private string NextScene;
 
     // ==========[Private]========== //
     private bool togglePress = false;
@@ -46,33 +69,60 @@ public class CutsceneManagerV3 : MonoBehaviour
     void Start()
     {
         // Set all the Image (if didn't) into Invisible
-        foreach (Cutscene c in cutscene)
+        foreach (Page c in cutscene)
             foreach (Panel p in c.panel)
             {
                 p.panelImg.color = new Color(1, 1, 1, 0);
-                p.panelTxtBg.color = new Color(1, 1, 1, 0);
+                if (p.panelTxtBg != null)
+                    p.panelTxtBg.color = new Color(1, 1, 1, 0);
                 p.panelTxt.color = new Color(1, 1, 1, 0);
             }
+
+        // Make sure the Black Screen alpha is 0
+        blackScreen.color = new Color(blackScreen.color.r, blackScreen.color.b, blackScreen.color.g, 1);
+        continueArrow.enabled = false;
 
         // Play the SoundTrack
         if (CutsceneMusic != null)
         {
-            AudioSource audio = this.GetComponent<AudioSource>();
-            audio.clip = CutsceneMusic;
+            AudioSource audio = CutsceneMusic;
             audio.Play();
         }
 
-        StartCoroutine(FadeInAndOut());
+        StartCutscene();
     }
 
     private void StartCutscene()
     {
+        // Begin the Cutscene Fade In and Out
         StartCoroutine(FadeInAndOut());
+    }
+
+    IEnumerator ExitingCutscene()
+    {
+        for(float alpha = 0f; alpha < 1f; alpha += imageFadeInRate * Time.deltaTime)
+        {
+            blackScreen.color = new Color(blackScreen.color.r, blackScreen.color.b, blackScreen.color.g, alpha);
+            yield return null;
+        }
+
+        // Transition Scene when the Music Finishes Playing
+        yield return new WaitUntil(() => CutsceneOutro.isPlaying == false);
+        SceneManager.LoadScene(NextScene);
     }
 
     IEnumerator FadeInAndOut()
     {
-        foreach (Cutscene c in cutscene)
+        // Enter by fading in from a black screen
+        for (float alpha = 1f; alpha >= 0f; alpha -= imageFadeInRate * Time.deltaTime)
+        {
+            blackScreen.color = new Color(blackScreen.color.r, blackScreen.color.b, blackScreen.color.g, alpha);
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.25f);
+
+        foreach (Page c in cutscene)
         {
             togglePress = false;
 
@@ -80,10 +130,13 @@ public class CutsceneManagerV3 : MonoBehaviour
             foreach (Panel p in c.panel)
             {
                 // First Fade In the Panel's Img and Txt Bg
-                for (float alpha = 0f; alpha <= 1f; alpha += fadeRate * Time.deltaTime)
+                for (float alpha = 0f; alpha <= 1f; alpha += imageFadeInRate * Time.deltaTime)
                 {
                     p.panelImg.color = new Color(1, 1, 1, alpha);
-                    p.panelTxtBg.color = new Color(1, 1, 1, alpha);
+
+                    // Option: if the panel doesn't have a Dialogue Box
+                    if (p.panelTxtBg != null)
+                        p.panelTxtBg.color = new Color(1, 1, 1, alpha);
 
                     // If Space is press, Immediately Reveal Them
                     if (Input.GetKeyDown(KeyCode.Space))
@@ -91,7 +144,8 @@ public class CutsceneManagerV3 : MonoBehaviour
                         togglePress = !togglePress; // true
                         p.panelTxt.color = new Color(1, 1, 1, 1);
                         p.panelImg.color = new Color(1, 1, 1, 1);
-                        p.panelTxtBg.color = new Color(1, 1, 1, 1);
+                        if (p.panelTxtBg != null)
+                            p.panelTxtBg.color = new Color(1, 1, 1, 1);
                         break;
                     }
                     yield return null;
@@ -101,7 +155,7 @@ public class CutsceneManagerV3 : MonoBehaviour
                 if (!togglePress)
                 {
                     // Next Fade In the Panel's Text
-                    for (float alpha = 0f; alpha <= 1f; alpha += fadeRate * Time.deltaTime)
+                    for (float alpha = 0f; alpha <= 1f; alpha += textFadeInRate * Time.deltaTime)
                     {
                         p.panelTxt.color = new Color(1, 1, 1, alpha);
 
@@ -115,23 +169,50 @@ public class CutsceneManagerV3 : MonoBehaviour
                         yield return null;
                     }
                 }
-                yield return null;
+                yield return new WaitForSeconds(0.25f);
             }
 
             // Wait for player to press space
+            // While waiting, a continue button will appear
+            continueArrow.enabled = true;
+            continueArrow.GetComponent<FadeInAndOut>().toggle = true;
+            StartCoroutine(continueArrow.GetComponent<FadeInAndOut>().FadeInFadeOut());
             while (!Input.GetKeyDown(KeyCode.Space))
             {
                 yield return null;
             }
+            continueArrow.GetComponent<FadeInAndOut>().toggle = false;
+            continueArrow.GetComponent<FadeInAndOut>().Reset(continueArrow);
+            continueArrow.enabled = false;
+
+            // If the Page is the last page, play the outro music
+            if (cutscene.IndexOf(c) == cutscene.Count - 1)
+            {
+                // Fade Out Intro Audio
+                StartCoroutine(FadeAudioSource.StartFade(CutsceneMusic, 0.5f, 0f));
+
+                // Start Playing the Outro
+                CutsceneOutro.Play();
+            }
 
             // Turn all Panel off when the cutscene is shown
             // And player press the Space Bar
-            foreach (Panel p in c.panel)
+            for (float alpha = 1f; alpha >= 0f; alpha -= fadeOutRate * Time.deltaTime)
             {
-                p.panelTxt.color = new Color(1, 1, 1, 0);
-                p.panelImg.color = new Color(1, 1, 1, 0);
-                p.panelTxtBg.color = new Color(1, 1, 1, 0);
+                foreach (Panel p in c.panel)
+                {
+                    p.panelImg.color = new Color(1, 1, 1, alpha);
+                    if (p.panelTxtBg != null)
+                        p.panelTxtBg.color = new Color(1, 1, 1, alpha);
+                    p.panelTxt.color = new Color(1, 1, 1, alpha);
+                    yield return null;
+                }
             }
+            yield return new WaitForSeconds(pauseSec);
+
+            if (cutscene.IndexOf(c) == cutscene.Count - 1)
+                StartCoroutine(ExitingCutscene());
+
             yield return null;
         }
         yield return null;
