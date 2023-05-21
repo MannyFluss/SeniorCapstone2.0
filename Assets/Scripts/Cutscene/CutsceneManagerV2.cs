@@ -77,8 +77,13 @@ public class CutsceneManagerV2 : MonoBehaviour
                 audio.Play();
             }
 
-            StartCoroutine(FadeInAndOut());
+            StartCutscene();
         }
+    }
+
+    private void StartCutscene()
+    {
+        StartCoroutine(FadeInAndOut());
     }
 
     IEnumerator FadeInAndOut()
