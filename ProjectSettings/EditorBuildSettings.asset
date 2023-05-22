@@ -9,24 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: 397adbbb15c464f57a5cbdbead4f5be3
   - enabled: 1
-    path: Assets/Scenes/IntroCutscene.unity
-    guid: 90bdfde48880ad54dbe4090a7bcdbeff
-  - enabled: 0
-    path: Assets/Scenes/ArchiveScene/TheLab (deprecated).unity
-    guid: 86fddf71123c7a744ac515020c86bea9
-  - enabled: 0
-    path: Assets/Scenes/HackNSlash.unity
-    guid: 571ef98d94bf2f7419b203589b5e86cb
-  - enabled: 0
-    path: Assets/Scenes/CalamarPolish.unity
-    guid: 5b1a57725fa622248b2eee5e0081944f
-  - enabled: 0
-    path: Assets/Scenes/DefeatCalamarCutscene.unity
-    guid: fcb4c7636cfed497a81fd093ced31cd9
+    path: Assets/Scenes/EnemyTest.unity
+    guid: d08e7cd577de8419b93f7a959b41a1e2
   - enabled: 1
-    path: Assets/Scenes/TheLab.unity
-    guid: 630870d8d4b3f5848a9314bcda2ac748
+    path: Assets/Scenes/ShopScene.unity
+    guid: f4aca87dadbe15041ae8143eb0290f89
   - enabled: 1
-    path: Assets/Scenes/DrKrab.unity
-    guid: d7b2e2221478a94408aec1c9a2aa5e4d
+    path: Assets/Scenes/Calamar1.unity
+    guid: 536e5ffd0ced7404dac33e6ad848436a
   m_configObjects: {}

@@ -10,19 +10,12 @@ using Cinemachine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //added Player dash sound effect
-    [SerializeField] private AudioSource DashSoundEffect;
-    //added Player Jump sound Effect
-    [SerializeField] private AudioSource JumpSoundEffect;
-
     [Header("Movement Variable")]
-    public float moveSpeed = 6f;
+    public float moveSpeed = 4f;
     public float jumpForce = 4f;
     public float dashForce = 4f;
     public float distToGround = 1f;
 
-
-    public Vector3 currentFacingDirection = new Vector3(0f,0f,0f);
     // Variable for Dash
     [Header("Dash Variable")]
     public float dashCoolDownSeconds = 1f;
@@ -34,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Jump Variable")]
     bool isJumpPressed = false;
     float initialJumpVelocity;
-    float maxJumpHeight = 0.2f;
+    float maxJumpHeight = 0.4f;
     float maxJumpTime = 0.5f;
 
 
@@ -71,8 +64,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private CinemachineVirtualCamera vcam;
 
-    private Animator animator;
-
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -80,14 +71,12 @@ public class PlayerMovement : MonoBehaviour
 
         sprite = GetComponent<SpriteRenderer>().sprite;
 
-        animator = GetComponent<Animator>();
-
         setupJump();
     }
 
     void Start()
     {
-        
+
         //Player input listeners for vectors
         playerInput.Input.Move.started += movementInput;
         playerInput.Input.Move.performed += movementInput;
@@ -103,8 +92,6 @@ public class PlayerMovement : MonoBehaviour
      *  code ran when inputs are performed:
      *  Buttons only need to be checked when they are down while 
      *  vector inputs like movement need to be checked when pushed and released
-     *  
-     *  -note when adding new aim params - not sure how to make it so that two button inputs stay
      */
     public void movementInput(InputAction.CallbackContext context)
     {
@@ -112,48 +99,6 @@ public class PlayerMovement : MonoBehaviour
         currentMovement.x = currentMovementInput.x;
         currentMovement.z = currentMovementInput.y;
         movementPressed = currentMovementInput.x != 0 || currentMovementInput.y != 0;
-
-
-        if(currentMovement.x > 0)
-        {
-            animator.SetBool("isRight", true);
-        }
-        else if(currentMovement.x < 0)
-        {
-            animator.SetBool("isRight", false);
-        }
-        else
-        {
-            animator.SetBool("isRight", true);
-        }
-
-        if (currentMovement.z > 0)
-        {
-            animator.SetBool("isBackward", true);
-        }
-        else if(currentMovement.z < 0)
-        {
-            animator.SetBool("isBackward", false);
-        }
-        else
-        {
-            animator.SetBool("isBackward", false);
-        }
-
-        if (movementPressed)
-        {
-            animator.SetBool("isRunning", true);
-            
-            currentFacingDirection.x = currentMovementInput.x;
-            currentFacingDirection.z = currentMovementInput.y;
-            currentFacingDirection.y = 0;
-            Vector3.Normalize(currentFacingDirection);
-        }
-        else
-        {
-            animator.SetBool("isRunning", false);
-        }
-
     }
 
     public void jumpInput(InputAction.CallbackContext context)
@@ -166,8 +111,6 @@ public class PlayerMovement : MonoBehaviour
         if(characterController.isGrounded && isDashCooledDown)
         {
             _dash = true;
-            //dash sound effect
-            DashSoundEffect.Play();
         }
     }
 
@@ -178,7 +121,6 @@ public class PlayerMovement : MonoBehaviour
         initialJumpVelocity = (2 * maxJumpHeight) / timeToApex;
     }
 
-
     private void Update()
     {
 
@@ -187,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
         handleRotation();
         handleDash();
         handleMovement();
+
         handleGravity();
     }
 
@@ -201,11 +144,6 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    // void OnDrawGizmos()
-    // {
-    //     Debug.DrawRay(this.gameObject.transform.position,currentFacingDirection * 50,Color.red);
-
-    // }
     void handleMovement()
     {
         if (_hit)
@@ -215,10 +153,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             characterController.Move(currentMovement * Time.deltaTime * moveSpeed);
-            // if (currentMovement != Vector3.zero)
-            // {
-            //     currentFacingDirection = Vector3.Normalize(currentMovement);
-            // }
         }
 
         /*deltaPosition = ((transform.forward * vert) + (transform.right * horz)) * moveSpeed * Time.fixedDeltaTime;
@@ -281,8 +215,6 @@ public class PlayerMovement : MonoBehaviour
         {
             _jump = true;
             currentMovement.y = initialJumpVelocity;
-            //jump sound effect
-            JumpSoundEffect.Play();
         }
     }
 

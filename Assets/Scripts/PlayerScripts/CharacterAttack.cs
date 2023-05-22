@@ -6,10 +6,6 @@ using Cinemachine;
 
 public class CharacterAttack : MonoBehaviour
 {
-
-    //adding slash sound effect
-    [SerializeField] private AudioSource SlashSoundEffect;
-
     //For aim
     [Header("Aim")]
     [SerializeField]
@@ -35,8 +31,6 @@ public class CharacterAttack : MonoBehaviour
     public GameObject AimPositionReference;
     [SerializeField]
     public GameObject TabHud,ShopHud;
-    [SerializeField]
-    private PlayerMovement myPlayerMovement; 
 
 
     private void Awake()
@@ -44,8 +38,6 @@ public class CharacterAttack : MonoBehaviour
         vcam = GetComponentInChildren<CinemachineVirtualCamera>();
         mainCam = Camera.main;
         playerInput = new PlayerInput();
-        myPlayerMovement = gameObject.GetComponent<PlayerMovement>();
-        
         
     }
 
@@ -60,7 +52,6 @@ public class CharacterAttack : MonoBehaviour
     public void hitInput(InputAction.CallbackContext context)
     {
         _hit = true;
-        SlashSoundEffect.Play();
     }
 
     // Update is called once per frame
@@ -92,20 +83,14 @@ public class CharacterAttack : MonoBehaviour
     void handleAim()
     {
         //added more accurate aiming
-        var worldToScreen = mainCam.WorldToScreenPoint(myPlayerMovement.currentFacingDirection * 5);
-        var ray = mainCam.ScreenPointToRay(worldToScreen);
+        var ray = mainCam.ScreenPointToRay(Input.mousePosition);
 
         if(Physics.Raycast(ray, out var hitInfo, Mathf.Infinity))
         {
             Vector3 direction = hitInfo.point;
             direction.y = 0;
-            aimArrow.forward = Quaternion.Euler(0, 90, 0) * (direction - new Vector3(transform.position.x, 0, transform.position.z));
+            aimArrow.forward = Quaternion.Euler(0, 90, 0) * (direction - transform.position);
         }
-        Vector3 aimTemp = myPlayerMovement.currentFacingDirection; 
-        aimTemp.y = 0;
-
-        aimArrow.rotation = Quaternion.Euler(0, 90, 0) * Quaternion.LookRotation(aimTemp);
-        
 
         
         /*

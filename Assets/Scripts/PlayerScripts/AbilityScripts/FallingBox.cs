@@ -5,7 +5,6 @@ using UnityEngine;
 public class FallingBox : MonoBehaviour
 {
     public GameObject explosionReference;
-    public GameObject dotReference;
     public float upBy = 1f;
     public float fallTime = 1f;
     // Start is called before the first frame update
@@ -14,8 +13,6 @@ public class FallingBox : MonoBehaviour
     void Start()
     {
         Vector3 targetPosition = gameObject.transform.position;
-
-        Instantiate(dotReference,targetPosition,Quaternion.Euler(90,0,0));
 
         this.gameObject.transform.Translate(new Vector3(0,upBy,0));
         LeanTween.moveY(gameObject,this.gameObject.transform.position.y - upBy,fallTime);

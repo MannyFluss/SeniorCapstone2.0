@@ -1,25 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
-    //added DamageTaken sound effect
-    [SerializeField] 
-    private AudioSource DamageTakenSoundEffect;
-
-    [SerializeField]
-    private string SceneName;
-
     [Header("Player Stats")]
     public float health = 9;
 
     private bool canBeHit = true;
 
     PlayerMovement movement;
-    [SerializeField]
-    PlayerHud PlayerHUDReference;
 
 
     // Start is called before the first frame update
@@ -44,10 +34,6 @@ public class PlayerManager : MonoBehaviour
                                                                         1,
                                                                         1f);
         }
-        if (health == 0)
-        {
-            SceneManager.LoadScene("TheLab");
-        }
     }
 
     IEnumerator HitCooldown()
@@ -57,39 +43,23 @@ public class PlayerManager : MonoBehaviour
         canBeHit = true;
     }
 
-    public void takeDamage(int damage)
+    private void OnCollisionEnter(Collision collision)
     {
-        health -= damage;
-        PlayerHUDReference.setUIHearts(((int)health));
-
-        StartCoroutine(HitCooldown());
-        //movement.playerHit(other.transform);
-
-        //added damagetaken sound effect
-        DamageTakenSoundEffect.Play();
+        if(collision.gameObject.tag == "EnemyAttack" && canBeHit)
+        {
+            
+            health--;
+            StartCoroutine(HitCooldown());
+            //movement.playerHit(collision.transform);
+        }
     }
-
-    public void heal()
-    {
-        health += 1;
-        PlayerHUDReference.setUIHearts(((int)health));
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "EnemyAttack" && canBeHit)
         {
-            takeDamage(1);
-
-        }
-    }
-
-    private void OnParticleCollision(GameObject other)
-    {
-        if (other.gameObject.tag == "EnemyAttack" && canBeHit)
-        {
-            takeDamage(1);
-
+            health-= 3;
+            StartCoroutine(HitCooldown());
+            //movement.playerHit(other.transform);
         }
     }
 }

@@ -7,19 +7,27 @@ using UnityEngine;
 public  class BaseAbilityScript : MonoBehaviour
 {
     public static string[] AbilitiesList = new string[]
-    {"ClawsOff","SchrodingerBox","ExplosiveFishAbility","NavalMine","KnivesOut","HeartyFix","KittyFortress"};
+    {"ClawsOff","SchrodingerBox","ExplosiveFishAbility","NavalMine"};
     public static Dictionary<string,string> AbilityDescriptions = new Dictionary<string, string>
     {
         {"ClawsOff" , "Attack Enemies in a Radius around you"},
         { "SchrodingerBox", "Upon Dashing, an explosive box will fall from the sky"},
         { "ExplosiveFishAbility", "Summon an explosive fish in front of you, hit it to lo launch"},
-        {"NavalMine","create a mine on your position that explodes when enemies get close"},
-        {"KnivesOut","throw knives at enemies, the initial knife splits into three if it hits an enemy"},
-        {"HeartyFix","Heal yourself for a small amount"},
-        {"KittyFortress","create a wall that will protect you from enemies"},
         {"empty","No Ability"},
     };
     private static bool initFlag = false;
+    //public static Dictionary<string,Sprite> AbilityIcons = new Dictionary<string, Sprite>();
+    // void Awake()
+    // {
+    //     if (initFlag!)
+    //     {
+    //         AbilityIcons.Add(AbilitiesList[0],Resources.Load<Sprite>("Assets/Sprites/HUDUI/HUD_empty heart.png"));
+    //         AbilityIcons.Add(AbilitiesList[1],Resources.Load<Sprite>("Assets/Sprites/HUDUI/HUD schrodinger box.png"));
+    //         AbilityIcons.Add(AbilitiesList[2],Resources.Load<Sprite>("Assets/Sprites/HUDUI/HUD fish barrel.png"));   
+    //         initFlag = true;
+    //     }
+    // }
+
 
 
     public GameObject myParent;

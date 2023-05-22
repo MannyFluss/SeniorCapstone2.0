@@ -6,7 +6,6 @@ using Cinemachine;
 
 public class CraneBehavior : MonoBehaviour
 {
-    [SerializeField]
     PlayableDirector pd;
     bool timeLineStarted = false;
 
@@ -16,7 +15,7 @@ public class CraneBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        pd = GetComponentInParent<PlayableDirector>();
     }
 
     private void OnTriggerEnter(Collider other)

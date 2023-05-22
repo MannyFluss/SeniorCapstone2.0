@@ -10,7 +10,7 @@ public class ExplosiveFish : MonoBehaviour
     float timeUntilExplode = 3.0f;
     Vector3 directionMoving = Vector3.zero;
     float moveSpeed = 50f;
-    private bool flag = true;
+
     void Start()
     {
         Destroy(gameObject,timeUntilExplode);
@@ -18,10 +18,7 @@ public class ExplosiveFish : MonoBehaviour
 
     void OnDestroy()
     {
-        if (flag==false)
-        {
-            Instantiate(explosionReference,this.transform.position,Quaternion.identity);
-        }
+        Instantiate(explosionReference,this.transform.position,Quaternion.identity);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,20 +34,19 @@ public class ExplosiveFish : MonoBehaviour
             }
             else
             {
-                directionMoving = (this.transform.position - other.transform.position).normalized * moveSpeed ;
+                directionMoving = (this.transform.position - other.transform.position).normalized * moveSpeed;
                 directionMoving.y = 0;
             }
 
         }
         if (other.tag == "Enemy")
         {
-            flag = false;
             Destroy(gameObject);
         }
     }
     // Update is called once per frame
     void Update()
     {
-        this.transform.Translate(directionMoving * Time.deltaTime );
+        this.transform.Translate(directionMoving * Time.deltaTime);
     }
 }
