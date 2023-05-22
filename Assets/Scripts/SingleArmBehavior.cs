@@ -35,7 +35,6 @@ public class SingleArmBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -63,7 +62,7 @@ public class SingleArmBehavior : MonoBehaviour
         }
         if(follow)
         {
-            transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, transform.position.y, transform.position.z), 0.1f);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, -10f, transform.position.z), 0.1f);
         }
         if (indicatorMade != null)
         {
@@ -98,7 +97,8 @@ public class SingleArmBehavior : MonoBehaviour
         }
         if (moveBack)
         {
-            transform.position = Vector3.Lerp(transform.position, originalPosition, 0.01f);
+            //transform.position = Vector3.Lerp(transform.position, originalPosition, 0.01f);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(originalPosition.x, -10f, originalPosition.z), 0.01f);
             transform.localRotation = Quaternion.Lerp(transform.localRotation, rotateFrom, 0.075f);
         }
     }
@@ -108,6 +108,7 @@ public class SingleArmBehavior : MonoBehaviour
         follow = true;
         yield return new WaitForSeconds(3.4f);
         follow = false;
+        transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, 0.01f, transform.position.z), 1f);
         indicatorMade = Instantiate(indicator, transform.position, Quaternion.Euler(0, 90, 0));
         yield return new WaitForSeconds(2.5f);
         slam = true;
@@ -128,6 +129,7 @@ public class SingleArmBehavior : MonoBehaviour
         side = Random.Range(0, 2);
         originalPosition = transform.position;
         moveBack = false;
+        transform.position = Vector3.Lerp(transform.position, new Vector3(originalPosition.x, 0f, originalPosition.z), 1f);
         yield return new WaitForSeconds(1f);
         rotateFrom = transform.rotation;
         rotateTo = transform.rotation * Quaternion.Euler(new Vector3(90, 0, 0));
