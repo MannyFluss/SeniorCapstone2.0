@@ -9,18 +9,19 @@ TagManager:
   - EnemyAttack
   - Boss
   - Crane
+  - ShopUI
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
+  - Character
   - 
   - 
   - 
-  - 
-  - 
+  - Floor/Environment
   - 
   - 
   - 
@@ -45,4 +46,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Objects
+    uniqueID: 1056369929
+    locked: 0
+  - name: Player
+    uniqueID: 3415584557
     locked: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.Playables;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Tentacle
 {
@@ -30,7 +31,7 @@ public class BossBehavior : MonoBehaviour
 {
     //Boss properties
     private int stage = 1;
-    public float health = 100f;
+    public float health = 100;
     bool tentacleFrenzyInProgress = false;
     bool wipeOutInProgress = false;
     bool returnToSenderInProgress = false;
@@ -38,7 +39,7 @@ public class BossBehavior : MonoBehaviour
     public bool canBeHit = false;
 
     //attack randomization
-    string[] attackList = new string[5];
+    string[] attackList = new string[20];
     string[] possibleAttacks = { "wipe out", "tentacle frenzy", "return to sender"};
 
     //tentacle frenzy vars
@@ -70,6 +71,8 @@ public class BossBehavior : MonoBehaviour
     [SerializeField]
     private Image healthBar;
 
+    Animator animator;
+
 
     void Start()
     { 
@@ -92,6 +95,8 @@ public class BossBehavior : MonoBehaviour
         tentacles[3].slam = false;
 
         runAttacks();
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -119,8 +124,8 @@ public class BossBehavior : MonoBehaviour
         {
             changeStage(3);
         }
-
-        healthBar.rectTransform.localScale = new Vector3(health / 100f, 0.25f, 1f);
+        healthBar.rectTransform.localScale = new Vector3(health / 100f, 1f, 1f);
+        if (health <= 0) SceneManager.LoadScene("DefeatCalamarCutscene");
 
     }
 
@@ -275,6 +280,10 @@ public class BossBehavior : MonoBehaviour
     public void canBeHitToggleOn()
     {
         StopAllCoroutines();
+        for(int i = 0; i < indicators.Length; i++)
+        {
+            Destroy(indicators[i]);
+        }
         moveBackInProgress = true;
         canBeHit = true;
     }
@@ -283,6 +292,10 @@ public class BossBehavior : MonoBehaviour
     {
         moveBackInProgress = false;
         canBeHit = false;
+        tentacles[0].originalPosition = tentacle1.transform.position;
+        tentacles[1].originalPosition = tentacle2.transform.position;
+        tentacles[2].originalPosition = tentacle3.transform.position;
+        tentacles[3].originalPosition = tentacle4.transform.position;
     }
 
     /// <summary>
@@ -290,36 +303,31 @@ public class BossBehavior : MonoBehaviour
     /// </summary>
     private void getAttackPattern()
     {
-        
-        if (stage == 1)
+        for (int i = 0; i < 20; i++)
         {
-            for(int i = 0; i < 2; i++)
+            if (health > 50)
             {
-                attackList[i] = possibleAttacks[Random.Range(0, possibleAttacks.Length)];
+
+                if (i % 3 == 0 && i != 0)
+                {
+                    attackList[i] = "return to sender";
+                }
+                else
+                {
+                    attackList[i] = possibleAttacks[Random.Range(0, 3)];
+                }
             }
-            //Testing with hard coded
-            attackList[0] = "tentacle frenzy";
-            attackList[1] = "wipe out";
-            attackList[2] = "return to sender";
-        }
-        else if (stage == 2)
-        {
-            for (int i = 0; i < 3; i++)
+            else
             {
-                attackList[i] = possibleAttacks[Random.Range(0, possibleAttacks.Length)];
+                if (i % 4 == 0 && i != 0)
+                {
+                    attackList[i] = "return to sender";
+                }
+                else
+                {
+                    attackList[i] = possibleAttacks[Random.Range(0, 3)];
+                }
             }
-            attackList[1] = "tentacle frenzy";
-            attackList[3] = "return to sender";
-        }
-        else
-        {
-            for (int i = 0; i < 4; i++)
-            {
-                attackList[i] = possibleAttacks[Random.Range(0, possibleAttacks.Length)];
-            }
-            attackList[0] = "tentacle frenzy";
-            attackList[3] = "tentacle frenzy";
-            attackList[4] = "return to sender";
         }
     }
 
@@ -444,6 +452,7 @@ public class BossBehavior : MonoBehaviour
     /// <returns></returns>
     IEnumerator wipeOutTiming()
     {
+
         //If hp is less than half make sweeps 3
         int sweeps = 2;
         if (health < 50)
@@ -498,7 +507,7 @@ public class BossBehavior : MonoBehaviour
     /// <returns></returns>
     IEnumerator returnToSenderTiming()
     {
-        //If hp is less than half make sweeps 3
+        animator.SetBool("throw", true);
         int throws = 10;
         if (health < 60)
         {
@@ -510,7 +519,8 @@ public class BossBehavior : MonoBehaviour
             StartCoroutine(dropTrash(i));
             yield return new WaitForSeconds(Random.Range(0.2f, 0.7f));
         }
-        
+        animator.SetBool("throw", false);
+
     }
 
     /// <summary>
@@ -526,21 +536,21 @@ public class BossBehavior : MonoBehaviour
             throws = 16;
         }
         yield return new WaitForSeconds(1f);
-        if (index == throws)
+        if (index == throws - 1)
         {
-            trash[trashNum] = Instantiate(trashList[0], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
-            trashNum++;
+            GameObject trashBox = Instantiate(trashList[0], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
             yield return new WaitForSeconds(2.5f);
             Destroy(roundIndicators[index]);
+            yield return new WaitForSeconds(10f);
+            Destroy(trashBox);
         }
         else
         {
-            trash[trashNum] = Instantiate(trashList[Random.Range(1, trashList.Length)], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
-            trashNum++;
+            GameObject trashBox = Instantiate(trashList[Random.Range(1, trashList.Length)], new Vector3(roundIndicators[index].transform.position.x, 30, roundIndicators[index].transform.position.z), Quaternion.Euler(0, 0, 0));
             yield return new WaitForSeconds(2.5f);
             Destroy(roundIndicators[index]);
             yield return new WaitForSeconds(0.25f);
-            Destroy(trash[index]);
+            Destroy(trashBox);
         }
         
     }
