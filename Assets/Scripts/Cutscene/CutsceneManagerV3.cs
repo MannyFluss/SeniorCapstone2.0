@@ -58,6 +58,7 @@ public class CutsceneManagerV3 : MonoBehaviour
     public class Page
     {
         public string PageName;
+        public bool playPage = true;
         public List<Panel> panel = new List<Panel>();
     }
 
@@ -176,6 +177,8 @@ public class CutsceneManagerV3 : MonoBehaviour
         // Start Showing page by page
         foreach (Page c in cutscene)
         {
+            if (!c.playPage) continue;
+            
             togglePress = false;
 
             // Fade In Panel by Panel
@@ -276,12 +279,8 @@ public class CutsceneManagerV3 : MonoBehaviour
             }
 
             yield return new WaitForSeconds(nextPage);
-
-            if (cutscene.IndexOf(c) == cutscene.Count - 1)
-                StartCoroutine(ExitingCutscene());
-
-            yield return null;
         }
+        StartCoroutine(ExitingCutscene());
         yield return null;
     }
 
