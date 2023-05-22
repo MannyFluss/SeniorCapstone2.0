@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Entrance : MonoBehaviour
 {
+    public Animator am;
     // Start is called before the first frame update
     void Start()
     {

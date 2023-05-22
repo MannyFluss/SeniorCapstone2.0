@@ -22,6 +22,8 @@ public class CharacterAbilityScript : MonoBehaviour
 
     // if you need prefabs for the abilities they go here
     [SerializeField]
+    public GameObject _AbilityKittyFortress;
+    [SerializeField]
     public GameObject _AbilityExplosionPrefab;
 
     [SerializeField]
@@ -31,17 +33,32 @@ public class CharacterAbilityScript : MonoBehaviour
     [SerializeField]
     public GameObject _AbilityNavalMine;
     [SerializeField]
+    public GameObject _AbilityKnivesOut;
+
+    [SerializeField]
     public PlayerHud HUDScript;
     //contains references to the currently chosen abilities
+    
     List<BaseAbilityScript> playerAbilities = new List<BaseAbilityScript> {null,null,null};
 
     //Player Controls
     private PlayerInput playerInput;
 
+
+    
+    void OnDestroy()
+    {
+        
+        Global.Instance.playerAbilitiesCopy[0] = getAbilityName(0);
+        Global.Instance.playerAbilitiesCopy[1] = getAbilityName(1);
+    }
+
     private void Awake()
     {
         playerInput = new PlayerInput();
+
     }
+    
 
     public string getAbilityName(int index)
     {
@@ -55,6 +72,7 @@ public class CharacterAbilityScript : MonoBehaviour
         }
         return playerAbilities[index].getAbilityName();
     }
+
 
     void Start()
     {
@@ -70,6 +88,12 @@ public class CharacterAbilityScript : MonoBehaviour
         
         playerInput.Input.Skill3.performed += skillThreePressOrHold;
         playerInput.Input.Skill3.canceled += skillThreeReleased;
+
+        AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[0]);
+        AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[1]);
+        removeAbility(0);
+        
+        
     }
 
     public bool AbilitiesFull()
@@ -178,7 +202,12 @@ public class CharacterAbilityScript : MonoBehaviour
     }
     void Update()
     {
-        //getInput();
+        //for debug purposes
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            removeAbility(0);
+            removeAbility(1);
+        }
     }
 
     public BaseAbilityScript getPlayerAbility(int _index)
@@ -193,14 +222,14 @@ public class CharacterAbilityScript : MonoBehaviour
     void getInput()
     {
         //input 1
-        if(Input.GetMouseButtonDown(0))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             if (playerAbilities[0]!=null)
             {
                 playerAbilities[0].OnButtonClick();
             }
         }
-        if(Input.GetMouseButton(0))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             if (playerAbilities[0]!=null)
             {
@@ -208,7 +237,7 @@ public class CharacterAbilityScript : MonoBehaviour
             }
         }
 
-        if(Input.GetMouseButtonUp(0))
+        if(Input.GetKeyDown(KeyCode.E))
         {
             if (playerAbilities[0]!=null)
             {
@@ -216,21 +245,21 @@ public class CharacterAbilityScript : MonoBehaviour
             }
         }
         // input 2
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetKeyDown(KeyCode.V))
         {
             if (playerAbilities[1]!=null)
             {
                 playerAbilities[1].OnButtonClick();
             }
         }
-        if(Input.GetMouseButton(1))
+        if(Input.GetKeyDown(KeyCode.V))
         {
             if (playerAbilities[1]!=null)
             {
                 playerAbilities[1].OnButtonHeldDown();
             }
         }
-        if(Input.GetMouseButtonUp(1))
+        if(Input.GetKeyDown(KeyCode.V))
         {
             if (playerAbilities[1]!=null)
             {
@@ -239,14 +268,14 @@ public class CharacterAbilityScript : MonoBehaviour
         }
         //input 3
         
-        if(Input.GetKeyDown(KeyCode.E))
+        if(Input.GetKeyDown(KeyCode.Q))
         {
             if (playerAbilities[2]!=null)
             {
                 playerAbilities[2].OnButtonClick();
             }
         }
-        if(Input.GetKey(KeyCode.E))
+        if(Input.GetKey(KeyCode.Q))
         {
             if (playerAbilities[2]!=null)
             {
@@ -254,7 +283,7 @@ public class CharacterAbilityScript : MonoBehaviour
             }
         }
 
-        if(Input.GetKeyUp(KeyCode.E))
+        if(Input.GetKeyUp(KeyCode.Q))
         {
             if (playerAbilities[2]!=null)
             {
@@ -313,6 +342,16 @@ public class CharacterAbilityScript : MonoBehaviour
             case "NavalMine":
                 playerAbilities[_index] = gameObject.AddComponent<NavalMine>();
                 break;
+            case "KnivesOut":
+                playerAbilities[_index] = gameObject.AddComponent<KnivesOut>();
+                break;
+            case "HeartyFix":
+                playerAbilities[_index] = gameObject.AddComponent<HeartyFix>();
+                break;
+            case "KittyFortress":
+                playerAbilities[_index] = gameObject.AddComponent<KittyFortress>();
+                break;
+                
             default:
                 break;
         }
@@ -325,7 +364,7 @@ public class CharacterAbilityScript : MonoBehaviour
 
 
     }
-    void removeAbility(int _index)
+    public void removeAbility(int _index)
     {
 
         if (_index >= playerAbilities.Count)

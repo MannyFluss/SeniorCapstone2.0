@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BossHitDetection : MonoBehaviour
 {
@@ -17,7 +16,7 @@ public class BossHitDetection : MonoBehaviour
     {
         if(other.gameObject.tag == "Attack" && bb.canBeHit)
         {
-            bb.health -= 1.0f;
+            bb.health-= 0.8f;
         }
     }
 }
