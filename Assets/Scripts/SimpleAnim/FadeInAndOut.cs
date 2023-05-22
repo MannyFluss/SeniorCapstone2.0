@@ -38,6 +38,6 @@ public class FadeInAndOut : MonoBehaviour
 
     public void Reset(Image img)
     {
-        img.color = new Color(1, 1, 1, 0);
+        img.color = new Color(1, 1, 1, 1);
     }
 }

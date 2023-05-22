@@ -17,45 +17,41 @@ public class CutsceneManagerV3 : MonoBehaviour
         public string panelSN;
         public GameObject panelObj;
         private Image panelImg;
-        private Image panelTxtBg;
-        private TMP_Text panelTxt;
+        private Image panelTxtBox;
+
+        // If Panel has Multiple Text Box
+        private List<TMP_Text> panelTxt = new List<TMP_Text>();
 
         public void SetVariable()
         {
-            Transform[] tmp = panelObj.GetComponentsInChildren<Transform>();
-            // Debug.Log(panelObj.name + " : " + tmp.Length);
+            
+            // First Store the Panel Image
             panelImg = panelObj.transform.GetChild(0).GetComponent<Image>();
-            if (tmp.Length > 2)
+
+            // If the Panel Text, through the child and Store them Properly
+            if (panelObj.transform.childCount > 2)  
             {
-                panelTxtBg = panelObj.transform.GetChild(1).GetComponent<Image>();
-                panelTxt = panelObj.transform.GetChild(2).GetComponent<TMP_Text>();
+                panelTxtBox = panelObj.transform.GetChild(1).GetComponent<Image>();
+
+                TMP_Text[] tmp = panelObj.GetComponentsInChildren<TMP_Text>();
+                for (int i = 0; i < tmp.Length; i++) panelTxt.Add(tmp[i]);
             }
             
         }
         public Image GetImg() { return panelImg; }
-        public Image GetTxtBg() { return panelTxtBg; }
-        public TMP_Text GetTxt() { return panelTxt; }
-
-        public void SetImg(Image i) { panelImg = i; }
-        public void SetTxtBg(Image i) { panelTxtBg = i; }
-        public void SetTxt(TMP_Text t) { panelTxt = t; }
-
-        public Image ImgAlpha(float a) 
+        public Image GetTxtBox() 
         {
-            panelImg.color = new Color(1, 1, 1, a);
-            return panelImg;
+            return panelTxtBox;
         }
-        public Image TxtBgAlpha(float a)
+        public TMP_Text GetTxt(int i) 
         {
-            panelTxtBg.color = new Color(1, 1, 1, a);
-            return panelTxtBg;
+            if (i < panelTxt.Count) return panelTxt[i];
+            else return null;
         }
-        public TMP_Text TxtAlpha(float a)
+        public int GetTxtLen()
         {
-            panelTxt.color = new Color(1, 1, 1, a);
-            return panelTxt;
+            return panelTxt.Count;
         }
-
     }
 
     [System.Serializable]
@@ -91,6 +87,8 @@ public class CutsceneManagerV3 : MonoBehaviour
     [SerializeField] private float textFadeInRate = 1.2f;
     [SerializeField] private float fadeOutRate = 16f;
     [SerializeField] private float nextPanel = 0.75f;
+    [SerializeField] private float panel2Text = 0.50f;
+    [SerializeField] private float nextText = 0.75f;
     [SerializeField] private float nextPage = 0.5f;
 
     [Header("Audio")]
@@ -113,18 +111,18 @@ public class CutsceneManagerV3 : MonoBehaviour
             foreach (Panel p in c.panel)
             {
                 p.SetVariable();
-                Debug.Log(p.GetImg().name);
                 p.GetImg().color = new Color(1, 1, 1, 0);
 
-                // If the Panel does not have a dialogue box or text
-                if (p.GetTxtBg() != null)
-                {
-                    p.GetTxtBg().color = new Color(1, 1, 1, 0);
-                    p.GetTxt().color = new Color(1, 1, 1, 0);
-                }
+                // If the Panel does have a dialogue box or text
+                // Set them all to invis, via color
+                if (p.GetTxtBox() != null)
+                    p.GetTxtBox().color = new Color(1, 1, 1, 0);
+                for (int i = 0; i < p.GetTxtLen(); i++)
+                    p.GetTxt(i).color = new Color(1, 1, 1, 0);
+             
             }
 
-        // Make sure the Black Screen alpha is 0
+        // Make sure the Black Screen alpha is 1
         blackScreen.color = new Color(blackScreen.color.r, blackScreen.color.b, blackScreen.color.g, 1);
         continueArrow.enabled = false;
 
@@ -157,6 +155,15 @@ public class CutsceneManagerV3 : MonoBehaviour
         SceneManager.LoadScene(NextScene);
     }
 
+    private void RevealAll(Panel p)
+    {
+        togglePress = true;
+        p.GetImg().color = new Color(1, 1, 1, 1);
+        if (p.GetTxtBox() != null) p.GetTxtBox().color = new Color(1, 1, 1, 1);
+        for (int i = 0; i < p.GetTxtLen(); i++)
+            p.GetTxt(i).color = new Color(1, 1, 1, 1);
+    }
+
     IEnumerator FadeInAndOut()
     {
         // Enter by fading in from a black screen
@@ -166,8 +173,7 @@ public class CutsceneManagerV3 : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(0.25f);
-
+        // Start Showing page by page
         foreach (Page c in cutscene)
         {
             togglePress = false;
@@ -175,52 +181,49 @@ public class CutsceneManagerV3 : MonoBehaviour
             // Fade In Panel by Panel
             foreach (Panel p in c.panel)
             {
+                togglePress = false;
+
+                yield return new WaitForSeconds(nextPanel);
                 // First Fade In the Panel's Img and Txt Bg
                 for (float alpha = 0f; alpha <= 1f; alpha += imageFadeInRate * Time.deltaTime)
                 {
                     p.GetImg().color = new Color(1, 1, 1, alpha);
 
                     // Option: if the panel doesn't have a Dialogue Box
-                    if (p.GetTxtBg() != null)
-                        p.GetTxtBg().color = new Color(1, 1, 1, alpha);
+                    if (p.GetTxtBox() != null) p.GetTxtBox().color = new Color(1, 1, 1, alpha);
 
                     // If Space is press, Immediately Reveal Them
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        togglePress = !togglePress; // true
-                        p.GetImg().color = new Color(1, 1, 1, 1);
-                        if (p.GetTxtBg() != null)
-                        {
-                            p.GetTxtBg().color = new Color(1, 1, 1, 1);
-                            p.GetTxt().color = new Color(1, 1, 1, 1);
-                        }
-                            
+                        RevealAll(p);
                         break;
                     }
                     yield return null;
                 }
 
-                // If the player hasn't press Space
+                yield return new WaitForSeconds(panel2Text);
+                // If the player hasn't press Space to skip Panel
                 if (!togglePress)
                 {
-                    // Next Fade In the Panel's Text
-                    if (p.GetTxt() != null)
-                        for (float alpha = 0f; alpha <= 1f; alpha += textFadeInRate * Time.deltaTime)
+                    // Next, Fade In the Panel's Text
+                    if (p.GetTxtLen() != 0)
+                        for (int i = 0; i < p.GetTxtLen(); i++)
                         {
-                            p.GetTxt().color = new Color(1, 1, 1, alpha);
-
-                            // If Space is press, Immediately Reveal Them
-                            if (Input.GetKeyDown(KeyCode.Space))
+                            for (float alpha = 0f; alpha <= 1f; alpha += textFadeInRate * Time.deltaTime)
                             {
-                                togglePress = !togglePress; // true
-                                p.GetTxt().color = new Color(1, 1, 1, 1);
-                                break;
+                                p.GetTxt(i).color = new Color(1, 1, 1, alpha);
+                                yield return null;
+                                // If Space is press, Immediately Reveal Them
+                                if (Input.GetKeyDown(KeyCode.Space))
+                                {
+                                    RevealAll(p);
+                                    break;
+                                }
+                                if (togglePress) break;
                             }
-                            yield return null;
+                            yield return new WaitForSeconds(nextText);
                         }
-                    yield return new WaitForSeconds(nextPanel);
                 }
-                yield return null;
             }
 
             // Wait for player to press space
@@ -253,15 +256,22 @@ public class CutsceneManagerV3 : MonoBehaviour
                 foreach (Panel p in c.panel)
                 {
                     p.GetImg().color = new Color(1, 1, 1, alpha);
-                    if (p.GetTxtBg() != null && p.GetTxt() != null)
-                    {
-                        p.GetTxtBg().color = new Color(1, 1, 1, alpha);
-                        p.GetTxt().color = new Color(1, 1, 1, alpha);
-                    }
-                       
+                    if (p.GetTxtBox() != null) p.GetTxtBox().color = new Color(1, 1, 1, alpha);
+                    for (int i = 0; i < p.GetTxtLen(); i++)
+                        p.GetTxt(i).color = new Color(1, 1, 1, alpha);
                     yield return null;
                 }
             }
+
+            // Make sure all obj alpha is 0
+            foreach (Panel p in c.panel)
+            {
+                p.GetImg().color = new Color(1, 1, 1, 0);
+                if (p.GetTxtBox() != null) p.GetTxtBox().color = new Color(1, 1, 1, 0);
+                for (int i = 0; i < p.GetTxtLen(); i++)
+                    p.GetTxt(i).color = new Color(1, 1, 1, 0);
+            }
+
             yield return new WaitForSeconds(nextPage);
 
             if (cutscene.IndexOf(c) == cutscene.Count - 1)
