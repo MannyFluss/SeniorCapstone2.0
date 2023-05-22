@@ -209,19 +209,22 @@ public class CutsceneManagerV3 : MonoBehaviour
                     if (p.GetTxtLen() != 0)
                         for (int i = 0; i < p.GetTxtLen(); i++)
                         {
-                            for (float alpha = 0f; alpha <= 1f; alpha += textFadeInRate * Time.deltaTime)
+                            if (!togglePress)
                             {
-                                p.GetTxt(i).color = new Color(1, 1, 1, alpha);
-                                yield return null;
-                                // If Space is press, Immediately Reveal Them
-                                if (Input.GetKeyDown(KeyCode.Space))
+                                for (float alpha = 0f; alpha <= 1f; alpha += textFadeInRate * Time.deltaTime)
                                 {
-                                    RevealAll(p);
-                                    break;
+                                    p.GetTxt(i).color = new Color(1, 1, 1, alpha);
+                                    yield return null;
+                                    // If Space is press, Immediately Reveal Them
+                                    if (Input.GetKeyDown(KeyCode.Space))
+                                    {
+                                        RevealAll(p);
+                                        break;
+                                    }
+                                    if (togglePress) break;
                                 }
-                                if (togglePress) break;
+                                yield return new WaitForSeconds(nextText);
                             }
-                            yield return new WaitForSeconds(nextText);
                         }
                 }
             }
