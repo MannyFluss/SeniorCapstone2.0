@@ -531,6 +531,14 @@ PrefabInstance:
       propertyPath: _AbilityExplosionPrefab
       value: 
       objectReference: {fileID: 7105922310121204203, guid: 18b4a1fe5d53d064a868637ee2d97892, type: 3}
+    - target: {fileID: 2626668998523703811, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: atkCoolDown
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2626668998523703811, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+      propertyPath: hitCoolDown
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 2626668998523703812, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_RootOrder
       value: 7

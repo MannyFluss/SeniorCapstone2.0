@@ -22,7 +22,8 @@ public class CharacterAttack : MonoBehaviour
     private GameObject hitObj;
     private bool _hit = false;
     private bool canHit = true;
-    private float hitCoolDown = 0.1f;
+    private float hitboxCoolDown = 0.1f;
+    public float atkCoolDown = 0.5f;
 
     private PlayerUI ui;
 
@@ -56,7 +57,6 @@ public class CharacterAttack : MonoBehaviour
     public void hitInput(InputAction.CallbackContext context)
     {
         _hit = true;
-        SlashSoundEffect.Play();
     }
 
     // Update is called once per frame
@@ -126,10 +126,12 @@ public class CharacterAttack : MonoBehaviour
 
     IEnumerator hit()
     {
+        SlashSoundEffect.Play();
         canHit = false;
         hitObj.SetActive(true);
-        yield return new WaitForSeconds(hitCoolDown);
+        yield return new WaitForSeconds(hitboxCoolDown);
         hitObj.SetActive(false);
+        yield return new WaitForSeconds(atkCoolDown);
         canHit = true;
         
     }
