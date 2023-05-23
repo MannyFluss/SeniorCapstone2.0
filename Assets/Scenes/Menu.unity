@@ -284,6 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47441c426527f498089cc105328429b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nextScene: IntroductionCS
   PlaySoundEffect: {fileID: 174823399}
   HoverSoundEffect: {fileID: 174823400}
 --- !u!82 &174823399

@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private string nextScene;
     //added PlayButton Sound effect
     [SerializeField] private AudioSource PlaySoundEffect;
 
@@ -15,7 +16,7 @@ public class MainMenu : MonoBehaviour
     {
         //Play sound effect
         PlaySoundEffect.Play();
-        SceneManager.LoadScene("IntroCutscene");
+        SceneManager.LoadScene(nextScene);
         
     }
 
