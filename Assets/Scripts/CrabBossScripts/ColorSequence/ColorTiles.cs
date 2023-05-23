@@ -89,7 +89,6 @@ public class ColorTiles : MonoBehaviour
         if(csm.puzzlesComplete == 3)
         {
             csm.stunSequence();
-            csm.puzzlesComplete = 0;
         }
         else
         {

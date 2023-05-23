@@ -38895,7 +38895,7 @@ MonoBehaviour:
   green: {fileID: 2100000, guid: c72d27fbb5f06ee429d4e62cd88dbac9, type: 2}
   def: {fileID: 2100000, guid: c6717d6bc0e3c43da865524d37195cfe, type: 2}
   puzzlesComplete: 0
-  valves: {fileID: 0}
+  valves: {fileID: 1155029351}
 --- !u!1001 &1922246514
 PrefabInstance:
   m_ObjectHideFlags: 0

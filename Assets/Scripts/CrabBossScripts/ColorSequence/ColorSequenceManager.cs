@@ -65,22 +65,27 @@ public class ColorSequenceManager : MonoBehaviour
         }
         timerText.text = ((int)timer).ToString();
         timer -= Time.deltaTime;
+
+        if(timer <= 0)
+        {
+            Debug.Log("failed");
+        }
     }
 
     private void valveHandler()
     {
         if(puzzlesComplete == 0)
         {
-            valves.transform.GetChild(0).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(0).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 90)), Time.deltaTime / 5);
+            valves.transform.GetChild(0).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(0).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 90)), Time.deltaTime / 2);
             valves.transform.GetChild(0).GetComponent<MeshRenderer>().material = red;
-            valves.transform.GetChild(1).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(1).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 90)), Time.deltaTime / 5);
+            valves.transform.GetChild(1).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(1).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 90)), Time.deltaTime / 2);
             valves.transform.GetChild(1).GetComponent<MeshRenderer>().material = red;
-            valves.transform.GetChild(2).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(2).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 90)), Time.deltaTime / 5);
+            valves.transform.GetChild(2).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(2).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 90)), Time.deltaTime / 2);
             valves.transform.GetChild(2).GetComponent<MeshRenderer>().material = red;
         } 
         for(int i = 0; i < puzzlesComplete; i++)
         {
-            valves.transform.GetChild(i).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(i).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 0)), Time.deltaTime / 5);
+            valves.transform.GetChild(i).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(i).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 0)), Time.deltaTime / 2);
             valves.transform.GetChild(i).GetComponent<MeshRenderer>().material = green;
         }
     }
