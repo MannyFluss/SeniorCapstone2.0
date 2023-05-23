@@ -9,7 +9,7 @@ public class DrKrabManager : MonoBehaviour
 {
     //move scripts
     BubbleStream bs;
-    TicTicBoomManager ttbm;
+    ColorSequenceManager csm;
     RippleEffectManager rem;
 
     //boss variables
@@ -47,7 +47,7 @@ public class DrKrabManager : MonoBehaviour
         }
 
         bs = GetComponentInChildren<BubbleStream>();
-        ttbm = GetComponentInChildren<TicTicBoomManager>();
+        csm = GetComponentInChildren<ColorSequenceManager>();
         rem = GetComponentInChildren<RippleEffectManager>();
 
         curHealth = (int) maxHealth;
@@ -72,22 +72,15 @@ public class DrKrabManager : MonoBehaviour
 
     public void beginMoves()
     {
-        moveCtr = 1;
-        if(curHealth < 60)
-        {
-            puzzleTime = 4;
-        }
-        else
-        {
-            puzzleTime = 3;
-        }
-        moveNum = Random.Range(0, 2);
         isReady = true;
-        
+        csm.puzzlesComplete = 0;
+        csm.colorSequence(curHealth);
     }
 
     public void stunSequence()
     {
+        isReady = false;
+        StopAllCoroutines();
         toggleHit();
         pd.Play();
     }
@@ -101,27 +94,17 @@ public class DrKrabManager : MonoBehaviour
     {
         isReady = false;
         yield return new WaitForSeconds(waitTime);
-        if(moveCtr % puzzleTime != 0)
+        if (moveNum == 0)
         {
-            if(moveNum == 0)
-            {
-                bs.bubbleStream(curHealth);
-                isReady = true;
-                moveNum = 1;
-            }
-            else
-            {
-                rem.rippleEffect(curHealth);
-                isReady = true;
-                moveNum = 0;
-            }
-            moveCtr++;
+            bs.bubbleStream(curHealth);
+            isReady = true;
+            moveNum = 1;
         }
         else
         {
-            ttbm.TicTicBoom(curHealth);
-            moveNum = Random.Range(0, 2);
-            moveCtr = 1;
+            rem.rippleEffect(curHealth);
+            isReady = true;
+            moveNum = 0;
         }
     }
 
