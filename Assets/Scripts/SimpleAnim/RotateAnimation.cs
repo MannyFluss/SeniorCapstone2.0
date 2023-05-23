@@ -9,19 +9,19 @@ public class RotateAnimation : MonoBehaviour
     [SerializeField] private bool z = false;
     [SerializeField] private float degree = 20;
     [SerializeField] private bool counterClockWise;
-    [SerializeField] private float rotateSpeed;
+    [SerializeField] private float rotateSpeed = 10;
 
     private Vector3 xAxis = new Vector3(1, 0, 0);
     private Vector3 yAxis = new Vector3(0, 1, 0);
     private Vector3 zAxis = new Vector3(0, 0, 1);
-    private float direction = 1;
+    private float direction = -1;
 
     private Transform target;
     // Start is called before the first frame update
     void Start()
     {
         target = this.gameObject.transform;
-        if (counterClockWise) { direction = -1; }
+        if (counterClockWise) { direction = 1; }
     }
 
     // Update is called once per frame
