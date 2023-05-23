@@ -5064,7 +5064,7 @@ MonoBehaviour:
   nextPage: 0.5
   CutsceneMusic: {fileID: 2102846562}
   CutsceneOutro: {fileID: 2102846561}
-  NextScene: TheLab
+  NextScene: The Lab
 --- !u!82 &2102846561
 AudioSource:
   m_ObjectHideFlags: 0
