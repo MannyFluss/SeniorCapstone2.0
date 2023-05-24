@@ -192,9 +192,6 @@ public class CutsceneManagerV3 : MonoBehaviour
                 {
                     p.GetImg().color = new Color(1, 1, 1, alpha);
 
-                    // Option: if the panel doesn't have a Dialogue Box
-                    if (p.GetTxtBox() != null) p.GetTxtBox().color = new Color(1, 1, 1, alpha);
-
                     // If Space is press, Immediately Reveal Them
                     if (Input.GetKeyDown(KeyCode.Space))
                     {
@@ -208,6 +205,7 @@ public class CutsceneManagerV3 : MonoBehaviour
                 // If the player hasn't press Space to skip Panel
                 if (!togglePress)
                 {
+                    bool txtbox = false;
                     // Next, Fade In the Panel's Text
                     if (p.GetTxtLen() != 0)
                         for (int i = 0; i < p.GetTxtLen(); i++)
@@ -216,6 +214,9 @@ public class CutsceneManagerV3 : MonoBehaviour
                             {
                                 for (float alpha = 0f; alpha <= 1f; alpha += textFadeInRate * Time.deltaTime)
                                 {
+                                    // Option: if the panel doesn't have a Dialogue Box
+                                    if (p.GetTxtBox() != null && !txtbox) p.GetTxtBox().color = new Color(1, 1, 1, alpha);
+
                                     p.GetTxt(i).color = new Color(1, 1, 1, alpha);
                                     yield return null;
                                     // If Space is press, Immediately Reveal Them
@@ -228,6 +229,7 @@ public class CutsceneManagerV3 : MonoBehaviour
                                 }
                                 yield return new WaitForSeconds(nextText);
                             }
+                            txtbox = true;
                         }
                 }
             }

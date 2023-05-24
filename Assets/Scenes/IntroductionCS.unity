@@ -5060,7 +5060,7 @@ MonoBehaviour:
   fadeOutRate: 16
   nextPanel: 0
   panel2Text: 0.5
-  nextText: 0.25
+  nextText: 0.75
   nextPage: 0.5
   CutsceneMusic: {fileID: 2102846562}
   CutsceneOutro: {fileID: 2102846561}
