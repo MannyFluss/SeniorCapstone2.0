@@ -7,24 +7,28 @@ using UnityEngine.SceneManagement;
 
 public class DrKrabManager : MonoBehaviour
 {
+
     //move scripts
     BubbleStream bs;
     ColorSequenceManager csm;
     RippleEffectManager rem;
 
     //boss variables
+    [Header("Boss Health")]
     public int curHealth = 0;
     public float maxHealth = 100;
-    private int puzzleTime;
-    private int moveCtr;
 
+    [HideInInspector]
     public bool canBeHit;
 
+    [Header("Boss Timing")]
     [SerializeField]
     private float waitTime = 0f;
     private bool isReady = false;
 
     public int moveNum;
+
+    [Header("References")]
 
     //Animation
     [SerializeField]

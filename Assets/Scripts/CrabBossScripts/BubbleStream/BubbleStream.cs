@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BubbleStream : MonoBehaviour
 {
-    BubbleStreamCannon[] cannons = new BubbleStreamCannon[6];
+    BubbleStreamCannon[] cannons = new BubbleStreamCannon[9];
     //GameObject[] bubbleBullet = new GameObject[5];
 
     [SerializeField]
@@ -31,10 +31,20 @@ public class BubbleStream : MonoBehaviour
 
     IEnumerator runStream(int health)
     {
-        for(int i = 0; i < 3; i++)
+        var num = 0;
+        var interval = 1.5;
+        if(health >= 40)
+        {
+            num = 3;
+        }
+        else
+        {
+            num = 4;
+        }
+        for(int i = 0; i < num; i++)
         {
             //random values
-            int[] arr = { 1, 2, 3, 4, 5, 0 };
+            int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 0 };
             for (int t = 0; t < arr.Length; t++)
             {
                 int tmp = arr[t];
@@ -45,16 +55,23 @@ public class BubbleStream : MonoBehaviour
 
 
 
-            if (health >= 60)
-            {
-                cannons[arr[0]].fireSingleCannon();
-                cannons[arr[1]].fireSingleCannon();
-            }
-            else if (health < 60 && health >= 30)
+            if (health >= 75)
             {
                 cannons[arr[0]].fireSingleCannon();
                 cannons[arr[1]].fireSingleCannon();
                 cannons[arr[2]].fireSingleCannon();
+                cannons[arr[3]].fireSingleCannon();
+                cannons[arr[4]].fireSingleCannon();
+
+            }
+            else if (health < 75 && health >= 39)
+            {
+                cannons[arr[0]].fireSingleCannon();
+                cannons[arr[1]].fireSingleCannon();
+                cannons[arr[2]].fireSingleCannon();
+                cannons[arr[3]].fireSingleCannon();
+                cannons[arr[4]].fireSingleCannon();
+                cannons[arr[5]].fireSingleCannon();
             }
             else
             {
@@ -62,6 +79,8 @@ public class BubbleStream : MonoBehaviour
                 cannons[arr[1]].fireSingleCannon();
                 cannons[arr[2]].fireSingleCannon();
                 cannons[arr[3]].fireSingleCannon();
+                cannons[arr[4]].fireSingleCannon();
+                cannons[arr[5]].fireSingleCannon();
             }
             yield return new WaitForSeconds(4.5f);
         }
