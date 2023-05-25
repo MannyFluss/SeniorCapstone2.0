@@ -51,6 +51,7 @@ public class ColorSequenceManager : MonoBehaviour
         ct = GetComponentInChildren<ColorTiles>();
         mr = screen.GetComponent<MeshRenderer>();
         timerText = screen.GetComponentInChildren<TMP_Text>();
+
         colorSequence(100);
 
         //get red mat
@@ -105,7 +106,7 @@ public class ColorSequenceManager : MonoBehaviour
     public void colorSequence(int health)
     {
         timer = 90;
-        if(health > 60)
+        if (health > 60)
         {
             ct.maxColor = n1;
         }

@@ -28,6 +28,8 @@ public class DrKrabManager : MonoBehaviour
 
     public int moveNum;
 
+    private bool firstRun = true;
+
     [Header("References")]
 
     //Animation
@@ -65,6 +67,7 @@ public class DrKrabManager : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(curHealth);
         if(!bs.bubbleStreamActive && !rem.rippleEffectActive && isReady)
         {
             StartCoroutine(preformMoves());
@@ -78,6 +81,11 @@ public class DrKrabManager : MonoBehaviour
     {
         isReady = true;
         csm.puzzlesComplete = 0;
+        if(firstRun)
+        {
+            firstRun = false;
+            return;
+        }
         csm.colorSequence(curHealth);
     }
 

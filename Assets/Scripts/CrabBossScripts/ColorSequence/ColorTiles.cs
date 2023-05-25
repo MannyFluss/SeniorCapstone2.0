@@ -12,7 +12,7 @@ public class ColorTiles : MonoBehaviour
     [HideInInspector]
     public string[] sequence = new string[5];
 
-    public int maxColor;
+    public int maxColor = 4;
     private int currColor = 0;
 
     //Puzzle active
@@ -26,12 +26,6 @@ public class ColorTiles : MonoBehaviour
         //pickTiles();
         //tiles = GetComponentsInChildren<Tile>();
         csm = GetComponentInParent<ColorSequenceManager>();
-    }
-
-    private void Update()
-    {
-        
-        Debug.Log(currColor);
     }
     
     public void checkPuzzle(Tile tile)
