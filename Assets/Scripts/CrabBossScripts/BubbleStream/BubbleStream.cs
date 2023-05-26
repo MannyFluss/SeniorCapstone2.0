@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BubbleStream : MonoBehaviour
 {
-    BubbleStreamCannon[] cannons = new BubbleStreamCannon[6];
+    BubbleStreamCannon[] cannons = new BubbleStreamCannon[9];
+    ParticleSystem[] bubbles = new ParticleSystem[9];
     //GameObject[] bubbleBullet = new GameObject[5];
 
     [SerializeField]
@@ -18,6 +19,7 @@ public class BubbleStream : MonoBehaviour
        for(int i = 0; i < transform.childCount; i ++)
         {
             cannons[i] = transform.GetChild(i).GetComponent<BubbleStreamCannon>();
+            bubbles[i] = transform.GetChild(i).GetComponentInChildren<ParticleSystem>();
         }
     }
 
@@ -31,13 +33,23 @@ public class BubbleStream : MonoBehaviour
 
     IEnumerator runStream(int health)
     {
-        for(int i = 0; i < 3; i++)
+        var num = 0;
+        var interval = 1.5f;
+        if(health >= 40)
+        {
+            num = 3;
+        }
+        else
+        {
+            num = 4;
+        }
+        for(int i = 0; i < num; i++)
         {
             //random values
-            int[] arr = { 1, 2, 3, 4, 5, 0 };
+            int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 0 };
             for (int t = 0; t < arr.Length; t++)
             {
-                int tmp = arr[t];
+                int tmp = arr[t];   
                 int r = Random.Range(t, arr.Length);
                 arr[t] = arr[r];
                 arr[r] = tmp;
@@ -45,25 +57,49 @@ public class BubbleStream : MonoBehaviour
 
 
 
-            if (health >= 60)
+            if (health >= 75)
             {
-                cannons[arr[0]].fireSingleCannon();
-                cannons[arr[1]].fireSingleCannon();
-            }
-            else if (health < 60 && health >= 30)
-            {
-                cannons[arr[0]].fireSingleCannon();
-                cannons[arr[1]].fireSingleCannon();
-                cannons[arr[2]].fireSingleCannon();
-            }
-            else
-            {
+                foreach(ParticleSystem p in bubbles)
+                {
+                    var main = p.main;
+                    main.startSpeed = 17;
+                }
                 cannons[arr[0]].fireSingleCannon();
                 cannons[arr[1]].fireSingleCannon();
                 cannons[arr[2]].fireSingleCannon();
                 cannons[arr[3]].fireSingleCannon();
+                cannons[arr[4]].fireSingleCannon();
+
             }
-            yield return new WaitForSeconds(4.5f);
+            else if (health < 75 && health >= 39)
+            {
+                foreach (ParticleSystem p in bubbles)
+                {
+                    var main = p.main;
+                    main.startSpeed = 20;
+                }
+                cannons[arr[0]].fireSingleCannon();
+                cannons[arr[1]].fireSingleCannon();
+                cannons[arr[2]].fireSingleCannon();
+                cannons[arr[3]].fireSingleCannon();
+                cannons[arr[4]].fireSingleCannon();
+                cannons[arr[5]].fireSingleCannon();
+            }
+            else
+            {
+                foreach (ParticleSystem p in bubbles)
+                {
+                    var main = p.main;
+                    main.startSpeed = 25;
+                }
+                cannons[arr[0]].fireSingleCannon();
+                cannons[arr[1]].fireSingleCannon();
+                cannons[arr[2]].fireSingleCannon();
+                cannons[arr[3]].fireSingleCannon();
+                cannons[arr[4]].fireSingleCannon();
+                cannons[arr[5]].fireSingleCannon();
+            }
+            yield return new WaitForSeconds(3f + interval);
         }
         bubbleStreamActive = false;
     }

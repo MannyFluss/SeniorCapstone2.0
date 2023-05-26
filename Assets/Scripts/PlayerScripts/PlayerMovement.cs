@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public float dashForce = 4f;
     public float distToGround = 1f;
 
+    private bool canMove = true;
+
 
     public Vector3 currentFacingDirection = new Vector3(0f,0f,0f);
     // Variable for Dash
@@ -318,6 +320,18 @@ public class PlayerMovement : MonoBehaviour
         isDashCooledDown = true;
     }
 
+    public void TogglePlayerInput()
+    {
+        canMove = !canMove;
+        if(canMove)
+        {
+            playerInput.Enable();
+        }
+        else
+        {
+            playerInput.Disable();
+        }
+    }
 
     private void OnEnable()
     {

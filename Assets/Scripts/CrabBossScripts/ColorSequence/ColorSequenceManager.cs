@@ -23,6 +23,10 @@ public class ColorSequenceManager : MonoBehaviour
     Material def;
 
     MeshRenderer mr;
+    //pipes and materials
+    private Material[] greenMats;
+    private Material[] redMats;
+
 
     //Timer
     private float timer;
@@ -47,7 +51,16 @@ public class ColorSequenceManager : MonoBehaviour
         ct = GetComponentInChildren<ColorTiles>();
         mr = screen.GetComponent<MeshRenderer>();
         timerText = screen.GetComponentInChildren<TMP_Text>();
+
         colorSequence(100);
+
+        //get red mat
+        redMats = valves.transform.GetChild(0).GetComponent<MeshRenderer>().materials;
+        redMats[1] = red;
+        //get original green mat array
+        greenMats = valves.transform.GetChild(0).GetComponent<MeshRenderer>().materials;
+
+
     }
 
     // Update is called once per frame
@@ -76,24 +89,24 @@ public class ColorSequenceManager : MonoBehaviour
     {
         if(puzzlesComplete == 0)
         {
-            valves.transform.GetChild(0).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(0).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 90)), Time.deltaTime / 2);
-            valves.transform.GetChild(0).GetComponent<MeshRenderer>().material = red;
-            valves.transform.GetChild(1).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(1).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 90)), Time.deltaTime / 2);
-            valves.transform.GetChild(1).GetComponent<MeshRenderer>().material = red;
-            valves.transform.GetChild(2).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(2).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 90)), Time.deltaTime / 2);
-            valves.transform.GetChild(2).GetComponent<MeshRenderer>().material = red;
+            valves.transform.GetChild(0).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(0).transform.localRotation, Quaternion.Euler(new Vector3(90, -90, 180)), Time.deltaTime / 2);
+            valves.transform.GetChild(0).GetComponent<MeshRenderer>().materials = redMats;
+            valves.transform.GetChild(1).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(1).transform.localRotation, Quaternion.Euler(new Vector3(90, -90, 180)), Time.deltaTime / 2);
+            valves.transform.GetChild(1).GetComponent<MeshRenderer>().materials = redMats;
+            valves.transform.GetChild(2).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(2).transform.localRotation, Quaternion.Euler(new Vector3(90, -90, 180)), Time.deltaTime / 2);
+            valves.transform.GetChild(2).GetComponent<MeshRenderer>().materials = redMats;
         } 
         for(int i = 0; i < puzzlesComplete; i++)
         {
-            valves.transform.GetChild(i).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(i).transform.localRotation, Quaternion.Euler(new Vector3(0, 0, 0)), Time.deltaTime / 2);
-            valves.transform.GetChild(i).GetComponent<MeshRenderer>().material = green;
+            valves.transform.GetChild(i).transform.localRotation = Quaternion.Lerp(valves.transform.GetChild(i).transform.localRotation, Quaternion.Euler(new Vector3(0, -90, 180)), Time.deltaTime / 2);
+            valves.transform.GetChild(i).GetComponent<MeshRenderer>().materials = greenMats;
         }
     }
 
     public void colorSequence(int health)
     {
         timer = 90;
-        if(health > 60)
+        if (health > 60)
         {
             ct.maxColor = n1;
         }
