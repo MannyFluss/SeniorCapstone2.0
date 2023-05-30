@@ -7,9 +7,16 @@ using UnityEngine.UI;
 public class SimpleDialogue : MonoBehaviour
 {
     [System.Serializable]
+    public class DialogueSet
+    {
+        public string line;
+        public Sprite emoticon;
+    }
+
+    [System.Serializable]
     public class StringCollection
     {
-        public List<string> lines = new List<string>();
+        public List<DialogueSet> lines = new List<DialogueSet>();
     }
 
     [Header("Set Up")]
@@ -18,6 +25,7 @@ public class SimpleDialogue : MonoBehaviour
     [SerializeField] private TMP_Text textBox;
     [SerializeField] private Image DialogueBox;
     [SerializeField] private Image CharacterBust;
+    [SerializeField] private Sprite DefaultSprite;
 
     [SerializeField] private StringCollection opening;
     [SerializeField] private List<StringCollection> convo;
@@ -79,8 +87,12 @@ public class SimpleDialogue : MonoBehaviour
 
     IEnumerator RevealText(StringCollection input)
     {
-        foreach (string text in input.lines)
+        foreach (DialogueSet d in input.lines)
         {
+            string text = d.line;
+            if (d.emoticon == null) CharacterBust.sprite = DefaultSprite;
+            else CharacterBust.sprite = d.emoticon;
+
             textBox.text = "";
 
             var numCharsRevealed = 0;
