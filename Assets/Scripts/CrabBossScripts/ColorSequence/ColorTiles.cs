@@ -12,6 +12,8 @@ public class ColorTiles : MonoBehaviour
     [HideInInspector]
     public string[] sequence = new string[5];
 
+    Tile[] tiles;
+
     public int maxColor = 4;
     private int currColor = 0;
 
@@ -26,6 +28,7 @@ public class ColorTiles : MonoBehaviour
         //pickTiles();
         //tiles = GetComponentsInChildren<Tile>();
         csm = GetComponentInParent<ColorSequenceManager>();
+        tiles = GetComponentsInChildren<Tile>();
     }
     
     public void checkPuzzle(Tile tile)
@@ -87,6 +90,22 @@ public class ColorTiles : MonoBehaviour
         else
         {
             StartCoroutine(csm.puzzleComplete());
+        }
+    }
+
+    public void enableTiles()
+    {
+        foreach(Tile t in tiles)
+        {
+            t.interactable = true;
+        }
+    }
+
+    public void disableTiles()
+    {
+        foreach (Tile t in tiles)
+        {
+            t.interactable = false;
         }
     }
 }
