@@ -86,7 +86,7 @@ public class DrKrabManager : MonoBehaviour
             firstRun = false;
             return;
         }
-        csm.colorSequence(curHealth);
+        csm.colorSequence(curHealth, maxHealth);
     }
 
     public void stunSequence()
@@ -108,13 +108,13 @@ public class DrKrabManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         if (moveNum == 0)
         {
-            bs.bubbleStream(curHealth);
+            bs.bubbleStream(curHealth, maxHealth);
             isReady = true;
             moveNum = 1;
         }
         else
         {
-            rem.rippleEffect(curHealth);
+            rem.rippleEffect(curHealth, maxHealth);
             isReady = true;
             moveNum = 0;
         }

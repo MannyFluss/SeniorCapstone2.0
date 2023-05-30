@@ -25,17 +25,17 @@ public class BubbleStream : MonoBehaviour
 
     
 
-    public void bubbleStream(int health)
+    public void bubbleStream(int health, float maxHealth)
     {
         bubbleStreamActive = true;
-        StartCoroutine(runStream(health));
+        StartCoroutine(runStream(health, maxHealth));
     }
 
-    IEnumerator runStream(int health)
+    IEnumerator runStream(int health, float maxHealth)
     {
         var num = 0;
         var interval = 1.5f;
-        if(health >= 40)
+        if(health/maxHealth >= .40f)
         {
             num = 3;
         }
@@ -57,7 +57,7 @@ public class BubbleStream : MonoBehaviour
 
 
 
-            if (health >= 75)
+            if (health/maxHealth >= 0.75f)
             {
                 foreach(ParticleSystem p in bubbles)
                 {
@@ -71,7 +71,7 @@ public class BubbleStream : MonoBehaviour
                 cannons[arr[4]].fireSingleCannon();
 
             }
-            else if (health < 75 && health >= 39)
+            else if (health/maxHealth < 0.75f && health/maxHealth >= 0.39f)
             {
                 foreach (ParticleSystem p in bubbles)
                 {

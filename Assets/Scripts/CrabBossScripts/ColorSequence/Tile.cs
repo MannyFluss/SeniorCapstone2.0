@@ -42,8 +42,25 @@ public class Tile : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            tilePressed = false;
-            mat.DisableKeyword("_EMISSION");
+            StartCoroutine(repressTimer());
         }
+    }
+
+    IEnumerator repressTimer()
+    {
+        yield return new WaitForSeconds(1.2f);
+        tilePressed = false;
+        mat.DisableKeyword("_EMISSION");
+        yield return null;
+    }
+
+    public void lightOnTile()
+    {
+        mat.EnableKeyword("_EMISSION");
+    }
+
+    public void lightOffTile()
+    {
+        mat.DisableKeyword("_EMISSION");
     }
 }

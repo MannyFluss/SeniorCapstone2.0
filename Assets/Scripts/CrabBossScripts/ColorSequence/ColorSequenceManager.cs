@@ -22,6 +22,17 @@ public class ColorSequenceManager : MonoBehaviour
     [SerializeField]
     Material def;
 
+    [Header("Tile GameObject")]
+    [SerializeField]
+    GameObject redTile;
+    [SerializeField]
+    GameObject blueTile;
+    [SerializeField]
+    GameObject yellowTile;
+    [SerializeField]
+    GameObject greenTile;
+
+    [Header("Other")]
     MeshRenderer mr;
     //pipes and materials
     private Material[] greenMats;
@@ -36,8 +47,8 @@ public class ColorSequenceManager : MonoBehaviour
     //Number of puzzles
     public int puzzlesComplete = 0;
 
-    private int n1 = 4;
-    private int n2 = 5;
+    private int n1 = 3;
+    private int n2 = 4;
 
     //
     [SerializeField]
@@ -52,7 +63,7 @@ public class ColorSequenceManager : MonoBehaviour
         mr = screen.GetComponent<MeshRenderer>();
         timerText = screen.GetComponentInChildren<TMP_Text>();
 
-        colorSequence(100);
+        colorSequence(100, 100f);
 
         //get red mat
         redMats = valves.transform.GetChild(0).GetComponent<MeshRenderer>().materials;
@@ -103,10 +114,10 @@ public class ColorSequenceManager : MonoBehaviour
         }
     }
 
-    public void colorSequence(int health)
+    public void colorSequence(int health, float maxHealth)
     {
         timer = 90;
-        if (health > 60)
+        if (health/maxHealth >= 0.30f)
         {
             ct.maxColor = n1;
         }
@@ -120,7 +131,7 @@ public class ColorSequenceManager : MonoBehaviour
     
     public void newSequence()
     {
-        ct.pickTiles();
+        ct.pickTiles(ct.maxColor);
         StartCoroutine(playColors());
     }
 
@@ -134,19 +145,32 @@ public class ColorSequenceManager : MonoBehaviour
         timerText.text = "";
         foreach(string color in ct.sequence)
         {
+            if (color == "") break;
             switch(color)
             {
                 case "green":
                     mr.material = green;
+                    greenTile.GetComponent<Tile>().lightOnTile();
+                    yield return new WaitForSeconds(1f);
+                    greenTile.GetComponent<Tile>().lightOffTile();
                     break;
                 case "red":
                     mr.material = red;
+                    redTile.GetComponent<Tile>().lightOnTile();
+                    yield return new WaitForSeconds(1f);
+                    redTile.GetComponent<Tile>().lightOffTile();
                     break;
                 case "yellow":
                     mr.material = yellow;
+                    yellowTile.GetComponent<Tile>().lightOnTile();
+                    yield return new WaitForSeconds(1f);
+                    yellowTile.GetComponent<Tile>().lightOffTile();
                     break;
                 case "blue":
                     mr.material = blue;
+                    blueTile.GetComponent<Tile>().lightOnTile();
+                    yield return new WaitForSeconds(1f);
+                    blueTile.GetComponent<Tile>().lightOffTile();
                     break;
             }
             yield return new WaitForSeconds(1f);

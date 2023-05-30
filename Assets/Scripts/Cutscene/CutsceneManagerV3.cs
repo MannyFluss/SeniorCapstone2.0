@@ -188,6 +188,7 @@ public class CutsceneManagerV3 : MonoBehaviour
 
                 yield return new WaitForSeconds(nextPanel);
                 // First Fade In the Panel's Img and Txt Bg
+
                 for (float alpha = 0f; alpha <= 1f; alpha += imageFadeInRate * Time.deltaTime)
                 {
                     p.GetImg().color = new Color(1, 1, 1, alpha);

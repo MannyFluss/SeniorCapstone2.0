@@ -14,7 +14,7 @@ public class ColorTiles : MonoBehaviour
 
     Tile[] tiles;
 
-    public int maxColor = 4;
+    public int maxColor = 3;
     private int currColor = 0;
 
     //Puzzle active
@@ -50,10 +50,10 @@ public class ColorTiles : MonoBehaviour
     }
 
 
-    public void pickTiles()
+    public void pickTiles(int len)
     {
         currColor = 0;
-        for(int i = 0; i < maxColor ; i++)
+        for(int i = 0; i < len ; i++)
         {
             if (i == 0)
             {

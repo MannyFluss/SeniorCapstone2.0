@@ -7740,11 +7740,11 @@ MonoBehaviour:
   JumpSoundEffect: {fileID: 1654990448}
   moveSpeed: 6.6
   jumpForce: 4
-  dashForce: 2
+  dashForce: 3
   distToGround: 1
   currentFacingDirection: {x: 0, y: 0, z: 0}
   dashCoolDownSeconds: 1
-  cloneDeathTime: 0.05
+  cloneDeathTime: 1
   GroundDebug: {fileID: 0}
   DashDebug: {fileID: 0}
   vcam: {fileID: 751444513}

@@ -22792,7 +22792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   curHealth: 0
-  maxHealth: 60
+  maxHealth: 55
   canBeHit: 0
   waitTime: 0
   moveNum: 0
@@ -23319,7 +23319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afae4783aa75822418906fe9091074a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nineWaveInterval: 1.5
+  nineWaveInterval: 2
   rippleEffectActive: 0
 --- !u!4 &1244496493
 Transform:
@@ -28873,7 +28873,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6.08
+      scalar: 3.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -28926,7 +28926,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 12
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -38785,6 +38785,10 @@ MonoBehaviour:
   yellow: {fileID: 2100000, guid: edeb341c81cb74d49b95e98811bae2f3, type: 2}
   green: {fileID: 2100000, guid: c72d27fbb5f06ee429d4e62cd88dbac9, type: 2}
   def: {fileID: 2100000, guid: c6717d6bc0e3c43da865524d37195cfe, type: 2}
+  redTile: {fileID: 1945598992}
+  blueTile: {fileID: 875917425}
+  yellowTile: {fileID: 4433871}
+  greenTile: {fileID: 360304696}
   puzzlesComplete: 0
   valves: {fileID: 1155029351}
 --- !u!1 &1875886309
@@ -49587,7 +49591,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6.08
+      scalar: 3.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -49640,7 +49644,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 10
+      scalar: 12
       minScalar: 5
       maxCurve:
         serializedVersion: 2

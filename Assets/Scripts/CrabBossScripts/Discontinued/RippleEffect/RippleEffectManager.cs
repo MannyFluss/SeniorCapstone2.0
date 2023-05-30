@@ -9,8 +9,8 @@ public class RippleEffectManager : MonoBehaviour
     RippleEffectSingle[] ripples = new RippleEffectSingle[4];
 
     [SerializeField]
-    private float nineWaveInterval = 1.5f;
-    private float elevenWaveInterval = 1.0f;
+    private float nineWaveInterval = 8f;
+    private float elevenWaveInterval = 6f;
 
     //for DrKrabManager
     public bool rippleEffectActive = false;
@@ -23,19 +23,19 @@ public class RippleEffectManager : MonoBehaviour
         }
     }
 
-    public void rippleEffect(int health)
+    public void rippleEffect(int health, float maxHealth)
     {
         rippleEffectActive = true;
-        StartCoroutine(rippleEffectAttack(health));
+        StartCoroutine(rippleEffectAttack(health, maxHealth));
     }
 
-    IEnumerator rippleEffectAttack(int health)
+    IEnumerator rippleEffectAttack(int health, float maxHealth)
     {
         // float interval = 0;
         var num = 0;
 
         //determine interval and number of waves
-        if (health > 50)
+        if (health/maxHealth > .50f)
         {
             num = 9;
             interval = nineWaveInterval;
