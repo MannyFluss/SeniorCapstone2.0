@@ -14,6 +14,7 @@ public class SimpleDialogue : MonoBehaviour
 
     [Header("Set Up")]
     [SerializeField] private GameObject Player;
+    [SerializeField] private GameObject Target;
     [SerializeField] private TMP_Text textBox;
     [SerializeField] private Image DialogueBox;
     [SerializeField] private Image CharacterBust;
@@ -45,7 +46,7 @@ public class SimpleDialogue : MonoBehaviour
 
     public void showUI(bool toggle)
     {
-        Player.GetComponent<VeeManager>().interactSign.GetComponent<SpriteRenderer>().enabled = !toggle;
+        Target.GetComponent<VeeManager>().interactSign.GetComponent<SpriteRenderer>().enabled = !toggle;
         DialogueBox.GetComponent<Image>().enabled = toggle;
         CharacterBust.GetComponent<Image>().enabled = toggle;
         textBox.GetComponent<TextMeshProUGUI>().enabled = toggle;
@@ -111,6 +112,7 @@ public class SimpleDialogue : MonoBehaviour
             yield return null;
         }
         showUI(false);
+        Player.GetComponent<PlayerMovement>().TogglePlayerInput();
         yield return null;
     }
 }

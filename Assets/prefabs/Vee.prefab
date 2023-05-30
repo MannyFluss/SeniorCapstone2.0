@@ -451,6 +451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1352083221317253627}
+  Target: {fileID: 0}
   textBox: {fileID: 1913380371}
   DialogueBox: {fileID: 417806252}
   CharacterBust: {fileID: 1696260061}
@@ -471,7 +472,8 @@ MonoBehaviour:
   - lines:
     - Okay, you need to stop bothering me. I'm really busy at the moment.
     - Feel free to try out your abilities in here, but try not to destroy anything.
-  secondClick: 0
+  firstPress: 0
+  secondPress: 0
 --- !u!1 &1352083221317253627
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +485,6 @@ GameObject:
   - component: {fileID: 1352083221317253628}
   - component: {fileID: 1352083221317253629}
   - component: {fileID: 1352083221317253626}
-  - component: {fileID: 8027523611769827558}
   - component: {fileID: 6027997183723461570}
   - component: {fileID: 1661314399}
   m_Layer: 6
@@ -577,21 +578,6 @@ CapsuleCollider:
   m_Height: 29.699999
   m_Direction: 1
   m_Center: {x: -0.123532325, y: 0, z: 0}
---- !u!114 &8027523611769827558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1352083221317253627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c75a28b38c34c0949984023223f8f89d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NotFirstTime: 0
-  TalkToVee: 0
-  PastLine: 0
 --- !u!114 &6027997183723461570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,6 +592,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactSign: {fileID: 8780467005084696631}
   DialogueSystem: {fileID: 1322586293339132836}
+  Player: {fileID: 0}
 --- !u!135 &1661314399
 SphereCollider:
   m_ObjectHideFlags: 0

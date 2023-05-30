@@ -7,6 +7,7 @@ public class VeeManager : MonoBehaviour
 {
     [SerializeField] public GameObject interactSign;
     [SerializeField] public GameObject DialogueSystem;
+    [SerializeField] private GameObject Player;
 
     private void Start()
     {
@@ -17,7 +18,7 @@ public class VeeManager : MonoBehaviour
     {
         if (VeeMain.Instance.TalkToVee && Input.GetKeyDown(KeyCode.F))
         {
-
+            Player.GetComponent<PlayerMovement>().TogglePlayerInput();
             DialogueSystem.GetComponent<SimpleDialogue>().talkToVee();
         }
     }

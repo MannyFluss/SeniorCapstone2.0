@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class InteractWithObject : MonoBehaviour
 {
+    [SerializeField] private GameObject Player;
     [SerializeField] private Image rend;
     [SerializeField] private Image background;
     [SerializeField] private TMP_Text messageBox;
@@ -40,6 +41,7 @@ public class InteractWithObject : MonoBehaviour
 
     public IEnumerator ShowPoster(Sprite input, string text)
     {
+        Player.GetComponent<PlayerMovement>().TogglePlayerInput();
         rend.sprite = input;
         messageBox.text = text;
         rend.enabled = true;
@@ -70,5 +72,6 @@ public class InteractWithObject : MonoBehaviour
         messageBox.enabled = false;
         reading = false;
         yield return null;
+        Player.GetComponent<PlayerMovement>().TogglePlayerInput();
     }
 }
