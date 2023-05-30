@@ -58,7 +58,7 @@ public class DungeonManager : MonoBehaviour
     //added nonbattlemusictheme
     [SerializeField] private AudioSource NonBattleMusic;
 
-
+    public bool levelT = false;
     public GameObject[] dungeons = new GameObject[0];
     public GameObject player;
     public List<GameObject> minionPrefabs = new List<GameObject>();
@@ -82,6 +82,10 @@ public class DungeonManager : MonoBehaviour
             var level = minionPrefab.GetComponent<MinionComponent>().level;
             if (level == 1) {
                 levelOneMinionPrefabs.Add(minionPrefab);
+                if (levelT)
+                {
+                    levelTwoMinionPrefabs.Add(minionPrefab);
+                }
             } else if (level == 2)
             {
                 levelTwoMinionPrefabs.Add(minionPrefab);
