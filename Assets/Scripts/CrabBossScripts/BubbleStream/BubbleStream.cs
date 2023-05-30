@@ -78,6 +78,7 @@ public class BubbleStream : MonoBehaviour
                     var main = p.main;
                     main.startSpeed = 20;
                 }
+                interval = 1.2f;
                 cannons[arr[0]].fireSingleCannon();
                 cannons[arr[1]].fireSingleCannon();
                 cannons[arr[2]].fireSingleCannon();
@@ -92,6 +93,7 @@ public class BubbleStream : MonoBehaviour
                     var main = p.main;
                     main.startSpeed = 25;
                 }
+                interval = 1f;
                 cannons[arr[0]].fireSingleCannon();
                 cannons[arr[1]].fireSingleCannon();
                 cannons[arr[2]].fireSingleCannon();
@@ -99,7 +101,7 @@ public class BubbleStream : MonoBehaviour
                 cannons[arr[4]].fireSingleCannon();
                 cannons[arr[5]].fireSingleCannon();
             }
-            yield return new WaitForSeconds(3f + interval);
+            yield return new WaitForSeconds(interval);
         }
         bubbleStreamActive = false;
     }
