@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/The Lab.unity
     guid: 5f9afd9c572026d4886fe0a63db2eab8
+  - enabled: 1
+    path: Assets/Scenes/HnS2.unity
+    guid: 8b6157355bf7302429edb873737d3c61
+  - enabled: 1
+    path: Assets/Scenes/DrKrab.unity
+    guid: d7b2e2221478a94408aec1c9a2aa5e4d
   - enabled: 0
     path: Assets/Scenes/HackNSlash.unity
     guid: 571ef98d94bf2f7419b203589b5e86cb
@@ -23,7 +29,4 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/DefeatCalamarCutscene.unity
     guid: fcb4c7636cfed497a81fd093ced31cd9
-  - enabled: 1
-    path: Assets/Scenes/DrKrab.unity
-    guid: d7b2e2221478a94408aec1c9a2aa5e4d
   m_configObjects: {}
