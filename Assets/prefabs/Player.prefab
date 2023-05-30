@@ -1477,7 +1477,7 @@ GameObject:
   - component: {fileID: 2608935403475433985}
   - component: {fileID: 5517229380549035404}
   - component: {fileID: 6424571488404150124}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Heart (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2270,7 +2270,7 @@ GameObject:
   - component: {fileID: 1668393174460091110}
   - component: {fileID: 15371182114102160}
   - component: {fileID: 1453747012808601901}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Heart (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7744,7 +7744,7 @@ MonoBehaviour:
   distToGround: 1
   currentFacingDirection: {x: 0, y: 0, z: 0}
   dashCoolDownSeconds: 1
-  cloneDeathTime: 0.08
+  cloneDeathTime: 0.05
   GroundDebug: {fileID: 0}
   DashDebug: {fileID: 0}
   vcam: {fileID: 751444513}
@@ -7763,6 +7763,7 @@ MonoBehaviour:
   SlashSoundEffect: {fileID: 8545130136844963016}
   aimArrow: {fileID: 2626668999290129638}
   hitObj: {fileID: 2626668998526110819}
+  atkCoolDown: 0.2
   AimPositionReference: {fileID: 4351266626030115514}
   TabHud: {fileID: 2856802930199831010}
   ShopHud: {fileID: 6738814891632441210}
@@ -10039,7 +10040,7 @@ GameObject:
   - component: {fileID: 4880460816540684613}
   - component: {fileID: 3785373774828368733}
   - component: {fileID: 7105875516225312205}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Heart (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10386,7 +10387,7 @@ GameObject:
   - component: {fileID: 4415733894386483374}
   - component: {fileID: 3430897959650947176}
   - component: {fileID: 4822226798916673338}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Heart (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10579,7 +10580,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2483730834960438866}
   - component: {fileID: 5290898996921577887}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: PlayerHPContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10751,7 +10752,7 @@ GameObject:
   - component: {fileID: 827188968805050743}
   - component: {fileID: 3421597686772580993}
   - component: {fileID: 7050547749482330639}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Heart (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10858,7 +10859,7 @@ GameObject:
   - component: {fileID: 5903034140391487376}
   - component: {fileID: 7169438567102998054}
   - component: {fileID: 4043849283941512923}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Heart (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11419,7 +11420,7 @@ GameObject:
   - component: {fileID: 1222125581636177671}
   - component: {fileID: 4046480028786222620}
   - component: {fileID: 2030515150430293488}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11871,7 +11872,7 @@ GameObject:
   - component: {fileID: 4178511240240738415}
   - component: {fileID: 1151449057926475198}
   - component: {fileID: 1974919265409342545}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11947,7 +11948,7 @@ GameObject:
   - component: {fileID: 2981738951011792614}
   - component: {fileID: 5333551806755000489}
   - component: {fileID: 259607945963512158}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Heart (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13273,7 +13274,7 @@ GameObject:
   - component: {fileID: 6524345406395057197}
   - component: {fileID: 4957333666479363984}
   - component: {fileID: 6634464669031349684}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Heart (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13431,7 +13432,7 @@ GameObject:
   - component: {fileID: 5556451374132609447}
   - component: {fileID: 3259727908113736588}
   - component: {fileID: 6188486004671509209}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Ability2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13718,7 +13719,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3786209190032520567}
   - component: {fileID: 5796684668787035884}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: PlayerHUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13742,9 +13743,9 @@ RectTransform:
   m_Father: {fileID: 10118341007964665}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -307, y: -122}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 516, y: 293}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5796684668787035884
@@ -15834,7 +15835,7 @@ GameObject:
   - component: {fileID: 7087883768600924138}
   - component: {fileID: 6851291919195661654}
   - component: {fileID: 7186073782626716618}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Ability1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16190,7 +16191,7 @@ GameObject:
   - component: {fileID: 4646738117276032848}
   - component: {fileID: 4134897387577380401}
   - component: {fileID: 1574252930735106183}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16565,7 +16566,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6223053156195378237}
   - component: {fileID: 1080814188962183109}
-  m_Layer: 3
+  m_Layer: 5
   m_Name: AbilityContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
