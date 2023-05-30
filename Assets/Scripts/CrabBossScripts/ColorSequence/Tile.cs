@@ -27,7 +27,7 @@ public class Tile : MonoBehaviour
     //if tile is stoon on
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player") && !tilePressed)
+        if(other.CompareTag("Player") && !tilePressed && interactable)
         {
             tilePressed = true;
             mat.EnableKeyword("_EMISSION");

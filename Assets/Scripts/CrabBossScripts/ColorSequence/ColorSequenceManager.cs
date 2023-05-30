@@ -126,6 +126,7 @@ public class ColorSequenceManager : MonoBehaviour
 
     private IEnumerator playColors()
     {
+        ct.disableTiles();
         mr.material = def;
         timerText.text = "Round " + (puzzlesComplete + 1);
         yield return new WaitForSeconds(2f);
@@ -152,6 +153,7 @@ public class ColorSequenceManager : MonoBehaviour
         }
         mr.material = def;
         runTimer = true;
+        ct.enableTiles();
     }
 
     public IEnumerator puzzleFailed()
