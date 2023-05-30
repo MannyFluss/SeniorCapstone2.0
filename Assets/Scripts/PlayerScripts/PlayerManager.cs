@@ -43,18 +43,16 @@ public class PlayerManager : MonoBehaviour
     {
         canBeHit = false;
         animator.SetBool("isDamaged", true);
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
         animator.SetBool("isDamaged", false);
         attack.enabled = true;
         movement.enabled = true;
         StartCoroutine(Blink());
         yield return new WaitForSeconds(0.1f);
-        canBeHit = true;
     }
 
     IEnumerator Blink(){
-        Debug.Log("yo");
-        for (float i = 0; i <= 1.8f; i += 0.6f) {
+        for (float i = 0; i <= 3f; i += 0.6f) {
             yield return new WaitForSeconds(0.2f);
             //gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0.44f, 0.46f, 0.8f);
             gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -62,6 +60,7 @@ public class PlayerManager : MonoBehaviour
             //gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
             gameObject.GetComponent<SpriteRenderer>().enabled = true;
         }
+        canBeHit = true;
     }
 
     public void takeDamage(int damage)
