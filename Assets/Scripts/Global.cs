@@ -10,13 +10,18 @@ public class Global : MonoBehaviour
     
     private void Awake()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
         if (Instance==null)
         {
             Instance = this;
-            AbilityIcons.Add("ClawsOff","HUD_shockwave");
-            AbilityIcons.Add("SchrodingerBox","HUD_schrodinger_box");
-            AbilityIcons.Add("ExplosiveFishAbility","HUD_fish_barrel");
-            AbilityIcons.Add("NavalMine","HUD_naval_mine");
+            AbilityIcons.Add("ClawsOff","newIcons/ABILITY_shockwave");
+            AbilityIcons.Add("SchrodingerBox","newIcons/ABILITY_schrondingers box");
+            AbilityIcons.Add("ExplosiveFishAbility","newIcons/ABILITY_fish barrel");
+            AbilityIcons.Add("NavalMine","newIcons/ABILITY_naval mine");
+            AbilityIcons.Add("KnivesOut","newIcons/ABILITY_knives out");
+            AbilityIcons.Add("HeartyFix","newIcons/ABILITY_hearty fix");
             AbilityIcons.Add("empty", "HUD_no_ability");
 
             DontDestroyOnLoad(gameObject);

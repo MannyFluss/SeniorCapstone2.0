@@ -5,27 +5,32 @@ using TMPro;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class ShopUIPurchase : MonoBehaviour
 {
 
+
+    [SerializeField]
+    private GameObject playerRef;
     private PlayerInput playerInput;
     private void Awake()
     {
         playerInput = new PlayerInput();
+        playerInput.Input.Hit.performed += select;
+        
     }
     //needs atleast one button in the list or else crash
     [SerializeField]
     private Button[] buttons;
 
+
     private Button selectedButton;
-    void Start()
+
+    private void select(InputAction.CallbackContext context)
     {
-        
-
-        
-
-        
+        Button curr = EventSystem.current.GetComponent<Button>();
+        curr.onClick.Invoke();
     }
 
 
@@ -93,7 +98,13 @@ public class ShopUIPurchase : MonoBehaviour
     Sprite PlayerUnselectedSprite, PlayerSelectedSprite;
     [SerializeField]
     Image PlayerAbility1Inventory,PlayerAbility2Inventory;
+
+    [SerializeField]
+    PlayerMovement playerMov;
+    [SerializeField]
+    CharacterAttack playerAttack;
     
+
 
     // Start is called before the first frame update
     void OnEnable()
@@ -103,11 +114,24 @@ public class ShopUIPurchase : MonoBehaviour
         setTextAndIcons();
         selectedButton = buttons[0];
         selectedButton.Select();
+        playerInput.Enable();
 
+        playerMov.InputEnabled = false;
+        playerAttack.InputEnabled = false;
+        // playerRef.GetComponent<PlayerMovement>().InputEnabled = false;
+        // playerRef.GetComponent<CharacterAttack>().InputEnabled = false;
         //find event system and set first selected
         //GameObject eventSystem = GameObject.Find("EventSystem");
 
         //eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(selectedButton.gameObject);
+    }
+    void OnDisable()
+    {
+        playerInput.Disable();
+        playerMov.InputEnabled = true;
+        playerAttack.InputEnabled = true;
+        // playerRef.GetComponent<PlayerMovement>().InputEnabled = true;
+        // playerRef.GetComponent<CharacterAttack>().InputEnabled = true;
     }
 
     public void deselectMarkers()

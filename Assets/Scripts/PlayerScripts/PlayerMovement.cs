@@ -75,6 +75,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Animator animator;
 
+    public bool InputEnabled = true;
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -110,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
      */
     public void movementInput(InputAction.CallbackContext context)
     {
+        if (!InputEnabled){return;}
         currentMovementInput = context.ReadValue<Vector2>();
         currentMovement.x = currentMovementInput.x;
         currentMovement.z = currentMovementInput.y;
@@ -160,11 +162,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void jumpInput(InputAction.CallbackContext context)
     {
+        if (!InputEnabled){return;}
         isJumpPressed = context.ReadValueAsButton();
     }
 
     public void dashInput(InputAction.CallbackContext context)
     {
+        if (!InputEnabled){return;}
         if(characterController.isGrounded && isDashCooledDown)
         {
             _dash = true;

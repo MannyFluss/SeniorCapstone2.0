@@ -9,6 +9,7 @@ EditorUserSettings:
       value: 5502045e52050d03095a0e71167607444e1641797d7c243329284f32e1b76060
       flags: 0
     RecentlyUsedSceneGuid-1:
+<<<<<<< HEAD
       value: 50530d570354500b0f5d5a76427407441316482b757b76317d7b4d67b6e36c3b
       flags: 0
     RecentlyUsedSceneGuid-2:
@@ -24,15 +25,40 @@ EditorUserSettings:
       value: 535401525d515e5f595b5e7249260f4443164d797c2924617c704f30b0e5633d
       flags: 0
     RecentlyUsedSceneGuid-6:
+=======
+      value: 5a01560203510c0f5556547211270a4412151d7e7c7176317a2b1e37e0e5323e
+      flags: 0
+    RecentlyUsedSceneGuid-2:
+      value: 0604075754050d0a5956547048205d4412161a7928717335787a1f61b2b43768
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+>>>>>>> mannys-new-branch-because-neo-broke-my-last-one
       value: 0706565400075b095c5a5b7a117a0b44464f192f2f7925692c7b1c32b7e5603c
       flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 50530d570354500b0f5d5a76427407441316482b757b76317d7b4d67b6e36c3b
+      flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 5653050750025e0958080d7442710d444e154a2f292d73357d794562bbb4603e
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 5a550553500d5f0b590854231577074246164e2f7a7b7169297b1832e4e4366d
+      flags: 0
     RecentlyUsedSceneGuid-7:
+<<<<<<< HEAD
       value: 56060503030c515f545a0e2442250844474e1a787c7b7368742b4836bab6373a
+=======
+      value: 5008030701570b595c5b0f764677594541164d292e2c24352c2d4935b7e2316b
+      flags: 0
+    RecentlyUsedSceneGuid-8:
+      value: 5408565701075a0c0c57082147765e4412154179292d74687f781c6bb3e5663b
+>>>>>>> mannys-new-branch-because-neo-broke-my-last-one
       flags: 0
     RecentlyUsedSceneGuid-8:
       value: 5b53025750025a0e580c0a7543730d44444e1d2e2e7071637a7a4a37b1e36269
       flags: 0
     RecentlyUsedSceneGuid-9:
+<<<<<<< HEAD
       value: 56570d070351505858595e7242755b444e4f4e2c297827667e2d1f61e7e13660
       flags: 0
     UnityEditor.ShaderGraph.Blackboard:
@@ -43,6 +69,9 @@ EditorUserSettings:
       flags: 0
     UnityEditor.ShaderGraph.InspectorWindow:
       value: 18135939215a0a5004000b0e15254b524c1119263f2d6a722016393ce1eb3d36e5d339f9a5602b2e2c07a37e0901373ae01e0008f707250d171df81a53a5485d41895ac825e0100ec20313c0d91cddccd3d0c7efcca9bd80908fecb0f9cfddf1eff4e7a1b1eae482f0fcaee1e1928b86d888ed969b938797a7cf
+=======
+      value: 0053010201000c0e5c5b0d244121074413151c7d2f2b77347e701864b1e2306e
+>>>>>>> mannys-new-branch-because-neo-broke-my-last-one
       flags: 0
     vcSharedLogLevel:
       value: 0d5e400f0650
