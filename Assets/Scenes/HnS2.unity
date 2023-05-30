@@ -8506,10 +8506,10 @@ MonoBehaviour:
   - {fileID: 1086092912}
   player: {fileID: 281661406}
   minionPrefabs:
-  - {fileID: 7833944956059155208, guid: f7a1a3b923ba54a7f84bfd066c1a8a1d, type: 3}
-  - {fileID: 8695581397578855058, guid: d43863e964b67402c827f39daa0ac6a2, type: 3}
-  - {fileID: 7920459912988967278, guid: 82d8574d730d24120b9304f538d12510, type: 3}
-  - {fileID: 2554204022756465460, guid: 8a24a5979432b468b8f09754f3129405, type: 3}
+  - {fileID: 3970280996640149114, guid: d092ec0514ac04eb889595e725f2686a, type: 3}
+  - {fileID: 7446913950420671259, guid: 6ecb4b17afd1f4cc5847a7e90d207689, type: 3}
+  - {fileID: 2513430375390504876, guid: aed8bb743639d432fa6945408d517887, type: 3}
+  - {fileID: 5965691415419964115, guid: 6e62fb83fdc8b4b8aaf5099fd114ec84, type: 3}
   levelOneMinionPrefabs: []
   levelTwoMinionPrefabs: []
   levelThreeMinionPrefabs: []
