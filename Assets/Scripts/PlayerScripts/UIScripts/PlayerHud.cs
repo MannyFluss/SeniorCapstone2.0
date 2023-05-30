@@ -91,13 +91,15 @@ public class PlayerHud : MonoBehaviour
         if (index == 0)
         {
             Ability1Cooldown.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,150);
-            LeanTween.size(Ability1Cooldown,new Vector2(75,0),time);
+            Ability1Cooldown.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,150);
+            LeanTween.size(Ability1Cooldown,new Vector2(0,0),time);
 
         }
         if (index == 1)
         {
             Ability2Cooldown.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical,150);
-            LeanTween.size(Ability2Cooldown,new Vector2(75,0),time);
+            Ability2Cooldown.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal,150);
+            LeanTween.size(Ability2Cooldown,new Vector2(0,0),time);
 
         }
     }

@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
     //added UIHover Sound effect
     [SerializeField] private AudioSource HoverSoundEffect;
 
+    
+
     public void PlayGame()
     {
         //Play sound effect

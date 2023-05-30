@@ -38,7 +38,7 @@ public class CharacterAttack : MonoBehaviour
     public GameObject TabHud,ShopHud;
     [SerializeField]
     private PlayerMovement myPlayerMovement; 
-
+    public bool InputEnabled = true;
 
     private void Awake()
     {
@@ -60,6 +60,7 @@ public class CharacterAttack : MonoBehaviour
 
     public void hitInput(InputAction.CallbackContext context)
     {
+        if (!InputEnabled){return;}
         _hit = true;
     }
 
