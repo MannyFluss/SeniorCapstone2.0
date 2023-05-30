@@ -285,6 +285,7 @@ public class PlayerMovement : MonoBehaviour
             currentMovement.y = initialJumpVelocity;
             //jump sound effect
             JumpSoundEffect.Play();
+            animator.SetBool("isJumping", true);
         }
     }
 
@@ -292,6 +293,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if(characterController.isGrounded)
         {
+            animator.SetBool("isJumping", false);
             currentMovement.y = groundedGravity;
         }
         else

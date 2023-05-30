@@ -21,29 +21,18 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]
     PlayerHud PlayerHUDReference;
 
-
+    private Animator animator;
+    private CharacterAttack attack;
     // Start is called before the first frame update
     void Start()
     {
         movement = GetComponent<PlayerMovement>();
+        attack = GetComponent<CharacterAttack>();
+        animator = GetComponent<Animator>();
     }
     // Update is called once per frame
     void Update()
     {
-       if(!canBeHit)
-       {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(gameObject.GetComponent<SpriteRenderer>().color.r,
-                                                                        0.3f,
-                                                                        0.3f,
-                                                                        0.4f);
-       }
-       else
-       {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color(gameObject.GetComponent<SpriteRenderer>().color.r,
-                                                                        1,
-                                                                        1,
-                                                                        1f);
-        }
         if (health == 0)
         {
             SceneManager.LoadScene("TheLab");
@@ -53,8 +42,26 @@ public class PlayerManager : MonoBehaviour
     IEnumerator HitCooldown()
     {
         canBeHit = false;
-        yield return new WaitForSeconds(1f);
+        animator.SetBool("isDamaged", true);
+        yield return new WaitForSeconds(1.2f);
+        animator.SetBool("isDamaged", false);
+        attack.enabled = true;
+        movement.enabled = true;
+        StartCoroutine(Blink());
+        yield return new WaitForSeconds(0.1f);
         canBeHit = true;
+    }
+
+    IEnumerator Blink(){
+        Debug.Log("yo");
+        for (float i = 0; i <= 1.8f; i += 0.6f) {
+            yield return new WaitForSeconds(0.2f);
+            //gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 0.44f, 0.46f, 0.8f);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            yield return new WaitForSeconds(0.4f);
+            //gameObject.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+            gameObject.GetComponent<SpriteRenderer>().enabled = true;
+        }
     }
 
     public void takeDamage(int damage)
