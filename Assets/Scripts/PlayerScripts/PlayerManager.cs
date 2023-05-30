@@ -95,7 +95,6 @@ public class PlayerManager : MonoBehaviour
         if (other.gameObject.tag == "EnemyAttack" && canBeHit)
         {
             takeDamage(1);
-
         }
     }
 }
