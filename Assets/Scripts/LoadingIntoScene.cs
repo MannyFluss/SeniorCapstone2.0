@@ -6,12 +6,14 @@ using UnityEngine.UI;
 public class LoadingIntoScene : MonoBehaviour
 {
     [SerializeField] private Image BlackScreen;
+    [SerializeField] private GameObject Player;
 
     private float fadeRate = 1.2f;
 
     // Start is called before the first frame update
     void Start()
     {
+        Player.GetComponent<PlayerManager>().health = 9;
         BlackScreen.enabled = true;
         BlackScreen.color = new Color(1, 1, 1, 1);
 
