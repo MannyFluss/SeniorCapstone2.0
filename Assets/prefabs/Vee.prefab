@@ -110,6 +110,7 @@ RectTransform:
   - {fileID: 417806251}
   - {fileID: 1696260060}
   - {fileID: 1913380373}
+  - {fileID: 1342754202}
   m_Father: {fileID: 4175691249479676793}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -179,6 +180,98 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &1342754198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1342754202}
+  - component: {fileID: 1342754201}
+  - component: {fileID: 1342754199}
+  - component: {fileID: 1342754200}
+  m_Layer: 6
+  m_Name: ContinueButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1342754202
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342754198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1032870846}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 536, y: 252}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1342754201
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342754198}
+  m_CullTransparentMesh: 1
+--- !u!114 &1342754199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342754198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: da7e84c4e97db9b4c9cc9aa6869bf883, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1342754200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342754198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58627eb38b880841bcb74450bb4b381, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInRate: 1.6
+  fadeOutRate: 1.6
+  toggle: 0
 --- !u!1 &1696260059
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,28 +543,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2621cc7cc7706b24a89a804d0b1d2478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 1352083221317253627}
-  Target: {fileID: 0}
+  Player: {fileID: 0}
+  Target: {fileID: 1352083221317253627}
   textBox: {fileID: 1913380371}
   DialogueBox: {fileID: 417806252}
   CharacterBust: {fileID: 1696260061}
+  DefaultSprite: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+  ContinueUI: {fileID: 1342754199}
   opening:
     lines:
-    - I see you are awake Miyo.
-    - While you were in the chamber, I've picked up several strange signals across
-      the world.
-    - I was able to pin point one of the signal and opened a portal near the mentioned
-      signal's location.
-    - Feel free to look around but whenever you are ready, head to the second room.
-    - Run along now, I'm still got a lot of work to do.
+    - line: Hello Miyo. I see you're finally awake.
+      emoticon: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - line: While you were asleep, I've picked up strange signals coming from different
+        parts of the world.
+      emoticon: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - line: You're job would be to look into what's creating these strange signals.
+      emoticon: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - line: I managed to open a portal to the first signal. You should be able to
+        find it in the next room.
+      emoticon: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - line: Feel free to try out your new updates in here, but once your ready, head
+        on over. Other than that, I'm going to be busy working so try not to distract
+        me too much.
+      emoticon: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
   convo:
   - lines:
-    - My partner is somewhere out there, collecting data.
-    - If you happen to run into them, they will be able to provide some form of powerup.
-    - Now run along, I'm busy.
+    - line: My partner is somewhere out there collecting data for me.
+      emoticon: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - line: However, knowing their personality, they probably found themselves in
+        a pinch.
+      emoticon: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - line: If you see them in trouble, do so kindly help them out. You will be rewarded
+        with your efforts.
+      emoticon: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
   - lines:
-    - Okay, you need to stop bothering me. I'm really busy at the moment.
-    - Feel free to try out your abilities in here, but try not to destroy anything.
+    - line: Although the use of your weapon would surely scare away any opponent
+        you face.
+      emoticon: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - line: It's still a good idea to use your abilities from time to time.
+      emoticon: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - line: Knowing when to use your ability and your attack is the key to successful
+        run.
+      emoticon: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
   firstPress: 0
   secondPress: 0
 --- !u!1 &1352083221317253627
@@ -593,6 +706,7 @@ MonoBehaviour:
   interactSign: {fileID: 8780467005084696631}
   DialogueSystem: {fileID: 1322586293339132836}
   Player: {fileID: 0}
+  TalkingNow: 0
 --- !u!135 &1661314399
 SphereCollider:
   m_ObjectHideFlags: 0
