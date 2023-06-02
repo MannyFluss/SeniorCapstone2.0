@@ -276,23 +276,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4
+      value: 1.87
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.05
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.99998534
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.0054229
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 751444514, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_LocalRotation.z
@@ -1408,7 +1408,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0911a3e0ce5e24582cd113ac309207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  NextSceneName: DefeatCalamarCutscene
+  currHealth: 0
+  maxHealth: 80
   canBeHit: 0
   tentacle1: {fileID: 793829369}
   tentacle2: {fileID: 1525191324}
@@ -3393,6 +3395,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 043ac99be6ba64dda87b2deec912d4ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BattleMusic: {fileID: 0}
+  NonBattleMusic: {fileID: 0}
+  levelT: 0
   dungeons:
   - {fileID: 1057009390}
   player: {fileID: 1436994761}
@@ -3400,6 +3405,9 @@ MonoBehaviour:
   - {fileID: 7833944956059155208, guid: f7a1a3b923ba54a7f84bfd066c1a8a1d, type: 3}
   - {fileID: 2554204022756465460, guid: 8a24a5979432b468b8f09754f3129405, type: 3}
   - {fileID: 8695581397578855058, guid: d43863e964b67402c827f39daa0ac6a2, type: 3}
+  levelOneMinionPrefabs: []
+  levelTwoMinionPrefabs: []
+  levelThreeMinionPrefabs: []
   ClearedCanvas: {fileID: 0}
   AppearTimer: 0
   complete: 0

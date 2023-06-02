@@ -29,9 +29,11 @@ public class Tentacle
 
 public class BossBehavior : MonoBehaviour
 {
+    [SerializeField] private string NextSceneName;
     //Boss properties
     private int stage = 1;
-    public float health = 100;
+    public float currHealth = 0;
+    public int maxHealth = 100;
     bool tentacleFrenzyInProgress = false;
     bool wipeOutInProgress = false;
     bool returnToSenderInProgress = false;
@@ -75,7 +77,8 @@ public class BossBehavior : MonoBehaviour
 
 
     void Start()
-    { 
+    {
+        currHealth = maxHealth;
         //Really ugly way of initializing values for struct
         tentacles[0] = new Tentacle();
         tentacles[1] = new Tentacle();
@@ -116,16 +119,21 @@ public class BossBehavior : MonoBehaviour
     /// </summary>
     private void healthCheckHandler()
     {
-        if(health < 60 && health >= 30 && stage != 2)
+        if(currHealth/(float)maxHealth < 0.60f && currHealth / (float)maxHealth >= 0.30f && stage != 2)
         {
             changeStage(2);
         }
-        else if(health < 30 && stage != 3)
+        else if(currHealth / (float)maxHealth < 0.30f && stage != 3)
         {
             changeStage(3);
         }
-        healthBar.rectTransform.localScale = new Vector3(health / 100f, 1f, 1f);
-        if (health <= 0) SceneManager.LoadScene("DefeatCalamarCutscene");
+        healthBar.rectTransform.localScale = new Vector3(currHealth / (float)maxHealth, 1f, 1f);
+        
+        if (currHealth <= 0.0f) 
+        {
+            GlobalLevel.Instance.CalamarDefeated = true;
+            SceneManager.LoadScene("The Lab");
+        }
 
     }
 
@@ -305,7 +313,7 @@ public class BossBehavior : MonoBehaviour
     {
         for (int i = 0; i < 20; i++)
         {
-            if (health > 50)
+            if (currHealth / (float)maxHealth > 0.50f)
             {
 
                 if (i % 3 == 0 && i != 0)
@@ -370,7 +378,7 @@ public class BossBehavior : MonoBehaviour
             else if (attackList[i] == "wipe out")
             {
                 StartCoroutine(wipeOutTiming());
-                if (health < 50)
+                if (currHealth / (float)maxHealth < 0.50f)
                 {
                     wipeOutInProgress = true;
                     yield return new WaitForSeconds(28f);
@@ -387,7 +395,7 @@ public class BossBehavior : MonoBehaviour
             else if (attackList[i] == "return to sender")
             {
                 StartCoroutine(returnToSenderTiming());
-                if (health < 60)
+                if (currHealth / (float)maxHealth < 0.60f)
                 {
                     returnToSenderInProgress = true;
                     yield return new WaitForSeconds(10f);
@@ -455,7 +463,7 @@ public class BossBehavior : MonoBehaviour
 
         //If hp is less than half make sweeps 3
         int sweeps = 2;
-        if (health < 50)
+        if (currHealth / (float)maxHealth < 0.50f)
         {
             sweeps = 3;
         }
@@ -509,7 +517,7 @@ public class BossBehavior : MonoBehaviour
     {
         animator.SetBool("throw", true);
         int throws = 10;
-        if (health < 60)
+        if (currHealth / (float)maxHealth < 0.60f)
         {
             throws = 16;
         }
@@ -531,7 +539,7 @@ public class BossBehavior : MonoBehaviour
     IEnumerator dropTrash(int index)
     {
         int throws = 10;
-        if (health < 60)
+        if (currHealth / (float)maxHealth < 0.60f)
         {
             throws = 16;
         }
