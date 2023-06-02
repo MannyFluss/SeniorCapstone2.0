@@ -24,7 +24,7 @@ public class EnterEnvironment : MonoBehaviour
             yield return null;
         }
         BlackScreen.color = new Color(1, 1, 1, 1);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(sceneName);
     }
 
