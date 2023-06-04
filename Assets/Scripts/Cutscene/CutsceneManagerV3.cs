@@ -79,6 +79,12 @@ public class CutsceneManagerV3 : MonoBehaviour
     }
 
     // ============================= //
+    [Header("Audio")]
+    [SerializeField] private AudioSource CutsceneMusic;
+    [SerializeField] private AudioSource CutsceneOutro;
+    
+    [Header("Scene")]
+    [SerializeField] private string NextScene;
 
     [Header("Set-Up")]
     [SerializeField] private Image blackScreen;
@@ -92,12 +98,8 @@ public class CutsceneManagerV3 : MonoBehaviour
     [SerializeField] private float nextText = 0.75f;
     [SerializeField] private float nextPage = 0.5f;
 
-    [Header("Audio")]
-    [SerializeField] private AudioSource CutsceneMusic;
-    [SerializeField] private AudioSource CutsceneOutro;
-
-    [Header("Scene")]
-    [SerializeField] private string NextScene;
+    
+    
 
     // ==========[Private]========== //
     private bool togglePress = false;
