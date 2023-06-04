@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,6 +27,7 @@ public class SimpleDialogue : MonoBehaviour
     [SerializeField] private Image DialogueBox;
     [SerializeField] private Image CharacterBust;
     [SerializeField] private Sprite DefaultSprite;
+    [SerializeField] private Image ContinueUI;
 
     [SerializeField] private StringCollection opening;
     [SerializeField] private List<StringCollection> convo;
@@ -34,9 +36,10 @@ public class SimpleDialogue : MonoBehaviour
 
     void Start()
     {
-        DialogueBox.GetComponent<Image>().enabled = false;
+        DialogueBox.enabled = false;
         CharacterBust.GetComponent<Image>().enabled = false;
         textBox.GetComponent<TextMeshProUGUI>().enabled = false;
+        ContinueUI.GetComponent<Image>().enabled = false;
     }
 
     private void Update()
@@ -113,11 +116,17 @@ public class SimpleDialogue : MonoBehaviour
                 yield return new WaitForSeconds(0.05f);
             }
 
-            // Wait for the Player to press Space
+            // Reveal ContinueUI and Wait for the Player to press Space
+            ContinueUI.enabled = true;
+            ContinueUI.GetComponent<FadeInAndOut>().toggle = true;
+            StartCoroutine(ContinueUI.GetComponent<FadeInAndOut>().FadeInFadeOut());
             while (!secondPress && numCharsRevealed == text.Length)
             {
                 yield return null;
             }
+            ContinueUI.GetComponent<FadeInAndOut>().toggle = false;
+            ContinueUI.GetComponent<FadeInAndOut>().Reset(ContinueUI);
+            ContinueUI.enabled = false;
 
             firstPress = false;
             secondPress = false;
@@ -125,6 +134,7 @@ public class SimpleDialogue : MonoBehaviour
         }
         showUI(false);
         Player.GetComponent<PlayerMovement>().TogglePlayerInput();
+        Target.GetComponent<VeeManager>().ToggleTalkMode();
         yield return null;
     }
 }

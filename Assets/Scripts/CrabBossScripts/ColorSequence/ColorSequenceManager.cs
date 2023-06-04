@@ -149,24 +149,28 @@ public class ColorSequenceManager : MonoBehaviour
             switch(color)
             {
                 case "green":
+                    greenTile.GetComponent<Tile>().SFX.Play();
                     mr.material = green;
                     greenTile.GetComponent<Tile>().lightOnTile();
                     yield return new WaitForSeconds(1f);
                     greenTile.GetComponent<Tile>().lightOffTile();
                     break;
                 case "red":
+                    redTile.GetComponent<Tile>().SFX.Play();
                     mr.material = red;
                     redTile.GetComponent<Tile>().lightOnTile();
                     yield return new WaitForSeconds(1f);
                     redTile.GetComponent<Tile>().lightOffTile();
                     break;
                 case "yellow":
+                    yellowTile.GetComponent<Tile>().SFX.Play();
                     mr.material = yellow;
                     yellowTile.GetComponent<Tile>().lightOnTile();
                     yield return new WaitForSeconds(1f);
                     yellowTile.GetComponent<Tile>().lightOffTile();
                     break;
                 case "blue":
+                    blueTile.GetComponent<Tile>().SFX.Play();
                     mr.material = blue;
                     blueTile.GetComponent<Tile>().lightOnTile();
                     yield return new WaitForSeconds(1f);

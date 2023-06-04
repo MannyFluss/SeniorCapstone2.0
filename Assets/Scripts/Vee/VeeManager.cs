@@ -8,6 +8,7 @@ public class VeeManager : MonoBehaviour
     [SerializeField] public GameObject interactSign;
     [SerializeField] public GameObject DialogueSystem;
     [SerializeField] private GameObject Player;
+    [SerializeField] private bool TalkingNow = false;
 
     private void Start()
     {
@@ -16,12 +17,19 @@ public class VeeManager : MonoBehaviour
 
     private void Update()
     {
-        if (VeeMain.Instance.TalkToVee && Input.GetKeyDown(KeyCode.F))
+        if (VeeMain.Instance.TalkToVee && Input.GetKeyDown(KeyCode.F) && !TalkingNow)
         {
+            ToggleTalkMode();
             Player.GetComponent<PlayerMovement>().TogglePlayerInput();
             DialogueSystem.GetComponent<SimpleDialogue>().talkToVee();
         }
     }
+
+    public void ToggleTalkMode()
+    {
+        TalkingNow = !TalkingNow;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

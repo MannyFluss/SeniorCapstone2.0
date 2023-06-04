@@ -41,16 +41,12 @@ public class DrKrabManager : MonoBehaviour
     private Image healthBar;
 
     [SerializeField] 
-    private AudioClip DrKrabBattleMusic;
+    private AudioSource DrKrabBattleMusic;
 
     private void Start()
     {
-        if (DrKrabBattleMusic != null)
-        {
-            AudioSource audio = this.GetComponent<AudioSource>();
-            audio.clip = DrKrabBattleMusic;
-            audio.Play();
-        }
+        DrKrabBattleMusic.Play();
+    
 
         bs = GetComponentInChildren<BubbleStream>();
         csm = GetComponentInChildren<ColorSequenceManager>();
