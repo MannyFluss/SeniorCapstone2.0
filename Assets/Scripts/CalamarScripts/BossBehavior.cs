@@ -132,7 +132,7 @@ public class BossBehavior : MonoBehaviour
         if (currHealth <= 0.0f) 
         {
             GlobalLevel.Instance.CalamarDefeated = true;
-            SceneManager.LoadScene("The Lab");
+            SceneManager.LoadScene(NextSceneName);
         }
 
     }

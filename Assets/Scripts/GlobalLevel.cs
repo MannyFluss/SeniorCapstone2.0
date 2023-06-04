@@ -5,7 +5,7 @@ using UnityEngine;
 public class GlobalLevel : MonoBehaviour
 {
     public static GlobalLevel Instance;
-    [ReadOnlyInspector] public bool CalamarDefeated = false;
+    [ReadOnlyInspector] public bool CalamarDefeated = true;
     [ReadOnlyInspector] public bool DrKrabDefeated = false;
 
     private void Awake()

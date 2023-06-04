@@ -18,6 +18,9 @@ public class Tile : MonoBehaviour
     [HideInInspector]
     public Material mat;
 
+    // Sound Effects
+    public AudioSource SFX;
+
     private void Start()
     {
         mat = GetComponent<MeshRenderer>().material;
@@ -29,6 +32,7 @@ public class Tile : MonoBehaviour
     {
         if(other.CompareTag("Player") && !tilePressed && interactable)
         {
+            SFX.Play();
             tilePressed = true;
             mat.EnableKeyword("_EMISSION");
             Debug.Log(other.gameObject.name);
