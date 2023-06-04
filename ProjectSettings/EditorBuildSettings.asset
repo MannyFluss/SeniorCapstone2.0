@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/The Lab.unity
     guid: 5f9afd9c572026d4886fe0a63db2eab8
   - enabled: 1
-    path: Assets/Scenes/HackNSlash.unity
+    path: Assets/Scenes/Environ1.unity
     guid: 571ef98d94bf2f7419b203589b5e86cb
   - enabled: 1
     path: Assets/Scenes/Calamar.unity
@@ -24,7 +24,7 @@ EditorBuildSettings:
     path: Assets/Scenes/CalamarCutScene.unity
     guid: fbe22fa012bddb5489c2c501afdb1861
   - enabled: 1
-    path: Assets/Scenes/HnS2.unity
+    path: Assets/Scenes/Environ2.unity
     guid: 8b6157355bf7302429edb873737d3c61
   - enabled: 1
     path: Assets/Scenes/DrKrab.unity
