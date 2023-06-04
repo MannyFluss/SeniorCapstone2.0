@@ -1506,7 +1506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c0911a3e0ce5e24582cd113ac309207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextSceneName: DefeatCalamarCutscene
+  NextSceneName: CalamarCutscene
   currHealth: 0
   maxHealth: 85
   canBeHit: 0
