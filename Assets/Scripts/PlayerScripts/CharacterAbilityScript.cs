@@ -39,7 +39,7 @@ public class CharacterAbilityScript : MonoBehaviour
     public PlayerHud HUDScript;
     //contains references to the currently chosen abilities
     
-    List<BaseAbilityScript> playerAbilities = new List<BaseAbilityScript> {null,null,null};
+    List<BaseAbilityScript> playerAbilities = new List<BaseAbilityScript> {null,null};
 
     //Player Controls
     private PlayerInput playerInput;
@@ -56,6 +56,7 @@ public class CharacterAbilityScript : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput();
+        print(Global.Instance.playerAbilitiesCopy[1]);
 
     }
     
@@ -88,10 +89,14 @@ public class CharacterAbilityScript : MonoBehaviour
         
         playerInput.Input.Skill3.performed += skillThreePressOrHold;
         playerInput.Input.Skill3.canceled += skillThreeReleased;
-
-        AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[0]);
-        AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[1]);
         removeAbility(0);
+        removeAbility(1);
+
+        // AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[0]);
+        // AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[1]);
+        equipAbility(Global.Instance.playerAbilitiesCopy[0],0);
+        equipAbility(Global.Instance.playerAbilitiesCopy[1],1);
+
         
         
     }
