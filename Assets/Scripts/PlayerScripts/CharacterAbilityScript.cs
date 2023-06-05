@@ -17,7 +17,6 @@ public class CharacterAbilityScript : MonoBehaviour
 
 
 
-    public int playerMoney = 100;
 
 
     // if you need prefabs for the abilities they go here
@@ -56,7 +55,6 @@ public class CharacterAbilityScript : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput();
-        print(Global.Instance.playerAbilitiesCopy[1]);
 
     }
     
@@ -92,8 +90,8 @@ public class CharacterAbilityScript : MonoBehaviour
         removeAbility(0);
         removeAbility(1);
 
-        // AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[0]);
-        // AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[1]);
+        AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[0]);
+        AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[1]);
         equipAbility(Global.Instance.playerAbilitiesCopy[0],0);
         equipAbility(Global.Instance.playerAbilitiesCopy[1],1);
 
