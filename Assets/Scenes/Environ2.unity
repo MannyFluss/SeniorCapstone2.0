@@ -2828,12 +2828,12 @@ MonoBehaviour:
   - {fileID: 69430160}
   - {fileID: 1779550555}
   - {fileID: 1086092912}
-  player: {fileID: 0}
+  player: {fileID: 281661406}
   minionPrefabs:
-  - {fileID: 2039353729}
-  - {fileID: 1869019274}
-  - {fileID: 900728870}
-  - {fileID: 806164507}
+  - {fileID: 5965691415419964115, guid: 6e62fb83fdc8b4b8aaf5099fd114ec84, type: 3}
+  - {fileID: 3970280996640149114, guid: d092ec0514ac04eb889595e725f2686a, type: 3}
+  - {fileID: 2513430375390504876, guid: aed8bb743639d432fa6945408d517887, type: 3}
+  - {fileID: 7446913950420671259, guid: 6ecb4b17afd1f4cc5847a7e90d207689, type: 3}
   levelOneMinionPrefabs: []
   levelTwoMinionPrefabs: []
   levelThreeMinionPrefabs: []
