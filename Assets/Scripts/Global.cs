@@ -13,10 +13,12 @@ public class Global : MonoBehaviour
         if (Instance==null)
         {
             Instance = this;
-            AbilityIcons.Add("ClawsOff","HUD_shockwave");
-            AbilityIcons.Add("SchrodingerBox","HUD_schrodinger_box");
-            AbilityIcons.Add("ExplosiveFishAbility","HUD_fish_barrel");
-            AbilityIcons.Add("NavalMine","HUD_naval_mine");
+            AbilityIcons.Add("ClawsOff","FinalAbilities/ABILITY_shockwave");
+            AbilityIcons.Add("SchrodingerBox","FinalAbilities/ABILITY_schrondingers box");
+            AbilityIcons.Add("ExplosiveFishAbility","FinalAbilities/ABILITY_fish barrel");
+            AbilityIcons.Add("NavalMine","FinalAbilities/ABILITY_naval mine");
+            AbilityIcons.Add("HeartyFix","FinalAbilities/ABILITY_hearty fix");
+            AbilityIcons.Add("KnivesOut","FinalAbilities/ABILITY_knives out");
             AbilityIcons.Add("empty", "HUD_no_ability");
 
             DontDestroyOnLoad(gameObject);
