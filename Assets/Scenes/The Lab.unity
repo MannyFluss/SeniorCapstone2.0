@@ -12298,6 +12298,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1913380371, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: m_text
+      value: "Welcome to my lab, Miyo. I\u2019m a big fan of your work; I watch all
+        of your ChefTube videos! I think you have the makings of the perfect supersoldier
+        to repel the fish invasion. With my help, you can obtain the power you need
+        to defeat King Calamar, the leader of the fish army."
+      objectReference: {fileID: 0}
     - target: {fileID: 1352083221317253627, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: m_Name
       value: Vee
@@ -12362,6 +12369,299 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1894782035}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.size
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[0].line
+      value: Welcome to my lab, Miyo.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[1].line
+      value: " I\u2019m a big fan of your work. I think you have the makings of the
+        perfect supersoldier to repel the fish invasion."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[2].line
+      value: With my help, you can obtain the power you need to defeat King Calamar
+        I, a leading force of the fish army.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[3].line
+      value: "First things first, I\u2019ll give you a shot of my supersoldier serum. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[4].line
+      value: "Don\u2019t worry, it\u2019s FDA-approved. It might make you a bit taller,
+        though."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[5].line
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[6].line
+      value: "Well well well. You look\u2026 exactly the same."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[7].line
+      value: But you should be much stronger now.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[8].line
+      value: In addition, the supersoldier serum acts as a foundation for other mutations.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[9].line
+      value: My partner in the field, Em, will be delivering those to you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[10].line
+      value: Good luck, Miyo. And may you avenge your fallen loved ones.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[0].lines.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[2].lines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[3].lines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[4].lines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[5].lines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[6].lines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[5].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[6].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[7].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[8].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[9].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[10].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[0].lines.Array.data[0].line
+      value: Although the use of your weapon would surely scare away any opponent
+        you face.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[0].lines.Array.data[1].line
+      value: It's still a good idea to use your abilities from time to time.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[0].lines.Array.data[2].line
+      value: Knowing when to use your ability and your attack is the key to successful
+        run.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[1].lines.Array.data[0].line
+      value: "I\u2019m a huge fan of your work, Miyo. You\u2019re my favorite ChefTuber."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[1].lines.Array.data[1].line
+      value: You even inspired me to take up the hobby of making sushi.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[1].lines.Array.data[2].line
+      value: "Some time, I\u2019ll have to have you try some, but there\u2019s no
+        way it\u2019ll be as good as yours."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[2].lines.Array.data[0].line
+      value: Sometimes I worry about Em.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[2].lines.Array.data[1].line
+      value: "They\u2019re always getting into trouble."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[2].lines.Array.data[2].line
+      value: "They\u2019re very capable, but they\u2019re also overeager."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[2].lines.Array.data[3].line
+      value: Make sure to protect them, Miyo.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[3].lines.Array.data[0].line
+      value: Science is the most beautiful thing; it can make sense of anything.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[3].lines.Array.data[1].line
+      value: With science, you will get your revenge and defeat the fish invasion.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[3].lines.Array.data[2].line
+      value: 'The only thing that matters to me is scientific advancement. '
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[3].lines.Array.data[3].line
+      value: The rest will sort itself out.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[4].lines.Array.data[0].line
+      value: The fish are powerful opponents.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[4].lines.Array.data[1].line
+      value: Somehow, they became much more intelligent and learned to survive on
+        land.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[4].lines.Array.data[2].line
+      value: "It\u2019s a curious situation."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[4].lines.Array.data[3].line
+      value: "You\u2019ll have to be cautious in your encounters with them."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[5].lines.Array.data[0].line
+      value: King Calamar I is a giant squid.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[5].lines.Array.data[1].line
+      value: "Truthfully, they\u2019re terrifying creatures. They\u2019re also extremely
+        intelligent. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[5].lines.Array.data[2].line
+      value: "You\u2019ll need strong mutations and a bit of luck to beat him."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[5].lines.Array.data[3].line
+      value: I believe in you, Miyo.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[6].lines.Array.data[0].line
+      value: King Calamar I is a giant squid.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[6].lines.Array.data[1].line
+      value: Somehow, they became much more intelligent and learned to survive on
+        land.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[6].lines.Array.data[2].line
+      value: "It\u2019s a curious situation."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[6].lines.Array.data[3].line
+      value: "You\u2019ll have to be cautious in your encounters with them."
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[2].lines.Array.data[0].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[2].lines.Array.data[1].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[2].lines.Array.data[2].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[2].lines.Array.data[3].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[3].lines.Array.data[0].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[3].lines.Array.data[1].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[3].lines.Array.data[2].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[3].lines.Array.data[3].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[4].lines.Array.data[0].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[4].lines.Array.data[1].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[4].lines.Array.data[2].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[4].lines.Array.data[3].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[5].lines.Array.data[0].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[5].lines.Array.data[1].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[5].lines.Array.data[2].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[5].lines.Array.data[3].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[6].lines.Array.data[0].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[6].lines.Array.data[1].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[6].lines.Array.data[2].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[6].lines.Array.data[3].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
     - target: {fileID: 6027997183723461570, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: Player
       value: 
