@@ -3,9 +3,24 @@ guid: c140c20bc8166d94b850a69e1b1a97c2
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1_CannonBase
+    second: {fileID: 2100000, guid: e50b5d058dd7f3941bc7b6171c048240, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1_CannonBody
+    second: {fileID: 2100000, guid: 4659d7811876c2f499f615fd207c8d97, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1_CannonBody.001
+    second: {fileID: 2100000, guid: b7120ec210554394096fb00172cca539, type: 2}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1

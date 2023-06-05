@@ -3,7 +3,27 @@ guid: 2c981dcde354e1b42963ba64d9a9400d
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1_SpeakerMicBlack
+    second: {fileID: 2100000, guid: f59bc55f59c253e43a9fc65967ee3d53, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1_SpeakerMicBlack2
+    second: {fileID: 2100000, guid: c60e612aee8736d428549eb13aa6133a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 1_SpeakerMicBlue
+    second: {fileID: 2100000, guid: 20fa3d5465f7db84d85dd1ebfc88bc2e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: b20848870913e8b4c91b707f452bb655, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

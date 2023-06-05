@@ -3,7 +3,17 @@ guid: 472681d735e7d864d943ad905b9a0b27
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pipe_Base.002
+    second: {fileID: 2100000, guid: 6444f1ce55443ce4ca74612445e02341, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Red_Light.001
+    second: {fileID: 2100000, guid: 8caabec491d462c44858e45b3673d958, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
