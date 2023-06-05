@@ -37,7 +37,9 @@ public class CharacterAttack : MonoBehaviour
     [SerializeField]
     public GameObject TabHud,ShopHud;
     [SerializeField]
-    private PlayerMovement myPlayerMovement; 
+    private PlayerMovement myPlayerMovement;
+
+    private Animator animator; 
 
 
     private void Awake()
@@ -53,7 +55,7 @@ public class CharacterAttack : MonoBehaviour
     void Start()
     {
         ui = GetComponentInChildren<PlayerUI>();
-
+        animator = GetComponent<Animator>();
         playerInput.Input.Hit.performed += hitInput;
 
     }
@@ -135,11 +137,16 @@ public class CharacterAttack : MonoBehaviour
     }
 
     IEnumerator hit()
-    {
+    {   
+
         SlashSoundEffect.Play();
+        animator.SetBool("isAttacking", true);
         canHit = false;
+        //animation delay
+        yield return new WaitForSeconds(0.3f);
         hitObj.SetActive(true);
         yield return new WaitForSeconds(hitboxCoolDown);
+        animator.SetBool("isAttacking", false);
         hitObj.SetActive(false);
         yield return new WaitForSeconds(atkCoolDown);
         canHit = true;
