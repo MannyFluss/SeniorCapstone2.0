@@ -35,7 +35,7 @@ public class ShopKeeperScript : MonoBehaviour
     {
         InteractUI.SetActive(false);
         playerInput.Enable();
-        playerInput.Input.Hit.performed += hitInput;
+        //playerInput.Input.Hit.performed += hitInput;
 
         player = GameObject.FindGameObjectWithTag("Player");
         playerAbilityManager = player.GetComponent<CharacterAbilityScript>();
@@ -47,16 +47,16 @@ public class ShopKeeperScript : MonoBehaviour
     private void hitInput(InputAction.CallbackContext context)
     {
 
-        print("asdjasduhas");
-        var di = Vector3.Distance(transform.position, player.transform.position);
-        foreach (GameObject enemies in GameObject.FindGameObjectsWithTag("Enemy"))
-        {
-            var distanceToEnemy = Vector3.Distance(gameObject.transform.position, enemies.transform.position);
-            if (distanceToEnemy < 40)
-            {
-                return;
-            }
-        }
+        //print("asdjasduhas");
+        //var di = Vector3.Distance(transform.position, player.transform.position);
+        //foreach (GameObject enemies in GameObject.FindGameObjectsWithTag("Enemy"))
+        //{
+        //    var distanceToEnemy = Vector3.Distance(gameObject.transform.position, enemies.transform.position);
+        //    if (distanceToEnemy < 40)
+        //    {
+        //        return;
+        //    }
+        //}
         //if (di <= interactRange && used == false)
         //{
         //    initiateShop();
