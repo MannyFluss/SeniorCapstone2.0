@@ -9,6 +9,7 @@ using UnityEngine.Events;
 
 public class DialogueScript : MonoBehaviour
 {
+    [SerializeField] private GameObject ShopKeeper;
     // Start is called before the first frame update
     [SerializeField]
     Canvas myCanvas;
@@ -40,7 +41,7 @@ public class DialogueScript : MonoBehaviour
         playerInput.Input.Jump.started += jumpInput; 
         playerInput.Enable();
         myCanvas.gameObject.SetActive(false);
-
+        nextLineIndicator.SetActive(false);
     }
 
     public void jumpInput(InputAction.CallbackContext context)
@@ -102,6 +103,7 @@ public class DialogueScript : MonoBehaviour
         }
         else
         {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().TogglePlayerInput();
             finishedDialogue();
         }
     }
@@ -110,7 +112,7 @@ public class DialogueScript : MonoBehaviour
     {
         onShopClose.Invoke();
         myCanvas.gameObject.SetActive(false);
-
+        ShopKeeper.SetActive(false);
     }
 
 }
