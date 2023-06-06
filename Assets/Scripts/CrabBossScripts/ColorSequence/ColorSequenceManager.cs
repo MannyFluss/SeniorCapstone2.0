@@ -9,7 +9,12 @@ public class ColorSequenceManager : MonoBehaviour
     DrKrabManager dkm;
 
     [SerializeField]
-    private GameObject screen;
+    private GameObject screen1;
+    [SerializeField]
+    private GameObject screen2;
+    [SerializeField]
+    private GameObject spotlights;
+
 
     [SerializeField]
     Material red;
@@ -33,7 +38,12 @@ public class ColorSequenceManager : MonoBehaviour
     GameObject greenTile;
 
     [Header("Other")]
-    MeshRenderer mr;
+    MeshRenderer mr1;
+    MeshRenderer mr2;
+    [SerializeField][ReadOnlyInspector] Light[] lights;
+    [SerializeField] private float maxIntensity = 360;
+    [SerializeField] private float minIntensity = 100;
+    [SerializeField] private float lightRate;
     //pipes and materials
     private Material[] greenMats;
     private Material[] redMats;
@@ -41,7 +51,8 @@ public class ColorSequenceManager : MonoBehaviour
 
     //Timer
     private float timer;
-    TMP_Text timerText;
+    TMP_Text timerText1;
+    TMP_Text timerText2;
     private bool runTimer;
 
     //Number of puzzles
@@ -58,10 +69,14 @@ public class ColorSequenceManager : MonoBehaviour
 
     void Start()
     {
+        lights = spotlights.GetComponentsInChildren<Light>();
+
         dkm = GetComponentInParent<DrKrabManager>();
         ct = GetComponentInChildren<ColorTiles>();
-        mr = screen.GetComponent<MeshRenderer>();
-        timerText = screen.GetComponentInChildren<TMP_Text>();
+        mr1 = screen1.GetComponent<MeshRenderer>();
+        mr2 = screen2.GetComponent<MeshRenderer>();
+        timerText1 = screen1.GetComponentInChildren<TMP_Text>();
+        timerText2 = screen2.GetComponentInChildren<TMP_Text>();
 
         colorSequence(100, 100f);
 
@@ -77,24 +92,24 @@ public class ColorSequenceManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timerHandler();
+        //timerHandler();
         valveHandler();
     }
 
-    private void timerHandler()
-    {
-        if(!runTimer)
-        {
-            return;
-        }
-        timerText.text = ((int)timer).ToString();
-        timer -= Time.deltaTime;
+    //private void timerHandler()
+    //{
+    //    if(!runTimer)
+    //    {
+    //        return;
+    //    }
+    //    timerText.text = ((int)timer).ToString();
+    //    timer -= Time.deltaTime;
 
-        if(timer <= 0)
-        {
-            Debug.Log("failed");
-        }
-    }
+    //    if(timer <= 0)
+    //    {
+    //        Debug.Log("failed");
+    //    }
+    //}
 
     private void valveHandler()
     {
@@ -137,41 +152,54 @@ public class ColorSequenceManager : MonoBehaviour
 
     private IEnumerator playColors()
     {
+        // Dim the Lights so the panel are more visible
+        StartCoroutine(DimLights());
+
         ct.disableTiles();
-        mr.material = def;
-        timerText.text = "Round " + (puzzlesComplete + 1);
+        mr1.material = def;
+        mr2.material = def;
+        timerText1.text = "Round " + (puzzlesComplete + 1);
+        timerText2.text = "Round " + (puzzlesComplete + 1);
+
         yield return new WaitForSeconds(2f);
+
         runTimer = false;
-        timerText.text = "";
-        foreach(string color in ct.sequence)
+        timerText1.text = "";
+        timerText2.text = "";
+
+        foreach (string color in ct.sequence)
         {
             if (color == "") break;
             switch(color)
             {
                 case "green":
                     greenTile.GetComponent<Tile>().SFX.Play();
-                    mr.material = green;
+                    mr1.material = green;
+                    mr2.material = green;
                     greenTile.GetComponent<Tile>().lightOnTile();
                     yield return new WaitForSeconds(1f);
                     greenTile.GetComponent<Tile>().lightOffTile();
                     break;
                 case "red":
                     redTile.GetComponent<Tile>().SFX.Play();
-                    mr.material = red;
+                    mr1.material = red;
+                    mr2.material = red;
                     redTile.GetComponent<Tile>().lightOnTile();
                     yield return new WaitForSeconds(1f);
                     redTile.GetComponent<Tile>().lightOffTile();
                     break;
                 case "yellow":
                     yellowTile.GetComponent<Tile>().SFX.Play();
-                    mr.material = yellow;
+                    mr1.material = yellow;
+                    mr2.material = yellow;
                     yellowTile.GetComponent<Tile>().lightOnTile();
                     yield return new WaitForSeconds(1f);
                     yellowTile.GetComponent<Tile>().lightOffTile();
                     break;
                 case "blue":
                     blueTile.GetComponent<Tile>().SFX.Play();
-                    mr.material = blue;
+                    mr1.material = blue;
+                    mr2.material = blue;
                     blueTile.GetComponent<Tile>().lightOnTile();
                     yield return new WaitForSeconds(1f);
                     blueTile.GetComponent<Tile>().lightOffTile();
@@ -179,8 +207,12 @@ public class ColorSequenceManager : MonoBehaviour
             }
             yield return new WaitForSeconds(1f);
         }
-        mr.material = def;
+        mr1.material = def;
+        mr2.material = def;
         runTimer = true;
+
+        // Rebrighten the lights
+        StartCoroutine(BrigthenLights());
         ct.enableTiles();
     }
 
@@ -188,11 +220,16 @@ public class ColorSequenceManager : MonoBehaviour
     {
         StopAllCoroutines();
         runTimer = false;
-        timerText.text = "YOU SUCK";
-        mr.material = red;
+        timerText1.text = "YOU SUCK";
+        timerText2.text = "LOSER XD";
+
+        mr1.material = red;
+        mr2.material = red;
         yield return new WaitForSeconds(1f);
-        mr.material = def;
-        timerText.text = "";
+        mr1.material = def;
+        mr2.material = def;
+        timerText1.text = "";
+        timerText2.text = "";
         yield return new WaitForSeconds(1f);
         StartCoroutine(playColors());
     }
@@ -201,10 +238,16 @@ public class ColorSequenceManager : MonoBehaviour
     {
         StopAllCoroutines();
         runTimer = false;
-        timerText.text = "GOOD STUFF";
-        mr.material = green;
+        timerText1.text = "GOOD STUFF";
+        timerText2.text = "WELL DONE";
+        mr1.material = green;
+        mr2.material = green;
+
         yield return new WaitForSeconds(1f);
-        mr.material = def;
+
+        mr1.material = def;
+        mr2.material = def;
+
         yield return new WaitForSeconds(1f);
         newSequence();
     }
@@ -213,7 +256,37 @@ public class ColorSequenceManager : MonoBehaviour
     {
         ct.disableTiles();
         runTimer = false;
-        timerText.text = "ALL 3 DONE";
+        timerText1.text = "WOW!!!";
+        timerText2.text = "NICE!!!";
         dkm.stunSequence();
     }
+
+    IEnumerator DimLights()
+    {
+        for (float i = maxIntensity; i >= minIntensity; i -= lightRate * Time.deltaTime)
+        {
+            //Dim the lights
+            for (int l = 1; l < lights.Length; l++)
+            {
+                lights[l].intensity = i;
+            }
+            yield return null;
+        }
+        yield return null;
+    }
+
+    IEnumerator BrigthenLights()
+    {
+        for (float i = minIntensity; i <= maxIntensity; i += lightRate * Time.deltaTime)
+        {
+            //Dim the lights
+            for (int l = 1; l < lights.Length; l++)
+            {
+                lights[l].intensity = i;
+            }
+            yield return null;
+        }
+        yield return null;
+    }
+
 }
