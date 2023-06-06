@@ -215,6 +215,7 @@ public class ShopUIPurchase : MonoBehaviour
     {
         shopTriplets[0] = new triplet(playerAbilities.getAbilityName(0));
         shopTriplets[1] = new triplet(playerAbilities.getAbilityName(1));
+        shopTriplets[2] = new triplet(playerAbilities.getAbilityName(2));
 
         shopTriplets[3] = new triplet("NavalMine");
         shopTriplets[4] = new triplet(AbilityOffer);
