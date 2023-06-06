@@ -77,6 +77,7 @@ public class DungeonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         ClearedCanvas.color = new Color(1, 1, 1, 0);
         ClearedCanvas.enabled = false;
         // Expose DungeonManager to
@@ -213,6 +214,7 @@ public class DungeonManager : MonoBehaviour
             }
             else
             {
+                GlobalLevel.Instance.PlayerHealth = player.GetComponent<PlayerManager>().health;
                 SceneManager.LoadScene(NextScene);
                 //ResetDungeon();
             }

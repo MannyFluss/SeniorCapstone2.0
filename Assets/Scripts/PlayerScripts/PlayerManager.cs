@@ -13,7 +13,7 @@ public class PlayerManager : MonoBehaviour
     private string SceneName;
 
     [Header("Player Stats")]
-    public float health = 9;
+    public float health;
 
     public bool canBeHit = true;
 
@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = GlobalLevel.Instance.PlayerHealth;
         movement = GetComponent<PlayerMovement>();
         attack = GetComponent<CharacterAttack>();
         animator = GetComponent<Animator>();

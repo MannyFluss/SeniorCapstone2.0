@@ -50,7 +50,7 @@ public class DrKrabManager : MonoBehaviour
     private void Start()
     {
         DrKrabBattleMusic.Play();
-   
+
 
         bs = GetComponentInChildren<BubbleStream>();
         csm = GetComponentInChildren<ColorSequenceManager>();

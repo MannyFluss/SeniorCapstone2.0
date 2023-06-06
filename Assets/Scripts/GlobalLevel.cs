@@ -5,6 +5,7 @@ using UnityEngine;
 public class GlobalLevel : MonoBehaviour
 {
     public static GlobalLevel Instance;
+    [ReadOnlyInspector] public float PlayerHealth;
     [ReadOnlyInspector] public bool CalamarDefeated;
     [ReadOnlyInspector] public bool DrKrabDefeated;
 

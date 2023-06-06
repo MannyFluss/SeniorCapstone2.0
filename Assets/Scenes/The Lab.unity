@@ -3387,6 +3387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffd6d6da59e5ec4f8bc1762ea8628d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerHealth: 0
   CalamarDefeated: 0
   DrKrabDefeated: 0
 --- !u!23 &468426666 stripped
