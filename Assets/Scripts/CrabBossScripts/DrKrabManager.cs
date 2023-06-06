@@ -94,6 +94,8 @@ public class DrKrabManager : MonoBehaviour
     {
         StopAllCoroutines();
         isReady = false;
+        rem.rippleEffectActive = false;
+        bs.bubbleStreamActive = false;
         anim.SetBool("bubbleStream", false);
         anim.SetBool("rippleEffect", false);
         bs.ClearCannons();
