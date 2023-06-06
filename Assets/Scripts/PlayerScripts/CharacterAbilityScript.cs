@@ -61,7 +61,7 @@ public class CharacterAbilityScript : MonoBehaviour
 
     public string getAbilityName(int index)
     {
-        if (index > 2)
+        if (index > 1)
         {
             return "empty";
         }
@@ -103,7 +103,6 @@ public class CharacterAbilityScript : MonoBehaviour
     {
         if (playerAbilities[0] == null){return false;}
         if (playerAbilities[1] == null){return false;}
-        if (playerAbilities[2] == null){return false;}
 
         return true;
     }
