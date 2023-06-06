@@ -165,7 +165,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void dashInput(InputAction.CallbackContext context)
     {
-        if(characterController.isGrounded && isDashCooledDown)
+        if(characterController.isGrounded && isDashCooledDown && animator.GetBool("isRunning"))
         {
             _dash = true;
             //dash sound effect
@@ -241,6 +241,7 @@ public class PlayerMovement : MonoBehaviour
         // Dash
         if (_dash)
         {
+            animator.SetBool("isDashing", true);
             var storedPos = new Vector3[3]; 
 
             //Handle dash movement
@@ -319,6 +320,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isDashCooledDown = false;
         yield return new WaitForSeconds(dashCoolDownSeconds);
+        animator.SetBool("isDashing", false);
         isDashCooledDown = true;
     }
 
