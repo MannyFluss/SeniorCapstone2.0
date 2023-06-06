@@ -6,7 +6,7 @@ public class RippleEffectManager : MonoBehaviour
 {
     private float interval = 0.0f;
 
-    RippleEffectSingle[] ripples = new RippleEffectSingle[4];
+    RippleEffectSingle[] ripples = new RippleEffectSingle[2];
 
     [SerializeField]
     private float nineWaveInterval = 8f;
@@ -20,6 +20,16 @@ public class RippleEffectManager : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++)
         {
             ripples[i] = transform.GetChild(i).GetComponent<RippleEffectSingle>();
+        }
+    }
+
+    public void ClearRipples()
+    {
+        StopAllCoroutines();
+        foreach (RippleEffectSingle r in ripples)
+        {
+            r.ps.Stop();
+            r.ps.Clear();
         }
     }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RippleEffectSingle : MonoBehaviour
 {
-    ParticleSystem ps;
+    public ParticleSystem ps;
 
     // Start is called before the first frame update
     void Start()

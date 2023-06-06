@@ -211,6 +211,7 @@ public class ColorSequenceManager : MonoBehaviour
 
     public void stunSequence()
     {
+        ct.disableTiles();
         runTimer = false;
         timerText.text = "ALL 3 DONE";
         dkm.stunSequence();

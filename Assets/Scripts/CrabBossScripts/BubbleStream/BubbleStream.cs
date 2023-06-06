@@ -23,7 +23,15 @@ public class BubbleStream : MonoBehaviour
         }
     }
 
-    
+    public void ClearCannons()
+    {
+        StopAllCoroutines();
+        foreach (ParticleSystem p in bubbles)
+        {
+            p.Stop();
+            p.Clear();
+        }
+    }
 
     public void bubbleStream(int health, float maxHealth)
     {
@@ -35,7 +43,8 @@ public class BubbleStream : MonoBehaviour
     {
         var num = 0;
         var interval = 1.5f;
-        if(health/maxHealth >= .40f)
+        var oddEven = false;
+        if (health/maxHealth >= .40f)
         {
             num = 3;
         }
@@ -45,17 +54,24 @@ public class BubbleStream : MonoBehaviour
         }
         for(int i = 0; i < num; i++)
         {
-            //random values
-            int[] arr = { 1, 2, 3, 4, 5, 6, 7, 8, 0 };
-            for (int t = 0; t < arr.Length; t++)
+            if (oddEven)
             {
-                int tmp = arr[t];   
-                int r = Random.Range(t, arr.Length);
-                arr[t] = arr[r];
-                arr[r] = tmp;
+                cannons[0].fireSingleCannon();
+                cannons[2].fireSingleCannon();
+                cannons[4].fireSingleCannon();
+                cannons[6].fireSingleCannon();
+                cannons[8].fireSingleCannon();
+                oddEven = !oddEven;
             }
-
-
+            else
+            {
+                cannons[1].fireSingleCannon();
+                cannons[3].fireSingleCannon();
+                cannons[5].fireSingleCannon();
+                cannons[7].fireSingleCannon();
+                //cannons[9].fireSingleCannon();
+                oddEven = !oddEven;
+            }
 
             if (health/maxHealth >= 0.75f)
             {
@@ -64,11 +80,6 @@ public class BubbleStream : MonoBehaviour
                     var main = p.main;
                     main.startSpeed = 17;
                 }
-                cannons[arr[0]].fireSingleCannon();
-                cannons[arr[1]].fireSingleCannon();
-                cannons[arr[2]].fireSingleCannon();
-                cannons[arr[3]].fireSingleCannon();
-                cannons[arr[4]].fireSingleCannon();
 
             }
             else if (health/maxHealth < 0.75f && health/maxHealth >= 0.39f)
@@ -79,12 +90,6 @@ public class BubbleStream : MonoBehaviour
                     main.startSpeed = 20;
                 }
                 interval = 1.2f;
-                cannons[arr[0]].fireSingleCannon();
-                cannons[arr[1]].fireSingleCannon();
-                cannons[arr[2]].fireSingleCannon();
-                cannons[arr[3]].fireSingleCannon();
-                cannons[arr[4]].fireSingleCannon();
-                cannons[arr[5]].fireSingleCannon();
             }
             else
             {
@@ -94,12 +99,6 @@ public class BubbleStream : MonoBehaviour
                     main.startSpeed = 25;
                 }
                 interval = 1f;
-                cannons[arr[0]].fireSingleCannon();
-                cannons[arr[1]].fireSingleCannon();
-                cannons[arr[2]].fireSingleCannon();
-                cannons[arr[3]].fireSingleCannon();
-                cannons[arr[4]].fireSingleCannon();
-                cannons[arr[5]].fireSingleCannon();
             }
             yield return new WaitForSeconds(interval);
         }
