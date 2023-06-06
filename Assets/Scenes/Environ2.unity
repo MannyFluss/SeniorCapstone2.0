@@ -8277,6 +8277,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &507696733 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8423639779600477428, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+  m_PrefabInstance: {fileID: 1384513392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &508052667
 GameObject:
   m_ObjectHideFlags: 0
@@ -15439,6 +15444,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!223 &911856551 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 516854371556354066, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+  m_PrefabInstance: {fileID: 1384513392}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &919484289
 GameObject:
   m_ObjectHideFlags: 0
@@ -22011,6 +22021,14 @@ PrefabInstance:
       propertyPath: onShopOpen.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: shopUI
+      value: 
+      objectReference: {fileID: 911856551}
+    - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopOpen.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 507696733}
     - target: {fileID: 8283307058266513987, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_Name
       value: ShopKeeper
