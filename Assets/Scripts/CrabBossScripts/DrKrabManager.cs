@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class DrKrabManager : MonoBehaviour
 {
+    [SerializeField]
+    PlayerManager player;
 
     //move scripts
     BubbleStream bs;
@@ -35,6 +37,8 @@ public class DrKrabManager : MonoBehaviour
     //Animation
     [SerializeField]
     PlayableDirector pd;
+    [SerializeField]
+    Animator anim;
 
     //health
     [SerializeField]
@@ -46,7 +50,7 @@ public class DrKrabManager : MonoBehaviour
     private void Start()
     {
         DrKrabBattleMusic.Play();
-    
+   
 
         bs = GetComponentInChildren<BubbleStream>();
         csm = GetComponentInChildren<ColorSequenceManager>();
@@ -57,6 +61,7 @@ public class DrKrabManager : MonoBehaviour
         canBeHit = false;
 
         beginMoves();
+
         // ttbm.TicTicBoom(curHealth);
 
     }
@@ -87,8 +92,12 @@ public class DrKrabManager : MonoBehaviour
 
     public void stunSequence()
     {
-        isReady = false;
         StopAllCoroutines();
+        isReady = false;
+        anim.SetBool("bubbleStream", false);
+        anim.SetBool("rippleEffect", false);
+        bs.ClearCannons();
+        rem.ClearRipples();
         toggleHit();
         pd.Play();
     }
@@ -104,12 +113,16 @@ public class DrKrabManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         if (moveNum == 0)
         {
+            anim.SetBool("bubbleStream", true);
+            anim.SetBool("rippleEffect", false);
             bs.bubbleStream(curHealth, maxHealth);
             isReady = true;
             moveNum = 1;
         }
         else
         {
+            anim.SetBool("rippleEffect", true);
+            anim.SetBool("bubbleStream", false);
             rem.rippleEffect(curHealth, maxHealth);
             isReady = true;
             moveNum = 0;

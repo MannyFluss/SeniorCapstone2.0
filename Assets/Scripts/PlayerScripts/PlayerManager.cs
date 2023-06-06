@@ -15,7 +15,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Player Stats")]
     public float health = 9;
 
-    private bool canBeHit = true;
+    public bool canBeHit = true;
 
     PlayerMovement movement;
     [SerializeField]
@@ -79,6 +79,11 @@ public class PlayerManager : MonoBehaviour
     {
         health += 1;
         PlayerHUDReference.setUIHearts(((int)health));
+    }
+
+    public void toggleHit()
+    {
+        canBeHit = !canBeHit;
     }
 
     private void OnTriggerEnter(Collider other)
