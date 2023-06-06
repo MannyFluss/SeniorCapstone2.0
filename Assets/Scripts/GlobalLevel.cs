@@ -5,11 +5,13 @@ using UnityEngine;
 public class GlobalLevel : MonoBehaviour
 {
     public static GlobalLevel Instance;
-    [ReadOnlyInspector] public bool CalamarDefeated = true;
-    [ReadOnlyInspector] public bool DrKrabDefeated = false;
+    [ReadOnlyInspector] public bool CalamarDefeated;
+    [ReadOnlyInspector] public bool DrKrabDefeated;
 
     private void Awake()
     {
+        CalamarDefeated = true;
+        DrKrabDefeated = true;
         if (Instance != null)
         {
             Destroy(gameObject);

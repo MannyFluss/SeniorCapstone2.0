@@ -58,6 +58,8 @@ public class DungeonManager : MonoBehaviour
     //added nonbattlemusictheme
     [SerializeField] private AudioSource NonBattleMusic;
 
+    [SerializeField] private string NextScene;
+
     public bool levelT = false;
     public GameObject[] dungeons = new GameObject[0];
     public GameObject player;
@@ -67,7 +69,7 @@ public class DungeonManager : MonoBehaviour
     public List<GameObject> levelThreeMinionPrefabs = new List<GameObject>();
 
     [Header("Cleared Message Assets")]
-    public Canvas ClearedCanvas;
+    public Image ClearedCanvas;
     public float AppearTimer;
     public bool complete = false;
     public bool msgDelivered = false;
@@ -75,6 +77,8 @@ public class DungeonManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        ClearedCanvas.color = new Color(1, 1, 1, 0);
+        ClearedCanvas.enabled = false;
         // Expose DungeonManager to
         foreach (var minionPrefab in minionPrefabs)
         {
@@ -209,7 +213,7 @@ public class DungeonManager : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                SceneManager.LoadScene(NextScene);
                 //ResetDungeon();
             }
         }
@@ -252,8 +256,18 @@ public class DungeonManager : MonoBehaviour
 
     IEnumerator ClearBannerAppear(float waitTime)
     {
-        ClearedCanvas.GetComponent<Canvas>().enabled = true;
-        yield return new WaitForSeconds(waitTime);
-        ClearedCanvas.GetComponent<Canvas>().enabled = false;
+        ClearedCanvas.enabled = true;
+        for (float alpha = 0; alpha <= 1f; alpha += 1.2f * Time.deltaTime)
+        {
+            ClearedCanvas.color = new Color(1, 1, 1, alpha);
+            yield return null;
+        }
+        yield return new WaitForSeconds(1.2f);
+        for (float alpha = 1f; alpha >= 0f; alpha -= 1.2f * Time.deltaTime)
+        {
+            ClearedCanvas.color = new Color(1, 1, 1, alpha);
+            yield return null;
+        }
+        ClearedCanvas.enabled = false;
     }
 }
