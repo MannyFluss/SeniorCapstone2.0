@@ -10,7 +10,7 @@ public class ShopKeeperScript : MonoBehaviour
 {
     public NPCConversation myConversation;
     float interactRange = 4.0f;
-    bool inRange = false;
+    private bool inRange = false;
     GameObject player;
     CharacterAbilityScript playerAbilityManager;
 
@@ -22,6 +22,11 @@ public class ShopKeeperScript : MonoBehaviour
     [SerializeField]
     private UnityEvent onShopOpen;
 
+
+    [SerializeField]
+    private GameObject InteractUI;
+
+
     private PlayerInput playerInput;
   
     
@@ -31,7 +36,8 @@ public class ShopKeeperScript : MonoBehaviour
     }
     void Start()
     {
-        
+        InteractUI.SetActive(false);
+
         playerInput.Enable();
         playerInput.Input.Hit.performed += hitInput;
 
@@ -40,32 +46,36 @@ public class ShopKeeperScript : MonoBehaviour
         
     }
 
-
-
     private void hitInput(InputAction.CallbackContext context)
     {
 
         print("asdjasduhas");
-        var di = Vector3.Distance(transform.position,player.transform.position);
+        var di = Vector3.Distance(transform.position, player.transform.position);
         foreach (GameObject enemies in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            var distanceToEnemy = Vector3.Distance(gameObject.transform.position,enemies.transform.position);
+            var distanceToEnemy = Vector3.Distance(gameObject.transform.position, enemies.transform.position);
             if (distanceToEnemy < 40)
             {
                 return;
             }
         }
-        if (di <= interactRange && used == false)
-        {
-            initiateShop();
-            used = true;
-        }
-        
+        //if (di <= interactRange && used == false)
+        //{
+        //    initiateShop();
+        //    used = true;
+        //}
+
     }
-    
-    
+
+
     void Update()
-    {   
+    {
+        if(Input.GetKeyDown(KeyCode.F) && Global.Instance.canTalk && inRange)
+        {
+            player.GetComponent<PlayerMovement>().TogglePlayerInput();
+            initiateShop();
+        }
+
         //removes shopkeeper if finished talking to
         // if (used && !ConversationManager.Instance.IsConversationActive) this.gameObject.SetActive(false);
         // playMoneyText.text = "Player Money: " + playerAbilityManager.playerMoney;
@@ -130,5 +140,22 @@ public class ShopKeeperScript : MonoBehaviour
         // {
         //     ConversationManager.Instance.StartConversation(myConversation);
         // }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Player"))
+        {
+            InteractUI.SetActive(true);
+            inRange = true;
+        }
+    }
+    private void OnTriggerExit (Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            InteractUI.SetActive(false);
+            inRange = false;
+        }
     }
 }

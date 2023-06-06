@@ -7,6 +7,7 @@ public class GlobalLevel : MonoBehaviour
     public static GlobalLevel Instance;
     [ReadOnlyInspector] public bool CalamarDefeated;
     [ReadOnlyInspector] public bool DrKrabDefeated;
+    [ReadOnlyInspector] public float PlayerHealth = 9;
 
     private void Awake()
     {

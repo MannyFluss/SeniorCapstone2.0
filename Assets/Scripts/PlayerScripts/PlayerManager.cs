@@ -26,6 +26,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = GlobalLevel.Instance.PlayerHealth;
         movement = GetComponent<PlayerMovement>();
         attack = GetComponent<CharacterAttack>();
         animator = GetComponent<Animator>();

@@ -192,7 +192,7 @@ public class DungeonManager : MonoBehaviour
         Debug.Log(currentDungeon.RemainMinions());
         if (currentDungeon.RemainMinions() == 0)
         {
-
+            Global.Instance.canTalk = false;
             if (FindNextDungeon(dungeon: dungeon) != null)
             {
                 Dungeon nextDungeon = FindNextDungeon(dungeon: dungeon).GetComponent<Dungeon>();
@@ -213,6 +213,8 @@ public class DungeonManager : MonoBehaviour
             }
             else
             {
+                Global.Instance.canTalk = false;
+                GlobalLevel.Instance.PlayerHealth = player.GetComponent<PlayerManager>().health;
                 SceneManager.LoadScene(NextScene);
                 //ResetDungeon();
             }
@@ -223,6 +225,7 @@ public class DungeonManager : MonoBehaviour
     {
         if (!msgDelivered)
         {
+            Global.Instance.canTalk = true;
             StartCoroutine(ClearBannerAppear(AppearTimer));
             msgDelivered = true;
 

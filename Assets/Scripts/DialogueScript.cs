@@ -29,7 +29,6 @@ public class DialogueScript : MonoBehaviour
     [SerializeField]
     private UnityEvent onShopClose;
 
-
     private void Awake()
     {
         playerInput = new PlayerInput();
@@ -108,6 +107,7 @@ public class DialogueScript : MonoBehaviour
 
     void finishedDialogue()
     {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().TogglePlayerInput();
         onShopClose.Invoke();
         myCanvas.gameObject.SetActive(false);
 

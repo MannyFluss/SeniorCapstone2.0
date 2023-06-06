@@ -14,6 +14,8 @@ public class LabManager : MonoBehaviour
     // Check the Global Level variables to see which door are open.
     void Start()
     {
+        GlobalLevel.Instance.PlayerHealth = 9;
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().health = GlobalLevel.Instance.PlayerHealth;
         // Play Music
         PlayLabMusic();
 

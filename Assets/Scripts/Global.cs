@@ -7,7 +7,8 @@ public class Global : MonoBehaviour
     public int Value;
     public Dictionary<string,string> AbilityIcons = new Dictionary<string, string>();
     public List<string> playerAbilitiesCopy = new List<string> {"SchrodingerBox","ClawsOff",null};
-    
+    public bool canTalk = false;
+
     private void Awake()
     {
         if (Instance==null)
