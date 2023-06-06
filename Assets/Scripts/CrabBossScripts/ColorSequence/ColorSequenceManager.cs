@@ -155,6 +155,8 @@ public class ColorSequenceManager : MonoBehaviour
         // Dim the Lights so the panel are more visible
         StartCoroutine(DimLights());
 
+        dkm.isReady = false;
+
         ct.disableTiles();
         mr1.material = def;
         mr2.material = def;
@@ -210,6 +212,7 @@ public class ColorSequenceManager : MonoBehaviour
         mr1.material = def;
         mr2.material = def;
         runTimer = true;
+        dkm.isReady = true;
 
         // Rebrighten the lights
         StartCoroutine(BrigthenLights());

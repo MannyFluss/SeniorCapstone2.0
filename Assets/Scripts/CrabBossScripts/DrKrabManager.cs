@@ -26,7 +26,7 @@ public class DrKrabManager : MonoBehaviour
     [Header("Boss Timing")]
     [SerializeField]
     private float waitTime = 0f;
-    private bool isReady = false;
+    public bool isReady = false;
 
     public int moveNum;
 
