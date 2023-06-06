@@ -17,7 +17,6 @@ public class CharacterAbilityScript : MonoBehaviour
 
 
 
-    public int playerMoney = 100;
 
 
     // if you need prefabs for the abilities they go here
@@ -39,7 +38,7 @@ public class CharacterAbilityScript : MonoBehaviour
     public PlayerHud HUDScript;
     //contains references to the currently chosen abilities
     
-    List<BaseAbilityScript> playerAbilities = new List<BaseAbilityScript> {null,null,null};
+    List<BaseAbilityScript> playerAbilities = new List<BaseAbilityScript> {null,null};
 
     //Player Controls
     private PlayerInput playerInput;
@@ -88,10 +87,14 @@ public class CharacterAbilityScript : MonoBehaviour
         
         playerInput.Input.Skill3.performed += skillThreePressOrHold;
         playerInput.Input.Skill3.canceled += skillThreeReleased;
+        removeAbility(0);
+        removeAbility(1);
 
         AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[0]);
         AbilityPickUpInteract(Global.Instance.playerAbilitiesCopy[1]);
-        removeAbility(0);
+        equipAbility(Global.Instance.playerAbilitiesCopy[0],0);
+        equipAbility(Global.Instance.playerAbilitiesCopy[1],1);
+
         
         
     }
