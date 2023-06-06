@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1901,10 +1901,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 69430162}
     m_Modifications:
-    - target: {fileID: 7300166730710432380, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
-      propertyPath: m_Sprite
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 21300000, guid: a391cf1ce9f51f747baad44f06fd2c76, type: 3}
+      objectReference: {fileID: 13688562}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 13688561}
     - target: {fileID: 8283307058266513987, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_Name
       value: ShopKeeper
@@ -2560,18 +2564,14 @@ PrefabInstance:
       propertyPath: Event.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 13688561}
-    - target: {fileID: 4703468527426111652, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 13688562}
-    - target: {fileID: 4703468527426111652, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 13688561}
-    - target: {fileID: 7300166730710432380, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: a391cf1ce9f51f747baad44f06fd2c76, type: 3}
     - target: {fileID: 8283307058266513987, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_Name
       value: ShopKeeper
@@ -4733,7 +4733,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169123724458600322, guid: 6e14c50a5568e384db047bd7ddd3104d, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3169123724458600322, guid: 6e14c50a5568e384db047bd7ddd3104d, type: 3}
       propertyPath: m_LocalScale.x
@@ -6757,7 +6757,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3169123724458600322, guid: 6e14c50a5568e384db047bd7ddd3104d, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3169123724458600322, guid: 6e14c50a5568e384db047bd7ddd3104d, type: 3}
       propertyPath: m_LocalScale.x
@@ -10915,7 +10915,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265150723}
   m_LocalRotation: {x: 0.21064237, y: -0, z: -0, w: 0.9775632}
-  m_LocalPosition: {x: 157.9175, y: 14.7, z: 30}
+  m_LocalPosition: {x: 158.83, y: 18.98, z: 31.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12137,7 +12137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7027349320529524372, guid: 93835932119883f49aa38b471f1f18b6, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7027349320529524372, guid: 93835932119883f49aa38b471f1f18b6, type: 3}
       propertyPath: m_LocalScale.x

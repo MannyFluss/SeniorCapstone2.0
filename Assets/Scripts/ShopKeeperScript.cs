@@ -23,15 +23,17 @@ public class ShopKeeperScript : MonoBehaviour
     private UnityEvent onShopOpen;
 
     private PlayerInput playerInput;
-  
-    
+
+    [SerializeField] private GameObject InteractUI;
+    [SerializeField] private bool canTalk;
+
     void Awake()
     {
         playerInput = new PlayerInput();
     }
     void Start()
     {
-        
+        InteractUI.SetActive(false);
         playerInput.Enable();
         playerInput.Input.Hit.performed += hitInput;
 
@@ -46,26 +48,31 @@ public class ShopKeeperScript : MonoBehaviour
     {
 
         print("asdjasduhas");
-        var di = Vector3.Distance(transform.position,player.transform.position);
+        var di = Vector3.Distance(transform.position, player.transform.position);
         foreach (GameObject enemies in GameObject.FindGameObjectsWithTag("Enemy"))
         {
-            var distanceToEnemy = Vector3.Distance(gameObject.transform.position,enemies.transform.position);
+            var distanceToEnemy = Vector3.Distance(gameObject.transform.position, enemies.transform.position);
             if (distanceToEnemy < 40)
             {
                 return;
             }
         }
-        if (di <= interactRange && used == false)
+        //if (di <= interactRange && used == false)
+        //{
+        //    initiateShop();
+        //    used = true;
+        //}
+
+    }
+
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && canTalk)
         {
             initiateShop();
-            used = true;
+            player.GetComponent<PlayerMovement>().TogglePlayerInput();
         }
-        
-    }
-    
-    
-    void Update()
-    {   
         //removes shopkeeper if finished talking to
         // if (used && !ConversationManager.Instance.IsConversationActive) this.gameObject.SetActive(false);
         // playMoneyText.text = "Player Money: " + playerAbilityManager.playerMoney;
@@ -115,7 +122,7 @@ public class ShopKeeperScript : MonoBehaviour
     public void initiateShop()
     {
         //find object with the shopurchase script and set game object active
-        
+
         // //FindGameObjectWithTag("ShopUI").SetActive(true);
         // ShopUIPurchase temp = FindObjectOfType<ShopUIPurchase>();
         // temp.gameObject.SetActive(true);
@@ -130,5 +137,23 @@ public class ShopKeeperScript : MonoBehaviour
         // {
         //     ConversationManager.Instance.StartConversation(myConversation);
         // }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canTalk = true;
+            InteractUI.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canTalk = false;
+            InteractUI.SetActive(false);
+        }
     }
 }
