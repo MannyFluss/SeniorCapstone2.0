@@ -12542,11 +12542,11 @@ PrefabInstance:
       objectReference: {fileID: 1894782035}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.size
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[0].line
@@ -12559,8 +12559,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[2].line
-      value: With my help, you can obtain the power you need to defeat King Calamar
-        I, a leading force of the fish army.
+      value: With my help, you can obtain the power you need to defeat King Calamar,
+        a leading force of the fish army.
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[3].line
@@ -12593,6 +12593,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[10].line
+      value: You can talk to me anytime. I would love to chat more with you.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[11].line
       value: Good luck, Miyo. And may you avenge your fallen loved ones.
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
@@ -12641,6 +12645,10 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[10].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[11].emoticon
       value: 
       objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
@@ -12738,20 +12746,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[6].lines.Array.data[0].line
-      value: King Calamar I is a giant squid.
+      value: "Apparently, there\u2019s a dangerous crab deeper in the ocean that
+        goes by 'doctor.'"
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[6].lines.Array.data[1].line
-      value: Somehow, they became much more intelligent and learned to survive on
-        land.
+      value: It bothers me because the word 'doctor' has been coopted by medical
+        practitioners when all kinds of PhDs are doctors.
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[6].lines.Array.data[2].line
-      value: "It\u2019s a curious situation."
+      value: "But we don\u2019t even know if this crab is a medical practitioner
+        or a PhD. They could be a layman using the term erroneously to garner respect."
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[6].lines.Array.data[3].line
-      value: "You\u2019ll have to be cautious in your encounters with them."
+      value: Just thinking about it ticks me off.
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[2].lines.Array.data[0].emoticon
