@@ -4058,7 +4058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1894782035}
-  sceneName: Environ1
+  sceneName: DrKrab
   BlackScreen: {fileID: 1624830572}
 --- !u!65 &579411907
 BoxCollider:
@@ -4258,7 +4258,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh135940
+  m_Name: pb_Mesh60826
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -12452,7 +12452,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[5].line
-      value: 
+      value: ......
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[6].line

@@ -1225,7 +1225,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -23926,6 +23926,7 @@ MonoBehaviour:
   maxHealth: 40
   canBeHit: 0
   waitTime: 0
+  isReady: 0
   moveNum: 0
   pd: {fileID: 2117145791}
   anim: {fileID: 325389238}
