@@ -12388,8 +12388,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[2].line
-      value: With my help, you can obtain the power you need to defeat King Calamar
-        I, a leading force of the fish army.
+      value: With my help, you can obtain the power you need to defeat King Calamar,
+        a leading force of the fish army.
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[3].line
