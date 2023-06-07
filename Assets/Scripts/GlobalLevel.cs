@@ -9,6 +9,9 @@ public class GlobalLevel : MonoBehaviour
     [ReadOnlyInspector] public bool CalamarDefeated;
     [ReadOnlyInspector] public bool DrKrabDefeated;
 
+    [Header("Event Variables")]
+    [ReadOnlyInspector] public bool TalkedtoVee = false;
+
     private void Awake()
     {
         CalamarDefeated = true;

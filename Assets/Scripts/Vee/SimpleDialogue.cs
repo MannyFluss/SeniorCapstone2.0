@@ -68,9 +68,9 @@ public class SimpleDialogue : MonoBehaviour
         showUI(true);
         if (!VeeMain.Instance.NotFirstTime)
         {
-            VeeMain.Instance.NotFirstTime = true;
             StartCoroutine(RevealText(opening));
             VeeMain.Instance.TalkToVee = true;
+            GlobalLevel.Instance.TalkedtoVee = true;
         }
         else
         {
@@ -88,7 +88,7 @@ public class SimpleDialogue : MonoBehaviour
         }
     }
 
-    IEnumerator RevealText(StringCollection input)
+    public IEnumerator RevealText(StringCollection input)
     {
         foreach (DialogueSet d in input.lines)
         {
@@ -135,6 +135,7 @@ public class SimpleDialogue : MonoBehaviour
         showUI(false);
         Player.GetComponent<PlayerMovement>().TogglePlayerInput();
         Target.GetComponent<VeeManager>().ToggleTalkMode();
+        VeeMain.Instance.NotFirstTime = true;
         yield return null;
     }
 }
