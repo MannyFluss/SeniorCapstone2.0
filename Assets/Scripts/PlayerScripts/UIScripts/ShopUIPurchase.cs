@@ -13,6 +13,14 @@ public class ShopUIPurchase : MonoBehaviour
     private void Awake()
     {
         playerInput = new PlayerInput();
+        playerInput.Enable();
+        playerInput.Input.Skill1.performed += skillOnePressOrHold;
+
+        
+        playerInput.Input.Skill2.performed += skillTwoPressOrHold;
+
+
+
     }
     //needs atleast one button in the list or else crash
     [SerializeField]
@@ -29,18 +37,15 @@ public class ShopUIPurchase : MonoBehaviour
     }
 
 
-    private void shopSelection(InputAction.CallbackContext context)
+    private void skillOnePressOrHold(InputAction.CallbackContext context)
     {
-        
+        doThisOnClick(PlayerAbility1Inventory.gameObject);
     }
-    private void confirmPurchase(InputAction.CallbackContext context)
+    private void skillTwoPressOrHold(InputAction.CallbackContext context)
     {
-        
+        doThisOnClick(PlayerAbility2Inventory.gameObject);
     }
-    private void leaveShop(InputAction.CallbackContext context)
-    {
-        
-    }
+
 
 
 
@@ -103,12 +108,13 @@ public class ShopUIPurchase : MonoBehaviour
         setTextAndIcons();
         selectedButton = buttons[0];
         selectedButton.Select();
-
+        
         //find event system and set first selected
         //GameObject eventSystem = GameObject.Find("EventSystem");
 
         //eventSystem.GetComponent<UnityEngine.EventSystems.EventSystem>().SetSelectedGameObject(selectedButton.gameObject);
     }
+
 
     public void deselectMarkers()
     {
@@ -159,7 +165,6 @@ public class ShopUIPurchase : MonoBehaviour
     {
         shopTriplets[0] = new triplet(playerAbilities.getAbilityName(0));
         shopTriplets[1] = new triplet(playerAbilities.getAbilityName(1));
-        shopTriplets[2] = new triplet(playerAbilities.getAbilityName(2));
         //
         shopAbility1Text.text = shopTriplets[3].description;
         shopAbility2Text.text = shopTriplets[4].description;
@@ -215,7 +220,6 @@ public class ShopUIPurchase : MonoBehaviour
     {
         shopTriplets[0] = new triplet(playerAbilities.getAbilityName(0));
         shopTriplets[1] = new triplet(playerAbilities.getAbilityName(1));
-        shopTriplets[2] = new triplet(playerAbilities.getAbilityName(2));
 
         shopTriplets[3] = new triplet("NavalMine");
         shopTriplets[4] = new triplet(AbilityOffer);
@@ -270,6 +274,7 @@ public class ShopUIPurchase : MonoBehaviour
             shopMarkerPosition = 3;
             playerMarkerPosition = 0;
             purchase();
+            gameObject.SetActive(false);
             return;
         }
         if (_clickedObject.name == "ImageBackground2")
@@ -279,6 +284,7 @@ public class ShopUIPurchase : MonoBehaviour
             shopMarkerPosition = 4;
             playerMarkerPosition = 1;
             purchase();
+            gameObject.SetActive(false);
             return;
         }
         //not player
