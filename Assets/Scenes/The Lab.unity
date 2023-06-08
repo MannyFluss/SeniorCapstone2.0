@@ -12453,33 +12453,53 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[0].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[1].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[2].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[3].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: opening.lines.Array.data[4].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[5].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[6].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[7].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[8].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[9].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[10].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: opening.lines.Array.data[11].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[0].lines.Array.data[0].line
       value: Although the use of your weapon would surely scare away any opponent
@@ -12593,85 +12613,109 @@ PrefabInstance:
       value: Just thinking about it ticks me off.
       objectReference: {fileID: 0}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[0].lines.Array.data[0].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[0].lines.Array.data[1].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[0].lines.Array.data[2].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[1].lines.Array.data[0].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[1].lines.Array.data[1].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
+      propertyPath: convo.Array.data[1].lines.Array.data[2].emoticon
+      value: 
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
+    - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[2].lines.Array.data[0].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[2].lines.Array.data[1].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[2].lines.Array.data[2].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[2].lines.Array.data[3].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[3].lines.Array.data[0].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[3].lines.Array.data[1].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[3].lines.Array.data[2].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[3].lines.Array.data[3].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[4].lines.Array.data[0].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[4].lines.Array.data[1].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[4].lines.Array.data[2].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[4].lines.Array.data[3].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[5].lines.Array.data[0].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 13c2a9e2c003fae448ade3b5c79fea6f, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[5].lines.Array.data[1].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[5].lines.Array.data[2].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[5].lines.Array.data[3].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 31eecf4525b2b59419bd8aece53c09ca, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[6].lines.Array.data[0].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[6].lines.Array.data[1].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[6].lines.Array.data[2].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
     - target: {fileID: 5866119447961412505, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: convo.Array.data[6].lines.Array.data[3].emoticon
       value: 
-      objectReference: {fileID: 21300000, guid: ffff02ee7d83cb449bdb21d7b7de36d9, type: 3}
+      objectReference: {fileID: 21300000, guid: 16c6b5d73c24c2f478c549f4cc37b845, type: 3}
     - target: {fileID: 6027997183723461570, guid: eb03e88f5417bef45ac0a015ef249a65, type: 3}
       propertyPath: Player
       value: 
