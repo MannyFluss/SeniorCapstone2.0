@@ -103,7 +103,6 @@ public class CharacterAbilityScript : MonoBehaviour
     {
         if (playerAbilities[0] == null){return false;}
         if (playerAbilities[1] == null){return false;}
-        if (playerAbilities[2] == null){return false;}
 
         return true;
     }
@@ -179,29 +178,29 @@ public class CharacterAbilityScript : MonoBehaviour
     }
     public void skillThreePressOrHold(InputAction.CallbackContext context)
     {
-        if (context.interaction is TapInteraction)
-        {
-            Debug.Log("Tap2");
-            if (playerAbilities[2] != null)
-            {
-                playerAbilities[2].OnButtonClick();
-            }
-        }
-        else if (context.interaction is HoldInteraction)
-        {
-            Debug.Log("Held2");
-            if (playerAbilities[2] != null)
-            {
-                playerAbilities[2].OnButtonHeldDown();
-            }
-        }
+        // if (context.interaction is TapInteraction)
+        // {
+        //     Debug.Log("Tap2");
+        //     if (playerAbilities[2] != null)
+        //     {
+        //         playerAbilities[2].OnButtonClick();
+        //     }
+        // }
+        // else if (context.interaction is HoldInteraction)
+        // {
+        //     Debug.Log("Held2");
+        //     if (playerAbilities[2] != null)
+        //     {
+        //         playerAbilities[2].OnButtonHeldDown();
+        //     }
+        // }
     }
     public void skillThreeReleased(InputAction.CallbackContext context)
     {
-        if (playerAbilities[2] != null)
-        {
-            playerAbilities[2].OnButtonReleased();
-        }
+        // if (playerAbilities[2] != null)
+        // {
+        //     playerAbilities[2].OnButtonReleased();
+        // }
     }
     void Update()
     {
@@ -273,25 +272,25 @@ public class CharacterAbilityScript : MonoBehaviour
         
         if(Input.GetKeyDown(KeyCode.Q))
         {
-            if (playerAbilities[2]!=null)
-            {
-                playerAbilities[2].OnButtonClick();
-            }
+            // if (playerAbilities[2]!=null)
+            // {
+            //     playerAbilities[2].OnButtonClick();
+            // }
         }
         if(Input.GetKey(KeyCode.Q))
         {
-            if (playerAbilities[2]!=null)
-            {
-                playerAbilities[2].OnButtonHeldDown();
-            }
+            // if (playerAbilities[2]!=null)
+            // {
+            //     playerAbilities[2].OnButtonHeldDown();
+            // }
         }
 
         if(Input.GetKeyUp(KeyCode.Q))
         {
-            if (playerAbilities[2]!=null)
-            {
-                playerAbilities[2].OnButtonReleased();
-            }
+            // if (playerAbilities[2]!=null)
+            // {
+            //     playerAbilities[2].OnButtonReleased();
+            // }
         }
     }
 
