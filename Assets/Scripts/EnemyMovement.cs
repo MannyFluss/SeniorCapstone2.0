@@ -70,11 +70,6 @@ public class EnemyMovement : MonoBehaviour
 
     private void Update()
     {
-        //AvoidPlayer();
-        if (type == "Crab")
-        {
-            sprite.color = Color.magenta;
-        }
 
         if (_pursuePlayer)
         {
