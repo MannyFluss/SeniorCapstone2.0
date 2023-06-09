@@ -97,7 +97,9 @@ public class BossBehavior : MonoBehaviour
         tentacles[2].slam = false;
         tentacles[3].slam = false;
 
-        runAttacks();
+        animator.enabled = false;
+
+        //runAttacks();
 
         animator = GetComponent<Animator>();
     }
@@ -515,6 +517,7 @@ public class BossBehavior : MonoBehaviour
     /// <returns></returns>
     IEnumerator returnToSenderTiming()
     {
+        animator.enabled = true;
         animator.SetBool("throw", true);
         int throws = 10;
         if (currHealth / (float)maxHealth < 0.60f)
@@ -528,6 +531,7 @@ public class BossBehavior : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(0.2f, 0.7f));
         }
         animator.SetBool("throw", false);
+        animator.enabled = false;
 
     }
 
