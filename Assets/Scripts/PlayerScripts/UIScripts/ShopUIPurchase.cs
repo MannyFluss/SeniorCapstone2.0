@@ -15,9 +15,8 @@ public class ShopUIPurchase : MonoBehaviour
         playerInput = new PlayerInput();
         playerInput.Enable();
         playerInput.Input.Skill1.performed += skillOnePressOrHold;
-
-        
         playerInput.Input.Skill2.performed += skillTwoPressOrHold;
+        playerInput.Input.Hit.performed += close;
 
 
 
@@ -36,7 +35,10 @@ public class ShopUIPurchase : MonoBehaviour
         
     }
 
-
+    private void close(InputAction.CallbackContext context)
+    {
+        gameObject.SetActive(false);
+    }
     private void skillOnePressOrHold(InputAction.CallbackContext context)
     {
         doThisOnClick(PlayerAbility1Inventory.gameObject);
