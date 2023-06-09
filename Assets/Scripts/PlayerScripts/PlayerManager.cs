@@ -65,14 +65,24 @@ public class PlayerManager : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        health -= damage;
-        PlayerHUDReference.setUIHearts(((int)health));
+        if (!animator.GetBool("isDashing")) {
+           health -= damage;
+            PlayerHUDReference.setUIHearts(((int)health));
 
-        StartCoroutine(HitCooldown());
-        //movement.playerHit(other.transform);
+            StartCoroutine(HitCooldown());
+            //movement.playerHit(other.transform);
 
-        //added damagetaken sound effect
-        DamageTakenSoundEffect.Play();
+            //added damagetaken sound effect
+            DamageTakenSoundEffect.Play(); 
+        }
+        // health -= damage;
+        // PlayerHUDReference.setUIHearts(((int)health));
+
+        // StartCoroutine(HitCooldown());
+        // //movement.playerHit(other.transform);
+
+        // //added damagetaken sound effect
+        // DamageTakenSoundEffect.Play();
     }
 
     public void heal()
