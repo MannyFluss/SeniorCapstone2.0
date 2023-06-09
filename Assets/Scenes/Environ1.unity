@@ -1990,7 +1990,7 @@ PrefabInstance:
     - target: {fileID: 4902893614509772387, guid: f8e5054eb80c6e948a19071ecbd5b9de, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1878548221}
     - target: {fileID: 4902893614509772387, guid: f8e5054eb80c6e948a19071ecbd5b9de, type: 3}
       propertyPath: WipeOut
       value: 1
@@ -15648,6 +15648,11 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!4 &1878548221 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2626668998523703812, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+  m_PrefabInstance: {fileID: 1855318907}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1890521909
 GameObject:
   m_ObjectHideFlags: 0
@@ -16421,7 +16426,7 @@ PrefabInstance:
     - target: {fileID: 4902893614509772387, guid: f8e5054eb80c6e948a19071ecbd5b9de, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1878548221}
     - target: {fileID: 4902893614509772387, guid: f8e5054eb80c6e948a19071ecbd5b9de, type: 3}
       propertyPath: WipeOut
       value: 0
