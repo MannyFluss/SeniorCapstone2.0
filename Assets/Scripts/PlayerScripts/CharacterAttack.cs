@@ -143,7 +143,7 @@ public class CharacterAttack : MonoBehaviour
         animator.SetBool("isAttacking", true);
         canHit = false;
         //animation delay
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.11f);
         hitObj.SetActive(true);
         yield return new WaitForSeconds(hitboxCoolDown);
         animator.SetBool("isAttacking", false);
