@@ -1102,6 +1102,29 @@ PrefabInstance:
     m_TransformParent: {fileID: 69430162}
     m_Modifications:
     - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.data[0]
+      value: Man, am I glad to see you! Are you the sushi chef Vee was talking about?
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.data[1]
+      value: "While I was setting up shop here I was attacked by some piranhas. They\u2019re
+        cute, but they are definitely not friendly."
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.data[2]
+      value: Vee let me know to give you mutations when I see you. I whip these serums
+        up with fresh ingredients I find from the battlefield. They should help you
+        out!
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.data[3]
+      value: Go ahead, take your pick!
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 6
       objectReference: {fileID: 0}
@@ -1881,8 +1904,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: lines.Array.data[0]
-      value: Hey Miyo, I hear danger lurks around the corner... be careful
+      value: "Oh my gosh\u2026 I need to stop getting captured by things."
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.data[1]
+      value: "Well, this is it, Miyo. King Calamar is right past here. I have one
+        more ability to offer you. Hopefully it\u2019s enough to defeat him."
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.data[2]
+      value: After your done, go ahead and hit this crane by the panel. It should
+        hit the tentacle and send it back into the ocean.
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.data[3]
+      value: I wish you luck.
       objectReference: {fileID: 0}
     - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -214,7 +214,6 @@ public class DungeonManager : MonoBehaviour
             }
             else
             {
-                GlobalLevel.Instance.PlayerHealth = player.GetComponent<PlayerManager>().health;
                 SceneManager.LoadScene(NextScene);
                 //ResetDungeon();
             }
