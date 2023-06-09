@@ -110,6 +110,11 @@ public class KnivesOut : BaseAbilityScript
         startCoolDown(abilityCoolDown);
     }    
 
+    public override string getAbilityName()
+    {
+        return abilityName;
+    }
+
 }
 public class HeartyFix : BaseAbilityScript
 {
@@ -127,6 +132,11 @@ public class HeartyFix : BaseAbilityScript
 
         startCoolDown(abilityCoolDown);
     
+    }
+
+    public override string getAbilityName()
+    {
+        return abilityName;
     }
 }
 public class KittyFortress : BaseAbilityScript

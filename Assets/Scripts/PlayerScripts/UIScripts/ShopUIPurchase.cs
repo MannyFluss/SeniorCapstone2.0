@@ -145,6 +145,7 @@ public class ShopUIPurchase : MonoBehaviour
         {
             //we swap
             // triplet[shopMarkerPosition]. 
+            print("aisdhjioasdiuhasiouhdasouh");
             playerAbilities.equipAbility(shopTriplets[shopMarkerPosition].ability,playerMarkerPosition);
             descriptionText.text = shopTriplets[shopMarkerPosition].description;
             shopTriplets[shopMarkerPosition].ability = "purchased";
@@ -153,6 +154,7 @@ public class ShopUIPurchase : MonoBehaviour
             setTextAndIcons();
             return;
         }
+        print("asldaslkpod");
         playerAbilities.removeAbility(playerMarkerPosition);
         playerAbilities.AbilityPickUpInteract(shopTriplets[shopMarkerPosition].ability);
         descriptionText.text = shopTriplets[shopMarkerPosition].description;
@@ -165,6 +167,9 @@ public class ShopUIPurchase : MonoBehaviour
     }
     void setTextAndIcons()
     {
+        print(playerAbilities.getAbilityName(0));
+        print(playerAbilities.getAbilityName(1));
+        
         shopTriplets[0] = new triplet(playerAbilities.getAbilityName(0));
         shopTriplets[1] = new triplet(playerAbilities.getAbilityName(1));
         //
@@ -220,11 +225,9 @@ public class ShopUIPurchase : MonoBehaviour
     string AbilityOffer;
     void initialSet()
     {
-        shopTriplets[0] = new triplet(playerAbilities.getAbilityName(0));
-        shopTriplets[1] = new triplet(playerAbilities.getAbilityName(1));
 
         shopTriplets[3] = new triplet("NavalMine");
-    
+        setRandomAbilityOffer();
         shopTriplets[4] = new triplet(AbilityOffer);
         setTextAndIcons();
     }

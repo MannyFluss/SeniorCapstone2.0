@@ -32,6 +32,7 @@ public class Global : MonoBehaviour
     {
         if (_input == null)
         {
+            print("null here");
             return Resources.Load<Sprite>(AbilityIcons["empty"]);
         }
         if (AbilityIcons.ContainsKey(_input)==false)
