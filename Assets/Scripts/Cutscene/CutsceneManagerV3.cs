@@ -191,20 +191,23 @@ public class CutsceneManagerV3 : MonoBehaviour
                 yield return new WaitForSeconds(nextPanel);
                 // First Fade In the Panel's Img and Txt Bg
 
-                for (float alpha = 0f; alpha <= 1f; alpha += imageFadeInRate * Time.deltaTime)
+                if (p.GetImg().sprite != null)
                 {
-                    p.GetImg().color = new Color(1, 1, 1, alpha);
-
-                    // If Space is press, Immediately Reveal Them
-                    if (Input.GetKeyDown(KeyCode.Space))
+                    for (float alpha = 0f; alpha <= 1f; alpha += imageFadeInRate * Time.deltaTime)
                     {
-                        RevealAll(p);
-                        break;
-                    }
-                    yield return null;
-                }
+                        p.GetImg().color = new Color(1, 1, 1, alpha);
 
-                yield return new WaitForSeconds(panel2Text);
+                        // If Space is press, Immediately Reveal Them
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            RevealAll(p);
+                            break;
+                        }
+                        yield return null;
+                    }
+                    yield return new WaitForSeconds(panel2Text);
+                }
+                
                 // If the player hasn't press Space to skip Panel
                 if (!togglePress)
                 {
