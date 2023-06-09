@@ -1644,7 +1644,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8283307057772956722
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2274,6 +2274,7 @@ MonoBehaviour:
   ShopKeeper: {fileID: 8283307058266513987}
   myCanvas: {fileID: 516854371556354066}
   myText: {fileID: 5031296984862096383}
+  Bust: {fileID: 7300166730710432380}
   nextLineIndicator: {fileID: 4684597626807351248}
   lines:
   - "Hey Miyo, how\u2019s it hangin\u2019? Lookin\u2019 for an upgrade?"
@@ -2308,6 +2309,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  spriteList:
+  - {fileID: 21300000, guid: bb77df45cd3866946808c49e8257d16e, type: 3}
+  - {fileID: 21300000, guid: b5023b2994f8ec1459b080fdd642a068, type: 3}
+  - {fileID: 21300000, guid: 0a3c7489cbc8bc04ea4a20a9fb8051d7, type: 3}
 --- !u!1 &9093030700573121836
 GameObject:
   m_ObjectHideFlags: 0
