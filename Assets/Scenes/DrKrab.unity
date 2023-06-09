@@ -23923,7 +23923,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1654990454}
   curHealth: 0
-  maxHealth: 40
+  maxHealth: 37
   canBeHit: 0
   waitTime: 0
   isReady: 0
