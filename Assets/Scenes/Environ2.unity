@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44658208, g: 0.49641603, b: 0.5748196, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465829, g: 0.49641728, b: 0.57482105, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -409,7 +409,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 10118341007964665, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 49215562719482492, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
       propertyPath: m_AnchorMax.y
@@ -1174,12 +1174,17 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6502673056062744683, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
   m_PrefabInstance: {fileID: 13688560}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 13688562}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c84f5e2bbe437040adacd476a01b79d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &13688562 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6738814891632441210, guid: dbc7971cbe1d8d549be3bc0d80b3e914, type: 3}
+  m_PrefabInstance: {fileID: 13688560}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &19581597
 GameObject:
   m_ObjectHideFlags: 0
@@ -2900,12 +2905,25 @@ PrefabInstance:
     m_TransformParent: {fileID: 69430162}
     m_Modifications:
     - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.data[0]
+      value: "Miyo! Great timing. I\u2019ve got something for you today that you\u2019re
+        going to LOVE!"
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 13688561}
     - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
+      objectReference: {fileID: 13688562}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setRandomAbilityOffer
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
       objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513987, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_Name
@@ -13563,6 +13581,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1086092914}
     m_Modifications:
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.data[0]
+      value: "My favorite customer! \u2013"
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.data[1]
+      value: "Wait \u2026are you really a customer if you don\u2019t spend any money?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 13688561}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 13688562}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setRandomAbilityOffer
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
     - target: {fileID: 4703468527890728879, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
