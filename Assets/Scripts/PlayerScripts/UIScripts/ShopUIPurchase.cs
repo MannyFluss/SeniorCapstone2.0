@@ -55,6 +55,8 @@ public class ShopUIPurchase : MonoBehaviour
         public triplet(string _ability)
         {
             ability = _ability;
+            
+
             if(BaseAbilityScript.AbilityDescriptions.ContainsKey(_ability))
             {
                 description = BaseAbilityScript.AbilityDescriptions[_ability];   
@@ -222,6 +224,7 @@ public class ShopUIPurchase : MonoBehaviour
         shopTriplets[1] = new triplet(playerAbilities.getAbilityName(1));
 
         shopTriplets[3] = new triplet("NavalMine");
+    
         shopTriplets[4] = new triplet(AbilityOffer);
         setTextAndIcons();
     }
@@ -271,7 +274,7 @@ public class ShopUIPurchase : MonoBehaviour
             //set image
             
             shopMarker.transform.position = _clickedObject.transform.position;
-            shopMarkerPosition = 3;
+            shopMarkerPosition = 4;
             playerMarkerPosition = 0;
             purchase();
             gameObject.SetActive(false);

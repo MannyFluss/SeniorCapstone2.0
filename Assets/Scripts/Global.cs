@@ -30,6 +30,10 @@ public class Global : MonoBehaviour
     }
     public Sprite getIconTexture(string _input)
     {
+        if (_input == null)
+        {
+            return Resources.Load<Sprite>(AbilityIcons["empty"]);
+        }
         if (AbilityIcons.ContainsKey(_input)==false)
         {
             return Resources.Load<Sprite>(AbilityIcons["empty"]);

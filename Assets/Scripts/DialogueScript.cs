@@ -15,7 +15,9 @@ public class DialogueScript : MonoBehaviour
     Canvas myCanvas;
     [SerializeField]
     TextMeshProUGUI myText;
-    
+    [SerializeField]
+    Image Bust;
+
     [SerializeField]
     private GameObject nextLineIndicator;
     public string[] lines;
@@ -29,11 +31,16 @@ public class DialogueScript : MonoBehaviour
     
     [SerializeField]
     private UnityEvent onShopClose;
+    
+    [SerializeField]
+    Sprite[] spriteList;
 
 
     private void Awake()
     {
         playerInput = new PlayerInput();
+       
+        Bust.sprite = spriteList[Mathf.FloorToInt(Random.Range(0,spriteList.Length-1))];
         
     }
     void Start()
