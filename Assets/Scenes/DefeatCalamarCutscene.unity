@@ -2479,7 +2479,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CutsceneMusic: {fileID: 1296332652}
-  CutsceneOutro: {fileID: 1296332651}
+  CutsceneOutro: {fileID: 0}
   NextScene: The Lab
   blackScreen: {fileID: 1690981532}
   continueArrow: {fileID: 1299069585}
