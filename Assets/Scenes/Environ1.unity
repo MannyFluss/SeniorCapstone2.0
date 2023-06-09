@@ -1048,6 +1048,14 @@ PrefabInstance:
       propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
       value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 6182213325433624432, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8283307057772956734, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513987, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_Name
       value: ShopKeeper
@@ -1098,7 +1106,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8423639779600477428, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
@@ -1719,6 +1727,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: lines.Array.data[0]
+      value: Hey Miyo, I hear danger lurks around the corner... be careful
+      objectReference: {fileID: 0}
+    - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1474391790}
@@ -1733,6 +1745,10 @@ PrefabInstance:
     - target: {fileID: 487331162318753084, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: onShopClose.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6182213325433624432, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8283307058266513986, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: onShopOpen.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -1788,7 +1804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8423639779600477428, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5bd496e91d960b45874b7ecbbdf243d, type: 3}
