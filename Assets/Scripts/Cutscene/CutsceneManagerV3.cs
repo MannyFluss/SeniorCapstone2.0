@@ -154,7 +154,7 @@ public class CutsceneManagerV3 : MonoBehaviour
         }
 
         // Transition Scene when the Music Finishes Playing
-        yield return new WaitUntil(() => CutsceneOutro.isPlaying == false);
+        if (CutsceneOutro != null) yield return new WaitUntil(() => CutsceneOutro.isPlaying == false);
         SceneManager.LoadScene(NextScene);
     }
 
@@ -256,8 +256,8 @@ public class CutsceneManagerV3 : MonoBehaviour
                 // Fade Out Intro Audio
                 StartCoroutine(FadeAudioSource.StartFade(CutsceneMusic, 0.5f, 0f));
 
-                // Start Playing the Outro
-                CutsceneOutro.Play();
+                // Start Playing the Outro (if there is one)
+                if (CutsceneOutro != null) CutsceneOutro.Play();
             }
 
             // Turn all Panel off when the cutscene is shown
